@@ -1,0 +1,370 @@
+[
+  [
+    "tipo_tab",
+    "nr_row",
+    "nr_col",
+    "first_row",
+    "first_col",
+    "c1_code",
+    "c1_cols",
+    "c2_code",
+    "c2_cols",
+    "row_code_nrcol",
+    "col_code_nrrow"
+  ],
+  [
+    1,
+    43,
+    2,
+    9,
+    3,
+    "c2019",
+    "3",
+    "c2018",
+    "4",
+    0,
+    2
+  ],
+  [],
+  [],
+  [
+    null,
+    "Torna all'indice"
+  ],
+  [],
+  [
+    null,
+    "Stato patrimoniale abbreviato"
+  ],
+  [],
+  [
+    null,
+    null,
+    null,
+    2019,
+    2018
+  ],
+  [
+    "T0002.D01.1.001.000.000.000.000",
+    null,
+    "Stato patrimoniale"
+  ],
+  [
+    "T0002.D01.1.001.002.000.000.000",
+    null,
+    "   Attivo"
+  ],
+  [
+    "T0002.D01.1.001.002.002.000.000",
+    null,
+    "      A) Crediti verso soci per versamenti ancora dovuti"
+  ],
+  [
+    "T0002.D01.1.001.002.003.000.000",
+    null,
+    "      B) Immobilizzazioni",
+    null,
+    null,
+    null,
+    "Footnote"
+  ],
+  [
+    "T0002.D01.1.001.002.003.002.000",
+    null,
+    "         I - Immobilizzazioni immateriali"
+  ],
+  [
+    "T0002.D01.1.001.002.003.003.000",
+    null,
+    "         II - Immobilizzazioni materiali"
+  ],
+  [
+    "T0002.D01.1.001.002.003.004.000",
+    null,
+    "         III - Immobilizzazioni finanziarie"
+  ],
+  [
+    "T0002.D01.1.001.002.003.005.000",
+    null,
+    "         Totale immobilizzazioni (B)"
+  ],
+  [
+    "T0002.D01.1.001.002.004.000.000",
+    null,
+    "      C) Attivo circolante"
+  ],
+  [
+    "T0002.D01.1.001.002.004.002.000",
+    null,
+    "         I - Rimanenze"
+  ],
+  [
+    "T0002.D01.1.001.002.004.003.000",
+    null,
+    "         Immobilizzazioni materiali destinate alla vendita"
+  ],
+  [
+    "T0002.D01.1.001.002.004.004.000",
+    null,
+    "         II - Crediti"
+  ],
+  [
+    "T0002.D01.1.001.002.004.004.002",
+    null,
+    "            esigibili entro l'esercizio successivo"
+  ],
+  [
+    "T0002.D01.1.001.002.004.004.003",
+    null,
+    "            esigibili oltre l'esercizio successivo"
+  ],
+  [
+    "T0002.D01.1.001.002.004.004.004",
+    null,
+    "            imposte anticipate"
+  ],
+  [
+    "T0002.D01.1.001.002.004.004.005",
+    null,
+    "            Totale crediti"
+  ],
+  [
+    "T0002.D01.1.001.002.004.005.000",
+    null,
+    "         III - Attività finanziarie che non costituiscono immobilizzazioni"
+  ],
+  [
+    "T0002.D01.1.001.002.004.006.000",
+    null,
+    "         IV - Disponibilità liquide"
+  ],
+  [
+    "T0002.D01.1.001.002.004.007.000",
+    null,
+    "         Totale attivo circolante (C)"
+  ],
+  [
+    "T0002.D01.1.001.002.005.000.000",
+    null,
+    "      D) Ratei e risconti"
+  ],
+  [
+    "T0002.D01.1.001.002.006.000.000",
+    null,
+    "      Totale attivo"
+  ],
+  [
+    "T0002.D01.1.001.003.000.000.000",
+    null,
+    "   Passivo"
+  ],
+  [
+    "T0002.D01.1.001.003.002.000.000",
+    null,
+    "      A) Patrimonio netto"
+  ],
+  [
+    "T0002.D01.1.001.003.002.002.000",
+    null,
+    "         I - Capitale"
+  ],
+  [
+    "T0002.D01.1.001.003.002.003.000",
+    null,
+    "         II - Riserva da soprapprezzo delle azioni"
+  ],
+  [
+    "T0002.D01.1.001.003.002.004.000",
+    null,
+    "         III - Riserve di rivalutazione"
+  ],
+  [
+    "T0002.D01.1.001.003.002.005.000",
+    null,
+    "         IV - Riserva legale",
+    null,
+    null,
+    null,
+    "Footnote"
+  ],
+  [
+    "T0002.D01.1.001.003.002.006.000",
+    null,
+    "         V - Riserve statutarie"
+  ],
+  [
+    "T0002.D01.1.001.003.002.007.000",
+    null,
+    "         VI - Altre riserve"
+  ],
+  [
+    "T0002.D01.1.001.003.002.008.000",
+    null,
+    "         VII - Riserva per operazioni di copertura dei flussi finanziari attesi"
+  ],
+  [
+    "T0002.D01.1.001.003.002.009.000",
+    null,
+    "         VIII - Utili (perdite) portati a nuovo"
+  ],
+  [
+    "T0002.D01.1.001.003.002.010.000",
+    null,
+    "         IX - Utile (perdita) dell'esercizio"
+  ],
+  [
+    "T0002.D01.1.001.003.002.011.000",
+    null,
+    "         Perdita ripianata nell'esercizio"
+  ],
+  [
+    "T0002.D01.1.001.003.002.012.000",
+    null,
+    "         X - Riserva negativa per azioni proprie in portafoglio"
+  ],
+  [
+    "T0002.D01.1.001.003.002.013.000",
+    null,
+    "         Totale patrimonio netto"
+  ],
+  [
+    "T0002.D01.1.001.003.003.000.000",
+    null,
+    "      B) Fondi per rischi e oneri"
+  ],
+  [
+    "T0002.D01.1.001.003.004.000.000",
+    null,
+    "      C) Trattamento di fine rapporto di lavoro subordinato"
+  ],
+  [
+    "T0002.D01.1.001.003.005.000.000",
+    null,
+    "      D) Debiti"
+  ],
+  [
+    "T0002.D01.1.001.003.005.002.000",
+    null,
+    "         esigibili entro l'esercizio successivo"
+  ],
+  [
+    "T0002.D01.1.001.003.005.003.000",
+    null,
+    "         esigibili oltre l'esercizio successivo"
+  ],
+  [
+    "T0002.D01.1.001.003.005.004.000",
+    null,
+    "         Totale debiti"
+  ],
+  [
+    "T0002.D01.1.001.003.006.000.000",
+    null,
+    "      E) Ratei e risconti"
+  ],
+  [
+    "T0002.D01.1.001.003.007.000.000",
+    null,
+    "      Totale passivo"
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  []
+]
