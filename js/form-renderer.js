@@ -1,4 +1,4 @@
-// workbookabb - Form Renderer Module
+// workbookabb - Form Renderer Module (VERSIONE MIGLIORATA)
 
 // Renderizza foglio corrente
 function renderFoglio(codice) {
@@ -38,6 +38,13 @@ function renderFoglio(codice) {
     }
     
     const config = templateData[1];
+    
+    // Verifica che config sia un array valido
+    if (!Array.isArray(config) || config.length === 0) {
+        content.innerHTML = `<div class="empty-state"><p>Configurazione template non valida</p></div>`;
+        return;
+    }
+    
     const tipoTab = config[0];
     
     let html = '';
@@ -53,11 +60,25 @@ function renderFoglio(codice) {
     
     // Renderizza in base al tipo
     if (tipoTab === 1) {
-        html += renderTextBlock(templateData, dati, codice);
+        html += renderTipo1(templateData, dati, codice);
     } else if (tipoTab === 2) {
-        html += renderTabella2D(templateData, dati, codice);
+        html += renderTipo2(templateData, dati, codice);
+    } else if (tipoTab === 3) {
+        html += renderTipo3(templateData, dati, codice);
+    } else if (tipoTab === 4) {
+        html += renderTipo4(templateData, dati, codice);
     } else {
-        html += `<div class="empty-state"><p>Tipo tabella non supportato: ${tipoTab}</p></div>`;
+        // Tipo non riconosciuto - mostra informazioni di debug
+        html += `
+            <div class="info-box">
+                <h3>⚠️ Tipo foglio non standard: ${tipoTab}</h3>
+                <p>Questo foglio utilizza un formato non ancora implementato.</p>
+                <details>
+                    <summary>Configurazione foglio (debug)</summary>
+                    <pre>${JSON.stringify(config, null, 2)}</pre>
+                </details>
+            </div>
+        `;
     }
     
     content.innerHTML = html;
@@ -78,39 +99,112 @@ function getTitoloFoglio(templateData) {
     return 'Sezione bilancio';
 }
 
-// Render TextBlock (campo testo libero)
-function renderTextBlock(templateData, dati, foglioCode) {
-    const codiceCell = templateData[2]?.[3];
-    if (!codiceCell) {
-        return '<div class="empty-state"><p>Codice cella non trovato</p></div>';
+// TIPO 1: Foglio semplice con 1-2 colonne di valori
+function renderTipo1(templateData, dati, foglioCode) {
+    const config = templateData[1];
+    const firstRow = config[3];
+    const firstCol = config[4];
+    const numRows = config[1];
+    const numCols = config[2];
+    
+    const xbrlMappings = getXBRLMappings();
+    
+    // Se c'è una sola riga e una sola cella, potrebbe essere un textBlock
+    if (numRows === 1 && numCols === 1) {
+        const codiceCell = templateData[firstRow]?.[0];
+        if (!codiceCell) {
+            return '<div class="empty-state"><p>Codice cella non trovato</p></div>';
+        }
+        
+        const valore = dati[codiceCell] || '';
+        const titolo = getTitoloFoglio(templateData);
+        
+        const mapping = findMappingByCode(codiceCell, foglioCode, xbrlMappings);
+        const label = mapping?.ui?.label || titolo;
+        
+        return `
+            <div class="textblock">
+                <h3>${escapeHtml(label)}</h3>
+                <textarea 
+                    class="cell-textarea"
+                    data-cell="${codiceCell}"
+                    data-foglio="${foglioCode}"
+                    placeholder="Inserisci il testo...">` + escapeHtml(valore) + `</textarea>
+            </div>
+        `;
     }
     
-    const valore = dati[codiceCell] || '';
-    const titolo = getTitoloFoglio(templateData);
+    // Altrimenti è una tabella semplice (es. T0000)
+    let html = '<div class="form-container"><table class="bilancio-table">';
     
-    // Cerca label e indent da xbrl_mappings
-    const xbrlMappings = getXBRLMappings();
-    const mapping = findMappingByCode(codiceCell, foglioCode, xbrlMappings);
-    const label = mapping?.ui?.label || titolo;
+    // Header colonne (cerca nella riga 8 o firstRow-1)
+    const headerRow = templateData[Math.max(8, firstRow - 1)] || [];
+    html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
+    for (let c = 0; c < numCols; c++) {
+        const colHeader = headerRow[firstCol + c] || '';
+        html += `<th>${escapeHtml(colHeader)}</th>`;
+    }
+    html += '</tr></thead><tbody>';
     
-    return `
-        <div class="textblock">
-            <h3>${label}</h3>
-            <textarea 
-                class="cell-textarea"
-                data-cell="${codiceCell}"
-                data-foglio="${foglioCode}"
-                placeholder="Inserisci il testo...">` + escapeHtml(valore) + `</textarea>
-        </div>
-    `;
+    // Righe dati
+    for (let r = 0; r < numRows; r++) {
+        const rowIndex = firstRow + r;
+        const rowData = templateData[rowIndex];
+        
+        if (!rowData) continue;
+        
+        const codiceRiga = rowData[0];
+        if (!codiceRiga) continue;
+        
+        // Cerca mapping per label e indentazione
+        const mapping = findMappingByCode(codiceRiga, foglioCode, xbrlMappings);
+        const labelRiga = mapping?.ui?.label || rowData[2] || '';
+        const indentLevel = mapping?.ui?.indent_level || 0;
+        const isAbstract = mapping?.ui?.is_abstract || false;
+        
+        const indentPx = indentLevel * 20;
+        const labelClass = isAbstract ? 'label-abstract' : 'label';
+        
+        html += `<tr>
+            <td class="${labelClass}" style="padding-left: ${indentPx}px">
+                ${escapeHtml(labelRiga)}
+            </td>`;
+        
+        // Celle input
+        if (isAbstract) {
+            for (let c = 0; c < numCols; c++) {
+                html += '<td class="cell-abstract">—</td>';
+            }
+        } else {
+            for (let c = 0; c < numCols; c++) {
+                const valore = dati[codiceRiga] !== null && dati[codiceRiga] !== undefined 
+                    ? dati[codiceRiga] 
+                    : '';
+                
+                html += `<td>
+                    <input type="text" 
+                           class="cell-input"
+                           data-cell="${codiceRiga}"
+                           data-foglio="${foglioCode}"
+                           value="${escapeHtml(valore)}"
+                           placeholder="" />
+                </td>`;
+            }
+        }
+        
+        html += '</tr>';
+    }
+    
+    html += '</tbody></table></div>';
+    return html;
 }
 
-// Render Tabella 2D
-function renderTabella2D(templateData, dati, foglioCode) {
+// TIPO 2: Tabella 2D con codici riga × codici colonna
+function renderTipo2(templateData, dati, foglioCode) {
     const config = templateData[1];
     const firstRow = config[3];
     const numRows = config[1];
-    const headerRow = templateData[9] || [];
+    const headerRow = templateData[9] || templateData[Math.max(8, firstRow - 1)] || [];
     const codiciColonne = templateData[2]?.slice(3) || [];
     
     const xbrlMappings = getXBRLMappings();
@@ -184,13 +278,35 @@ function renderTabella2D(templateData, dati, foglioCode) {
     }
     
     html += '</tbody></table></div>';
-    
     return html;
+}
+
+// TIPO 3: Tabella con tuple (righe multiple espandibili)
+function renderTipo3(templateData, dati, foglioCode) {
+    // TODO: Implementare rendering tuple
+    return `
+        <div class="info-box">
+            <h3>⚠️ Tipo 3: Tuple (non ancora implementato)</h3>
+            <p>Questo foglio utilizza righe multiple espandibili (tuple).</p>
+            <p>Implementazione prevista in fase successiva.</p>
+        </div>
+    `;
+}
+
+// TIPO 4: Altri formati speciali
+function renderTipo4(templateData, dati, foglioCode) {
+    // TODO: Implementare altri formati
+    return `
+        <div class="info-box">
+            <h3>⚠️ Tipo 4: Formato speciale (non ancora implementato)</h3>
+            <p>Questo foglio utilizza un formato speciale.</p>
+        </div>
+    `;
 }
 
 // Attach event listeners agli input
 function attachInputListeners() {
-    // Input numerici
+    // Input numerici e testuali
     document.querySelectorAll('.cell-input').forEach(input => {
         input.addEventListener('change', handleCellChange);
         input.addEventListener('blur', handleCellChange);
@@ -209,7 +325,7 @@ function handleCellChange(event) {
     const foglioCode = input.dataset.foglio;
     
     let valore;
-    if (input.classList.contains('cell-input')) {
+    if (input.type === 'number') {
         valore = input.value ? parseFloat(input.value) : null;
     } else {
         valore = input.value;
@@ -225,10 +341,16 @@ function findMappingByCode(codiceExcel, foglioCode, xbrlMappings) {
     const foglioMappings = xbrlMappings.mappature[foglioCode];
     if (!foglioMappings) return null;
     
-    return foglioMappings.find(m => 
-        m.codice_excel === codiceExcel ||
-        m.codice_excel?.startsWith(codiceExcel)
-    );
+    // Cerca match esatto
+    let mapping = foglioMappings.find(m => m.codice_excel === codiceExcel);
+    
+    // Se non trovato, cerca per prefisso (per celle combinate riga_colonna)
+    if (!mapping) {
+        const codiceBase = codiceExcel.split('_')[0];
+        mapping = foglioMappings.find(m => m.codice_excel === codiceBase);
+    }
+    
+    return mapping;
 }
 
 // Escape HTML
