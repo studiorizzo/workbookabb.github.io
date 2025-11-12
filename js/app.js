@@ -1,42 +1,93 @@
-// workbookabb - Main Application Module
+// workbookabb - Main Application Module (VERSIONE FINALE - NO HARDCODED)
 
 // Variabili globali
+let configurazione = null;
 let templates = {};
+let templatesList = []; // Lista dinamica dei template disponibili
 let xbrlMappings = null;
 let currentFoglio = null;
 let bilancio = null;
 
 // Inizializzazione
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Initializing workbookabb...');
+    console.log('=== Initializing workbookabb ===');
     
     try {
         showLoading('Caricamento risorse...');
         
-        // Carica mappature XBRL
+        // 1. Carica Configurazione (date, contesti XBRL)
+        await loadConfigurazione();
+        
+        // 2. Scopri tutti i template disponibili
+        await discoverTemplates();
+        
+        // 3. Carica mappature XBRL (label, indentazioni)
         await loadXBRLMappings();
         
-        // Carica lista fogli disponibili
-        await loadTemplatesList();
-        
-        // Genera indice
+        // 4. Genera indice sidebar
         renderIndex();
         
-        // Setup event listeners
+        // 5. Setup event listeners
         setupEventListeners();
         
-        // Verifica se c'è un bilancio salvato
+        // 6. Verifica bilancio salvato
         loadSavedBilancio();
         
         hideLoading();
         
-        console.log('App initialized successfully');
+        console.log('=== App initialized successfully ===');
     } catch (error) {
-        console.error('Initialization error:', error);
+        console.error('=== Initialization error ===', error);
         hideLoading();
         showToast('Errore inizializzazione: ' + error.message, 'error');
     }
 });
+
+// Carica Configurazione.json
+async function loadConfigurazione() {
+    try {
+        const response = await fetch('data/template/Configurazione.json');
+        if (!response.ok) throw new Error('Configurazione.json non trovato');
+        configurazione = await response.json();
+        console.log('✓ Configurazione loaded');
+    } catch (error) {
+        console.warn('⚠ Configurazione not available:', error.message);
+        configurazione = null;
+    }
+}
+
+// Scopri tutti i template disponibili in data/template/
+async function discoverTemplates() {
+    console.log('Discovering templates...');
+    
+    // Lista dei fogli possibili (T0000-T0642 come da documentazione)
+    const possibleSheets = [];
+    for (let i = 0; i <= 642; i++) {
+        possibleSheets.push(`T${String(i).padStart(4, '0')}`);
+    }
+    
+    // Prova a caricare ogni template
+    const discoveries = [];
+    for (const code of possibleSheets) {
+        discoveries.push(
+            fetch(`data/template/${code}.json`, { method: 'HEAD' })
+                .then(response => response.ok ? code : null)
+                .catch(() => null)
+        );
+    }
+    
+    // Raccogli risultati
+    const results = await Promise.all(discoveries);
+    templatesList = results.filter(code => code !== null);
+    
+    console.log(`✓ Discovered ${templatesList.length} templates:`, templatesList.slice(0, 10), '...');
+    
+    // Se la scoperta non ha trovato niente, usa lista minima fallback
+    if (templatesList.length === 0) {
+        console.warn('⚠ No templates discovered, using fallback list');
+        templatesList = ['T0000', 'T0002', 'T0006', 'T0009', 'T0011'];
+    }
+}
 
 // Carica mappature XBRL
 async function loadXBRLMappings() {
@@ -44,28 +95,14 @@ async function loadXBRLMappings() {
         const response = await fetch('data/mapping/xbrl_mappings_complete.json');
         if (!response.ok) throw new Error('xbrl_mappings non trovato');
         xbrlMappings = await response.json();
-        console.log('XBRL mappings loaded:', Object.keys(xbrlMappings.mappature || {}).length, 'fogli');
+        console.log('✓ XBRL mappings loaded:', Object.keys(xbrlMappings.mappature || {}).length, 'fogli');
     } catch (error) {
-        console.warn('xbrl_mappings not available:', error.message);
+        console.warn('⚠ xbrl_mappings not available:', error.message);
         xbrlMappings = { mappature: {} };
     }
 }
 
-// Carica lista template fogli
-async function loadTemplatesList() {
-    // Lista fogli principali (in produzione caricare da index o file)
-    const fogliPrincipali = [
-        'T0000', 'T0002', 'T0006', 'T0009', 'T0011',
-        'T0166', 'T0167' // Esempi
-    ];
-    
-    templates = {};
-    for (const codice of fogliPrincipali) {
-        templates[codice] = { code: codice };
-    }
-}
-
-// Carica template foglio specifico
+// Carica template foglio specifico (on-demand)
 async function loadTemplate(codice) {
     if (templates[codice] && templates[codice].loaded) {
         return templates[codice];
@@ -82,52 +119,97 @@ async function loadTemplate(codice) {
             loaded: true
         };
         
+        console.log(`✓ Template ${codice} loaded`);
         return templates[codice];
     } catch (error) {
-        console.error(`Error loading template ${codice}:`, error);
+        console.error(`✗ Error loading template ${codice}:`, error);
         return null;
     }
 }
 
-// Genera indice navigazione
+// Genera indice navigazione da templatesList
 function renderIndex() {
     const indexTree = document.getElementById('index-tree');
     
-    const structure = {
-        'Informazioni Generali': 'T0000',
-        'Stato Patrimoniale': 'T0002',
-        'Conto Economico': 'T0006',
-        'Rendiconto Finanziario (indiretto)': 'T0009',
-        'Rendiconto Finanziario (diretto)': 'T0011',
-        'Nota Integrativa': {
-            'Immobilizzazioni Immateriali': {
-                'Movimenti': 'T0166',
-                'Commento': 'T0167'
-            }
-        }
+    if (templatesList.length === 0) {
+        indexTree.innerHTML = '<div class="empty-state"><p>Nessun template disponibile</p></div>';
+        return;
+    }
+    
+    // Raggruppa fogli per categoria (basato su naming pattern)
+    const grouped = {
+        'Principali': [],
+        'Nota Integrativa': [],
+        'Altri': []
     };
     
-    indexTree.innerHTML = renderTreeItems(structure);
-}
-
-function renderTreeItems(items, level = 0) {
+    templatesList.forEach(code => {
+        const num = parseInt(code.substring(1));
+        if (num <= 11) {
+            grouped['Principali'].push(code);
+        } else if (num >= 14 && num <= 615) {
+            grouped['Nota Integrativa'].push(code);
+        } else {
+            grouped['Altri'].push(code);
+        }
+    });
+    
+    // Genera HTML
     let html = '<div class="tree-submenu">';
     
-    for (const [label, value] of Object.entries(items)) {
-        if (typeof value === 'string') {
-            // Foglio
-            html += `<div class="tree-item" data-foglio="${value}" onclick="navigateToFoglio('${value}')">
-                ${label}
+    // Principali (sempre espansi)
+    if (grouped['Principali'].length > 0) {
+        html += '<div class="tree-section"><strong>Fogli Principali</strong></div>';
+        grouped['Principali'].forEach(code => {
+            const label = getFoglioLabel(code);
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code} - ${label}
             </div>`;
-        } else {
-            // Sezione con sottomenu
-            html += `<div class="tree-item has-children">${label}</div>`;
-            html += renderTreeItems(value, level + 1);
-        }
+        });
+    }
+    
+    // Nota Integrativa (collassabile)
+    if (grouped['Nota Integrativa'].length > 0) {
+        html += `<div class="tree-section" style="margin-top: 15px;">
+            <strong>Nota Integrativa (${grouped['Nota Integrativa'].length} fogli)</strong>
+        </div>`;
+        html += '<div class="tree-collapsible" style="max-height: 300px; overflow-y: auto;">';
+        grouped['Nota Integrativa'].forEach(code => {
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code}
+            </div>`;
+        });
+        html += '</div>';
+    }
+    
+    // Altri
+    if (grouped['Altri'].length > 0) {
+        html += `<div class="tree-section" style="margin-top: 15px;">
+            <strong>Altri (${grouped['Altri'].length})</strong>
+        </div>`;
+        html += '<div class="tree-collapsible" style="max-height: 200px; overflow-y: auto;">';
+        grouped['Altri'].forEach(code => {
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code}
+            </div>`;
+        });
+        html += '</div>';
     }
     
     html += '</div>';
-    return html;
+    indexTree.innerHTML = html;
+}
+
+// Get label foglio (helper)
+function getFoglioLabel(code) {
+    const labels = {
+        'T0000': 'Informazioni Generali',
+        'T0002': 'Stato Patrimoniale',
+        'T0006': 'Conto Economico',
+        'T0009': 'Rendiconto Finanziario (indiretto)',
+        'T0011': 'Rendiconto Finanziario (diretto)'
+    };
+    return labels[code] || '';
 }
 
 // Navigazione a foglio
@@ -167,7 +249,15 @@ async function navigateToFoglio(codice) {
 // Update breadcrumb
 function updateBreadcrumb(codice) {
     const breadcrumb = document.getElementById('breadcrumb');
-    breadcrumb.textContent = `📄 ${codice}`;
+    const template = templates[codice];
+    
+    // Estrai titolo dal template
+    let titolo = getFoglioLabel(codice) || codice;
+    if (template && template.data && template.data.length > 6) {
+        titolo = template.data[6]?.[1] || template.data[4]?.[1] || titolo;
+    }
+    
+    breadcrumb.textContent = `${codice} - ${titolo}`;
 }
 
 // Setup event listeners
@@ -198,27 +288,42 @@ function nuovoBilancio() {
         return;
     }
     
+    // Usa date da Configurazione se disponibili
+    let annoCorrente = new Date().getFullYear();
+    let annoPrec = annoCorrente - 1;
+    
+    if (configurazione && configurazione[8]) {
+        const dataStr = configurazione[8][7];
+        if (dataStr) {
+            const year = new Date(dataStr).getFullYear();
+            if (!isNaN(year)) annoCorrente = year;
+        }
+    }
+    
     bilancio = {
         metadata: {
             versione: '1.0',
             data_creazione: new Date().toISOString(),
             data_modifica: new Date().toISOString(),
             ragione_sociale: null,
-            anno_esercizio: new Date().getFullYear()
+            anno_esercizio: annoCorrente,
+            anno_precedente: annoPrec
         },
         fogli: {}
     };
     
-    // Inizializza tutti i fogli vuoti
-    for (const codice in templates) {
-        bilancio.fogli[codice] = {};
-    }
+    // Inizializza struttura vuota per tutti i fogli disponibili
+    templatesList.forEach(code => {
+        bilancio.fogli[code] = {};
+    });
     
     // Abilita pulsanti
     enableButtons();
     
     // Vai al primo foglio
-    navigateToFoglio('T0000');
+    if (templatesList.length > 0) {
+        navigateToFoglio(templatesList[0]);
+    }
     
     showToast('Nuovo bilancio creato', 'success');
 }
@@ -237,7 +342,12 @@ async function handleFileUpload(event) {
         bilancio = await importFromXLS(xlsData);
         
         enableButtons();
-        navigateToFoglio('T0000');
+        
+        // Vai al primo foglio disponibile nel bilancio
+        const firstFoglio = Object.keys(bilancio.fogli)[0];
+        if (firstFoglio) {
+            navigateToFoglio(firstFoglio);
+        }
         
         hideLoading();
         showToast('File caricato con successo', 'success');
@@ -255,7 +365,7 @@ function loadSavedBilancio() {
         try {
             bilancio = JSON.parse(saved);
             enableButtons();
-            console.log('Bilancio salvato caricato');
+            console.log('✓ Bilancio salvato caricato');
         } catch (error) {
             console.error('Error loading saved bilancio:', error);
         }
@@ -338,4 +448,12 @@ function getXBRLMappings() {
 
 function getTemplate(codice) {
     return templates[codice];
+}
+
+function getConfigurazione() {
+    return configurazione;
+}
+
+function getTemplatesList() {
+    return templatesList;
 }
