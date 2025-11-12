@@ -1,0 +1,424 @@
+/* workbookabb - Forms & Tables Styles (Professional Design) */
+
+/* Form Container */
+.form-container {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* Sheet Header */
+.sheet-header {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-primary) 100%);
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+}
+
+.sheet-header h2 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sheet-header h2:before {
+    content: '📊';
+    font-size: 28px;
+}
+
+.sheet-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Tabelle Bilancio */
+.bilancio-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-primary);
+    font-size: 13px;
+}
+
+.bilancio-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.bilancio-table thead th {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    font-weight: 600;
+    padding: 14px 12px;
+    border-bottom: 2px solid var(--border-dark);
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bilancio-table thead th:first-child {
+    text-align: left;
+    position: sticky;
+    left: 0;
+    z-index: 11;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.bilancio-table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.bilancio-table tbody td:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--bg-primary);
+    z-index: 1;
+}
+
+.bilancio-table tbody tr:hover td {
+    background: var(--bg-tertiary);
+}
+
+.bilancio-table tbody tr:hover td:first-child {
+    background: var(--bg-tertiary);
+}
+
+/* Label con indentazione */
+.bilancio-table .label {
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    line-height: 1.5;
+}
+
+/* Label abstract (header senza input) */
+.bilancio-table .label-abstract {
+    font-weight: 700;
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 4px 0;
+}
+
+/* Celle abstract (senza input) */
+.bilancio-table .cell-abstract {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    text-align: center;
+    font-style: italic;
+    font-size: 12px;
+}
+
+/* Input numerici */
+.cell-input {
+    width: 100%;
+    max-width: 140px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    text-align: right;
+    font-size: 13px;
+    font-family: 'Courier New', 'Monaco', monospace;
+    transition: all 0.2s ease;
+    background: var(--bg-primary);
+}
+
+.cell-input:hover {
+    border-color: var(--border-dark);
+}
+
+.cell-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: white;
+}
+
+.cell-input.calculated {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    font-weight: 600;
+    border-color: #86efac;
+}
+
+.cell-input.error {
+    border-color: var(--danger);
+    background: #fee2e2;
+}
+
+.cell-input:disabled {
+    background: var(--bg-tertiary);
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+/* TextBlock */
+.textblock {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--bg-primary);
+    padding: 28px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.textblock h3 {
+    color: var(--text-primary);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--primary);
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.textblock h3:before {
+    content: '📝';
+    font-size: 24px;
+}
+
+.cell-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+    resize: vertical;
+    min-height: 280px;
+    transition: all 0.2s ease;
+    background: var(--bg-primary);
+}
+
+.cell-textarea:hover {
+    border-color: var(--border-dark);
+}
+
+.cell-textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    background: white;
+}
+
+/* Form Section */
+.form-section {
+    margin-bottom: 28px;
+    padding: 20px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.form-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.form-input:hover {
+    border-color: var(--border-dark);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Validazione */
+.validation-error {
+    color: var(--danger);
+    font-size: 12px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.validation-error:before {
+    content: '⚠';
+}
+
+.has-error .form-input,
+.has-error .cell-input {
+    border-color: var(--danger);
+    background: #fee2e2;
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Table Actions */
+.table-actions {
+    display: flex;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--bg-tertiary);
+    border-top: 1px solid var(--border);
+    justify-content: flex-end;
+}
+
+/* Help Text */
+.help-text {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.help-text:before {
+    content: 'ℹ';
+    color: var(--primary);
+}
+
+/* Progress Bar */
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 100%);
+    transition: width 0.3s ease;
+}
+
+/* Responsive Tables */
+@media (max-width: 1024px) {
+    .bilancio-table {
+        font-size: 12px;
+    }
+    
+    .bilancio-table thead th,
+    .bilancio-table tbody td {
+        padding: 10px 8px;
+    }
+    
+    .cell-input {
+        max-width: 110px;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
+    
+    .sheet-header {
+        padding: 18px 20px;
+    }
+    
+    .sheet-header h2 {
+        font-size: 20px;
+    }
+    
+    .textblock {
+        padding: 20px;
+    }
+    
+    .bilancio-table {
+        font-size: 11px;
+    }
+    
+    .bilancio-table thead th:first-child,
+    .bilancio-table tbody td:first-child {
+        position: static;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .bilancio-table {
+        page-break-inside: auto;
+    }
+    
+    .bilancio-table tr {
+        page-break-inside: avoid;
+        page-break-after: auto;
+    }
+    
+    .cell-input {
+        border: none;
+        background: transparent;
+    }
+}
