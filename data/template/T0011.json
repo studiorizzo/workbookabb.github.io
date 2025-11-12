@@ -1,0 +1,412 @@
+[
+  [
+    "tipo_tab",
+    "nr_row",
+    "nr_col",
+    "first_row",
+    "first_col",
+    "c1_code",
+    "c1_cols",
+    "c2_code",
+    "c2_cols",
+    "row_code_nrcol",
+    "col_code_nrrow"
+  ],
+  [
+    1,
+    53,
+    2,
+    9,
+    3,
+    "c2019",
+    "3",
+    "c2018",
+    "4",
+    0,
+    2
+  ],
+  [],
+  [],
+  [
+    null,
+    "Torna all'indice"
+  ],
+  [],
+  [
+    null,
+    "Rendiconto finanziario, metodo diretto"
+  ],
+  [],
+  [
+    null,
+    null,
+    null,
+    2019,
+    2018
+  ],
+  [
+    "T0011.D01.1.001.000.000.000",
+    null,
+    "Rendiconto finanziario, metodo diretto"
+  ],
+  [
+    "T0011.D01.1.001.002.000.000",
+    null,
+    "   A) Flussi finanziari derivanti dall'atività operativa (metodo diretto)"
+  ],
+  [
+    "T0011.D01.1.001.002.002.000",
+    null,
+    "      Incassi da clienti"
+  ],
+  [
+    "T0011.D01.1.001.002.003.000",
+    null,
+    "      Altri incassi"
+  ],
+  [
+    "T0011.D01.1.001.002.004.000",
+    null,
+    "      (Pagamenti a fornitori per acquisti)"
+  ],
+  [
+    "T0011.D01.1.001.002.005.000",
+    null,
+    "      (Pagamenti a fornitori per servizi)"
+  ],
+  [
+    "T0011.D01.1.001.002.006.000",
+    null,
+    "      (Pagamenti al personale)"
+  ],
+  [
+    "T0011.D01.1.001.002.007.000",
+    null,
+    "      (Altri pagamenti)"
+  ],
+  [
+    "T0011.D01.1.001.002.008.000",
+    null,
+    "      (Imposte pagate sul reddito)"
+  ],
+  [
+    "T0011.D01.1.001.002.009.000",
+    null,
+    "      Interessi incassati/(pagati)"
+  ],
+  [
+    "T0011.D01.1.001.002.010.000",
+    null,
+    "      Dividendi incassati"
+  ],
+  [
+    "T0011.D01.1.001.002.011.000",
+    null,
+    "      Flusso finanziario dell'attività operativa (A)"
+  ],
+  [
+    "T0011.D01.1.001.003.000.000",
+    null,
+    "   B) Flussi finanziari derivanti dall'attività d'investimento"
+  ],
+  [
+    "T0011.D01.1.001.003.002.000",
+    null,
+    "      Immobilizzazioni materiali"
+  ],
+  [
+    "T0011.D01.1.001.003.002.002",
+    null,
+    "         (Investimenti)"
+  ],
+  [
+    "T0011.D01.1.001.003.002.003",
+    null,
+    "         Disinvestimenti"
+  ],
+  [
+    "T0011.D01.1.001.003.003.000",
+    null,
+    "      Immobilizzazioni immateriali"
+  ],
+  [
+    "T0011.D01.1.001.003.003.002",
+    null,
+    "         (Investimenti)"
+  ],
+  [
+    "T0011.D01.1.001.003.003.003",
+    null,
+    "         Disinvestimenti"
+  ],
+  [
+    "T0011.D01.1.001.003.004.000",
+    null,
+    "      Immobilizzazioni finanziarie"
+  ],
+  [
+    "T0011.D01.1.001.003.004.002",
+    null,
+    "         (Investimenti)"
+  ],
+  [
+    "T0011.D01.1.001.003.004.003",
+    null,
+    "         Disinvestimenti"
+  ],
+  [
+    "T0011.D01.1.001.003.005.000",
+    null,
+    "      Attività finanziarie non immobilizzate"
+  ],
+  [
+    "T0011.D01.1.001.003.005.002",
+    null,
+    "         (Investimenti)"
+  ],
+  [
+    "T0011.D01.1.001.003.005.003",
+    null,
+    "         Disinvestimenti"
+  ],
+  [
+    "T0011.D01.1.001.003.006.000",
+    null,
+    "      (Acquisizione di rami d'azienda al netto delle disponibilità liquide)"
+  ],
+  [
+    "T0011.D01.1.001.003.007.000",
+    null,
+    "      Cessione di rami d'azienda al netto delle disponibilità liquide"
+  ],
+  [
+    "T0011.D01.1.001.003.008.000",
+    null,
+    "      Flusso finanziario dell'attività di investimento (B)"
+  ],
+  [
+    "T0011.D01.1.001.004.000.000",
+    null,
+    "   C) Flussi finanziari derivanti dall'attività di finanziamento"
+  ],
+  [
+    "T0011.D01.1.001.004.002.000",
+    null,
+    "      Mezzi di terzi"
+  ],
+  [
+    "T0011.D01.1.001.004.002.002",
+    null,
+    "         Incremento/(Decremento) debiti a breve verso banche"
+  ],
+  [
+    "T0011.D01.1.001.004.002.003",
+    null,
+    "         Accensione finanziamenti"
+  ],
+  [
+    "T0011.D01.1.001.004.002.004",
+    null,
+    "         (Rimborso finanziamenti)"
+  ],
+  [
+    "T0011.D01.1.001.004.003.000",
+    null,
+    "      Mezzi propri"
+  ],
+  [
+    "T0011.D01.1.001.004.003.002",
+    null,
+    "         Aumento di capitale a pagamento"
+  ],
+  [
+    "T0011.D01.1.001.004.003.003",
+    null,
+    "         (Rimborso di capitale)"
+  ],
+  [
+    "T0011.D01.1.001.004.003.004",
+    null,
+    "         Cessione/(Acquisto) di azioni proprie"
+  ],
+  [
+    "T0011.D01.1.001.004.003.005",
+    null,
+    "         (Dividendi e acconti su dividendi pagati)"
+  ],
+  [
+    "T0011.D01.1.001.004.004.000",
+    null,
+    "      Flusso finanziario dell'attività di finanziamento (C)"
+  ],
+  [
+    "T0011.D01.1.001.005.000.000",
+    null,
+    "   Incremento (decremento) delle disponibilità liquide (A ± B ± C)"
+  ],
+  [
+    "T0011.D01.1.001.006.000.000",
+    null,
+    "   Effetto cambi sulle disponibilità liquide"
+  ],
+  [
+    "T0011.D01.1.001.007.000.000",
+    null,
+    "   Disponibilità liquide a inizio esercizio"
+  ],
+  [
+    "T0011.D01.1.001.007.002.000",
+    null,
+    "      Depositi bancari e postali"
+  ],
+  [
+    "T0011.D01.1.001.007.003.000",
+    null,
+    "      Assegni"
+  ],
+  [
+    "T0011.D01.1.001.007.004.000",
+    null,
+    "      Danaro e valori in cassa"
+  ],
+  [
+    "T0011.D01.1.001.007.005.000",
+    null,
+    "      Totale disponibilità liquide a inizio esercizio"
+  ],
+  [
+    "T0011.D01.1.001.007.006.000",
+    null,
+    "      Di cui non liberamente utilizzabili"
+  ],
+  [
+    "T0011.D01.1.001.008.000.000",
+    null,
+    "   Disponibilità liquide a fine esercizio"
+  ],
+  [
+    "T0011.D01.1.001.008.002.000",
+    null,
+    "      Depositi bancari e postali"
+  ],
+  [
+    "T0011.D01.1.001.008.003.000",
+    null,
+    "      Assegni"
+  ],
+  [
+    "T0011.D01.1.001.008.004.000",
+    null,
+    "      Danaro e valori in cassa"
+  ],
+  [
+    "T0011.D01.1.001.008.005.000",
+    null,
+    "      Totale disponibilità liquide a fine esercizio"
+  ],
+  [
+    "T0011.D01.1.001.008.006.000",
+    null,
+    "      Di cui non liberamente utilizzabili"
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  []
+]
