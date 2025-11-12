@@ -1,0 +1,652 @@
+[
+  [
+    "tipo_tab",
+    "nr_row",
+    "nr_col",
+    "first_row",
+    "first_col",
+    "c1_code",
+    "c1_cols",
+    "c2_code",
+    "c2_cols",
+    "row_code_nrcol",
+    "col_code_nrrow"
+  ],
+  [
+    1,
+    101,
+    2,
+    9,
+    3,
+    "c2019",
+    "3",
+    "c2018",
+    "4",
+    0,
+    2
+  ],
+  [],
+  [],
+  [
+    null,
+    "Torna all'indice"
+  ],
+  [],
+  [
+    null,
+    "Conto economico abbreviato"
+  ],
+  [],
+  [
+    null,
+    null,
+    null,
+    2019,
+    2018
+  ],
+  [
+    "T0006.D01.1.001.000.000.000.000",
+    null,
+    "Conto economico"
+  ],
+  [
+    "T0006.D01.1.001.002.000.000.000",
+    null,
+    "   A) Valore della produzione"
+  ],
+  [
+    "T0006.D01.1.001.002.002.000.000",
+    null,
+    "      1) ricavi delle vendite e delle prestazioni"
+  ],
+  [
+    "T0006.D01.1.001.002.003.000.000",
+    null,
+    "      2), 3) variazioni delle rimanenze di prodotti in corso di lavorazione, semilavorati e finiti e dei lavori in corso su ordinazione"
+  ],
+  [
+    "T0006.D01.1.001.002.003.001.000",
+    null,
+    "         2), 3) variazioni delle rimanenze di prodotti in corso di lavorazione, semilavorati e finiti e dei lavori in corso su ordinazione"
+  ],
+  [
+    "T0006.D01.1.001.002.003.002.000",
+    null,
+    "         2) variazioni delle rimanenze di prodotti in corso di lavorazione, semilavorati e finiti"
+  ],
+  [
+    "T0006.D01.1.001.002.003.003.000",
+    null,
+    "         3) variazioni dei lavori in corso su ordinazione"
+  ],
+  [
+    "T0006.D01.1.001.002.004.000.000",
+    null,
+    "      4) incrementi di immobilizzazioni per lavori interni"
+  ],
+  [
+    "T0006.D01.1.001.002.005.000.000",
+    null,
+    "      5) altri ricavi e proventi"
+  ],
+  [
+    "T0006.D01.1.001.002.005.002.000",
+    null,
+    "         contributi in conto esercizio"
+  ],
+  [
+    "T0006.D01.1.001.002.005.003.000",
+    null,
+    "         altri"
+  ],
+  [
+    "T0006.D01.1.001.002.005.004.000",
+    null,
+    "         Totale altri ricavi e proventi"
+  ],
+  [
+    "T0006.D01.1.001.002.006.000.000",
+    null,
+    "      Totale valore della produzione"
+  ],
+  [
+    "T0006.D01.1.001.003.000.000.000",
+    null,
+    "   B) Costi della produzione"
+  ],
+  [
+    "T0006.D01.1.001.003.002.000.000",
+    null,
+    "      6) per materie prime, sussidiarie, di consumo e di merci"
+  ],
+  [
+    "T0006.D01.1.001.003.003.000.000",
+    null,
+    "      7) per servizi"
+  ],
+  [
+    "T0006.D01.1.001.003.004.000.000",
+    null,
+    "      8) per godimento di beni di terzi"
+  ],
+  [
+    "T0006.D01.1.001.003.005.000.000",
+    null,
+    "      9) per il personale"
+  ],
+  [
+    "T0006.D01.1.001.003.005.002.000",
+    null,
+    "         a) salari e stipendi"
+  ],
+  [
+    "T0006.D01.1.001.003.005.003.000",
+    null,
+    "         b) oneri sociali"
+  ],
+  [
+    "T0006.D01.1.001.003.005.004.000",
+    null,
+    "         c), d), e) trattamento di fine rapporto, trattamento di quiescenza, altri costi del personale"
+  ],
+  [
+    "T0006.D01.1.001.003.005.004.001",
+    null,
+    "            c), d), e) trattamento di fine rapporto, trattamento di quiescenza, altri costi del personale"
+  ],
+  [
+    "T0006.D01.1.001.003.005.004.002",
+    null,
+    "            c) trattamento di fine rapporto"
+  ],
+  [
+    "T0006.D01.1.001.003.005.004.003",
+    null,
+    "            d) trattamento di quiescenza e simili"
+  ],
+  [
+    "T0006.D01.1.001.003.005.004.004",
+    null,
+    "            e) altri costi"
+  ],
+  [
+    "T0006.D01.1.001.003.005.005.000",
+    null,
+    "         Totale costi per il personale"
+  ],
+  [
+    "T0006.D01.1.001.003.006.000.000",
+    null,
+    "      10) ammortamenti e svalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.003.006.002.000",
+    null,
+    "         a), b), c) ammortamento delle immobilizzazioni immateriali e materiali, altre svalutazioni delle immobilizzazioni"
+  ],
+  [
+    "T0006.D01.1.001.003.006.002.001",
+    null,
+    "            a), b), c) ammortamento delle immobilizzazioni immateriali e materiali, altre svalutazioni delle immobilizzazioni"
+  ],
+  [
+    "T0006.D01.1.001.003.006.002.002",
+    null,
+    "            a) ammortamento delle immobilizzazioni immateriali"
+  ],
+  [
+    "T0006.D01.1.001.003.006.002.003",
+    null,
+    "            b) ammortamento delle immobilizzazioni materiali"
+  ],
+  [
+    "T0006.D01.1.001.003.006.002.004",
+    null,
+    "            c) altre svalutazioni delle immobilizzazioni"
+  ],
+  [
+    "T0006.D01.1.001.003.006.003.000",
+    null,
+    "         d) svalutazioni dei crediti compresi nell'attivo circolante e delle disponibilità liquide"
+  ],
+  [
+    "T0006.D01.1.001.003.006.004.000",
+    null,
+    "         Totale ammortamenti e svalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.003.007.000.000",
+    null,
+    "      11) variazioni delle rimanenze di materie prime, sussidiarie, di consumo e merci"
+  ],
+  [
+    "T0006.D01.1.001.003.008.000.000",
+    null,
+    "      12) accantonamenti per rischi"
+  ],
+  [
+    "T0006.D01.1.001.003.009.000.000",
+    null,
+    "      13) altri accantonamenti"
+  ],
+  [
+    "T0006.D01.1.001.003.010.000.000",
+    null,
+    "      14) oneri diversi di gestione"
+  ],
+  [
+    "T0006.D01.1.001.003.011.000.000",
+    null,
+    "      Totale costi della produzione"
+  ],
+  [
+    "T0006.D01.1.001.004.000.000.000",
+    null,
+    "   Differenza tra valore e costi della produzione (A - B)"
+  ],
+  [
+    "T0006.D01.1.001.005.000.000.000",
+    null,
+    "   C) Proventi e oneri finanziari"
+  ],
+  [
+    "T0006.D01.1.001.005.002.000.000",
+    null,
+    "      15) proventi da partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.002.002.000",
+    null,
+    "         da imprese controllate"
+  ],
+  [
+    "T0006.D01.1.001.005.002.003.000",
+    null,
+    "         da imprese collegate"
+  ],
+  [
+    "T0006.D01.1.001.005.002.004.000",
+    null,
+    "         da imprese controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.002.005.000",
+    null,
+    "         da imprese sottoposte al controllo delle controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.002.006.000",
+    null,
+    "         altri"
+  ],
+  [
+    "T0006.D01.1.001.005.002.007.000",
+    null,
+    "         Totale proventi da partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.000.000",
+    null,
+    "      16) altri proventi finanziari"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.000",
+    null,
+    "         a) da crediti iscritti nelle immobilizzazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.002",
+    null,
+    "            da imprese controllate"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.003",
+    null,
+    "            da imprese collegate"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.004",
+    null,
+    "            da imprese controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.005",
+    null,
+    "            da imprese sottoposte al controllo delle controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.006",
+    null,
+    "            altri"
+  ],
+  [
+    "T0006.D01.1.001.005.003.002.007",
+    null,
+    "            Totale proventi finanziari da crediti iscritti nelle immobilizzazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.003.000",
+    null,
+    "         b), c) da titoli iscritti nelle immobilizzazioni che non costituiscono partecipazioni e da titoli iscritti nell'attivo circolante che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.003.001",
+    null,
+    "            b), c) da titoli iscritti nelle immobilizzazioni che non costituiscono partecipazioni e da titoli iscritti nell'attivo circolante che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.003.002",
+    null,
+    "            b) da titoli iscritti nelle immobilizzazioni che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.003.003",
+    null,
+    "            c) da titoli iscritti nell'attivo circolante che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.000",
+    null,
+    "         d) proventi diversi dai precedenti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.002",
+    null,
+    "            da imprese controllate"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.003",
+    null,
+    "            da imprese collegate"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.004",
+    null,
+    "            da imprese controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.005",
+    null,
+    "            da imprese sottoposte al controllo delle controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.006",
+    null,
+    "            altri"
+  ],
+  [
+    "T0006.D01.1.001.005.003.004.007",
+    null,
+    "            Totale proventi diversi dai precedenti"
+  ],
+  [
+    "T0006.D01.1.001.005.003.005.000",
+    null,
+    "         Totale altri proventi finanziari"
+  ],
+  [
+    "T0006.D01.1.001.005.004.000.000",
+    null,
+    "      17) interessi e altri oneri finanziari"
+  ],
+  [
+    "T0006.D01.1.001.005.004.002.000",
+    null,
+    "         verso imprese controllate"
+  ],
+  [
+    "T0006.D01.1.001.005.004.003.000",
+    null,
+    "         verso imprese collegate"
+  ],
+  [
+    "T0006.D01.1.001.005.004.004.000",
+    null,
+    "         verso imprese controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.004.005.000",
+    null,
+    "         verso imprese sottoposte al controllo delle controllanti"
+  ],
+  [
+    "T0006.D01.1.001.005.004.006.000",
+    null,
+    "         altri"
+  ],
+  [
+    "T0006.D01.1.001.005.004.007.000",
+    null,
+    "         Totale interessi e altri oneri finanziari"
+  ],
+  [
+    "T0006.D01.1.001.005.005.000.000",
+    null,
+    "      17-bis) utili e perdite su cambi"
+  ],
+  [
+    "T0006.D01.1.001.005.006.000.000",
+    null,
+    "      Totale proventi e oneri finanziari (15 + 16 - 17 + - 17-bis)"
+  ],
+  [
+    "T0006.D01.1.001.006.000.000.000",
+    null,
+    "   D) Rettifiche di valore di attività e passività finanziarie"
+  ],
+  [
+    "T0006.D01.1.001.006.002.000.000",
+    null,
+    "      18) rivalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.002.002.000",
+    null,
+    "         a) di partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.002.003.000",
+    null,
+    "         b) di immobilizzazioni finanziarie che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.002.004.000",
+    null,
+    "         c) di titoli iscritti all'attivo circolante che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.002.005.000",
+    null,
+    "         d) di strumenti finanziari derivati"
+  ],
+  [
+    "T0006.D01.1.001.006.002.006.000",
+    null,
+    "         di attività finanziarie per la gestione accentrata della tesoreria"
+  ],
+  [
+    "T0006.D01.1.001.006.002.007.000",
+    null,
+    "         Totale rivalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.003.000.000",
+    null,
+    "      19) svalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.003.002.000",
+    null,
+    "         a) di partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.003.003.000",
+    null,
+    "         b) di immobilizzazioni finanziarie che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.003.004.000",
+    null,
+    "         c) di titoli iscritti nell'attivo circolante che non costituiscono partecipazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.003.005.000",
+    null,
+    "         d) di strumenti finanziari derivati"
+  ],
+  [
+    "T0006.D01.1.001.006.003.006.000",
+    null,
+    "         di attività finanziarie per la gestione accentrata della tesoreria"
+  ],
+  [
+    "T0006.D01.1.001.006.003.007.000",
+    null,
+    "         Totale svalutazioni"
+  ],
+  [
+    "T0006.D01.1.001.006.004.000.000",
+    null,
+    "      Totale delle rettifiche di valore di attività e passività finanziarie (18 - 19)"
+  ],
+  [
+    "T0006.D01.1.001.007.000.000.000",
+    null,
+    "   Risultato prima delle imposte (A - B + - C + - D)"
+  ],
+  [
+    "T0006.D01.1.001.008.000.000.000",
+    null,
+    "   20) Imposte sul reddito dell'esercizio, correnti, differite e anticipate"
+  ],
+  [
+    "T0006.D01.1.001.008.002.000.000",
+    null,
+    "      imposte correnti"
+  ],
+  [
+    "T0006.D01.1.001.008.003.000.000",
+    null,
+    "      imposte relative a esercizi precedenti"
+  ],
+  [
+    "T0006.D01.1.001.008.004.000.000",
+    null,
+    "      imposte differite e anticipate"
+  ],
+  [
+    "T0006.D01.1.001.008.005.000.000",
+    null,
+    "      proventi (oneri) da adesione al regime di consolidato fiscale / trasparenza fiscale"
+  ],
+  [
+    "T0006.D01.1.001.008.006.000.000",
+    null,
+    "      Totale delle imposte sul reddito dell'esercizio, correnti, differite e anticipate"
+  ],
+  [
+    "T0006.D01.1.001.009.000.000.000",
+    null,
+    "   21) Utile (perdita) dell'esercizio"
+  ],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  [],
+  []
+]
