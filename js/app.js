@@ -1,29 +1,27 @@
-// workbookabb - Main Application Module (FIXED)
+// workbookabb - Main Application Module (VERSIONE FINALE - NO HARDCODED)
 
 // Variabili globali
 let configurazione = null;
-let indice = null;
 let templates = {};
+let templatesList = []; // Lista dinamica dei template disponibili
 let xbrlMappings = null;
 let currentFoglio = null;
 let bilancio = null;
 
 // Inizializzazione
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Initializing workbookabb...');
+    console.log('=== Initializing workbookabb ===');
     
     try {
         showLoading('Caricamento risorse...');
         
-        // 1. Carica Configurazione (date, contesti)
-        await loadConfigur
-
-azione();
+        // 1. Carica Configurazione (date, contesti XBRL)
+        await loadConfigurazione();
         
-        // 2. Carica Indice (struttura sidebar)
-        await loadIndice();
+        // 2. Scopri tutti i template disponibili
+        await discoverTemplates();
         
-        // 3. Carica mappature XBRL
+        // 3. Carica mappature XBRL (label, indentazioni)
         await loadXBRLMappings();
         
         // 4. Genera indice sidebar
@@ -37,9 +35,9 @@ azione();
         
         hideLoading();
         
-        console.log('App initialized successfully');
+        console.log('=== App initialized successfully ===');
     } catch (error) {
-        console.error('Initialization error:', error);
+        console.error('=== Initialization error ===', error);
         hideLoading();
         showToast('Errore inizializzazione: ' + error.message, 'error');
     }
@@ -51,24 +49,43 @@ async function loadConfigurazione() {
         const response = await fetch('data/template/Configurazione.json');
         if (!response.ok) throw new Error('Configurazione.json non trovato');
         configurazione = await response.json();
-        console.log('Configurazione loaded:', configurazione);
+        console.log('✓ Configurazione loaded');
     } catch (error) {
-        console.error('Error loading Configurazione:', error);
+        console.warn('⚠ Configurazione not available:', error.message);
         configurazione = null;
     }
 }
 
-// Carica Indice.json
-async function loadIndice() {
-    try {
-        const response = await fetch('data/template/Indice.json');
-        if (!response.ok) throw new Error('Indice.json non trovato');
-        indice = await response.json();
-        console.log('Indice loaded:', indice.length, 'righe');
-    } catch (error) {
-        console.error('Error loading Indice:', error);
-        // Fallback a lista hardcoded minima
-        indice = null;
+// Scopri tutti i template disponibili in data/template/
+async function discoverTemplates() {
+    console.log('Discovering templates...');
+    
+    // Lista dei fogli possibili (T0000-T0642 come da documentazione)
+    const possibleSheets = [];
+    for (let i = 0; i <= 642; i++) {
+        possibleSheets.push(`T${String(i).padStart(4, '0')}`);
+    }
+    
+    // Prova a caricare ogni template
+    const discoveries = [];
+    for (const code of possibleSheets) {
+        discoveries.push(
+            fetch(`data/template/${code}.json`, { method: 'HEAD' })
+                .then(response => response.ok ? code : null)
+                .catch(() => null)
+        );
+    }
+    
+    // Raccogli risultati
+    const results = await Promise.all(discoveries);
+    templatesList = results.filter(code => code !== null);
+    
+    console.log(`✓ Discovered ${templatesList.length} templates:`, templatesList.slice(0, 10), '...');
+    
+    // Se la scoperta non ha trovato niente, usa lista minima fallback
+    if (templatesList.length === 0) {
+        console.warn('⚠ No templates discovered, using fallback list');
+        templatesList = ['T0000', 'T0002', 'T0006', 'T0009', 'T0011'];
     }
 }
 
@@ -78,14 +95,14 @@ async function loadXBRLMappings() {
         const response = await fetch('data/mapping/xbrl_mappings_complete.json');
         if (!response.ok) throw new Error('xbrl_mappings non trovato');
         xbrlMappings = await response.json();
-        console.log('XBRL mappings loaded:', Object.keys(xbrlMappings.mappature || {}).length, 'fogli');
+        console.log('✓ XBRL mappings loaded:', Object.keys(xbrlMappings.mappature || {}).length, 'fogli');
     } catch (error) {
-        console.warn('xbrl_mappings not available:', error.message);
+        console.warn('⚠ xbrl_mappings not available:', error.message);
         xbrlMappings = { mappature: {} };
     }
 }
 
-// Carica template foglio specifico
+// Carica template foglio specifico (on-demand)
 async function loadTemplate(codice) {
     if (templates[codice] && templates[codice].loaded) {
         return templates[codice];
@@ -102,95 +119,97 @@ async function loadTemplate(codice) {
             loaded: true
         };
         
-        console.log(`Template ${codice} loaded:`, data.length, 'righe');
+        console.log(`✓ Template ${codice} loaded`);
         return templates[codice];
     } catch (error) {
-        console.error(`Error loading template ${codice}:`, error);
+        console.error(`✗ Error loading template ${codice}:`, error);
         return null;
     }
 }
 
-// Genera indice navigazione da Indice.json
+// Genera indice navigazione da templatesList
 function renderIndex() {
     const indexTree = document.getElementById('index-tree');
     
-    if (!indice || indice.length === 0) {
-        // Fallback a struttura minima hardcoded
-        indexTree.innerHTML = renderFallbackIndex();
+    if (templatesList.length === 0) {
+        indexTree.innerHTML = '<div class="empty-state"><p>Nessun template disponibile</p></div>';
         return;
     }
     
-    // Costruisci albero da Indice.json
-    let html = '<div class="tree-submenu">';
+    // Raggruppa fogli per categoria (basato su naming pattern)
+    const grouped = {
+        'Principali': [],
+        'Nota Integrativa': [],
+        'Altri': []
+    };
     
-    // Mappa foglio corrente (T0000, T0002, etc.)
-    let currentTCode = null;
-    
-    indice.forEach((riga, idx) => {
-        // Skip righe vuote o header
-        if (!riga || riga.length < 3) return;
-        
-        const col1 = riga[1]; // Vuoto o codice foglio
-        const col2 = riga[2]; // Label/titolo
-        
-        // Rileva se è un foglio navigabile (inizia con spazio = indentato)
-        const isIndented = col2 && col2.startsWith('  ');
-        const label = col2 ? col2.trim() : '';
-        
-        if (!label || label === '') return;
-        
-        // Cerca codice T0xxx nelle righe successive
-        // (L'indice ha una struttura particolare)
-        // Logica semplificata: fogli principali non indentati
-        
-        if (!isIndented && label.length > 3) {
-            // Possibile foglio principale
-            // Mappa manualmente i principali (quick fix)
-            let tCode = null;
-            if (label.includes('Informazioni generali')) tCode = 'T0000';
-            else if (label.includes('Stato patrimoniale')) tCode = 'T0002';
-            else if (label.includes('Conto economico')) tCode = 'T0006';
-            else if (label.includes('Rendiconto finanziario, metodo indiretto')) tCode = 'T0009';
-            else if (label.includes('Rendiconto finanziario, metodo diretto')) tCode = 'T0011';
-            
-            if (tCode) {
-                html += `<div class="tree-item" data-foglio="${tCode}" onclick="navigateToFoglio('${tCode}')">
-                    ${label}
-                </div>`;
-                currentTCode = tCode;
-            } else {
-                // Header di sezione
-                html += `<div class="tree-item has-children">${label}</div>`;
-            }
-        } else if (isIndented) {
-            // Foglio indentato (Nota Integrativa)
-            // Per ora skip (troppo complesso mapparli tutti)
-            // TODO: mappare T0166, T0167, etc.
+    templatesList.forEach(code => {
+        const num = parseInt(code.substring(1));
+        if (num <= 11) {
+            grouped['Principali'].push(code);
+        } else if (num >= 14 && num <= 615) {
+            grouped['Nota Integrativa'].push(code);
+        } else {
+            grouped['Altri'].push(code);
         }
     });
+    
+    // Genera HTML
+    let html = '<div class="tree-submenu">';
+    
+    // Principali (sempre espansi)
+    if (grouped['Principali'].length > 0) {
+        html += '<div class="tree-section"><strong>Fogli Principali</strong></div>';
+        grouped['Principali'].forEach(code => {
+            const label = getFoglioLabel(code);
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code} - ${label}
+            </div>`;
+        });
+    }
+    
+    // Nota Integrativa (collassabile)
+    if (grouped['Nota Integrativa'].length > 0) {
+        html += `<div class="tree-section" style="margin-top: 15px;">
+            <strong>Nota Integrativa (${grouped['Nota Integrativa'].length} fogli)</strong>
+        </div>`;
+        html += '<div class="tree-collapsible" style="max-height: 300px; overflow-y: auto;">';
+        grouped['Nota Integrativa'].forEach(code => {
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code}
+            </div>`;
+        });
+        html += '</div>';
+    }
+    
+    // Altri
+    if (grouped['Altri'].length > 0) {
+        html += `<div class="tree-section" style="margin-top: 15px;">
+            <strong>Altri (${grouped['Altri'].length})</strong>
+        </div>`;
+        html += '<div class="tree-collapsible" style="max-height: 200px; overflow-y: auto;">';
+        grouped['Altri'].forEach(code => {
+            html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+                ${code}
+            </div>`;
+        });
+        html += '</div>';
+    }
     
     html += '</div>';
     indexTree.innerHTML = html;
 }
 
-// Fallback index se Indice.json non carica
-function renderFallbackIndex() {
-    const structure = {
-        'Informazioni Generali': 'T0000',
-        'Stato Patrimoniale': 'T0002',
-        'Conto Economico': 'T0006',
-        'Rendiconto Finanziario (indiretto)': 'T0009',
-        'Rendiconto Finanziario (diretto)': 'T0011'
+// Get label foglio (helper)
+function getFoglioLabel(code) {
+    const labels = {
+        'T0000': 'Informazioni Generali',
+        'T0002': 'Stato Patrimoniale',
+        'T0006': 'Conto Economico',
+        'T0009': 'Rendiconto Finanziario (indiretto)',
+        'T0011': 'Rendiconto Finanziario (diretto)'
     };
-    
-    let html = '<div class="tree-submenu">';
-    for (const [label, code] of Object.entries(structure)) {
-        html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
-            ${label}
-        </div>`;
-    }
-    html += '</div>';
-    return html;
+    return labels[code] || '';
 }
 
 // Navigazione a foglio
@@ -233,9 +252,9 @@ function updateBreadcrumb(codice) {
     const template = templates[codice];
     
     // Estrai titolo dal template
-    let titolo = codice;
+    let titolo = getFoglioLabel(codice) || codice;
     if (template && template.data && template.data.length > 6) {
-        titolo = template.data[6]?.[1] || template.data[4]?.[1] || codice;
+        titolo = template.data[6]?.[1] || template.data[4]?.[1] || titolo;
     }
     
     breadcrumb.textContent = `${codice} - ${titolo}`;
@@ -274,8 +293,11 @@ function nuovoBilancio() {
     let annoPrec = annoCorrente - 1;
     
     if (configurazione && configurazione[8]) {
-        annoCorrente = configurazione[8][7] || annoCorrente;
-        annoPrec = configurazione[9]?.[7] || annoPrec;
+        const dataStr = configurazione[8][7];
+        if (dataStr) {
+            const year = new Date(dataStr).getFullYear();
+            if (!isNaN(year)) annoCorrente = year;
+        }
     }
     
     bilancio = {
@@ -290,11 +312,18 @@ function nuovoBilancio() {
         fogli: {}
     };
     
+    // Inizializza struttura vuota per tutti i fogli disponibili
+    templatesList.forEach(code => {
+        bilancio.fogli[code] = {};
+    });
+    
     // Abilita pulsanti
     enableButtons();
     
     // Vai al primo foglio
-    navigateToFoglio('T0000');
+    if (templatesList.length > 0) {
+        navigateToFoglio(templatesList[0]);
+    }
     
     showToast('Nuovo bilancio creato', 'success');
 }
@@ -313,7 +342,12 @@ async function handleFileUpload(event) {
         bilancio = await importFromXLS(xlsData);
         
         enableButtons();
-        navigateToFoglio('T0000');
+        
+        // Vai al primo foglio disponibile nel bilancio
+        const firstFoglio = Object.keys(bilancio.fogli)[0];
+        if (firstFoglio) {
+            navigateToFoglio(firstFoglio);
+        }
         
         hideLoading();
         showToast('File caricato con successo', 'success');
@@ -331,7 +365,7 @@ function loadSavedBilancio() {
         try {
             bilancio = JSON.parse(saved);
             enableButtons();
-            console.log('Bilancio salvato caricato');
+            console.log('✓ Bilancio salvato caricato');
         } catch (error) {
             console.error('Error loading saved bilancio:', error);
         }
@@ -418,4 +452,8 @@ function getTemplate(codice) {
 
 function getConfigurazione() {
     return configurazione;
+}
+
+function getTemplatesList() {
+    return templatesList;
 }
