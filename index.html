@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>workbookabb - Bilancio Abbreviato XBRL</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/fixes.css">
+    
+    <!-- SheetJS Library -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-brand">
+                <div class="header-logo">📊</div>
+                <div class="header-info">
+                    <h1>workbookabb</h1>
+                    <p>Bilancio Abbreviato XBRL - Tassonomia 2018</p>
+                </div>
+            </div>
+            <div class="header-version">v1.0</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div id="main-container">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>Indice Bilancio</h2>
+            </div>
+            <div id="index-tree"></div>
+        </nav>
+
+        <!-- Content Area -->
+        <main id="content-area">
+            <!-- Toolbar -->
+            <div id="toolbar">
+                <button id="btn-nuovo" class="btn btn-primary">
+                    ➕ Nuovo Bilancio
+                </button>
+                <button id="btn-carica" class="btn btn-secondary">
+                    📁 Carica Excel
+                </button>
+                <input type="file" id="file-input" accept=".xls,.xlsx" style="display: none;">
+                
+                <div class="toolbar-spacer"></div>
+                
+                <button id="btn-salva" class="btn btn-success" disabled>
+                    💾 Salva
+                </button>
+                
+                <div class="toolbar-divider"></div>
+                
+                <button id="btn-export-xls" class="btn btn-info" disabled>
+                    📥 Export XLS
+                </button>
+                <button id="btn-export-json" class="btn btn-info" disabled>
+                    📥 Export JSON
+                </button>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div id="breadcrumb">
+                Seleziona un foglio dall'indice
+            </div>
+
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen">
+                    <div class="welcome-icon">📋</div>
+                    <h2>Benvenuto in workbookabb</h2>
+                    <p>Gestisci il tuo Bilancio Abbreviato in formato XBRL</p>
+                    
+                    <div class="welcome-actions">
+                        <button class="btn btn-primary btn-lg" onclick="document.getElementById('btn-nuovo').click()">
+                            ➕ Nuovo Bilancio
+                        </button>
+                        <button class="btn btn-secondary btn-lg" onclick="document.getElementById('btn-carica').click()">
+                            📁 Carica Excel
+                        </button>
+                    </div>
+                    
+                    <div class="info-box">
+                        <p>
+                            <strong>Nuovo Bilancio:</strong> 
+                            Inizia la compilazione da template vuoto con form guidati
+                        </p>
+                        <p>
+                            <strong>Carica Excel:</strong> 
+                            Importa un file .xls già compilato per visualizzarlo o modificarlo
+                        </p>
+                        <p>
+                            <strong>Salvataggio Automatico:</strong> 
+                            I tuoi dati vengono salvati automaticamente nel browser
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p id="loading-text">Caricamento...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    <!-- Application Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/sheet-loader.js"></script>
+    <script src="js/form-renderer.js"></script>
+    <script src="js/data-manager.js"></script>
+    <script src="js/exporter.js"></script>
+</body>
+</html>
