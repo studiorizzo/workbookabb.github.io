@@ -82,7 +82,8 @@ function getBilancioStats() {
         const dati = bilancio.fogli[foglio];
         for (const cella in dati) {
             totalCelle++;
-            if (dati[cella] !== null && dati[cella] !== '') {
+            const valore = dati[cella];
+            if (valore !== null && valore !== '' && valore !== undefined) {
                 celleCompilate++;
             }
         }
@@ -114,8 +115,14 @@ function findMappingByCode(codiceExcel, foglioCode, xbrlMappings) {
     const foglioMappings = xbrlMappings.mappature[foglioCode];
     if (!foglioMappings) return null;
     
-    return foglioMappings.find(m => 
-        m.codice_excel === codiceExcel ||
-        m.codice_excel?.startsWith(codiceExcel.split('_')[0])
-    );
+    // Cerca match esatto
+    let mapping = foglioMappings.find(m => m.codice_excel === codiceExcel);
+    
+    // Se non trovato, cerca per prefisso (per celle combinate riga_colonna)
+    if (!mapping) {
+        const codiceBase = codiceExcel.split('_')[0];
+        mapping = foglioMappings.find(m => m.codice_excel === codiceBase);
+    }
+    
+    return mapping;
 }
