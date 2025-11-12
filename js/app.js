@@ -1,9 +1,10 @@
-// workbookabb - Main Application Module (VERSIONE FINALE - NO HARDCODED)
+// workbookabb - Main Application Module (VERSIONE UNIFICATA)
 
 // Variabili globali
+let workbookData = null; // Contiene config, index, sheets
 let configurazione = null;
-let templates = {};
-let templatesList = []; // Lista dinamica dei template disponibili
+let templates = {}; // Cache templates già processati
+let templatesList = []; // Lista codici fogli disponibili
 let xbrlMappings = null;
 let currentFoglio = null;
 let bilancio = null;
@@ -15,22 +16,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         showLoading('Caricamento risorse...');
         
-        // 1. Carica Configurazione (date, contesti XBRL)
-        await loadConfigurazione();
+        // 1. Carica workbookapp.json unificato
+        await loadWorkbookData();
         
-        // 2. Scopri tutti i template disponibili
-        await discoverTemplates();
+        // 2. Estrai configurazione
+        extractConfigurazione();
         
-        // 3. Carica mappature XBRL (label, indentazioni)
+        // 3. Scopri tutti i fogli disponibili
+        discoverSheets();
+        
+        // 4. Carica mappature XBRL (label, indentazioni)
         await loadXBRLMappings();
         
-        // 4. Genera indice sidebar
+        // 5. Genera indice sidebar
         renderIndex();
         
-        // 5. Setup event listeners
+        // 6. Setup event listeners
         setupEventListeners();
         
-        // 6. Verifica bilancio salvato
+        // 7. Verifica bilancio salvato
         loadSavedBilancio();
         
         hideLoading();
@@ -43,50 +47,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Carica Configurazione.json
-async function loadConfigurazione() {
+// Carica workbookapp.json unificato
+async function loadWorkbookData() {
     try {
-        const response = await fetch('data/template/Configurazione.json');
-        if (!response.ok) throw new Error('Configurazione.json non trovato');
-        configurazione = await response.json();
-        console.log('✓ Configurazione loaded');
+        const response = await fetch('data/workbookapp.json');
+        if (!response.ok) throw new Error('workbookapp.json non trovato');
+        workbookData = await response.json();
+        console.log('✓ workbookapp.json loaded');
     } catch (error) {
-        console.warn('⚠ Configurazione not available:', error.message);
-        configurazione = null;
+        throw new Error('Impossibile caricare workbookapp.json: ' + error.message);
     }
 }
 
-// Scopri tutti i template disponibili in data/template/
-async function discoverTemplates() {
-    console.log('Discovering templates...');
-    
-    // Lista dei fogli possibili (T0000-T0642 come da documentazione)
-    const possibleSheets = [];
-    for (let i = 0; i <= 642; i++) {
-        possibleSheets.push(`T${String(i).padStart(4, '0')}`);
+// Estrai configurazione da workbookData
+function extractConfigurazione() {
+    if (!workbookData || !workbookData.config) {
+        console.warn('⚠ Configurazione non disponibile');
+        configurazione = null;
+        return;
     }
     
-    // Prova a caricare ogni template
-    const discoveries = [];
-    for (const code of possibleSheets) {
-        discoveries.push(
-            fetch(`data/template/${code}.json`, { method: 'HEAD' })
-                .then(response => response.ok ? code : null)
-                .catch(() => null)
-        );
+    configurazione = workbookData.config;
+    console.log('✓ Configurazione estratta');
+}
+
+// Scopri tutti i fogli in workbookData.sheets
+function discoverSheets() {
+    if (!workbookData || !workbookData.sheets) {
+        console.warn('⚠ Nessun foglio trovato');
+        templatesList = [];
+        return;
     }
     
-    // Raccogli risultati
-    const results = await Promise.all(discoveries);
-    templatesList = results.filter(code => code !== null);
+    // Lista ordinata dei fogli
+    templatesList = Object.keys(workbookData.sheets).sort();
     
-    console.log(`✓ Discovered ${templatesList.length} templates:`, templatesList.slice(0, 10), '...');
-    
-    // Se la scoperta non ha trovato niente, usa lista minima fallback
-    if (templatesList.length === 0) {
-        console.warn('⚠ No templates discovered, using fallback list');
-        templatesList = ['T0000', 'T0002', 'T0006', 'T0009', 'T0011'];
-    }
+    console.log(`✓ Discovered ${templatesList.length} sheets:`, templatesList.slice(0, 10), '...');
 }
 
 // Carica mappature XBRL
@@ -102,29 +98,28 @@ async function loadXBRLMappings() {
     }
 }
 
-// Carica template foglio specifico (on-demand)
-async function loadTemplate(codice) {
+// Carica template foglio specifico (da workbookData)
+function loadTemplate(codice) {
+    // Se già in cache, ritorna
     if (templates[codice] && templates[codice].loaded) {
         return templates[codice];
     }
     
-    try {
-        const response = await fetch(`data/template/${codice}.json`);
-        if (!response.ok) throw new Error(`Template ${codice} non trovato`);
-        
-        const data = await response.json();
-        templates[codice] = {
-            code: codice,
-            data: data,
-            loaded: true
-        };
-        
-        console.log(`✓ Template ${codice} loaded`);
-        return templates[codice];
-    } catch (error) {
-        console.error(`✗ Error loading template ${codice}:`, error);
+    // Cerca in workbookData.sheets
+    if (!workbookData || !workbookData.sheets || !workbookData.sheets[codice]) {
+        console.error(`✗ Template ${codice} non trovato in workbookData`);
         return null;
     }
+    
+    // Crea oggetto template
+    templates[codice] = {
+        code: codice,
+        data: workbookData.sheets[codice],
+        loaded: true
+    };
+    
+    console.log(`✓ Template ${codice} loaded from workbookData`);
+    return templates[codice];
 }
 
 // Genera indice navigazione da templatesList
@@ -145,7 +140,7 @@ function renderIndex() {
     
     templatesList.forEach(code => {
         const num = parseInt(code.substring(1));
-        if (num <= 11) {
+        if (num <= 13) {
             grouped['Principali'].push(code);
         } else if (num >= 14 && num <= 615) {
             grouped['Nota Integrativa'].push(code);
@@ -163,7 +158,7 @@ function renderIndex() {
         grouped['Principali'].forEach(code => {
             const label = getFoglioLabel(code);
             html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
-                ${code} - ${label}
+                ${code}${label ? ' - ' + label : ''}
             </div>`;
         });
     }
@@ -207,7 +202,8 @@ function getFoglioLabel(code) {
         'T0002': 'Stato Patrimoniale',
         'T0006': 'Conto Economico',
         'T0009': 'Rendiconto Finanziario (indiretto)',
-        'T0011': 'Rendiconto Finanziario (diretto)'
+        'T0011': 'Rendiconto Finanziario (diretto)',
+        'T0013': 'Informazioni in calce al RF'
     };
     return labels[code] || '';
 }
@@ -217,8 +213,8 @@ async function navigateToFoglio(codice) {
     try {
         showLoading(`Caricamento ${codice}...`);
         
-        // Carica template se necessario
-        const template = await loadTemplate(codice);
+        // Carica template
+        const template = loadTemplate(codice);
         if (!template) {
             throw new Error(`Template ${codice} non disponibile`);
         }
@@ -290,13 +286,14 @@ function nuovoBilancio() {
     
     // Usa date da Configurazione se disponibili
     let annoCorrente = new Date().getFullYear();
-    let annoPrec = annoCorrente - 1;
+    let annoPrecedente = annoCorrente - 1;
     
     if (configurazione && configurazione[8]) {
-        const dataStr = configurazione[8][7];
+        const dataStr = configurazione[8][1];
         if (dataStr) {
             const year = new Date(dataStr).getFullYear();
             if (!isNaN(year)) annoCorrente = year;
+            annoPrecedente = annoCorrente - 1;
         }
     }
     
@@ -307,7 +304,7 @@ function nuovoBilancio() {
             data_modifica: new Date().toISOString(),
             ragione_sociale: null,
             anno_esercizio: annoCorrente,
-            anno_precedente: annoPrec
+            anno_precedente: annoPrecedente
         },
         fogli: {}
     };
@@ -344,7 +341,10 @@ async function handleFileUpload(event) {
         enableButtons();
         
         // Vai al primo foglio disponibile nel bilancio
-        const firstFoglio = Object.keys(bilancio.fogli)[0];
+        const firstFoglio = Object.keys(bilancio.fogli).find(f => 
+            Object.keys(bilancio.fogli[f]).length > 0
+        );
+        
         if (firstFoglio) {
             navigateToFoglio(firstFoglio);
         }
@@ -447,7 +447,7 @@ function getXBRLMappings() {
 }
 
 function getTemplate(codice) {
-    return templates[codice];
+    return loadTemplate(codice);
 }
 
 function getConfigurazione() {
@@ -456,4 +456,8 @@ function getConfigurazione() {
 
 function getTemplatesList() {
     return templatesList;
+}
+
+function getWorkbookData() {
+    return workbookData;
 }
