@@ -1,6 +1,8 @@
-// workbookabb - Main Application Module
+// workbookabb - Main Application Module (FIXED)
 
 // Variabili globali
+let configurazione = null;
+let indice = null;
 let templates = {};
 let xbrlMappings = null;
 let currentFoglio = null;
@@ -13,19 +15,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         showLoading('Caricamento risorse...');
         
-        // Carica mappature XBRL
+        // 1. Carica Configurazione (date, contesti)
+        await loadConfigur
+
+azione();
+        
+        // 2. Carica Indice (struttura sidebar)
+        await loadIndice();
+        
+        // 3. Carica mappature XBRL
         await loadXBRLMappings();
         
-        // Carica lista fogli disponibili
-        await loadTemplatesList();
-        
-        // Genera indice
+        // 4. Genera indice sidebar
         renderIndex();
         
-        // Setup event listeners
+        // 5. Setup event listeners
         setupEventListeners();
         
-        // Verifica se c'è un bilancio salvato
+        // 6. Verifica bilancio salvato
         loadSavedBilancio();
         
         hideLoading();
@@ -38,6 +45,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// Carica Configurazione.json
+async function loadConfigurazione() {
+    try {
+        const response = await fetch('data/template/Configurazione.json');
+        if (!response.ok) throw new Error('Configurazione.json non trovato');
+        configurazione = await response.json();
+        console.log('Configurazione loaded:', configurazione);
+    } catch (error) {
+        console.error('Error loading Configurazione:', error);
+        configurazione = null;
+    }
+}
+
+// Carica Indice.json
+async function loadIndice() {
+    try {
+        const response = await fetch('data/template/Indice.json');
+        if (!response.ok) throw new Error('Indice.json non trovato');
+        indice = await response.json();
+        console.log('Indice loaded:', indice.length, 'righe');
+    } catch (error) {
+        console.error('Error loading Indice:', error);
+        // Fallback a lista hardcoded minima
+        indice = null;
+    }
+}
+
 // Carica mappature XBRL
 async function loadXBRLMappings() {
     try {
@@ -48,20 +82,6 @@ async function loadXBRLMappings() {
     } catch (error) {
         console.warn('xbrl_mappings not available:', error.message);
         xbrlMappings = { mappature: {} };
-    }
-}
-
-// Carica lista template fogli
-async function loadTemplatesList() {
-    // Lista fogli principali (in produzione caricare da index o file)
-    const fogliPrincipali = [
-        'T0000', 'T0002', 'T0006', 'T0009', 'T0011',
-        'T0166', 'T0167' // Esempi
-    ];
-    
-    templates = {};
-    for (const codice of fogliPrincipali) {
-        templates[codice] = { code: codice };
     }
 }
 
@@ -82,6 +102,7 @@ async function loadTemplate(codice) {
             loaded: true
         };
         
+        console.log(`Template ${codice} loaded:`, data.length, 'righe');
         return templates[codice];
     } catch (error) {
         console.error(`Error loading template ${codice}:`, error);
@@ -89,43 +110,85 @@ async function loadTemplate(codice) {
     }
 }
 
-// Genera indice navigazione
+// Genera indice navigazione da Indice.json
 function renderIndex() {
     const indexTree = document.getElementById('index-tree');
     
+    if (!indice || indice.length === 0) {
+        // Fallback a struttura minima hardcoded
+        indexTree.innerHTML = renderFallbackIndex();
+        return;
+    }
+    
+    // Costruisci albero da Indice.json
+    let html = '<div class="tree-submenu">';
+    
+    // Mappa foglio corrente (T0000, T0002, etc.)
+    let currentTCode = null;
+    
+    indice.forEach((riga, idx) => {
+        // Skip righe vuote o header
+        if (!riga || riga.length < 3) return;
+        
+        const col1 = riga[1]; // Vuoto o codice foglio
+        const col2 = riga[2]; // Label/titolo
+        
+        // Rileva se è un foglio navigabile (inizia con spazio = indentato)
+        const isIndented = col2 && col2.startsWith('  ');
+        const label = col2 ? col2.trim() : '';
+        
+        if (!label || label === '') return;
+        
+        // Cerca codice T0xxx nelle righe successive
+        // (L'indice ha una struttura particolare)
+        // Logica semplificata: fogli principali non indentati
+        
+        if (!isIndented && label.length > 3) {
+            // Possibile foglio principale
+            // Mappa manualmente i principali (quick fix)
+            let tCode = null;
+            if (label.includes('Informazioni generali')) tCode = 'T0000';
+            else if (label.includes('Stato patrimoniale')) tCode = 'T0002';
+            else if (label.includes('Conto economico')) tCode = 'T0006';
+            else if (label.includes('Rendiconto finanziario, metodo indiretto')) tCode = 'T0009';
+            else if (label.includes('Rendiconto finanziario, metodo diretto')) tCode = 'T0011';
+            
+            if (tCode) {
+                html += `<div class="tree-item" data-foglio="${tCode}" onclick="navigateToFoglio('${tCode}')">
+                    ${label}
+                </div>`;
+                currentTCode = tCode;
+            } else {
+                // Header di sezione
+                html += `<div class="tree-item has-children">${label}</div>`;
+            }
+        } else if (isIndented) {
+            // Foglio indentato (Nota Integrativa)
+            // Per ora skip (troppo complesso mapparli tutti)
+            // TODO: mappare T0166, T0167, etc.
+        }
+    });
+    
+    html += '</div>';
+    indexTree.innerHTML = html;
+}
+
+// Fallback index se Indice.json non carica
+function renderFallbackIndex() {
     const structure = {
         'Informazioni Generali': 'T0000',
         'Stato Patrimoniale': 'T0002',
         'Conto Economico': 'T0006',
         'Rendiconto Finanziario (indiretto)': 'T0009',
-        'Rendiconto Finanziario (diretto)': 'T0011',
-        'Nota Integrativa': {
-            'Immobilizzazioni Immateriali': {
-                'Movimenti': 'T0166',
-                'Commento': 'T0167'
-            }
-        }
+        'Rendiconto Finanziario (diretto)': 'T0011'
     };
     
-    indexTree.innerHTML = renderTreeItems(structure);
-}
-
-function renderTreeItems(items, level = 0) {
     let html = '<div class="tree-submenu">';
-    
-    for (const [label, value] of Object.entries(items)) {
-        if (typeof value === 'string') {
-            // Foglio
-            html += `<div class="tree-item" data-foglio="${value}" onclick="navigateToFoglio('${value}')">
-                ${label}
-            </div>`;
-        } else {
-            // Sezione con sottomenu
-            html += `<div class="tree-item has-children">${label}</div>`;
-            html += renderTreeItems(value, level + 1);
-        }
+    for (const [label, code] of Object.entries(structure)) {
+        html += `<div class="tree-item" data-foglio="${code}" onclick="navigateToFoglio('${code}')">
+            ${label}
+        </div>`;
     }
-    
     html += '</div>';
     return html;
 }
@@ -167,7 +230,15 @@ async function navigateToFoglio(codice) {
 // Update breadcrumb
 function updateBreadcrumb(codice) {
     const breadcrumb = document.getElementById('breadcrumb');
-    breadcrumb.textContent = `📄 ${codice}`;
+    const template = templates[codice];
+    
+    // Estrai titolo dal template
+    let titolo = codice;
+    if (template && template.data && template.data.length > 6) {
+        titolo = template.data[6]?.[1] || template.data[4]?.[1] || codice;
+    }
+    
+    breadcrumb.textContent = `${codice} - ${titolo}`;
 }
 
 // Setup event listeners
@@ -198,21 +269,26 @@ function nuovoBilancio() {
         return;
     }
     
+    // Usa date da Configurazione se disponibili
+    let annoCorrente = new Date().getFullYear();
+    let annoPrec = annoCorrente - 1;
+    
+    if (configurazione && configurazione[8]) {
+        annoCorrente = configurazione[8][7] || annoCorrente;
+        annoPrec = configurazione[9]?.[7] || annoPrec;
+    }
+    
     bilancio = {
         metadata: {
             versione: '1.0',
             data_creazione: new Date().toISOString(),
             data_modifica: new Date().toISOString(),
             ragione_sociale: null,
-            anno_esercizio: new Date().getFullYear()
+            anno_esercizio: annoCorrente,
+            anno_precedente: annoPrec
         },
         fogli: {}
     };
-    
-    // Inizializza tutti i fogli vuoti
-    for (const codice in templates) {
-        bilancio.fogli[codice] = {};
-    }
     
     // Abilita pulsanti
     enableButtons();
@@ -338,4 +414,8 @@ function getXBRLMappings() {
 
 function getTemplate(codice) {
     return templates[codice];
+}
+
+function getConfigurazione() {
+    return configurazione;
 }
