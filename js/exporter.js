@@ -1,4 +1,4 @@
-// workbookabb - Exporter Module
+// workbookabb - Exporter Module (VERSIONE MIGLIORATA)
 
 // Export XLS
 async function exportXLS() {
@@ -12,12 +12,13 @@ async function exportXLS() {
         showLoading('Generazione file Excel...');
         
         const workbook = XLSX.utils.book_new();
+        let fogliEsportati = 0;
         
-        // Per ogni foglio
+        // Per ogni foglio nel bilancio
         for (const codice in bilancio.fogli) {
             const template = getTemplate(codice);
             if (!template || !template.loaded) {
-                console.warn(`Template ${codice} non disponibile, skip`);
+                console.warn(`Template ${codice} non disponibile, skip export`);
                 continue;
             }
             
@@ -27,65 +28,41 @@ async function exportXLS() {
             if (!templateData || templateData.length < 2) continue;
             
             const config = templateData[1];
+            if (!Array.isArray(config) || config.length === 0) continue;
+            
             const tipoTab = config[0];
             
             // Crea worksheet vuoto
             const worksheet = {};
+            let celleEsportate = 0;
             
             if (tipoTab === 1) {
-                // TextBlock
-                const codiceCell = templateData[2]?.[3];
-                const firstRow = config[3];
-                const firstCol = config[4];
-                
-                if (codiceCell && dati[codiceCell]) {
-                    const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: firstCol });
-                    worksheet[cellAddress] = { 
-                        t: 's', 
-                        v: dati[codiceCell] 
-                    };
-                }
-                
+                celleEsportate = exportTipo1(worksheet, dati, templateData, config);
             } else if (tipoTab === 2) {
-                // Tabella 2D
-                const firstRow = config[3];
-                const firstCol = config[4];
-                const numRows = config[1];
-                const codiciColonne = templateData[2]?.slice(3) || [];
-                
-                for (let r = 0; r < numRows; r++) {
-                    const rowData = templateData[firstRow + r];
-                    if (!rowData) continue;
-                    
-                    const codiceRiga = rowData[0];
-                    if (!codiceRiga) continue;
-                    
-                    for (let c = 0; c < codiciColonne.length; c++) {
-                        const codiceColonna = codiciColonne[c];
-                        if (!codiceColonna) continue;
-                        
-                        const codiceCella = `${codiceRiga}_${codiceColonna}`;
-                        const valore = dati[codiceCella];
-                        
-                        if (valore !== null && valore !== undefined && valore !== '') {
-                            const xlsRow = firstRow + r;
-                            const xlsCol = firstCol + c;
-                            const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                            
-                            worksheet[cellAddress] = {
-                                t: typeof valore === 'number' ? 'n' : 's',
-                                v: valore
-                            };
-                        }
-                    }
-                }
+                celleEsportate = exportTipo2(worksheet, dati, templateData, config);
+            } else if (tipoTab === 3) {
+                celleEsportate = exportTipo3(worksheet, dati, templateData, config);
+            } else {
+                console.warn(`Tipo ${tipoTab} non supportato per export ${codice}`);
+                continue;
             }
             
-            // Imposta range
-            worksheet['!ref'] = 'A1:Z100'; // Range default
-            
-            // Aggiungi al workbook
-            XLSX.utils.book_append_sheet(workbook, worksheet, codice);
+            if (celleEsportate > 0) {
+                // Imposta range (espansione automatica)
+                worksheet['!ref'] = 'A1:Z100';
+                
+                // Aggiungi al workbook
+                XLSX.utils.book_append_sheet(workbook, worksheet, codice);
+                fogliEsportati++;
+                
+                console.log(`✓ Exported ${codice}: ${celleEsportate} celle (tipo ${tipoTab})`);
+            }
+        }
+        
+        if (fogliEsportati === 0) {
+            hideLoading();
+            showToast('Nessun foglio da esportare', 'warning');
+            return;
         }
         
         // Download
@@ -93,13 +70,106 @@ async function exportXLS() {
         XLSX.writeFile(workbook, filename);
         
         hideLoading();
-        showToast('File Excel esportato', 'success');
+        showToast(`File Excel esportato (${fogliEsportati} fogli)`, 'success');
         
     } catch (error) {
         console.error('Export XLS error:', error);
         hideLoading();
         showToast('Errore export XLS: ' + error.message, 'error');
     }
+}
+
+// Export TIPO 1: Foglio semplice
+function exportTipo1(worksheet, dati, templateData, config) {
+    const firstRow = config[3];
+    const firstCol = config[4];
+    const numRows = config[1];
+    const numCols = config[2];
+    
+    let count = 0;
+    
+    // Se 1×1 = textBlock
+    if (numRows === 1 && numCols === 1) {
+        const codiceCell = templateData[firstRow]?.[0];
+        if (codiceCell && dati[codiceCell]) {
+            const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: firstCol });
+            worksheet[cellAddress] = { 
+                t: 's', 
+                v: dati[codiceCell] 
+            };
+            count++;
+        }
+    } else {
+        // Tabella semplice
+        for (let r = 0; r < numRows; r++) {
+            const rowData = templateData[firstRow + r];
+            if (!rowData) continue;
+            
+            const codiceRiga = rowData[0];
+            if (!codiceRiga) continue;
+            
+            const valore = dati[codiceRiga];
+            if (valore !== null && valore !== undefined && valore !== '') {
+                const xlsRow = firstRow + r;
+                const xlsCol = firstCol;
+                const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+                
+                worksheet[cellAddress] = {
+                    t: typeof valore === 'number' ? 'n' : 's',
+                    v: valore
+                };
+                count++;
+            }
+        }
+    }
+    
+    return count;
+}
+
+// Export TIPO 2: Tabella 2D
+function exportTipo2(worksheet, dati, templateData, config) {
+    const firstRow = config[3];
+    const firstCol = config[4];
+    const numRows = config[1];
+    const codiciColonne = templateData[2]?.slice(3) || [];
+    
+    let count = 0;
+    
+    for (let r = 0; r < numRows; r++) {
+        const rowData = templateData[firstRow + r];
+        if (!rowData) continue;
+        
+        const codiceRiga = rowData[0];
+        if (!codiceRiga) continue;
+        
+        for (let c = 0; c < codiciColonne.length; c++) {
+            const codiceColonna = codiciColonne[c];
+            if (!codiceColonna) continue;
+            
+            const codiceCella = `${codiceRiga}_${codiceColonna}`;
+            const valore = dati[codiceCella];
+            
+            if (valore !== null && valore !== undefined && valore !== '') {
+                const xlsRow = firstRow + r;
+                const xlsCol = firstCol + c;
+                const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+                
+                worksheet[cellAddress] = {
+                    t: typeof valore === 'number' ? 'n' : 's',
+                    v: valore
+                };
+                count++;
+            }
+        }
+    }
+    
+    return count;
+}
+
+// Export TIPO 3: Tuple (placeholder)
+function exportTipo3(worksheet, dati, templateData, config) {
+    console.warn('Export tipo 3 (tuple) non ancora implementato');
+    return 0;
 }
 
 // Export XBRL (fase 2 - placeholder)
@@ -147,9 +217,10 @@ function generateXBRLPreview() {
             const valore = dati[codiceExcel];
             if (valore === null || valore === undefined || valore === '') continue;
             
+            const codiceBase = codiceExcel.split('_')[0];
             const mapping = foglioMappings.find(m => 
                 m.codice_excel === codiceExcel || 
-                m.codice_excel?.startsWith(codiceExcel.split('_')[0])
+                m.codice_excel === codiceBase
             );
             
             if (mapping && mapping.xbrl) {
