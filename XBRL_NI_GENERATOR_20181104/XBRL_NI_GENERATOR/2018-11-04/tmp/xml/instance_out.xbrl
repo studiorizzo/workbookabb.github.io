@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--XBRLCOMPILER;COMPNAME=INFOCAMERE;COMPCODE=02313821007;TOOL=XBRL_NI_GENERATOR;VER=TAX 20181104 - release 16-11-2023;-->
+<!--Version 2025-11-10 09:45:56-->
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:itcc-ci="http://www.infocamere.it/itnn/fr/itcc/ci/2018-11-04" xmlns:itcc-ci-abb="http://www.infocamere.it/itnn/fr/itcc/ci/abb/2018-11-04">
+  <link:schemaRef xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="itcc-ci-abb-2018-11-04.xsd"/>
+  <context id="c2018_i">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <instant>2018-12-31</instant>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c2018_d">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <startDate>2018-01-01</startDate>
+      <endDate>2018-12-31</endDate>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c2019_i">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <instant>2019-12-31</instant>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c2019_d">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <startDate>2019-01-01</startDate>
+      <endDate>2019-12-31</endDate>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <unit id="EUR">
+    <measure>iso4217:EUR</measure>
+  </unit>
+  <unit id="shares">
+    <measure>xbrli:shares</measure>
+  </unit>
+  <unit id="pure">
+    <measure>xbrli:pure</measure>
+  </unit>
+  <itcc-ci:DatiAnagraficiDenominazione contextRef="c2019_i">BARONE SRL</itcc-ci:DatiAnagraficiDenominazione>
+  <itcc-ci:DatiAnagraficiSede contextRef="c2019_i">CONTRADA BLASI 5 - 73046 MATINO (LE)</itcc-ci:DatiAnagraficiSede>
+  <itcc-ci:DatiAnagraficiCapitaleSociale contextRef="c2019_i" unitRef="EUR" decimals="0">10000</itcc-ci:DatiAnagraficiCapitaleSociale>
+  <itcc-ci:DatiAnagraficiCapitaleSocialeInteramenteVersato contextRef="c2019_i">true</itcc-ci:DatiAnagraficiCapitaleSocialeInteramenteVersato>
+  <itcc-ci:DatiAnagraficiCodiceCciaa contextRef="c2019_i">LE</itcc-ci:DatiAnagraficiCodiceCciaa>
+  <itcc-ci:DatiAnagraficiPartitaIva contextRef="c2019_i">04252300753</itcc-ci:DatiAnagraficiPartitaIva>
+  <itcc-ci:DatiAnagraficiCodiceFiscale contextRef="c2019_i">04252300753</itcc-ci:DatiAnagraficiCodiceFiscale>
+  <itcc-ci:DatiAnagraficiNumeroRea contextRef="c2019_i">000000277321</itcc-ci:DatiAnagraficiNumeroRea>
+  <itcc-ci:DatiAnagraficiFormaGiuridica contextRef="c2019_i">SRL</itcc-ci:DatiAnagraficiFormaGiuridica>
+  <itcc-ci:DatiAnagraficiSettoreAttivitaPrevalenteAteco contextRef="c2019_i">104110</itcc-ci:DatiAnagraficiSettoreAttivitaPrevalenteAteco>
+  <itcc-ci:DatiAnagraficiSocietaLiquidazione contextRef="c2019_i">false</itcc-ci:DatiAnagraficiSocietaLiquidazione>
+  <itcc-ci:DatiAnagraficiSocietaSocioUnico contextRef="c2019_i">false</itcc-ci:DatiAnagraficiSocietaSocioUnico>
+  <itcc-ci:DatiAnagraficiSocietaSottopostaAltruiAttivitaDirezioneCoordinamento contextRef="c2019_i">false</itcc-ci:DatiAnagraficiSocietaSottopostaAltruiAttivitaDirezioneCoordinamento>
+  <itcc-ci:DatiAnagraficiAppartenenzaGruppo contextRef="c2019_i">false</itcc-ci:DatiAnagraficiAppartenenzaGruppo>
+  <itcc-ci:TotaleCreditiVersoSociVersamentiAncoraDovuti contextRef="c2019_i" unitRef="EUR" decimals="0">1</itcc-ci:TotaleCreditiVersoSociVersamentiAncoraDovuti>
+  <itcc-ci:TotaleImmobilizzazioniImmateriali contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniImmateriali>
+  <itcc-ci:TotaleImmobilizzazioniMateriali contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniMateriali>
+  <itcc-ci:TotaleImmobilizzazioniFinanziarie contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniFinanziarie>
+  <itcc-ci:TotaleImmobilizzazioni contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioni>
+  <itcc-ci:TotaleRimanenze contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRimanenze>
+  <itcc-ci:ImmobilizzazioniMaterialiDestinateAllaVendita contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:ImmobilizzazioniMaterialiDestinateAllaVendita>
+  <itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:CreditiEsigibiliOltreEsercizioSuccessivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:CreditiImposteAnticipateTotaleImposteAnticipate contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiImposteAnticipateTotaleImposteAnticipate>
+  <itcc-ci:TotaleCrediti contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleCrediti>
+  <itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni>
+  <itcc-ci:TotaleDisponibilitaLiquide contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleDisponibilitaLiquide>
+  <itcc-ci:TotaleAttivoCircolante contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivoCircolante>
+  <itcc-ci:AttivoRateiRisconti contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:AttivoRateiRisconti>
+  <itcc-ci:TotaleAttivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivo>
+  <itcc-ci:PatrimonioNettoCapitale contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoCapitale>
+  <itcc-ci:PatrimonioNettoRiservaSoprapprezzoAzioni contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaSoprapprezzoAzioni>
+  <itcc-ci:PatrimonioNettoRiserveRivalutazione contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiserveRivalutazione>
+  <itcc-ci:PatrimonioNettoRiservaLegale contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaLegale>
+  <itcc-ci:PatrimonioNettoRiserveStatutarie contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiserveStatutarie>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve>
+  <itcc-ci:PatrimonioNettoRiservaOperazioniCoperturaFlussiFinanziariAttesi contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaOperazioniCoperturaFlussiFinanziariAttesi>
+  <itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo>
+  <itcc-ci:PatrimonioNettoUtilePerditaEsercizio contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoUtilePerditaEsercizio>
+  <itcc-ci:PatrimonioNettoPerditaRipianataEsercizio contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoPerditaRipianataEsercizio>
+  <itcc-ci:PatrimonioNettoRiservaNegativaAzioniPropriePortafoglio contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaNegativaAzioniPropriePortafoglio>
+  <itcc-ci:TotalePatrimonioNetto contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotalePatrimonioNetto>
+  <itcc-ci:TotaleFondiRischiOneri contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleFondiRischiOneri>
+  <itcc-ci:TrattamentoFineRapportoLavoroSubordinato contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:TotaleDebiti contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleDebiti>
+  <itcc-ci:PassivoRateiRisconti contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:PassivoRateiRisconti>
+  <itcc-ci:TotalePassivo contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:TotalePassivo>
+  <itcc-ci:TotaleCreditiVersoSociVersamentiAncoraDovuti contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleCreditiVersoSociVersamentiAncoraDovuti>
+  <itcc-ci:TotaleImmobilizzazioniImmateriali contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniImmateriali>
+  <itcc-ci:TotaleImmobilizzazioniMateriali contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniMateriali>
+  <itcc-ci:TotaleImmobilizzazioniFinanziarie contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioniFinanziarie>
+  <itcc-ci:TotaleImmobilizzazioni contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleImmobilizzazioni>
+  <itcc-ci:TotaleRimanenze contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRimanenze>
+  <itcc-ci:ImmobilizzazioniMaterialiDestinateAllaVendita contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:ImmobilizzazioniMaterialiDestinateAllaVendita>
+  <itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:CreditiEsigibiliOltreEsercizioSuccessivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:CreditiImposteAnticipateTotaleImposteAnticipate contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:CreditiImposteAnticipateTotaleImposteAnticipate>
+  <itcc-ci:TotaleCrediti contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleCrediti>
+  <itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni>
+  <itcc-ci:TotaleDisponibilitaLiquide contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleDisponibilitaLiquide>
+  <itcc-ci:TotaleAttivoCircolante contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivoCircolante>
+  <itcc-ci:AttivoRateiRisconti contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:AttivoRateiRisconti>
+  <itcc-ci:TotaleAttivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleAttivo>
+  <itcc-ci:PatrimonioNettoCapitale contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoCapitale>
+  <itcc-ci:PatrimonioNettoRiservaSoprapprezzoAzioni contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaSoprapprezzoAzioni>
+  <itcc-ci:PatrimonioNettoRiserveRivalutazione contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiserveRivalutazione>
+  <itcc-ci:PatrimonioNettoRiservaLegale contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaLegale>
+  <itcc-ci:PatrimonioNettoRiserveStatutarie contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiserveStatutarie>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve>
+  <itcc-ci:PatrimonioNettoRiservaOperazioniCoperturaFlussiFinanziariAttesi contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaOperazioniCoperturaFlussiFinanziariAttesi>
+  <itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo>
+  <itcc-ci:PatrimonioNettoUtilePerditaEsercizio contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoUtilePerditaEsercizio>
+  <itcc-ci:PatrimonioNettoPerditaRipianataEsercizio contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoPerditaRipianataEsercizio>
+  <itcc-ci:PatrimonioNettoRiservaNegativaAzioniPropriePortafoglio contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PatrimonioNettoRiservaNegativaAzioniPropriePortafoglio>
+  <itcc-ci:TotalePatrimonioNetto contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotalePatrimonioNetto>
+  <itcc-ci:TotaleFondiRischiOneri contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleFondiRischiOneri>
+  <itcc-ci:TrattamentoFineRapportoLavoroSubordinato contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:TotaleDebiti contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotaleDebiti>
+  <itcc-ci:PassivoRateiRisconti contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:PassivoRateiRisconti>
+  <itcc-ci:TotalePassivo contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:TotalePassivo>
+  <itcc-ci:ValoreProduzioneRicaviVenditePrestazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneRicaviVenditePrestazioni>
+  <itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFinitiLavoriCorsoOrdinazione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFinitiLavoriCorsoOrdinazione>
+  <itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFiniti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFiniti>
+  <itcc-ci:ValoreProduzioneVariazioniLavoriCorsoOrdinazione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniLavoriCorsoOrdinazione>
+  <itcc-ci:ValoreProduzioneIncrementiImmobilizzazioniLavoriInterni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneIncrementiImmobilizzazioniLavoriInterni>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiAltri contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiAltri>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi>
+  <itcc-ci:TotaleValoreProduzione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleValoreProduzione>
+  <itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneServizi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneServizi>
+  <itcc-ci:CostiProduzioneGodimentoBeniTerzi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneGodimentoBeniTerzi>
+  <itcc-ci:CostiProduzionePersonaleSalariStipendi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleSalariStipendi>
+  <itcc-ci:CostiProduzionePersonaleOneriSociali contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleOneriSociali>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoQuiescenzaSimili contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoQuiescenzaSimili>
+  <itcc-ci:CostiProduzionePersonaleAltriCosti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleAltriCosti>
+  <itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAltreSvalutazioniImmobilizzazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniSvalutazioniCreditiCompresiAttivoCircolanteDisponibilitaLiquide contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniSvalutazioniCreditiCompresiAttivoCircolanteDisponibilitaLiquide>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni>
+  <itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneAccantonamentiRischi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAccantonamentiRischi>
+  <itcc-ci:CostiProduzioneAltriAccantonamenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAltriAccantonamenti>
+  <itcc-ci:CostiProduzioneOneriDiversiGestione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneOneriDiversiGestione>
+  <itcc-ci:TotaleCostiProduzione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleCostiProduzione>
+  <itcc-ci:DifferenzaValoreCostiProduzione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:DifferenzaValoreCostiProduzione>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseCollegate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseSottoposteControlloControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniAltri contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniAltri>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniTotaleProventiPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniTotaleProventiPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseCollegate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseSottoposteControlloControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniAltri contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniAltri>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniTotaleProventiFinanziariCreditiIscrittiImmobilizzazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniTotaleProventiFinanziariCreditiIscrittiImmobilizzazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseCollegate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseSottoposteControlloControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiAltri contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiAltri>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiTotaleProventiDiversiPrecedenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiTotaleProventiDiversiPrecedenti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTotaleAltriProventiFinanziari contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTotaleAltriProventiFinanziari>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseCollegate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseSottoposteControlloControllanti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari>
+  <itcc-ci:ProventiOneriFinanziariUtiliPerditeCambi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariUtiliPerditeCambi>
+  <itcc-ci:TotaleProventiOneriFinanziari contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleProventiOneriFinanziari>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniStrumentiFinanziariDerivati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniStrumentiFinanziariDerivati>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTotaleRivalutazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTotaleRivalutazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniStrumentiFinanziariDerivati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniStrumentiFinanziariDerivati>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTotaleSvalutazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTotaleSvalutazioni>
+  <itcc-ci:TotaleRettificheValoreAttivitaPassivitaFinanziarie contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRettificheValoreAttivitaPassivitaFinanziarie>
+  <itcc-ci:RisultatoPrimaImposte contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RisultatoPrimaImposte>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteRelativeEserciziPrecedenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteRelativeEserciziPrecedenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteDifferiteAnticipate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteDifferiteAnticipate>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateProventiOneriAdesioneRegimeConsolidatoFiscaleTrasparenzaFiscale contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateProventiOneriAdesioneRegimeConsolidatoFiscaleTrasparenzaFiscale>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate>
+  <itcc-ci:UtilePerditaEsercizio contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:UtilePerditaEsercizio>
+  <itcc-ci:ValoreProduzioneRicaviVenditePrestazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneRicaviVenditePrestazioni>
+  <itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFinitiLavoriCorsoOrdinazione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFinitiLavoriCorsoOrdinazione>
+  <itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFiniti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniRimanenzeProdottiCorsoLavorazioneSemilavoratiFiniti>
+  <itcc-ci:ValoreProduzioneVariazioniLavoriCorsoOrdinazione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneVariazioniLavoriCorsoOrdinazione>
+  <itcc-ci:ValoreProduzioneIncrementiImmobilizzazioniLavoriInterni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneIncrementiImmobilizzazioniLavoriInterni>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiAltri contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiAltri>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi>
+  <itcc-ci:TotaleValoreProduzione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleValoreProduzione>
+  <itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneServizi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneServizi>
+  <itcc-ci:CostiProduzioneGodimentoBeniTerzi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneGodimentoBeniTerzi>
+  <itcc-ci:CostiProduzionePersonaleSalariStipendi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleSalariStipendi>
+  <itcc-ci:CostiProduzionePersonaleOneriSociali contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleOneriSociali>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoQuiescenzaSimili contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTrattamentoQuiescenzaSimili>
+  <itcc-ci:CostiProduzionePersonaleAltriCosti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleAltriCosti>
+  <itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAltreSvalutazioniImmobilizzazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniSvalutazioniCreditiCompresiAttivoCircolanteDisponibilitaLiquide contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniSvalutazioniCreditiCompresiAttivoCircolanteDisponibilitaLiquide>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni>
+  <itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneAccantonamentiRischi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAccantonamentiRischi>
+  <itcc-ci:CostiProduzioneAltriAccantonamenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneAltriAccantonamenti>
+  <itcc-ci:CostiProduzioneOneriDiversiGestione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneOneriDiversiGestione>
+  <itcc-ci:TotaleCostiProduzione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleCostiProduzione>
+  <itcc-ci:DifferenzaValoreCostiProduzione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:DifferenzaValoreCostiProduzione>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseCollegate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseSottoposteControlloControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniAltri contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniAltri>
+  <itcc-ci:ProventiOneriFinanziariProventiPartecipazioniTotaleProventiPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariProventiPartecipazioniTotaleProventiPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseCollegate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseSottoposteControlloControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniAltri contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniAltri>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniTotaleProventiFinanziariCreditiIscrittiImmobilizzazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariCreditiIscrittiImmobilizzazioniTotaleProventiFinanziariCreditiIscrittiImmobilizzazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiImmobilizzazioniNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseCollegate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseSottoposteControlloControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiAltri contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiAltri>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiTotaleProventiDiversiPrecedenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariProventiDiversiPrecedentiTotaleProventiDiversiPrecedenti>
+  <itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTotaleAltriProventiFinanziari contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariAltriProventiFinanziariTotaleAltriProventiFinanziari>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllate>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseCollegate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseCollegate>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseControllanti>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseSottoposteControlloControllanti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariVersoImpreseSottoposteControlloControllanti>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari>
+  <itcc-ci:ProventiOneriFinanziariUtiliPerditeCambi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ProventiOneriFinanziariUtiliPerditeCambi>
+  <itcc-ci:TotaleProventiOneriFinanziari contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleProventiOneriFinanziari>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniStrumentiFinanziariDerivati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniStrumentiFinanziariDerivati>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTotaleRivalutazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieRivalutazioniTotaleRivalutazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniImmobilizzazioniFinanziarieNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTitoliIscrittiAttivoCircolanteNonCostituisconoPartecipazioni>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniStrumentiFinanziariDerivati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniStrumentiFinanziariDerivati>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniAttivitaFinanziarieLaGestioneAccentrataTesoreria>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTotaleSvalutazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieSvalutazioniTotaleSvalutazioni>
+  <itcc-ci:TotaleRettificheValoreAttivitaPassivitaFinanziarie contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRettificheValoreAttivitaPassivitaFinanziarie>
+  <itcc-ci:RisultatoPrimaImposte contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RisultatoPrimaImposte>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteRelativeEserciziPrecedenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteRelativeEserciziPrecedenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteDifferiteAnticipate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteDifferiteAnticipate>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateProventiOneriAdesioneRegimeConsolidatoFiscaleTrasparenzaFiscale contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateProventiOneriAdesioneRegimeConsolidatoFiscaleTrasparenzaFiscale>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate>
+  <itcc-ci:UtilePerditaEsercizio contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:UtilePerditaEsercizio>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoInteressiPassiviattivi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoInteressiPassiviattivi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoDividendi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoDividendi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoPlusvalenzeminusvalenzeDerivantiCessioneAttivita contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoPlusvalenzeminusvalenzeDerivantiCessioneAttivita>
+  <itcc-ci:UtilePerditaEsercizioPrimaImposteRedditoInteressiDividendiPlusminusvalenzeCessione contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:UtilePerditaEsercizioPrimaImposteRedditoInteressiDividendiPlusminusvalenzeCessione>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAccantonamentiFondi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAccantonamentiFondi>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAmmortamentiImmobilizzazioni contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAmmortamentiImmobilizzazioni>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoSvalutazioniPerditeDurevoliValore contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoSvalutazioniPerditeDurevoliValore>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieStrumentiFinanziariDerivatiNonComportanoMovimentazioneMonetarie contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieStrumentiFinanziariDerivatiNonComportanoMovimentazioneMonetarie>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAltreRettificheAumentoinDiminuzioneElementiNonMonetari contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAltreRettificheAumentoinDiminuzioneElementiNonMonetari>
+  <itcc-ci:TotaleRettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNetto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNetto>
+  <itcc-ci:FlussoFinanziarioPrimaVariazioniCapitaleCircolanteNetto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioPrimaVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRimanenze contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRimanenze>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoCreditiVersoClienti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoCreditiVersoClienti>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoDebitiVersoFornitori contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoDebitiVersoFornitori>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRateiRiscontiAttivi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRateiRiscontiAttivi>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoRateiRiscontiPassivi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoRateiRiscontiPassivi>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoAltriDecrementialtriIncrementiCapitaleCircolanteNetto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoAltriDecrementialtriIncrementiCapitaleCircolanteNetto>
+  <itcc-ci:TotaleVariazioniCapitaleCircolanteNetto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:FlussoFinanziarioDopoVariazioniCapitaleCircolanteNetto contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioDopoVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheInteressiIncassatipagati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheInteressiIncassatipagati>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheImposteRedditoPagate contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheImposteRedditoPagate>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheDividendiIncassati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheDividendiIncassati>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheUtilizzoFondi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheUtilizzoFondi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheAltriIncassipagamenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheAltriIncassipagamenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheTotaleAltreRettifiche contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheTotaleAltreRettifiche>
+  <itcc-ci:FlussoFinanziarioAttivitaOperativa contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaOperativa>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiInvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiDisinvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiInvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiDisinvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieInvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieDisinvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateInvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateDisinvestimenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateDisinvestimenti>
+  <itcc-ci:AcquisizioneRamiAziendaNettoDisponibilitaLiquide contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:AcquisizioneRamiAziendaNettoDisponibilitaLiquide>
+  <itcc-ci:CessioneRamiAziendaNettoDisponibilitaLiquide contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CessioneRamiAziendaNettoDisponibilitaLiquide>
+  <itcc-ci:FlussoFinanziarioAttivitaInvestimento contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaInvestimento>
+  <itcc-ci:IncrementoDecrementoDebitiBreveVersoBanche contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:IncrementoDecrementoDebitiBreveVersoBanche>
+  <itcc-ci:AccensioneFinanziamenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:AccensioneFinanziamenti>
+  <itcc-ci:RimborsoFinanziamenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RimborsoFinanziamenti>
+  <itcc-ci:AumentoCapitalePagamento contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:AumentoCapitalePagamento>
+  <itcc-ci:RimborsoCapitale contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:RimborsoCapitale>
+  <itcc-ci:CessioneAcquistoAzioniProprie contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:CessioneAcquistoAzioniProprie>
+  <itcc-ci:DividendiAccontiDividendiPagati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:DividendiAccontiDividendiPagati>
+  <itcc-ci:FlussoFinanziarioAttivitaFinanziamento contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaFinanziamento>
+  <itcc-ci:IncrementoDecrementoDisponibilitaLiquide contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:IncrementoDecrementoDisponibilitaLiquide>
+  <itcc-ci:EffettoCambiDisponibilitaLiquide contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:EffettoCambiDisponibilitaLiquide>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioDepositiBancariPostali contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioDepositiBancariPostali>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioAssegni contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioAssegni>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioDanaroValoriCassa contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioDanaroValoriCassa>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioTotaleDisponibilitaLiquideInizioEsercizio contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioTotaleDisponibilitaLiquideInizioEsercizio>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioNonLiberamenteUtilizzabili contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioNonLiberamenteUtilizzabili>
+  <itcc-ci:DisponibilitaLiquideDepositiBancariPostali contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideDepositiBancariPostali>
+  <itcc-ci:DisponibilitaLiquideAssegni contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideAssegni>
+  <itcc-ci:DisponibilitaLiquideDanaroValoriCassa contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideDanaroValoriCassa>
+  <itcc-ci:DisponibilitaLiquideFineEsercizioNonLiberamenteUtilizzabili contextRef="c2019_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideFineEsercizioNonLiberamenteUtilizzabili>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoInteressiPassiviattivi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoInteressiPassiviattivi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoDividendi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoDividendi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoPlusvalenzeminusvalenzeDerivantiCessioneAttivita contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoPlusvalenzeminusvalenzeDerivantiCessioneAttivita>
+  <itcc-ci:UtilePerditaEsercizioPrimaImposteRedditoInteressiDividendiPlusminusvalenzeCessione contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:UtilePerditaEsercizioPrimaImposteRedditoInteressiDividendiPlusminusvalenzeCessione>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAccantonamentiFondi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAccantonamentiFondi>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAmmortamentiImmobilizzazioni contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAmmortamentiImmobilizzazioni>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoSvalutazioniPerditeDurevoliValore contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoSvalutazioniPerditeDurevoliValore>
+  <itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieStrumentiFinanziariDerivatiNonComportanoMovimentazioneMonetarie contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheValoreAttivitaPassivitaFinanziarieStrumentiFinanziariDerivatiNonComportanoMovimentazioneMonetarie>
+  <itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAltreRettificheAumentoinDiminuzioneElementiNonMonetari contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNettoAltreRettificheAumentoinDiminuzioneElementiNonMonetari>
+  <itcc-ci:TotaleRettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNetto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleRettificheElementiNonMonetariNonHannoAvutoContropartitaCapitaleCircolanteNetto>
+  <itcc-ci:FlussoFinanziarioPrimaVariazioniCapitaleCircolanteNetto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioPrimaVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRimanenze contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRimanenze>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoCreditiVersoClienti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoCreditiVersoClienti>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoDebitiVersoFornitori contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoDebitiVersoFornitori>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRateiRiscontiAttivi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoDecrementoincrementoRateiRiscontiAttivi>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoRateiRiscontiPassivi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoIncrementodecrementoRateiRiscontiPassivi>
+  <itcc-ci:VariazioniCapitaleCircolanteNettoAltriDecrementialtriIncrementiCapitaleCircolanteNetto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:VariazioniCapitaleCircolanteNettoAltriDecrementialtriIncrementiCapitaleCircolanteNetto>
+  <itcc-ci:TotaleVariazioniCapitaleCircolanteNetto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:TotaleVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:FlussoFinanziarioDopoVariazioniCapitaleCircolanteNetto contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioDopoVariazioniCapitaleCircolanteNetto>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheInteressiIncassatipagati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheInteressiIncassatipagati>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheImposteRedditoPagate contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheImposteRedditoPagate>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheDividendiIncassati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheDividendiIncassati>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheUtilizzoFondi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheUtilizzoFondi>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheAltriIncassipagamenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheAltriIncassipagamenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheTotaleAltreRettifiche contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaOperativaMetodoIndirettoAltreRettificheTotaleAltreRettifiche>
+  <itcc-ci:FlussoFinanziarioAttivitaOperativa contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaOperativa>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiInvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiDisinvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniMaterialiDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiInvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiDisinvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniImmaterialiDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieInvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieDisinvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoImmobilizzazioniFinanziarieDisinvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateInvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateInvestimenti>
+  <itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateDisinvestimenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAttivitaInvestimentoAttivitaFinanziarieNonImmobilizzateDisinvestimenti>
+  <itcc-ci:AcquisizioneRamiAziendaNettoDisponibilitaLiquide contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:AcquisizioneRamiAziendaNettoDisponibilitaLiquide>
+  <itcc-ci:CessioneRamiAziendaNettoDisponibilitaLiquide contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CessioneRamiAziendaNettoDisponibilitaLiquide>
+  <itcc-ci:FlussoFinanziarioAttivitaInvestimento contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaInvestimento>
+  <itcc-ci:IncrementoDecrementoDebitiBreveVersoBanche contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:IncrementoDecrementoDebitiBreveVersoBanche>
+  <itcc-ci:AccensioneFinanziamenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:AccensioneFinanziamenti>
+  <itcc-ci:RimborsoFinanziamenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RimborsoFinanziamenti>
+  <itcc-ci:AumentoCapitalePagamento contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:AumentoCapitalePagamento>
+  <itcc-ci:RimborsoCapitale contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:RimborsoCapitale>
+  <itcc-ci:CessioneAcquistoAzioniProprie contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:CessioneAcquistoAzioniProprie>
+  <itcc-ci:DividendiAccontiDividendiPagati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:DividendiAccontiDividendiPagati>
+  <itcc-ci:FlussoFinanziarioAttivitaFinanziamento contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussoFinanziarioAttivitaFinanziamento>
+  <itcc-ci:IncrementoDecrementoDisponibilitaLiquide contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:IncrementoDecrementoDisponibilitaLiquide>
+  <itcc-ci:EffettoCambiDisponibilitaLiquide contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:EffettoCambiDisponibilitaLiquide>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioDepositiBancariPostali contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioDepositiBancariPostali>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioAssegni contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioAssegni>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioDanaroValoriCassa contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioDanaroValoriCassa>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioTotaleDisponibilitaLiquideInizioEsercizio contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioTotaleDisponibilitaLiquideInizioEsercizio>
+  <itcc-ci:DisponibilitaLiquideInizioEsercizioNonLiberamenteUtilizzabili contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideInizioEsercizioNonLiberamenteUtilizzabili>
+  <itcc-ci:DisponibilitaLiquideDepositiBancariPostali contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideDepositiBancariPostali>
+  <itcc-ci:DisponibilitaLiquideAssegni contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideAssegni>
+  <itcc-ci:DisponibilitaLiquideDanaroValoriCassa contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideDanaroValoriCassa>
+  <itcc-ci:DisponibilitaLiquideFineEsercizioNonLiberamenteUtilizzabili contextRef="c2018_i" unitRef="EUR" decimals="0">0</itcc-ci:DisponibilitaLiquideFineEsercizioNonLiberamenteUtilizzabili>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoIncassiClienti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoIncassiClienti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriIncassi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriIncassi>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriAcquisti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriAcquisti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriServizi contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriServizi>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiPersonale contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiPersonale>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriPagamenti contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriPagamenti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoImpostePagateReddito contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoImpostePagateReddito>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoInteressiIncassatipagati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoInteressiIncassatipagati>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoDividendiIncassati contextRef="c2019_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoDividendiIncassati>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoIncassiClienti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoIncassiClienti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriIncassi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriIncassi>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriAcquisti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriAcquisti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriServizi contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiFornitoriServizi>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiPersonale contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoPagamentiPersonale>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriPagamenti contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoAltriPagamenti>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoImpostePagateReddito contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoImpostePagateReddito>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoInteressiIncassatipagati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoInteressiIncassatipagati>
+  <itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoDividendiIncassati contextRef="c2018_d" unitRef="EUR" decimals="0">0</itcc-ci:FlussiFinanziariDerivantiAtivitaOperativaMetodoDirettoDividendiIncassati>
+  <itcc-ci:IntroduzioneNotaIntegrativa contextRef="c2019_i">sdsdsdsdsdsdsdsdsds</itcc-ci:IntroduzioneNotaIntegrativa>
+</xbrl>
