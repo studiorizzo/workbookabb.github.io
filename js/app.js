@@ -203,21 +203,65 @@ function renderIndex() {
     indexTree.innerHTML = html;
 }
 
-// Get label foglio (helper)
+// Get label foglio (helper) - cerca in più posizioni con fallback
 function getFoglioLabel(code) {
-    // Leggi dinamicamente dal workbookData invece di usare dizionario hardcoded
+    // Leggi dinamicamente dal workbookData
     if (!workbookData || !workbookData.sheets || !workbookData.sheets[code]) {
         return '';
     }
-    
+
     const sheetData = workbookData.sheets[code];
-    
-    // Il titolo è in riga 6, colonna 1
-    if (sheetData.length > 6 && sheetData[6] && sheetData[6].length > 1) {
-        return sheetData[6][1] || '';
+
+    // POSIZIONE PRINCIPALE: Riga 5, colonna 2 (verificato su T0002, T0006)
+    if (sheetData[5] && sheetData[5][2]) {
+        const value = sheetData[5][2];
+        if (typeof value === 'string' && value.length > 3 && value.length < 100) {
+            if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
+                return value;
+            }
+        }
     }
-    
-    return '';
+
+    // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
+    const possiblePositions = [
+        [3, 1],  // Titolo esteso
+        [5, 1],  // Alternativa colonna 1
+        [6, 2],  // Posizione alternativa
+        [4, 1],  // Altra posizione
+        [7, 2]   // Altra posizione
+    ];
+
+    for (const [rowIdx, colIdx] of possiblePositions) {
+        if (sheetData[rowIdx] && sheetData[rowIdx][colIdx]) {
+            const value = sheetData[rowIdx][colIdx];
+            if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
+                // Escludi valori che sembrano codici XBRL o formule
+                if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
+                    return value;
+                }
+            }
+        }
+    }
+
+    // Fallback: usa mappings XBRL
+    if (xbrlMappings && xbrlMappings.fogli && xbrlMappings.fogli[code]) {
+        const foglioInfo = xbrlMappings.fogli[code];
+        if (foglioInfo.nome || foglioInfo.label) {
+            return foglioInfo.nome || foglioInfo.label;
+        }
+    }
+
+    // Nomi conosciuti hardcoded come ultimo fallback
+    const knownNames = {
+        'T0000': 'Dati anagrafici',
+        'T0002': 'Stato patrimoniale - Attivo',
+        'T0004': 'Stato patrimoniale - Passivo',
+        'T0006': 'Conto economico',
+        'T0008': 'Rendiconto finanziario',
+        'T0010': 'Movimentazione patrimonio netto'
+    };
+
+    return knownNames[code] || '';
 }
 
 // Navigazione a foglio
