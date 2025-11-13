@@ -1,5 +1,28 @@
 // workbookabb - Form Renderer Module (VERSIONE MIGLIORATA)
 
+// Parse sheet config (righe 0-1) in HashMap
+function parseSheetConfig(templateData) {
+    if (!templateData || templateData.length < 2) {
+        return null;
+    }
+
+    const keys = templateData[0];   // Riga 0: nomi parametri
+    const values = templateData[1]; // Riga 1: valori
+
+    if (!Array.isArray(keys) || !Array.isArray(values)) {
+        return null;
+    }
+
+    const config = {};
+    for (let i = 0; i < keys.length && i < values.length; i++) {
+        if (keys[i]) {
+            config[keys[i]] = values[i];
+        }
+    }
+
+    return config;
+}
+
 // Renderizza Configurazione (date, codice fiscale, valuta)
 function renderConfigurazione(content) {
     const bilancio = getBilancio();
@@ -162,14 +185,14 @@ function renderFoglio(codice) {
     }
     
     const config = templateData[1];
-    
+
     // Verifica che config sia un array valido
     if (!Array.isArray(config) || config.length === 0) {
         content.innerHTML = `<div class="empty-state"><p>Configurazione template non valida</p></div>`;
         return;
     }
-    
-    const tipoTab = config[0];
+
+    const tipoTab = parseInt(config[0]);
     
     let html = '';
     
@@ -225,11 +248,17 @@ function getTitoloFoglio(templateData) {
 
 // TIPO 1: Foglio semplice con 1-2 colonne di valori
 function renderTipo1(templateData, dati, foglioCode) {
-    const config = templateData[1];
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) {
+        return '<div class="empty-state"><p>Configurazione template non valida</p></div>';
+    }
+
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
 
     const xbrlMappings = getXBRLMappings();
 
@@ -301,7 +330,7 @@ function renderTipo1(templateData, dati, foglioCode) {
         
         if (!rowData) continue;
         
-        const codiceRiga = rowData[0];
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
         
         // Cerca mapping per label e indentazione
@@ -355,12 +384,16 @@ function renderTipo1(templateData, dati, foglioCode) {
 
 // TIPO 2: Tabella 2D con codici riga × codici colonna
 function renderTipo2(templateData, dati, foglioCode) {
-    const config = templateData[1];
-    const firstRow = config[3];
-    const numRows = config[1];
-    const numCols = config[2]; // Numero colonne dalla config
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) return '<div class="empty-state"><p>Configurazione non valida</p></div>';
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
     const headerRow = templateData[9] || templateData[Math.max(8, firstRow - 1)] || [];
-    const codiciColonne = templateData[2]?.slice(3) || [];
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
     const xbrlMappings = getXBRLMappings();
     
@@ -420,7 +453,7 @@ function renderTipo2(templateData, dati, foglioCode) {
         
         if (!rowData) continue;
         
-        const codiceRiga = rowData[0];
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
         
         // Cerca mapping per label e indentazione
@@ -497,11 +530,15 @@ function renderTipo2(templateData, dati, foglioCode) {
 
 // TIPO 3: Tabella con tuple (righe multiple espandibili)
 function renderTipo3(templateData, dati, foglioCode) {
-    const config = templateData[1];
-    const firstRow = config[3];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) return '<div class="empty-state"><p>Configurazione non valida</p></div>';
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
     const xbrlMappings = getXBRLMappings();
     
@@ -531,7 +568,7 @@ function renderTipo3(templateData, dati, foglioCode) {
         
         if (!rowData) continue;
         
-        const codiceRiga = rowData[0];
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
         
         const mapping = findMappingByCode(codiceRiga, foglioCode, xbrlMappings);

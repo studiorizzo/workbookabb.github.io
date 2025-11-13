@@ -56,35 +56,28 @@ async function importFromXLS(workbook) {
             
             const sheet = workbook.Sheets[sheetName];
             const templateData = template.data;
-            
-            // Estrai configurazione
-            if (!templateData || templateData.length < 2) {
-                console.warn(`Template ${sheetName} formato invalido`);
+
+            // Parse configurazione (righe 0-1) in oggetto
+            const configMap = parseSheetConfig(templateData);
+            if (!configMap || !configMap.tipo_tab) {
+                console.warn(`Template ${sheetName} configurazione invalida`);
                 continue;
             }
-            
-            const config = templateData[1];
-            
-            // Verifica che config sia un array valido
-            if (!Array.isArray(config) || config.length === 0) {
-                console.warn(`Config ${sheetName} non valida, skip`);
-                continue;
-            }
-            
-            const tipoTab = config[0];
-            
+
+            const tipoTab = parseInt(configMap.tipo_tab);
+
             bilancio.fogli[sheetName] = {};
             let celleSheet = 0;
-            
+
             if (tipoTab === 1) {
                 // TIPO 1: Foglio semplice
-                celleSheet = importTipo1(sheet, templateData, config, bilancio.fogli[sheetName], sheetName);
+                celleSheet = importTipo1(sheet, templateData, configMap, bilancio.fogli[sheetName], sheetName);
             } else if (tipoTab === 2) {
                 // TIPO 2: Tabella 2D
-                celleSheet = importTipo2(sheet, templateData, config, bilancio.fogli[sheetName]);
+                celleSheet = importTipo2(sheet, templateData, configMap, bilancio.fogli[sheetName]);
             } else if (tipoTab === 3) {
                 // TIPO 3: Tuple
-                celleSheet = importTipo3(sheet, templateData, config, bilancio.fogli[sheetName]);
+                celleSheet = importTipo3(sheet, templateData, configMap, bilancio.fogli[sheetName]);
             } else {
                 console.warn(`Tipo ${tipoTab} non supportato per ${sheetName}`);
                 continue;
@@ -107,18 +100,21 @@ async function importFromXLS(workbook) {
 }
 
 // Import TIPO 1: Foglio semplice
-function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
+function importTipo1(sheet, templateData, configMap, datiSheet, sheetName) {
+    // Usa configMap invece di indici hardcoded
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
 
     let count = 0;
 
     // Se 1 riga × 1 colonna = textBlock
     if (numRows === 1 && numCols === 1) {
-        // Il codice è in riga 2, colonna 3
-        const codiceCell = templateData[2]?.[3];
+        // Il codice è in riga colCodeRow, colonna firstCol
+        const codiceCell = templateData[colCodeRow]?.[firstCol];
         if (codiceCell) {
             const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: firstCol });
             const cell = sheet[cellAddress];
@@ -137,7 +133,8 @@ function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
             const rowData = templateData[firstRow + r];
             if (!rowData) continue;
 
-            const codiceRiga = rowData[0];
+            // Leggi row_code dalla colonna specificata
+            const codiceRiga = rowData[rowCodeCol];
             if (!codiceRiga) continue;
 
             // Per T0000: importa solo la prima colonna (corrente)
@@ -161,32 +158,39 @@ function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
 }
 
 // Import TIPO 2: Tabella 2D
-function importTipo2(sheet, templateData, config, datiSheet) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
-    
+function importTipo2(sheet, templateData, configMap, datiSheet) {
+    // Usa configMap invece di indici hardcoded (come Java getSheetMap)
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
+
+        // Leggi row_code dalla colonna specificata (non hardcoded a 0!)
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
-        
-        for (let c = 0; c < numCols && c < codiciColonne.length; c++) {
-            const codiceColonna = codiciColonne[c];
+
+        for (let c = 0; c < numCols; c++) {
+            // Leggi col_code dalla riga specificata
+            const colCodeData = templateData[colCodeRow];
+            if (!colCodeData) continue;
+
+            const codiceColonna = colCodeData[firstCol + c];
             if (!codiceColonna) continue;
-            
+
             const codiceCella = `${codiceRiga}_${codiceColonna}`;
-            
+
             const xlsRow = firstRow + r;
             const xlsCol = firstCol + c;
             const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-            
+
             const cell = sheet[cellAddress];
             if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                 datiSheet[codiceCella] = cell.v;
@@ -194,49 +198,55 @@ function importTipo2(sheet, templateData, config, datiSheet) {
             }
         }
     }
-    
+
     return count;
 }
 
 // Import TIPO 3: Tuple
-function importTipo3(sheet, templateData, config, datiSheet) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
-    
+function importTipo3(sheet, templateData, configMap, datiSheet) {
+    // Usa configMap invece di indici hardcoded
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
+
+        // Leggi row_code dalla colonna specificata
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
-        
-        // Se una sola colonna o nessun codice colonna, usa codiceRiga diretto
-        if (numCols === 1 || codiciColonne.length === 0) {
+
+        // Se una sola colonna, usa codiceRiga diretto
+        if (numCols === 1) {
             const xlsRow = firstRow + r;
             const xlsCol = firstCol;
             const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
             const cell = sheet[cellAddress];
-            
+
             if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                 datiSheet[codiceRiga] = cell.v;
                 count++;
             }
         } else {
-            // Più colonne
-            for (let c = 0; c < numCols && c < codiciColonne.length; c++) {
-                const codiceColonna = codiciColonne[c];
+            // Più colonne: leggi col_code dalla riga specificata
+            for (let c = 0; c < numCols; c++) {
+                const colCodeData = templateData[colCodeRow];
+                if (!colCodeData) continue;
+
+                const codiceColonna = colCodeData[firstCol + c];
                 if (!codiceColonna) continue;
-                
+
                 const codiceCella = `${codiceRiga}_${codiceColonna}`;
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol + c;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 const cell = sheet[cellAddress];
                 if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                     datiSheet[codiceCella] = cell.v;
@@ -245,7 +255,7 @@ function importTipo3(sheet, templateData, config, datiSheet) {
             }
         }
     }
-    
+
     return count;
 }
 
@@ -276,118 +286,160 @@ function getCellValue(sheet, row, col) {
     return cell ? (cell.v || null) : null;
 }
 
-// Importa configurazione da foglio Configurazione
+// Parse sheet configuration (righe 0-1) in oggetto HashMap
+// Come getSheetMap() nell'app Java
+function parseSheetConfig(templateData) {
+    if (!templateData || templateData.length < 2) {
+        return null;
+    }
+
+    const keys = templateData[0];   // Riga 0: nomi parametri
+    const values = templateData[1]; // Riga 1: valori
+
+    if (!Array.isArray(keys) || !Array.isArray(values)) {
+        return null;
+    }
+
+    const config = {};
+    for (let i = 0; i < keys.length && i < values.length; i++) {
+        if (keys[i]) {
+            config[keys[i]] = values[i];
+        }
+    }
+
+    return config;
+}
+
+// Mappa Named Ranges → coordinate celle
+// Basata sull'analisi dell'Excel originale e del codice Java
+function getNamedRangeLocations() {
+    return {
+        // Date INPUT utente (da foglio Indice)
+        'c_this_end_input': { sheet: 'Indice', row: 2, col: 2 },     // C3
+        'c_this_start_import': { sheet: 'Indice', row: 2, col: 6 },  // G3
+        'c_prev_end_import': { sheet: 'Indice', row: 3, col: 8 },    // I4
+        'c_prev_start_import': { sheet: 'Indice', row: 3, col: 6 },  // G4
+
+        // Date calcolate (da foglio Configurazione)
+        'c_this_end': { sheet: 'Configurazione', row: 8, col: 2 },   // C9
+        'c_this_start': { sheet: 'Configurazione', row: 8, col: 3 }, // D9
+        'c_this': { sheet: 'Configurazione', row: 8, col: 4 },       // E9
+        'c_prev_end': { sheet: 'Configurazione', row: 9, col: 2 },   // C10
+        'c_prev_start': { sheet: 'Configurazione', row: 9, col: 3 }, // D10
+        'c_prev': { sheet: 'Configurazione', row: 9, col: 4 },       // E10
+
+        // Altri
+        'cf': { sheet: 'Configurazione', row: 13, col: 2 },          // C14 - Codice Fiscale
+        'unit': { sheet: 'Configurazione', row: 11, col: 2 }         // C12 - Valuta
+    };
+}
+
+// Risolvi Named Range: legge valore da Excel workbook
+function resolveNamedRange(workbook, rangeName) {
+    const locations = getNamedRangeLocations();
+    const location = locations[rangeName];
+
+    if (!location) {
+        console.warn(`Named range "${rangeName}" non trovato`);
+        return null;
+    }
+
+    // Trova il foglio
+    const sheet = workbook.Sheets[location.sheet];
+    if (!sheet) {
+        console.warn(`Foglio "${location.sheet}" non trovato per named range "${rangeName}"`);
+        return null;
+    }
+
+    // Leggi valore dalla cella
+    return getCellValue(sheet, location.row, location.col);
+}
+
+// Importa configurazione usando Named Ranges (come app Java originale)
 function importConfigurazione(workbook, bilancio) {
-    // Cerca foglio Configurazione
-    const configSheetName = workbook.SheetNames.find(name =>
-        name.toLowerCase().includes('config')
-    );
-
-    if (!configSheetName) {
-        console.warn('⚠ Foglio Configurazione non trovato, uso valori default');
-        console.log('📋 Fogli disponibili:', workbook.SheetNames);
-        return;
-    }
-
-    console.log('✓ Trovato foglio configurazione:', configSheetName);
-    const sheet = workbook.Sheets[configSheetName];
-
-    // Debug: mostra tutte le celle rilevanti per capire la struttura
-    console.log('🔍 Struttura foglio Configurazione (righe 6-20, colonne A-H):');
-    for (let r = 6; r <= 20; r++) {
-        const row = {};
-        for (let c = 0; c <= 7; c++) {
-            const val = getCellValue(sheet, r, c);
-            if (val !== null && val !== undefined && val !== '') {
-                row[String.fromCharCode(65 + c)] = val;
-            }
-        }
-        if (Object.keys(row).length > 0) {
-            console.log(`  Riga ${r + 1}:`, row);
-        }
-    }
-
-    // Cerca celle che contengono date recenti per identificare dove sono le date reali del bilancio
-    console.log('🔎 Ricerca date recenti nel foglio (2020-2025):');
-    const range = XLSX.utils.decode_range(sheet['!ref']);
-    for (let R = range.s.r; R <= range.e.r; R++) {
-        for (let C = range.s.c; C <= range.e.c; C++) {
-            const val = getCellValue(sheet, R, C);
-            if (val !== null && val !== undefined) {
-                const valStr = String(val);
-                // Cerca anni recenti come stringhe "2022", "c2022", ecc
-                if (valStr.match(/202[0-5]/) || valStr === 'c2020' || valStr === 'c2021' || valStr === 'c2022' || valStr === 'c2023' || valStr === 'c2024' || valStr === 'c2025') {
-                    console.log(`  → Trovato "${val}" in ${String.fromCharCode(65 + C)}${R + 1}`);
-                }
-                // Cerca date seriali Excel per anni recenti (43831 = 2020-01-01, 44927 = 2023-01-01, ecc)
-                if (typeof val === 'number' && val > 43800 && val < 47500) {
-                    const date = excelSerialToISO(val);
-                    if (date && date.match(/202[0-5]/)) {
-                        console.log(`  → Trovata data ${date} (seriale ${val}) in ${String.fromCharCode(65 + C)}${R + 1}`);
-                    }
-                }
-            }
-        }
-    }
+    console.log('📋 Import configurazione usando Named Ranges...');
 
     try {
-        // Riga 8 (indice): Date esercizio corrente
-        // Col C (2) = fine (seriale Excel), Col D (3) = inizio, Col E (4) = anno corrente, Col F (5) = anno precedente
-        const fineCorrenteSerial = getCellValue(sheet, 8, 2);     // Col C
-        const inizioCorrenteSerial = getCellValue(sheet, 8, 3);   // Col D
-        let annoCorrente = getCellValue(sheet, 8, 4);             // Col E - "c2018"
+        // STRATEGIA: Leggi date dai Named Ranges come fa l'app Java
+        // Priorità 1: Foglio Indice (INPUT utente)
+        // Priorità 2: Foglio Configurazione (valori calcolati) - fallback
 
-        // Riga 9 (indice): Date esercizio precedente
-        const finePrecedenteSerial = getCellValue(sheet, 9, 2);   // Col C
-        const inizioPrecedenteSerial = getCellValue(sheet, 9, 3); // Col D
-        let annoPrecedente = getCellValue(sheet, 8, 5);           // Col F dalla riga 8 - "c2017"
+        // Leggi date corrente
+        let fineCorrenteSerial = resolveNamedRange(workbook, 'c_this_end_input');
+        let inizioCorrenteSerial = resolveNamedRange(workbook, 'c_this_start_import');
+        let annoCorrenteStr = resolveNamedRange(workbook, 'c_this');
 
-        // Riga 11: Valuta
-        const valuta = getCellValue(sheet, 11, 1);
+        // Fallback a Configurazione se Indice non disponibile
+        if (!fineCorrenteSerial) {
+            fineCorrenteSerial = resolveNamedRange(workbook, 'c_this_end');
+        }
+        if (!inizioCorrenteSerial) {
+            inizioCorrenteSerial = resolveNamedRange(workbook, 'c_this_start');
+        }
 
-        // Riga 13: Codice Fiscale
-        const codiceFiscale = getCellValue(sheet, 13, 1);
+        // Leggi date precedente
+        let finePrecedenteSerial = resolveNamedRange(workbook, 'c_prev_end_import');
+        let inizioPrecedenteSerial = resolveNamedRange(workbook, 'c_prev_start_import');
+        let annoPrecedenteStr = resolveNamedRange(workbook, 'c_prev');
 
-        console.log('📥 Import config - Valori raw (indici 0-based):', {
-            'Riga 9 (8), Col C (2) - Fine corrente': fineCorrenteSerial,
-            'Riga 9 (8), Col D (3) - Inizio corrente': inizioCorrenteSerial,
-            'Riga 9 (8), Col E (4) - Anno corrente': annoCorrente,
-            'Riga 10 (9), Col C (2) - Fine precedente': finePrecedenteSerial,
-            'Riga 10 (9), Col D (3) - Inizio precedente': inizioPrecedenteSerial,
-            'Riga 9 (8), Col F (5) - Anno precedente': annoPrecedente
+        // Fallback a Configurazione
+        if (!finePrecedenteSerial) {
+            finePrecedenteSerial = resolveNamedRange(workbook, 'c_prev_end');
+        }
+        if (!inizioPrecedenteSerial) {
+            inizioPrecedenteSerial = resolveNamedRange(workbook, 'c_prev_start');
+        }
+
+        // Leggi altri metadati
+        const codiceFiscale = resolveNamedRange(workbook, 'cf');
+        const valuta = resolveNamedRange(workbook, 'unit');
+
+        console.log('📥 Valori letti da Named Ranges:', {
+            'c_this_end': fineCorrenteSerial,
+            'c_this_start': inizioCorrenteSerial,
+            'c_this': annoCorrenteStr,
+            'c_prev_end': finePrecedenteSerial,
+            'c_prev_start': inizioPrecedenteSerial,
+            'c_prev': annoPrecedenteStr,
+            'cf': codiceFiscale,
+            'unit': valuta
         });
 
-        // Estrai anno dai valori tipo "c2018" → 2018
-        if (annoCorrente && typeof annoCorrente === 'string') {
-            const match = annoCorrente.match(/(\d{4})/);
-            if (match) {
-                annoCorrente = parseInt(match[1]);
-                console.log('📅 Anno corrente estratto da "' + getCellValue(sheet, 8, 4) + '":', annoCorrente);
-            }
-        }
-        if (annoPrecedente && typeof annoPrecedente === 'string') {
-            const match = annoPrecedente.match(/(\d{4})/);
-            if (match) {
-                annoPrecedente = parseInt(match[1]);
-                console.log('📅 Anno precedente estratto da "' + getCellValue(sheet, 8, 5) + '":', annoPrecedente);
-            }
-        }
-
         // Converti date seriali Excel in ISO
-        if (fineCorrenteSerial) {
+        if (fineCorrenteSerial && typeof fineCorrenteSerial === 'number') {
             bilancio.metadata.fine_corrente = excelSerialToISO(fineCorrenteSerial);
         }
-        if (inizioCorrenteSerial) {
+        if (inizioCorrenteSerial && typeof inizioCorrenteSerial === 'number') {
             bilancio.metadata.inizio_corrente = excelSerialToISO(inizioCorrenteSerial);
         }
-        if (finePrecedenteSerial) {
+        if (finePrecedenteSerial && typeof finePrecedenteSerial === 'number') {
             bilancio.metadata.fine_precedente = excelSerialToISO(finePrecedenteSerial);
         }
-        if (inizioPrecedenteSerial) {
+        if (inizioPrecedenteSerial && typeof inizioPrecedenteSerial === 'number') {
             bilancio.metadata.inizio_precedente = excelSerialToISO(inizioPrecedenteSerial);
         }
 
-        // Calcola anni dalle date se non sono specificati nella colonna H
+        // Estrai anni da stringhe "c2022" → 2022
+        let annoCorrente = null;
+        let annoPrecedente = null;
+
+        if (annoCorrenteStr && typeof annoCorrenteStr === 'string') {
+            const match = annoCorrenteStr.match(/(\d{4})/);
+            if (match) {
+                annoCorrente = parseInt(match[1]);
+                console.log('📅 Anno corrente estratto da "' + annoCorrenteStr + '":', annoCorrente);
+            }
+        }
+
+        if (annoPrecedenteStr && typeof annoPrecedenteStr === 'string') {
+            const match = annoPrecedenteStr.match(/(\d{4})/);
+            if (match) {
+                annoPrecedente = parseInt(match[1]);
+                console.log('📅 Anno precedente estratto da "' + annoPrecedenteStr + '":', annoPrecedente);
+            }
+        }
+
+        // Fallback: calcola anni dalle date se non specificati
         if (!annoCorrente && bilancio.metadata.fine_corrente) {
             annoCorrente = new Date(bilancio.metadata.fine_corrente).getFullYear();
             console.log('📅 Anno corrente calcolato da data fine:', annoCorrente);
@@ -397,30 +449,31 @@ function importConfigurazione(workbook, bilancio) {
             console.log('📅 Anno precedente calcolato da data fine:', annoPrecedente);
         }
 
-        // Imposta anni
+        // Imposta metadati
         if (annoCorrente) {
             bilancio.metadata.anno_esercizio = Math.round(annoCorrente);
         }
         if (annoPrecedente) {
             bilancio.metadata.anno_precedente = Math.round(annoPrecedente);
         }
-        
-        // Valuta e CF
         if (valuta) {
             bilancio.metadata.valuta = valuta;
         }
         if (codiceFiscale) {
             bilancio.metadata.codice_fiscale = codiceFiscale;
         }
-        
+
         console.log('✓ Configurazione importata:', {
             anno_corrente: bilancio.metadata.anno_esercizio,
             anno_precedente: bilancio.metadata.anno_precedente,
-            cf: codiceFiscale
+            fine_corrente: bilancio.metadata.fine_corrente,
+            fine_precedente: bilancio.metadata.fine_precedente,
+            cf: bilancio.metadata.codice_fiscale,
+            valuta: bilancio.metadata.valuta
         });
-        
+
     } catch (error) {
-        console.error('Errore import configurazione:', error);
+        console.error('❌ Errore import configurazione:', error);
     }
 }
 
