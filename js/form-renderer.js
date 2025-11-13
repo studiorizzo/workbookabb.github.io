@@ -162,14 +162,14 @@ function renderFoglio(codice) {
     }
     
     const config = templateData[1];
-    
+
     // Verifica che config sia un array valido
     if (!Array.isArray(config) || config.length === 0) {
         content.innerHTML = `<div class="empty-state"><p>Configurazione template non valida</p></div>`;
         return;
     }
-    
-    const tipoTab = config[0];
+
+    const tipoTab = parseInt(config[0]);
     
     let html = '';
     
