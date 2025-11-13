@@ -1,0 +1,9 @@
+2025-11-11 19:14:22 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-11 19:14:22 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-11 19:14:22 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-11 19:14:22 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-11 19:14:22 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-11 19:14:22 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-11 19:14:23 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-11 19:14:23 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-11 19:14:23 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
