@@ -295,19 +295,28 @@ function importConfigurazione(workbook, bilancio) {
         // Col 1 = fine (seriale Excel), Col 2 = inizio, Col 7 = anno
         const fineCorrenteSerial = getCellValue(sheet, 8, 1);
         const inizioCorrenteSerial = getCellValue(sheet, 8, 2);
-        const annoCorrente = getCellValue(sheet, 8, 7);
-        
+        let annoCorrente = getCellValue(sheet, 8, 7);
+
         // Riga 9: Date esercizio precedente
         const finePrecedenteSerial = getCellValue(sheet, 9, 1);
         const inizioPrecedenteSerial = getCellValue(sheet, 9, 2);
-        const annoPrecedente = getCellValue(sheet, 9, 7);
-        
+        let annoPrecedente = getCellValue(sheet, 9, 7);
+
         // Riga 11: Valuta
         const valuta = getCellValue(sheet, 11, 1);
-        
+
         // Riga 13: Codice Fiscale
         const codiceFiscale = getCellValue(sheet, 13, 1);
-        
+
+        console.log('📥 Import config - Valori raw:', {
+            fineCorrenteSerial,
+            inizioCorrenteSerial,
+            annoCorrente,
+            finePrecedenteSerial,
+            inizioPrecedenteSerial,
+            annoPrecedente
+        });
+
         // Converti date seriali Excel in ISO
         if (fineCorrenteSerial) {
             bilancio.metadata.fine_corrente = excelSerialToISO(fineCorrenteSerial);
@@ -321,7 +330,17 @@ function importConfigurazione(workbook, bilancio) {
         if (inizioPrecedenteSerial) {
             bilancio.metadata.inizio_precedente = excelSerialToISO(inizioPrecedenteSerial);
         }
-        
+
+        // Calcola anni dalle date se non sono specificati nella colonna H
+        if (!annoCorrente && bilancio.metadata.fine_corrente) {
+            annoCorrente = new Date(bilancio.metadata.fine_corrente).getFullYear();
+            console.log('📅 Anno corrente calcolato da data fine:', annoCorrente);
+        }
+        if (!annoPrecedente && bilancio.metadata.fine_precedente) {
+            annoPrecedente = new Date(bilancio.metadata.fine_precedente).getFullYear();
+            console.log('📅 Anno precedente calcolato da data fine:', annoPrecedente);
+        }
+
         // Imposta anni
         if (annoCorrente) {
             bilancio.metadata.anno_esercizio = Math.round(annoCorrente);
