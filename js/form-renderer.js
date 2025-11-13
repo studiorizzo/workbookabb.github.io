@@ -230,9 +230,9 @@ function renderTipo1(templateData, dati, foglioCode) {
     const firstCol = config[4];
     const numRows = config[1];
     const numCols = config[2];
-    
+
     const xbrlMappings = getXBRLMappings();
-    
+
     // Se c'è una sola riga e una sola cella, è un textBlock
     if (numRows === 1 && numCols === 1) {
         // Il codice cella è in riga 2, colonna 3 (non in firstRow)
@@ -240,17 +240,17 @@ function renderTipo1(templateData, dati, foglioCode) {
         if (!codiceCell) {
             return '<div class="empty-state"><p>Codice cella non trovato</p></div>';
         }
-        
+
         const valore = dati[codiceCell] || '';
         const titolo = getTitoloFoglio(templateData);
-        
+
         const mapping = findMappingByCode(codiceCell, foglioCode, xbrlMappings);
         const label = mapping?.ui?.label || titolo;
-        
+
         return `
             <div class="textblock">
                 <h3>${escapeHtml(label)}</h3>
-                <textarea 
+                <textarea
                     class="cell-textarea"
                     data-cell="${codiceCell}"
                     data-foglio="${foglioCode}"
@@ -258,16 +258,39 @@ function renderTipo1(templateData, dati, foglioCode) {
             </div>
         `;
     }
-    
+
+    // Leggi anni da bilancio per header dinamici
+    const bilancio = getBilancio();
+    const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
+    const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
+
+    // Determina se è T0000 o foglio senza codici colonna (stesso check di Tipo 2)
+    const isT0000 = foglioCode === 'T0000';
+    const effectiveNumCols = isT0000 ? 1 : numCols;
+
     // Altrimenti è una tabella semplice (es. T0000)
     let html = '<div class="form-container"><table class="bilancio-table">';
-    
+
     // Header colonne (cerca nella riga 8 o firstRow-1)
     const headerRow = templateData[Math.max(8, firstRow - 1)] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
-    for (let c = 0; c < numCols; c++) {
-        const colHeader = headerRow[firstCol + c] || '';
-        html += `<th>${escapeHtml(colHeader)}</th>`;
+
+    if (isT0000) {
+        // T0000: una sola colonna con anno corrente
+        html += `<th>${annoCorrente}</th>`;
+    } else {
+        // Altri fogli tipo 1: usa header standard
+        for (let c = 0; c < numCols; c++) {
+            let colHeader = headerRow[firstCol + c] || '';
+
+            // Sostituisci anni hardcoded con valori dinamici
+            if (typeof colHeader === 'number' && colHeader >= 1900 && colHeader <= 2100) {
+                if (c === 0) colHeader = annoCorrente;
+                else if (c === 1) colHeader = annoPrecedente;
+            }
+
+            html += `<th>${escapeHtml(colHeader)}</th>`;
+        }
     }
     html += '</tr></thead><tbody>';
     
@@ -297,22 +320,28 @@ function renderTipo1(templateData, dati, foglioCode) {
         
         // Celle input
         if (isAbstract) {
-            for (let c = 0; c < numCols; c++) {
+            for (let c = 0; c < effectiveNumCols; c++) {
                 html += '<td class="cell-abstract">—</td>';
             }
         } else {
-            for (let c = 0; c < numCols; c++) {
-                const valore = dati[codiceRiga] !== null && dati[codiceRiga] !== undefined 
-                    ? dati[codiceRiga] 
+            // Per T0000: UNA sola cella, per altri: tutte le colonne
+            for (let c = 0; c < effectiveNumCols; c++) {
+                const valore = dati[codiceRiga] !== null && dati[codiceRiga] !== undefined
+                    ? dati[codiceRiga]
                     : '';
-                
+
+                // Determina il tipo di input dalla mappatura
+                const mapping = findMappingByCode(codiceRiga, foglioCode, xbrlMappings);
+                const xbrlType = mapping?.xbrl?.type || 'string';
+                const inputType = (xbrlType === 'monetary' || xbrlType === 'decimal') ? 'number' : 'text';
+
                 html += `<td>
-                    <input type="text" 
+                    <input type="${inputType}"
                            class="cell-input"
                            data-cell="${codiceRiga}"
                            data-foglio="${foglioCode}"
                            value="${escapeHtml(valore)}"
-                           placeholder="" />
+                           ${inputType === 'number' ? 'step="0.01" placeholder="0"' : 'placeholder=""'} />
                 </td>`;
             }
         }
