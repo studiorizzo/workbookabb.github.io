@@ -310,6 +310,51 @@ function parseSheetConfig(templateData) {
     return config;
 }
 
+// Mappa Named Ranges → coordinate celle
+// Basata sull'analisi dell'Excel originale e del codice Java
+function getNamedRangeLocations() {
+    return {
+        // Date INPUT utente (da foglio Indice)
+        'c_this_end_input': { sheet: 'Indice', row: 2, col: 2 },     // C3
+        'c_this_start_import': { sheet: 'Indice', row: 2, col: 6 },  // G3
+        'c_prev_end_import': { sheet: 'Indice', row: 3, col: 8 },    // I4
+        'c_prev_start_import': { sheet: 'Indice', row: 3, col: 6 },  // G4
+
+        // Date calcolate (da foglio Configurazione)
+        'c_this_end': { sheet: 'Configurazione', row: 8, col: 2 },   // C9
+        'c_this_start': { sheet: 'Configurazione', row: 8, col: 3 }, // D9
+        'c_this': { sheet: 'Configurazione', row: 8, col: 4 },       // E9
+        'c_prev_end': { sheet: 'Configurazione', row: 9, col: 2 },   // C10
+        'c_prev_start': { sheet: 'Configurazione', row: 9, col: 3 }, // D10
+        'c_prev': { sheet: 'Configurazione', row: 9, col: 4 },       // E10
+
+        // Altri
+        'cf': { sheet: 'Configurazione', row: 13, col: 2 },          // C14 - Codice Fiscale
+        'unit': { sheet: 'Configurazione', row: 11, col: 2 }         // C12 - Valuta
+    };
+}
+
+// Risolvi Named Range: legge valore da Excel workbook
+function resolveNamedRange(workbook, rangeName) {
+    const locations = getNamedRangeLocations();
+    const location = locations[rangeName];
+
+    if (!location) {
+        console.warn(`Named range "${rangeName}" non trovato`);
+        return null;
+    }
+
+    // Trova il foglio
+    const sheet = workbook.Sheets[location.sheet];
+    if (!sheet) {
+        console.warn(`Foglio "${location.sheet}" non trovato per named range "${rangeName}"`);
+        return null;
+    }
+
+    // Leggi valore dalla cella
+    return getCellValue(sheet, location.row, location.col);
+}
+
 // Importa configurazione da foglio Configurazione
 function importConfigurazione(workbook, bilancio) {
     // Cerca foglio Configurazione
