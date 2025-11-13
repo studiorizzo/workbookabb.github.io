@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<instance xmlns:itcc-ci="http://www.infocamere.it/itnn/fr/itcc/ci/2018-11-04" xmlns:itcc-ci-abb="http://www.infocamere.it/itnn/fr/itcc/ci/abb/2018-11-04" schemaRef="itcc-ci-abb-2018-11-04.xsd">  
+  <context id="c0"> 
+    <entity scheme="http://www.infocamere.it">04252300753</entity>  
+    <period> 
+      <startDate>2021-01-01</startDate>  
+      <endDate>2021-12-31</endDate> 
+    </period>  
+    <scenario>itcc-ci:depositato</scenario>  
+    <unit>EUR</unit> 
+  </context>  
+  <context id="c1" id_prev="c0"> 
+    <entity scheme="http://www.infocamere.it">04252300753</entity>  
+    <period> 
+      <startDate>2022-01-01</startDate>  
+      <endDate>2022-12-31</endDate> 
+    </period>  
+    <scenario>itcc-ci:depositato</scenario>  
+    <unit>EUR</unit> 
+  </context>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.002" context_code="c1">BARONE SRL</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.003" context_code="c1">CONTRADA BLASI 5 - 73046 MATINO (LE)</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.004" context_code="c1">10000</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.005" context_code="c1">true</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.006" context_code="c1">LE</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.007" context_code="c1">04252300753</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.008" context_code="c1">04252300753</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.009" context_code="c1">000000277321</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.010" context_code="c1">SRL</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.011" context_code="c1">104110</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.012" context_code="c1">false</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.013" context_code="c1">false</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.014" context_code="c1">false</fact>
+  <fact report_code="T0000" cell_code="T0000.D01.1.001.002.016" context_code="c1">false</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.002.000" context_code="c1">7740</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.003.000" context_code="c1">605877</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.005.000" context_code="c1">613617</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.002.000" context_code="c1">80706</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.004.002" context_code="c1">381502</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.004.005" context_code="c1">381502</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.005.000" context_code="c1">26</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.006.000" context_code="c1">154709</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.007.000" context_code="c1">616943</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.005.000.000" context_code="c1">3362</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.006.000.000" context_code="c1">1233922</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.002.000" context_code="c1">10000</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.005.000" context_code="c1">2000</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.007.000" context_code="c1">110002</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.009.000" context_code="c1">-94224</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.010.000" context_code="c1">-1986</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.013.000" context_code="c1">25792</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.004.000.000" context_code="c1">17417</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.002.000" context_code="c1">1058916</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.003.000" context_code="c1">127597</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.004.000" context_code="c1">1186513</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.006.000.000" context_code="c1">4200</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.007.000.000" context_code="c1">1233922</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.002.000" context_code="c0">10683</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.003.000" context_code="c0">465680</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.003.005.000" context_code="c0">476363</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.002.000" context_code="c0">172393</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.004.002" context_code="c0">333790</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.004.005" context_code="c0">333790</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.005.000" context_code="c0">26</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.006.000" context_code="c0">167995</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.004.007.000" context_code="c0">674204</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.005.000.000" context_code="c0">4267</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.002.006.000.000" context_code="c0">1154834</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.002.000" context_code="c0">10000</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.005.000" context_code="c0">2000</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.007.000" context_code="c0">109999</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.009.000" context_code="c0">-154234</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.010.000" context_code="c0">60010</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.002.013.000" context_code="c0">27775</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.004.000.000" context_code="c0">15683</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.002.000" context_code="c0">952593</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.003.000" context_code="c0">153383</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.005.004.000" context_code="c0">1105976</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.006.000.000" context_code="c0">5400</fact>
+  <fact report_code="T0002" cell_code="T0002.D01.1.001.003.007.000.000" context_code="c0">1154834</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.002.000.000" context_code="c1">348844</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.002.000" context_code="c1">0</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.003.000" context_code="c1">74195</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.004.000" context_code="c1">74195</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.006.000.000" context_code="c1">423039</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.002.000.000" context_code="c1">140444</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.003.000.000" context_code="c1">46092</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.004.000.000" context_code="c1">8141</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.002.000" context_code="c1">37838</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.003.000" context_code="c1">6060</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.004.001" context_code="c1">3278</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.004.002" context_code="c1">3278</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.005.000" context_code="c1">47176</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.001" context_code="c1">50159</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.002" context_code="c1">2943</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.003" context_code="c1">47216</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.004.000" context_code="c1">50159</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.007.000.000" context_code="c1">91688</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.010.000.000" context_code="c1">30336</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.011.000.000" context_code="c1">414036</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.004.000.000.000" context_code="c1">9003</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.004.006.000" context_code="c1">7928</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.004.007.000" context_code="c1">7928</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.006.000.000" context_code="c1">-7928</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.007.000.000.000" context_code="c1">1075</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.008.002.000.000" context_code="c1">3061</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.008.006.000.000" context_code="c1">3061</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.009.000.000.000" context_code="c1">-1986</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.002.000.000" context_code="c0">348233</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.002.000" context_code="c0">29894</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.003.000" context_code="c0">75553</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.005.004.000" context_code="c0">105447</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.002.006.000.000" context_code="c0">453680</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.002.000.000" context_code="c0">198789</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.003.000.000" context_code="c0">26393</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.004.000.000" context_code="c0">0</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.002.000" context_code="c0">24660</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.003.000" context_code="c0">3049</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.004.001" context_code="c0">2170</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.004.002" context_code="c0">2170</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.005.005.000" context_code="c0">29879</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.001" context_code="c0">52077</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.002" context_code="c0">2943</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.002.003" context_code="c0">49134</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.006.004.000" context_code="c0">52077</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.007.000.000" context_code="c0">42653</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.010.000.000" context_code="c0">13264</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.003.011.000.000" context_code="c0">363055</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.004.000.000.000" context_code="c0">90625</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.004.006.000" context_code="c0">25489</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.004.007.000" context_code="c0">25489</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.005.006.000.000" context_code="c0">-25489</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.007.000.000.000" context_code="c0">65136</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.008.002.000.000" context_code="c0">5126</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.008.006.000.000" context_code="c0">5126</fact>
+  <fact report_code="T0006" cell_code="T0006.D01.1.001.009.000.000.000" context_code="c0">60010</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.002.002.000" context_code="c1">-1986</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.002.003.000" context_code="c1">3061</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.008.005.000" context_code="c1">154709</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.002.002.000" context_code="c0">60010</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.002.003.000" context_code="c0">5126</fact>
+  <fact report_code="T0009" cell_code="T0009.D01.1.001.008.005.000" context_code="c0">167995</fact>
+  <fact report_code="T0011" cell_code="T0011.D01.1.001.008.005.000" context_code="c1">154709</fact>
+  <fact report_code="T0011" cell_code="T0011.D01.1.001.008.005.000" context_code="c0">167995</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.002_T0160.D02.1.001" context_code="c1">35285</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.004_T0160.D02.1.001" context_code="c1">24602</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.006_T0160.D02.1.001" context_code="c1">10683</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.006_T0160.D02.1.001" context_code="c1">1543</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.008_T0160.D02.1.001" context_code="c1">-1400</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.009_T0160.D02.1.001" context_code="c1">-2943</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.002_T0160.D02.1.001" context_code="c1">35285</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.004_T0160.D02.1.001" context_code="c1">27545</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.006_T0160.D02.1.001" context_code="c1">7740</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.002_T0160.D02.1.002" context_code="c1">806785</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.004_T0160.D02.1.002" context_code="c1">343813</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.006_T0160.D02.1.002" context_code="c1">465680</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.002_T0160.D02.1.002" context_code="c1">187413</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.006_T0160.D02.1.002" context_code="c1">47216</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.009_T0160.D02.1.002" context_code="c1">140197</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.002_T0160.D02.1.002" context_code="c1">995707</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.004_T0160.D02.1.002" context_code="c1">389830</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.006_T0160.D02.1.002" context_code="c1">605877</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.002_T0160.D02.1.004" context_code="c1">842070</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.004_T0160.D02.1.004" context_code="c1">368415</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.002.006_T0160.D02.1.004" context_code="c1">476363</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.002_T0160.D02.1.004" context_code="c1">187413</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.006_T0160.D02.1.004" context_code="c1">48759</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.008_T0160.D02.1.004" context_code="c1">-1400</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.003.009_T0160.D02.1.004" context_code="c1">137254</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.002_T0160.D02.1.004" context_code="c1">1030992</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.004_T0160.D02.1.004" context_code="c1">417375</fact>
+  <fact report_code="T0160" cell_code="T0160.D01.1.004.006_T0160.D02.1.004" context_code="c1">613617</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.002.002_T0166.D02.1.008" context_code="c1">35285</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.002.004_T0166.D02.1.008" context_code="c1">24602</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.002.006_T0166.D02.1.008" context_code="c1">10683</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.003.006_T0166.D02.1.008" context_code="c1">1543</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.003.008_T0166.D02.1.008" context_code="c1">-1400</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.003.009_T0166.D02.1.008" context_code="c1">-2943</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.004.002_T0166.D02.1.008" context_code="c1">35285</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.004.004_T0166.D02.1.008" context_code="c1">27545</fact>
+  <fact report_code="T0166" cell_code="T0166.D01.1.004.006_T0166.D02.1.008" context_code="c1">7740</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.002.002_T0173.D02.1.006" context_code="c1">806785</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.002.004_T0173.D02.1.006" context_code="c1">343813</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.002.006_T0173.D02.1.006" context_code="c1">465680</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.003.002_T0173.D02.1.006" context_code="c1">187413</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.003.006_T0173.D02.1.006" context_code="c1">47216</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.003.009_T0173.D02.1.006" context_code="c1">140197</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.004.002_T0173.D02.1.006" context_code="c1">995707</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.004.004_T0173.D02.1.006" context_code="c1">389830</fact>
+  <fact report_code="T0173" cell_code="T0173.D01.1.004.006_T0173.D02.1.006" context_code="c1">605877</fact>
+  <fact report_code="T0225" cell_code="T0225.D01.1.002_T0225.D02.1.006" context_code="c1">172393</fact>
+  <fact report_code="T0225" cell_code="T0225.D01.1.004_T0225.D02.1.006" context_code="c1">80706</fact>
+  <fact report_code="T0235" cell_code="T0235.D01.1.004_T0235.D02.1.001" context_code="c1">187920</fact>
+  <fact report_code="T0235" cell_code="T0235.D01.1.004_T0235.D02.1.006" context_code="c1">37633</fact>
+  <fact report_code="T0235" cell_code="T0235.D01.1.004_T0235.D02.1.008" context_code="c1">155949</fact>
+  <fact report_code="T0235" cell_code="T0235.D01.1.002_T0235.D02.1.009" context_code="c1">333790</fact>
+  <fact report_code="T0235" cell_code="T0235.D01.1.004_T0235.D02.1.009" context_code="c1">381502</fact>
+  <fact report_code="T0239" cell_code="T0239.D01.1.001.002_T0239.D02.1.002.000" context_code="c1">187920</fact>
+  <fact report_code="T0239" cell_code="T0239.D01.1.001.007_T0239.D02.1.002.000" context_code="c1">37633</fact>
+  <fact report_code="T0239" cell_code="T0239.D01.1.001.009_T0239.D02.1.002.000" context_code="c1">155949</fact>
+  <fact report_code="T0239" cell_code="T0239.D01.1.001.010_T0239.D02.1.002.000" context_code="c1">381502</fact>
+  <tuple code="T0239.D01.1.001.000_N1" context_code="c1">
+    <fact report_code="T0239" cell_code="T0239.D01.1.001.001_T0239.D02.1.001.001" context_code="c1">ITALIA</fact>
+    <fact report_code="T0239" cell_code="T0239.D01.1.001.002_T0239.D02.1.001.001" context_code="c1">187920</fact>
+    <fact report_code="T0239" cell_code="T0239.D01.1.001.007_T0239.D02.1.001.001" context_code="c1">37633</fact>
+    <fact report_code="T0239" cell_code="T0239.D01.1.001.009_T0239.D02.1.001.001" context_code="c1">155949</fact>
+    <fact report_code="T0239" cell_code="T0239.D01.1.001.010_T0239.D02.1.001.001" context_code="c1">381502</fact>
+  </tuple>
+  <fact report_code="T0249" cell_code="T0249.D01.1.002_T0249.D02.1.009" context_code="c1">26</fact>
+  <fact report_code="T0249" cell_code="T0249.D01.1.004_T0249.D02.1.009" context_code="c1">26</fact>
+  <fact report_code="T0261" cell_code="T0261.D01.1.002_T0261.D02.1.004" context_code="c1">167995</fact>
+  <fact report_code="T0261" cell_code="T0261.D01.1.004_T0261.D02.1.004" context_code="c1">154709</fact>
+  <fact report_code="T0266" cell_code="T0266.D01.1.002_T0266.D02.1.003" context_code="c1">4267</fact>
+  <fact report_code="T0266" cell_code="T0266.D01.1.004_T0266.D02.1.003" context_code="c1">3362</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.001.000" context_code="c1">10000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.001.000" context_code="c1">10000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.004.000" context_code="c1">2000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.004.000" context_code="c1">2000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.006.007" context_code="c1">110000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.006.007" context_code="c1">110000</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.006.014" context_code="c1">2</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.006.014" context_code="c1">2</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.006.015" context_code="c1">109999</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.006.015" context_code="c1">110002</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.008.000" context_code="c1">-154234</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.004.002_T0335.D02.1.008.000" context_code="c1">60010</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.008.000" context_code="c1">-94224</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.009.000" context_code="c1">60010</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.004.003_T0335.D02.1.009.000" context_code="c1">60010</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.005.000_T0335.D02.1.009.000" context_code="c1">-1986</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.009.000" context_code="c1">-1986</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.002.000_T0335.D02.1.012.000" context_code="c1">27775</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.004.002_T0335.D02.1.012.000" context_code="c1">60010</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.004.003_T0335.D02.1.012.000" context_code="c1">60010</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.005.000_T0335.D02.1.012.000" context_code="c1">-1986</fact>
+  <fact report_code="T0335" cell_code="T0335.D01.1.006.000_T0335.D02.1.012.000" context_code="c1">25792</fact>
+  <fact report_code="T0336" cell_code="T0336.D01.1.001.002_T0336.D02.1.002.000" context_code="c1">2</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.002.000_T0340.D02.1.001.000" context_code="c1">10000</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.005.000_T0340.D02.1.001.000" context_code="c1">2000</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.007_T0340.D02.1.001.000" context_code="c1">110000</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.014_T0340.D02.1.001.000" context_code="c1">2</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.015_T0340.D02.1.001.000" context_code="c1">110002</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.009.000_T0340.D02.1.001.000" context_code="c1">-94224</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.011.000_T0340.D02.1.001.000" context_code="c1">27778</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.002.000_T0340.D02.1.002.000" context_code="c1">CAPITALE</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.005.000_T0340.D02.1.002.000" context_code="c1">UTILI</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.007_T0340.D02.1.002.000" context_code="c1">CAPITALE</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.014_T0340.D02.1.002.000" context_code="c1">UTILE</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.005.000_T0340.D02.1.003.000" context_code="c1">A</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.007_T0340.D02.1.003.000" context_code="c1">A,B</fact>
+  <fact report_code="T0340" cell_code="T0340.D01.1.007.014_T0340.D02.1.003.000" context_code="c1">A,B</fact>
+  <fact report_code="T0341" cell_code="T0341.D01.1.001.002_T0341.D02.1.002.000" context_code="c1">2</fact>
+  <fact report_code="T0354" cell_code="T0354.D01.1.002.000_T0354.D02.1.001" context_code="c1">15683</fact>
+  <fact report_code="T0354" cell_code="T0354.D01.1.003.002_T0354.D02.1.001" context_code="c1">3277</fact>
+  <fact report_code="T0354" cell_code="T0354.D01.1.003.003_T0354.D02.1.001" context_code="c1">1543</fact>
+  <fact report_code="T0354" cell_code="T0354.D01.1.003.005_T0354.D02.1.001" context_code="c1">1734</fact>
+  <fact report_code="T0354" cell_code="T0354.D01.1.004.000_T0354.D02.1.001" context_code="c1">17417</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.003" context_code="c1">1716</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.004" context_code="c1">127597</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.006" context_code="c1">392320</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.007" context_code="c1">223792</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.013" context_code="c1">342339</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.014" context_code="c1">40924</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.015" context_code="c1">57825</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.002_T0360.D02.1.016" context_code="c1">1105976</fact>
+  <fact report_code="T0360" cell_code="T0360.D01.1.004_T0360.D02.1.016" context_code="c1">1186513</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.004_T0364.D02.1.002.000" context_code="c1">1716</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.005_T0364.D02.1.002.000" context_code="c1">127597</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.007_T0364.D02.1.002.000" context_code="c1">392320</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.008_T0364.D02.1.002.000" context_code="c1">223792</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.014_T0364.D02.1.002.000" context_code="c1">342339</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.015_T0364.D02.1.002.000" context_code="c1">40924</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.016_T0364.D02.1.002.000" context_code="c1">57825</fact>
+  <fact report_code="T0364" cell_code="T0364.D01.1.001.017_T0364.D02.1.002.000" context_code="c1">1186513</fact>
+  <tuple code="T0364.D01.1.001.000_N1" context_code="c1">
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.001_T0364.D02.1.001.001" context_code="c1">ITALIA</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.004_T0364.D02.1.001.001" context_code="c1">1716</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.005_T0364.D02.1.001.001" context_code="c1">127597</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.007_T0364.D02.1.001.001" context_code="c1">392320</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.008_T0364.D02.1.001.001" context_code="c1">223792</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.014_T0364.D02.1.001.001" context_code="c1">342339</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.015_T0364.D02.1.001.001" context_code="c1">40924</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.016_T0364.D02.1.001.001" context_code="c1">57825</fact>
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.017_T0364.D02.1.001.001" context_code="c1">1186513</fact>
+  </tuple>
+  <tuple code="T0364.D01.1.001.000_N2" context_code="c1">
+    <fact report_code="T0364" cell_code="T0364.D01.1.001.001_T0364.D02.1.001.001" context_code="c1">TUNISIA</fact>
+  </tuple>
+  <fact report_code="T0368" cell_code="T0368.D01.1.005.000_T0368.D02.1.001" context_code="c1">1186513</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.003" context_code="c1">1716</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.004" context_code="c1">127597</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.006" context_code="c1">392320</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.007" context_code="c1">223792</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.013" context_code="c1">342339</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.014" context_code="c1">40924</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.015" context_code="c1">57825</fact>
+  <fact report_code="T0369" cell_code="T0369.D01.1.004.000_T0369.D02.1.016" context_code="c1">1186513</fact>
+  <fact report_code="T0377" cell_code="T0377.D01.1.001.002_T0377.D02.1.002.000" context_code="c1">1716</fact>
+  <fact report_code="T0382" cell_code="T0382.D01.1.002_T0382.D02.1.003" context_code="c1">5400</fact>
+  <fact report_code="T0382" cell_code="T0382.D01.1.004_T0382.D02.1.003" context_code="c1">4200</fact>
+  <fact report_code="T0435" cell_code="T0435.D01.1.001.002_T0435.D02.1.002.000" context_code="c1">348844</fact>
+  <fact report_code="T0439" cell_code="T0439.D01.1.001.002_T0439.D02.1.002.000" context_code="c1">348844</fact>
+</instance>
