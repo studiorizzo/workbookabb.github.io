@@ -387,14 +387,13 @@ function renderTipo2(templateData, dati, foglioCode) {
     const configMap = parseSheetConfig(templateData);
     if (!configMap) return '<div class="empty-state"><p>Configurazione non valida</p></div>';
     const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
     const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
     const numRows = parseInt(configMap.nr_row) || 0;
     const numCols = parseInt(configMap.nr_col) || 0;
-    const firstRow = config[3];
-    const numRows = config[1];
-    const numCols = config[2]; // Numero colonne dalla config
     const headerRow = templateData[9] || templateData[Math.max(8, firstRow - 1)] || [];
-    const codiciColonne = templateData[2]?.slice(3) || [];
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
     const xbrlMappings = getXBRLMappings();
     
@@ -534,12 +533,12 @@ function renderTipo3(templateData, dati, foglioCode) {
     const configMap = parseSheetConfig(templateData);
     if (!configMap) return '<div class="empty-state"><p>Configurazione non valida</p></div>';
     const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
     const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
     const numRows = parseInt(configMap.nr_row) || 0;
-    const firstRow = config[3];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
     const xbrlMappings = getXBRLMappings();
     
