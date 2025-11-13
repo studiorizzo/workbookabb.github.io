@@ -273,9 +273,14 @@ function renderFoglio(codice) {
 
 // Estrai titolo foglio - cerca in più posizioni e usa fallback
 function getTitoloFoglio(templateData, foglioCode = null) {
-    // POSIZIONE PRINCIPALE: Riga 5, colonna 2 (verificato su T0002, T0006)
-    if (templateData[5] && templateData[5][2]) {
-        const value = templateData[5][2];
+    // Parse config per trovare first_row
+    const configMap = parseSheetConfig(templateData);
+    const firstRow = configMap ? parseInt(configMap.first_row) : 9;
+
+    // POSIZIONE PRINCIPALE: Prima riga dati, colonna 2 (es. sheet[9][2] per T0006)
+    // Il titolo si trova nella prima riga dei dati (first_row), colonna 2
+    if (templateData[firstRow] && templateData[firstRow][2]) {
+        const value = templateData[firstRow][2];
         if (typeof value === 'string' && value.length > 3 && value.length < 100) {
             if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
                 return value;
@@ -285,10 +290,10 @@ function getTitoloFoglio(templateData, foglioCode = null) {
 
     // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
     const possiblePositions = [
-        [3, 1],  // Titolo esteso (es. "Conto economico abbreviato")
-        [5, 1],  // Alternativa colonna 1
-        [6, 2],  // Posizione alternativa
-        [4, 1],  // Altra posizione
+        [6, 1],  // Titolo esteso (es. "Conto economico abbreviato")
+        [5, 2],  // Posizione JSON compresso (compatibilità)
+        [3, 1],  // Altra posizione
+        [firstRow, 1],  // Prima riga dati, colonna 1
         [7, 2]   // Altra posizione
     ];
 
