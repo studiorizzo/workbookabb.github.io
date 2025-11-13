@@ -1,0 +1,254 @@
+2025-11-06 12:14:07 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 12:14:07 DEBUG UIlauncher:35 - homeApplication non esiste, la creo!
+2025-11-06 12:14:07 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 12:14:07 DEBUG UIlauncher:41 - userConfig non esiste, lo creo!
+2025-11-06 12:14:07 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:14:08 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:14:08 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 12:14:08 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 12:14:08 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 12:14:08 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 12:14:08 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 12:14:08 DEBUG XBRLGenerator:65 - La dir D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel NON esiste. La creo!
+2025-11-06 12:14:08 DEBUG XBRLGenerator:74 - La dir D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\xml NON esiste. La creo!
+2025-11-06 12:14:11 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-06 12:14:11 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-06 12:14:11 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-06 12:14:11 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-06 12:14:35 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 12:14:35 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 12:14:35 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:14:35 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:14:35 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 12:14:35 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 12:14:35 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 12:14:35 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 12:14:35 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 12:14:38 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-06 12:14:38 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-06 12:14:38 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-06 12:14:38 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-06 12:14:48 DEBUG FramePrincipale:504 - actionPerformed: VISUALIZZA XBRL
+2025-11-06 12:14:48 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-06 12:14:48 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-06 12:14:48 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-06 12:14:58 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-06 12:15:00 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-06 12:15:00 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-06 12:15:00 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-06 12:15:00 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-06 12:15:00 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-06 12:15:00 INFO  XBRLGenerator:152 - Lang = 
+2025-11-06 12:15:01 INFO  XBRLGenerator:352 - statusCode=200
+2025-11-06 12:17:55 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 12:17:55 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 12:17:55 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:17:55 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 12:17:55 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 12:17:55 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 12:17:55 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 12:17:55 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 12:17:55 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 12:17:58 DEBUG FramePrincipale:461 - actionPerformed: LOAD EXCEL
+2025-11-06 12:17:58 DEBUG XBRLGenerator:558 - getPreCompXBRLInstance...
+2025-11-06 12:18:42 DEBUG FramePrincipale:461 - actionPerformed: LOAD EXCEL
+2025-11-06 12:18:42 DEBUG XBRLGenerator:558 - getPreCompXBRLInstance...
+2025-11-06 12:19:20 DEBUG FramePrincipale:504 - actionPerformed: VISUALIZZA XBRL
+2025-11-06 12:19:20 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-06 12:19:20 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-06 12:19:20 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-06 12:19:30 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-06 12:19:30 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-06 12:19:30 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-06 12:19:30 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-06 12:19:31 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-06 12:19:31 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-06 12:19:31 INFO  XBRLGenerator:152 - Lang = 
+2025-11-06 12:19:32 INFO  XBRLGenerator:352 - statusCode=200
+2025-11-06 17:53:16 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 17:53:16 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 17:53:16 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 17:53:16 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 17:53:16 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 17:53:16 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 17:53:16 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 17:53:16 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 17:53:16 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 17:53:19 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-06 17:53:19 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-06 17:53:19 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-06 17:53:19 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-06 17:58:57 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 17:58:57 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 17:58:57 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 17:58:57 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 17:58:57 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 17:58:57 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 17:58:57 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 17:58:57 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 17:58:57 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 17:58:59 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-06 17:58:59 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-06 17:58:59 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-06 17:58:59 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-06 18:22:44 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-06 18:22:44 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-06 18:22:44 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 18:22:44 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-06 18:22:44 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-06 18:22:44 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-06 18:22:44 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-06 18:22:44 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-06 18:22:44 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-06 18:22:46 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-06 18:22:46 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-06 18:22:46 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-06 18:22:46 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-07 07:03:12 DEBUG FramePrincipale:504 - actionPerformed: VISUALIZZA XBRL
+2025-11-07 07:03:12 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-07 07:03:12 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-07 07:03:12 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-07 07:03:22 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-07 07:03:24 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-07 07:03:24 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-07 07:03:24 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-07 07:03:24 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-07 07:03:24 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-07 07:03:24 INFO  XBRLGenerator:152 - Lang = 
+2025-11-07 07:03:24 ERROR XBRLGenerator:254 - - Foglio T0239: il valore '586311' dell'elemento 'Totale crediti iscritti nell'attivo circolante, Totale' non coincide con il valore '586310' dell'elemento 'Totale crediti' nel foglio T0002: il valore  '586311' sarà sostituito con in valore '586310'.
+
+
+2025-11-07 07:03:57 INFO  XBRLGenerator:352 - statusCode=200
+2025-11-07 08:41:13 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-07 08:41:13 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-07 08:41:13 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-07 08:41:13 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-07 08:41:13 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-07 08:41:13 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-07 08:41:13 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-07 08:41:13 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-07 08:41:13 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-07 08:41:15 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-07 08:41:15 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-07 08:41:15 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-07 08:41:15 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-07 09:16:08 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-07 09:16:08 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-07 09:16:08 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-07 09:16:08 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-07 09:16:08 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-07 09:16:08 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-07 09:16:08 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-07 09:16:08 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-07 09:16:08 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-07 09:16:12 DEBUG FramePrincipale:461 - actionPerformed: LOAD EXCEL
+2025-11-07 09:16:12 DEBUG XBRLGenerator:558 - getPreCompXBRLInstance...
+2025-11-07 09:17:58 DEBUG FramePrincipale:504 - actionPerformed: VISUALIZZA XBRL
+2025-11-07 09:17:58 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-07 09:17:58 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-07 09:17:58 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-07 09:18:08 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-07 09:18:08 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-07 09:18:08 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-07 09:18:08 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-07 09:18:08 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-07 09:18:08 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-07 09:18:08 INFO  XBRLGenerator:152 - Lang = 
+2025-11-07 09:18:09 INFO  XBRLGenerator:352 - statusCode=200
+2025-11-10 09:35:44 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-10 09:35:44 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-10 09:35:44 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-10 09:35:44 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-10 09:35:44 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-10 09:35:44 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-10 09:35:44 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-10 09:35:44 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-10 09:35:44 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
+2025-11-10 09:35:48 DEBUG FramePrincipale:401 - actionPerformed: NUOVO BILANCIO ABB
+2025-11-10 09:35:48 DEBUG XBRLGenerator:529 - getNewXBRLInstance...
+2025-11-10 09:35:48 DEBUG XBRLGenerator:541 - modelPath: D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-10 09:35:48 DEBUG XBRLGenerator:542 - copyFile(XBRL_NI_GENERATOR/2018-11-04/template/workbookabb.xls,D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls)
+2025-11-10 09:36:47 DEBUG FramePrincipale:476 - actionPerformed: GENERA XBRL
+2025-11-10 09:37:06 DEBUG XBRLGenerator:490 - xbrlOutput:C:\Users\francesca\Downloads\TEMPLATE
+2025-11-10 09:37:06 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-10 09:37:07 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:37:07 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:37:17 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-10 09:37:18 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-10 09:37:18 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-10 09:37:19 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-10 09:37:19 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-10 09:37:19 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-10 09:37:19 INFO  XBRLGenerator:152 - Lang = 
+2025-11-10 09:37:19 DEBUG XBRLGenerator:493 - sto validando l'istanza XBRL
+2025-11-10 09:37:21 INFO  XBRLGenerator:426 - statusCode=200
+2025-11-10 09:37:31 INFO  FramePrincipale:484 - xbrl generato dal file D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-10 09:40:42 DEBUG FramePrincipale:476 - actionPerformed: GENERA XBRL
+2025-11-10 09:40:53 DEBUG XBRLGenerator:490 - xbrlOutput:C:\Users\francesca\Downloads\template
+2025-11-10 09:40:53 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-10 09:40:53 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:40:53 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:41:02 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-10 09:41:03 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-10 09:41:03 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-10 09:41:03 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-10 09:41:03 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-10 09:41:03 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-10 09:41:03 INFO  XBRLGenerator:152 - Lang = 
+2025-11-10 09:41:03 DEBUG XBRLGenerator:493 - sto validando l'istanza XBRL
+2025-11-10 09:41:04 INFO  XBRLGenerator:426 - statusCode=200
+2025-11-10 09:41:12 INFO  FramePrincipale:484 - xbrl generato dal file D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-10 09:43:31 DEBUG FramePrincipale:476 - actionPerformed: GENERA XBRL
+2025-11-10 09:43:45 DEBUG XBRLGenerator:490 - xbrlOutput:C:\Users\francesca\Downloads\template
+2025-11-10 09:43:45 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-10 09:43:45 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:43:45 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:43:54 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-10 09:43:56 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-10 09:43:56 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-10 09:43:56 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-10 09:43:56 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-10 09:43:56 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-10 09:43:56 INFO  XBRLGenerator:152 - Lang = 
+2025-11-10 09:43:56 DEBUG XBRLGenerator:493 - sto validando l'istanza XBRL
+2025-11-10 09:43:57 INFO  XBRLGenerator:426 - statusCode=200
+2025-11-10 09:44:27 INFO  FramePrincipale:484 - xbrl generato dal file D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-10 09:44:43 DEBUG FramePrincipale:476 - actionPerformed: GENERA XBRL
+2025-11-10 09:44:53 DEBUG XBRLGenerator:490 - xbrlOutput:C:\Users\francesca\Downloads\template
+2025-11-10 09:44:53 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-10 09:44:53 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:44:53 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:45:02 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-10 09:45:03 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-10 09:45:03 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-10 09:45:03 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-10 09:45:03 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-10 09:45:03 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-10 09:45:03 INFO  XBRLGenerator:152 - Lang = 
+2025-11-10 09:45:03 DEBUG XBRLGenerator:493 - sto validando l'istanza XBRL
+2025-11-10 09:45:04 INFO  XBRLGenerator:426 - statusCode=200
+2025-11-10 09:45:20 INFO  FramePrincipale:484 - xbrl generato dal file D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-10 09:45:35 DEBUG FramePrincipale:476 - actionPerformed: GENERA XBRL
+2025-11-10 09:45:45 DEBUG XBRLGenerator:490 - xbrlOutput:C:\Users\francesca\Downloads\template
+2025-11-10 09:45:45 DEBUG XBRLGenerator:110 -  entro in createXBRLInstanceTmp s
+2025-11-10 09:45:45 DEBUG XBRLGenerator:114 - 1 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:45:45 DEBUG XBRLGenerator:117 - 2 dirPath:  XBRL_NI_GENERATOR/2018-11-04/QDim
+2025-11-10 09:45:55 DEBUG XBRLGenerator:126 -  inizializzazioni mapping report e dimensioni fatte
+2025-11-10 09:45:56 DEBUG QDimData:946 - Range lang non trovato nel template Excel; lang = ''
+2025-11-10 09:45:56 DEBUG QDimData:107 - Inizio la generazione dell'istanza
+2025-11-10 09:45:56 DEBUG QDimData:112 - Parte centrale dell'istanza
+2025-11-10 09:45:56 DEBUG QDimData:117 - Completo la generazione dell'istanza
+2025-11-10 09:45:56 DEBUG XBRLGenerator:132 - saveXMLFile(doc,XBRL_NI_GENERATOR/2018-11-04/tmp/xml/instance_out.xml)
+2025-11-10 09:45:56 INFO  XBRLGenerator:152 - Lang = 
+2025-11-10 09:45:56 DEBUG XBRLGenerator:493 - sto validando l'istanza XBRL
+2025-11-10 09:45:57 INFO  XBRLGenerator:426 - statusCode=200
+2025-11-10 09:45:59 INFO  FramePrincipale:484 - xbrl generato dal file D:\programmi_D\XBRL_NI_GENERATOR_20181104\XBRL_NI_GENERATOR\2018-11-04\tmp\excel\istanza.xls
+2025-11-11 19:14:22 DEBUG UIlauncher:33 - homeApplication: C:\Users\francesca\XBRL_tool_NI
+2025-11-11 19:14:22 DEBUG UIlauncher:38 - userConfig: C:\Users\francesca\XBRL_tool_NI\userConfig.properties
+2025-11-11 19:14:22 DEBUG UIlauncher:47 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-11 19:14:22 DEBUG UIlauncher:55 - controlFile: C:\Users\francesca\XBRL_tool_NI\lock
+2025-11-11 19:14:22 DEBUG UIlauncher:58 - creating fileLock...
+2025-11-11 19:14:22 DEBUG FramePrincipale:51 - taxDate: 2018-11-04
+2025-11-11 19:14:23 DEBUG XBRLGenerator:52 - XBRLGenerator - costruttore
+2025-11-11 19:14:23 DEBUG XBRLGenerator:53 - creazione dir temporanee
+2025-11-11 19:14:23 DEBUG XBRLGenerator:60 - rootDir: XBRL_NI_GENERATOR/2018-11-04
