@@ -56,35 +56,28 @@ async function importFromXLS(workbook) {
             
             const sheet = workbook.Sheets[sheetName];
             const templateData = template.data;
-            
-            // Estrai configurazione
-            if (!templateData || templateData.length < 2) {
-                console.warn(`Template ${sheetName} formato invalido`);
+
+            // Parse configurazione (righe 0-1) in oggetto
+            const configMap = parseSheetConfig(templateData);
+            if (!configMap || !configMap.tipo_tab) {
+                console.warn(`Template ${sheetName} configurazione invalida`);
                 continue;
             }
-            
-            const config = templateData[1];
-            
-            // Verifica che config sia un array valido
-            if (!Array.isArray(config) || config.length === 0) {
-                console.warn(`Config ${sheetName} non valida, skip`);
-                continue;
-            }
-            
-            const tipoTab = config[0];
-            
+
+            const tipoTab = configMap.tipo_tab;
+
             bilancio.fogli[sheetName] = {};
             let celleSheet = 0;
-            
+
             if (tipoTab === 1) {
                 // TIPO 1: Foglio semplice
-                celleSheet = importTipo1(sheet, templateData, config, bilancio.fogli[sheetName], sheetName);
+                celleSheet = importTipo1(sheet, templateData, configMap, bilancio.fogli[sheetName], sheetName);
             } else if (tipoTab === 2) {
                 // TIPO 2: Tabella 2D
-                celleSheet = importTipo2(sheet, templateData, config, bilancio.fogli[sheetName]);
+                celleSheet = importTipo2(sheet, templateData, configMap, bilancio.fogli[sheetName]);
             } else if (tipoTab === 3) {
                 // TIPO 3: Tuple
-                celleSheet = importTipo3(sheet, templateData, config, bilancio.fogli[sheetName]);
+                celleSheet = importTipo3(sheet, templateData, configMap, bilancio.fogli[sheetName]);
             } else {
                 console.warn(`Tipo ${tipoTab} non supportato per ${sheetName}`);
                 continue;
@@ -107,18 +100,21 @@ async function importFromXLS(workbook) {
 }
 
 // Import TIPO 1: Foglio semplice
-function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
+function importTipo1(sheet, templateData, configMap, datiSheet, sheetName) {
+    // Usa configMap invece di indici hardcoded
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
 
     let count = 0;
 
     // Se 1 riga × 1 colonna = textBlock
     if (numRows === 1 && numCols === 1) {
-        // Il codice è in riga 2, colonna 3
-        const codiceCell = templateData[2]?.[3];
+        // Il codice è in riga colCodeRow, colonna firstCol
+        const codiceCell = templateData[colCodeRow]?.[firstCol];
         if (codiceCell) {
             const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: firstCol });
             const cell = sheet[cellAddress];
@@ -137,7 +133,8 @@ function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
             const rowData = templateData[firstRow + r];
             if (!rowData) continue;
 
-            const codiceRiga = rowData[0];
+            // Leggi row_code dalla colonna specificata
+            const codiceRiga = rowData[rowCodeCol];
             if (!codiceRiga) continue;
 
             // Per T0000: importa solo la prima colonna (corrente)
@@ -161,32 +158,39 @@ function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
 }
 
 // Import TIPO 2: Tabella 2D
-function importTipo2(sheet, templateData, config, datiSheet) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
-    
+function importTipo2(sheet, templateData, configMap, datiSheet) {
+    // Usa configMap invece di indici hardcoded (come Java getSheetMap)
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
+
+        // Leggi row_code dalla colonna specificata (non hardcoded a 0!)
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
-        
-        for (let c = 0; c < numCols && c < codiciColonne.length; c++) {
-            const codiceColonna = codiciColonne[c];
+
+        for (let c = 0; c < numCols; c++) {
+            // Leggi col_code dalla riga specificata
+            const colCodeData = templateData[colCodeRow];
+            if (!colCodeData) continue;
+
+            const codiceColonna = colCodeData[firstCol + c];
             if (!codiceColonna) continue;
-            
+
             const codiceCella = `${codiceRiga}_${codiceColonna}`;
-            
+
             const xlsRow = firstRow + r;
             const xlsCol = firstCol + c;
             const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-            
+
             const cell = sheet[cellAddress];
             if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                 datiSheet[codiceCella] = cell.v;
@@ -194,7 +198,7 @@ function importTipo2(sheet, templateData, config, datiSheet) {
             }
         }
     }
-    
+
     return count;
 }
 
@@ -274,6 +278,30 @@ function getCellValue(sheet, row, col) {
     const cellAddress = XLSX.utils.encode_cell({ r: row, c: col });
     const cell = sheet[cellAddress];
     return cell ? (cell.v || null) : null;
+}
+
+// Parse sheet configuration (righe 0-1) in oggetto HashMap
+// Come getSheetMap() nell'app Java
+function parseSheetConfig(templateData) {
+    if (!templateData || templateData.length < 2) {
+        return null;
+    }
+
+    const keys = templateData[0];   // Riga 0: nomi parametri
+    const values = templateData[1]; // Riga 1: valori
+
+    if (!Array.isArray(keys) || !Array.isArray(values)) {
+        return null;
+    }
+
+    const config = {};
+    for (let i = 0; i < keys.length && i < values.length; i++) {
+        if (keys[i]) {
+            config[keys[i]] = values[i];
+        }
+    }
+
+    return config;
 }
 
 // Importa configurazione da foglio Configurazione
