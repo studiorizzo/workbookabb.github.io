@@ -78,7 +78,7 @@ async function importFromXLS(workbook) {
             
             if (tipoTab === 1) {
                 // TIPO 1: Foglio semplice
-                celleSheet = importTipo1(sheet, templateData, config, bilancio.fogli[sheetName]);
+                celleSheet = importTipo1(sheet, templateData, config, bilancio.fogli[sheetName], sheetName);
             } else if (tipoTab === 2) {
                 // TIPO 2: Tabella 2D
                 celleSheet = importTipo2(sheet, templateData, config, bilancio.fogli[sheetName]);
@@ -107,14 +107,14 @@ async function importFromXLS(workbook) {
 }
 
 // Import TIPO 1: Foglio semplice
-function importTipo1(sheet, templateData, config, datiSheet) {
+function importTipo1(sheet, templateData, config, datiSheet, sheetName) {
     const firstRow = config[3];
     const firstCol = config[4];
     const numRows = config[1];
     const numCols = config[2];
-    
+
     let count = 0;
-    
+
     // Se 1 riga × 1 colonna = textBlock
     if (numRows === 1 && numCols === 1) {
         // Il codice è in riga 2, colonna 3
@@ -128,30 +128,35 @@ function importTipo1(sheet, templateData, config, datiSheet) {
             }
         }
     } else {
-        // Altrimenti tabella semplice con codici riga
+        // Determina se è T0000 (importa solo prima colonna)
+        const isT0000 = sheetName === 'T0000';
+        const colsToImport = isT0000 ? 1 : numCols;
+
+        // Tabella semplice con codici riga
         for (let r = 0; r < numRows; r++) {
             const rowData = templateData[firstRow + r];
             if (!rowData) continue;
-            
+
             const codiceRiga = rowData[0];
             if (!codiceRiga) continue;
-            
-            for (let c = 0; c < numCols; c++) {
+
+            // Per T0000: importa solo la prima colonna (corrente)
+            // Per altri fogli tipo 1: importa tutte le colonne (sovrascrivendo)
+            for (let c = 0; c < colsToImport; c++) {
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol + c;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 const cell = sheet[cellAddress];
                 if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
-                    // Per tipo 1 con più colonne, usa codice_riga direttamente
-                    // (se servisse distinguere le colonne, si dovrebbe estendere)
+                    // Usa codice_riga direttamente (no suffisso colonna)
                     datiSheet[codiceRiga] = cell.v;
                     count++;
                 }
             }
         }
     }
-    
+
     return count;
 }
 
