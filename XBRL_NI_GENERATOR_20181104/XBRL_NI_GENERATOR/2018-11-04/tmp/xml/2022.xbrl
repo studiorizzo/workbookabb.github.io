@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--XBRLCOMPILER;COMPNAME=INFOCAMERE;COMPCODE=02313821007;TOOL=XBRL_NI_GENERATOR;VER=TAX 20181104 - release 16-11-2023;-->
+<!--Version 2025-11-07 09:18:08-->
+<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:itcc-ci="http://www.infocamere.it/itnn/fr/itcc/ci/2018-11-04" xmlns:itcc-ci-abb="http://www.infocamere.it/itnn/fr/itcc/ci/abb/2018-11-04">
+  <link:schemaRef xlink:type="simple" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="itcc-ci-abb-2018-11-04.xsd"/>
+  <context id="c0_i">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <instant>2021-12-31</instant>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c0_d">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <startDate>2021-01-01</startDate>
+      <endDate>2021-12-31</endDate>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c1_i">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <instant>2022-12-31</instant>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <context id="c1_d">
+    <entity>
+      <identifier scheme="http://www.infocamere.it">04252300753</identifier>
+    </entity>
+    <period>
+      <startDate>2022-01-01</startDate>
+      <endDate>2022-12-31</endDate>
+    </period>
+    <scenario>
+      <itcc-ci:scen>itcc-ci:depositato</itcc-ci:scen>
+    </scenario>
+  </context>
+  <unit id="EUR">
+    <measure>iso4217:EUR</measure>
+  </unit>
+  <unit id="shares">
+    <measure>xbrli:shares</measure>
+  </unit>
+  <unit id="pure">
+    <measure>xbrli:pure</measure>
+  </unit>
+  <itcc-ci:DatiAnagraficiDenominazione contextRef="c1_i">BARONE SRL</itcc-ci:DatiAnagraficiDenominazione>
+  <itcc-ci:DatiAnagraficiSede contextRef="c1_i">CONTRADA BLASI 5 - 73046 MATINO (LE)</itcc-ci:DatiAnagraficiSede>
+  <itcc-ci:DatiAnagraficiCapitaleSociale contextRef="c1_i" unitRef="EUR" decimals="0">10000</itcc-ci:DatiAnagraficiCapitaleSociale>
+  <itcc-ci:DatiAnagraficiCapitaleSocialeInteramenteVersato contextRef="c1_i">true</itcc-ci:DatiAnagraficiCapitaleSocialeInteramenteVersato>
+  <itcc-ci:DatiAnagraficiCodiceCciaa contextRef="c1_i">LE</itcc-ci:DatiAnagraficiCodiceCciaa>
+  <itcc-ci:DatiAnagraficiPartitaIva contextRef="c1_i">04252300753</itcc-ci:DatiAnagraficiPartitaIva>
+  <itcc-ci:DatiAnagraficiCodiceFiscale contextRef="c1_i">04252300753</itcc-ci:DatiAnagraficiCodiceFiscale>
+  <itcc-ci:DatiAnagraficiNumeroRea contextRef="c1_i">000000277321</itcc-ci:DatiAnagraficiNumeroRea>
+  <itcc-ci:DatiAnagraficiFormaGiuridica contextRef="c1_i">SRL</itcc-ci:DatiAnagraficiFormaGiuridica>
+  <itcc-ci:DatiAnagraficiSettoreAttivitaPrevalenteAteco contextRef="c1_i">104110</itcc-ci:DatiAnagraficiSettoreAttivitaPrevalenteAteco>
+  <itcc-ci:DatiAnagraficiSocietaLiquidazione contextRef="c1_i">false</itcc-ci:DatiAnagraficiSocietaLiquidazione>
+  <itcc-ci:DatiAnagraficiSocietaSocioUnico contextRef="c1_i">false</itcc-ci:DatiAnagraficiSocietaSocioUnico>
+  <itcc-ci:DatiAnagraficiSocietaSottopostaAltruiAttivitaDirezioneCoordinamento contextRef="c1_i">false</itcc-ci:DatiAnagraficiSocietaSottopostaAltruiAttivitaDirezioneCoordinamento>
+  <itcc-ci:DatiAnagraficiAppartenenzaGruppo contextRef="c1_i">false</itcc-ci:DatiAnagraficiAppartenenzaGruppo>
+  <itcc-ci:TotaleImmobilizzazioniImmateriali contextRef="c1_i" unitRef="EUR" decimals="0">7740</itcc-ci:TotaleImmobilizzazioniImmateriali>
+  <itcc-ci:TotaleImmobilizzazioniMateriali contextRef="c1_i" unitRef="EUR" decimals="0">605877</itcc-ci:TotaleImmobilizzazioniMateriali>
+  <itcc-ci:TotaleImmobilizzazioni contextRef="c1_i" unitRef="EUR" decimals="0">613617</itcc-ci:TotaleImmobilizzazioni>
+  <itcc-ci:TotaleRimanenze contextRef="c1_i" unitRef="EUR" decimals="0">80706</itcc-ci:TotaleRimanenze>
+  <itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo contextRef="c1_i" unitRef="EUR" decimals="0">381502</itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:TotaleCrediti contextRef="c1_i" unitRef="EUR" decimals="0">381502</itcc-ci:TotaleCrediti>
+  <itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni contextRef="c1_i" unitRef="EUR" decimals="0">26</itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni>
+  <itcc-ci:TotaleDisponibilitaLiquide contextRef="c1_i" unitRef="EUR" decimals="0">154709</itcc-ci:TotaleDisponibilitaLiquide>
+  <itcc-ci:TotaleAttivoCircolante contextRef="c1_i" unitRef="EUR" decimals="0">616943</itcc-ci:TotaleAttivoCircolante>
+  <itcc-ci:AttivoRateiRisconti contextRef="c1_i" unitRef="EUR" decimals="0">3362</itcc-ci:AttivoRateiRisconti>
+  <itcc-ci:TotaleAttivo contextRef="c1_i" unitRef="EUR" decimals="0">1233922</itcc-ci:TotaleAttivo>
+  <itcc-ci:PatrimonioNettoCapitale contextRef="c1_i" unitRef="EUR" decimals="0">10000</itcc-ci:PatrimonioNettoCapitale>
+  <itcc-ci:PatrimonioNettoRiservaLegale contextRef="c1_i" unitRef="EUR" decimals="0">2000</itcc-ci:PatrimonioNettoRiservaLegale>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve contextRef="c1_i" unitRef="EUR" decimals="0">110002</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve>
+  <itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo contextRef="c1_i" unitRef="EUR" decimals="0">-94224</itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo>
+  <itcc-ci:PatrimonioNettoUtilePerditaEsercizio contextRef="c1_i" unitRef="EUR" decimals="0">-1986</itcc-ci:PatrimonioNettoUtilePerditaEsercizio>
+  <itcc-ci:TotalePatrimonioNetto contextRef="c1_i" unitRef="EUR" decimals="0">25792</itcc-ci:TotalePatrimonioNetto>
+  <itcc-ci:TrattamentoFineRapportoLavoroSubordinato contextRef="c1_i" unitRef="EUR" decimals="0">17417</itcc-ci:TrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo contextRef="c1_i" unitRef="EUR" decimals="0">1058916</itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo contextRef="c1_i" unitRef="EUR" decimals="0">127597</itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:TotaleDebiti contextRef="c1_i" unitRef="EUR" decimals="0">1186513</itcc-ci:TotaleDebiti>
+  <itcc-ci:PassivoRateiRisconti contextRef="c1_i" unitRef="EUR" decimals="0">4200</itcc-ci:PassivoRateiRisconti>
+  <itcc-ci:TotalePassivo contextRef="c1_i" unitRef="EUR" decimals="0">1233922</itcc-ci:TotalePassivo>
+  <itcc-ci:TotaleImmobilizzazioniImmateriali contextRef="c0_i" unitRef="EUR" decimals="0">10683</itcc-ci:TotaleImmobilizzazioniImmateriali>
+  <itcc-ci:TotaleImmobilizzazioniMateriali contextRef="c0_i" unitRef="EUR" decimals="0">465680</itcc-ci:TotaleImmobilizzazioniMateriali>
+  <itcc-ci:TotaleImmobilizzazioni contextRef="c0_i" unitRef="EUR" decimals="0">476363</itcc-ci:TotaleImmobilizzazioni>
+  <itcc-ci:TotaleRimanenze contextRef="c0_i" unitRef="EUR" decimals="0">172393</itcc-ci:TotaleRimanenze>
+  <itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo contextRef="c0_i" unitRef="EUR" decimals="0">333790</itcc-ci:CreditiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:TotaleCrediti contextRef="c0_i" unitRef="EUR" decimals="0">333790</itcc-ci:TotaleCrediti>
+  <itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni contextRef="c0_i" unitRef="EUR" decimals="0">26</itcc-ci:TotaleAttivitaFinanziarieNonCostituisconoImmobilizzazioni>
+  <itcc-ci:TotaleDisponibilitaLiquide contextRef="c0_i" unitRef="EUR" decimals="0">167995</itcc-ci:TotaleDisponibilitaLiquide>
+  <itcc-ci:TotaleAttivoCircolante contextRef="c0_i" unitRef="EUR" decimals="0">674204</itcc-ci:TotaleAttivoCircolante>
+  <itcc-ci:AttivoRateiRisconti contextRef="c0_i" unitRef="EUR" decimals="0">4267</itcc-ci:AttivoRateiRisconti>
+  <itcc-ci:TotaleAttivo contextRef="c0_i" unitRef="EUR" decimals="0">1154834</itcc-ci:TotaleAttivo>
+  <itcc-ci:PatrimonioNettoCapitale contextRef="c0_i" unitRef="EUR" decimals="0">10000</itcc-ci:PatrimonioNettoCapitale>
+  <itcc-ci:PatrimonioNettoRiservaLegale contextRef="c0_i" unitRef="EUR" decimals="0">2000</itcc-ci:PatrimonioNettoRiservaLegale>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve contextRef="c0_i" unitRef="EUR" decimals="0">109999</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateTotaleAltreRiserve>
+  <itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo contextRef="c0_i" unitRef="EUR" decimals="0">-154234</itcc-ci:PatrimonioNettoUtiliPerditePortatiNuovo>
+  <itcc-ci:PatrimonioNettoUtilePerditaEsercizio contextRef="c0_i" unitRef="EUR" decimals="0">60010</itcc-ci:PatrimonioNettoUtilePerditaEsercizio>
+  <itcc-ci:TotalePatrimonioNetto contextRef="c0_i" unitRef="EUR" decimals="0">27775</itcc-ci:TotalePatrimonioNetto>
+  <itcc-ci:TrattamentoFineRapportoLavoroSubordinato contextRef="c0_i" unitRef="EUR" decimals="0">15683</itcc-ci:TrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo contextRef="c0_i" unitRef="EUR" decimals="0">952593</itcc-ci:DebitiEsigibiliEntroEsercizioSuccessivo>
+  <itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo contextRef="c0_i" unitRef="EUR" decimals="0">153383</itcc-ci:DebitiEsigibiliOltreEsercizioSuccessivo>
+  <itcc-ci:TotaleDebiti contextRef="c0_i" unitRef="EUR" decimals="0">1105976</itcc-ci:TotaleDebiti>
+  <itcc-ci:PassivoRateiRisconti contextRef="c0_i" unitRef="EUR" decimals="0">5400</itcc-ci:PassivoRateiRisconti>
+  <itcc-ci:TotalePassivo contextRef="c0_i" unitRef="EUR" decimals="0">1154834</itcc-ci:TotalePassivo>
+  <itcc-ci:ValoreProduzioneRicaviVenditePrestazioni contextRef="c1_d" unitRef="EUR" decimals="0">348844</itcc-ci:ValoreProduzioneRicaviVenditePrestazioni>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio contextRef="c1_d" unitRef="EUR" decimals="0">0</itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiAltri contextRef="c1_d" unitRef="EUR" decimals="0">74195</itcc-ci:ValoreProduzioneAltriRicaviProventiAltri>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi contextRef="c1_d" unitRef="EUR" decimals="0">74195</itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi>
+  <itcc-ci:TotaleValoreProduzione contextRef="c1_d" unitRef="EUR" decimals="0">423039</itcc-ci:TotaleValoreProduzione>
+  <itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci contextRef="c1_d" unitRef="EUR" decimals="0">140444</itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneServizi contextRef="c1_d" unitRef="EUR" decimals="0">46092</itcc-ci:CostiProduzioneServizi>
+  <itcc-ci:CostiProduzioneGodimentoBeniTerzi contextRef="c1_d" unitRef="EUR" decimals="0">8141</itcc-ci:CostiProduzioneGodimentoBeniTerzi>
+  <itcc-ci:CostiProduzionePersonaleSalariStipendi contextRef="c1_d" unitRef="EUR" decimals="0">37838</itcc-ci:CostiProduzionePersonaleSalariStipendi>
+  <itcc-ci:CostiProduzionePersonaleOneriSociali contextRef="c1_d" unitRef="EUR" decimals="0">6060</itcc-ci:CostiProduzionePersonaleOneriSociali>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale contextRef="c1_d" unitRef="EUR" decimals="0">3278</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto contextRef="c1_d" unitRef="EUR" decimals="0">3278</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto>
+  <itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale contextRef="c1_d" unitRef="EUR" decimals="0">47176</itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni contextRef="c1_d" unitRef="EUR" decimals="0">50159</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali contextRef="c1_d" unitRef="EUR" decimals="0">2943</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali contextRef="c1_d" unitRef="EUR" decimals="0">47216</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni contextRef="c1_d" unitRef="EUR" decimals="0">50159</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni>
+  <itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci contextRef="c1_d" unitRef="EUR" decimals="0">91688</itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneOneriDiversiGestione contextRef="c1_d" unitRef="EUR" decimals="0">30336</itcc-ci:CostiProduzioneOneriDiversiGestione>
+  <itcc-ci:TotaleCostiProduzione contextRef="c1_d" unitRef="EUR" decimals="0">414036</itcc-ci:TotaleCostiProduzione>
+  <itcc-ci:DifferenzaValoreCostiProduzione contextRef="c1_d" unitRef="EUR" decimals="0">9003</itcc-ci:DifferenzaValoreCostiProduzione>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri contextRef="c1_d" unitRef="EUR" decimals="0">7928</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari contextRef="c1_d" unitRef="EUR" decimals="0">7928</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari>
+  <itcc-ci:TotaleProventiOneriFinanziari contextRef="c1_d" unitRef="EUR" decimals="0">-7928</itcc-ci:TotaleProventiOneriFinanziari>
+  <itcc-ci:RisultatoPrimaImposte contextRef="c1_d" unitRef="EUR" decimals="0">1075</itcc-ci:RisultatoPrimaImposte>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti contextRef="c1_d" unitRef="EUR" decimals="0">3061</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate contextRef="c1_d" unitRef="EUR" decimals="0">3061</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate>
+  <itcc-ci:UtilePerditaEsercizio contextRef="c1_d" unitRef="EUR" decimals="0">-1986</itcc-ci:UtilePerditaEsercizio>
+  <itcc-ci:ValoreProduzioneRicaviVenditePrestazioni contextRef="c0_d" unitRef="EUR" decimals="0">348233</itcc-ci:ValoreProduzioneRicaviVenditePrestazioni>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio contextRef="c0_d" unitRef="EUR" decimals="0">29894</itcc-ci:ValoreProduzioneAltriRicaviProventiContributiContoEsercizio>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiAltri contextRef="c0_d" unitRef="EUR" decimals="0">75553</itcc-ci:ValoreProduzioneAltriRicaviProventiAltri>
+  <itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi contextRef="c0_d" unitRef="EUR" decimals="0">105447</itcc-ci:ValoreProduzioneAltriRicaviProventiTotaleAltriRicaviProventi>
+  <itcc-ci:TotaleValoreProduzione contextRef="c0_d" unitRef="EUR" decimals="0">453680</itcc-ci:TotaleValoreProduzione>
+  <itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci contextRef="c0_d" unitRef="EUR" decimals="0">198789</itcc-ci:CostiProduzioneMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneServizi contextRef="c0_d" unitRef="EUR" decimals="0">26393</itcc-ci:CostiProduzioneServizi>
+  <itcc-ci:CostiProduzioneGodimentoBeniTerzi contextRef="c0_d" unitRef="EUR" decimals="0">0</itcc-ci:CostiProduzioneGodimentoBeniTerzi>
+  <itcc-ci:CostiProduzionePersonaleSalariStipendi contextRef="c0_d" unitRef="EUR" decimals="0">24660</itcc-ci:CostiProduzionePersonaleSalariStipendi>
+  <itcc-ci:CostiProduzionePersonaleOneriSociali contextRef="c0_d" unitRef="EUR" decimals="0">3049</itcc-ci:CostiProduzionePersonaleOneriSociali>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale contextRef="c0_d" unitRef="EUR" decimals="0">2170</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapportoTrattamentoQuiescenzaAltriCostiPersonale>
+  <itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto contextRef="c0_d" unitRef="EUR" decimals="0">2170</itcc-ci:CostiProduzionePersonaleTrattamentoFineRapporto>
+  <itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale contextRef="c0_d" unitRef="EUR" decimals="0">29879</itcc-ci:CostiProduzionePersonaleTotaleCostiPersonale>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni contextRef="c0_d" unitRef="EUR" decimals="0">52077</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmaterialiMaterialiAltreSvalutazioniImmobilizzazioni>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali contextRef="c0_d" unitRef="EUR" decimals="0">2943</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniImmateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali contextRef="c0_d" unitRef="EUR" decimals="0">49134</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniAmmortamentoImmobilizzazioniMateriali>
+  <itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni contextRef="c0_d" unitRef="EUR" decimals="0">52077</itcc-ci:CostiProduzioneAmmortamentiSvalutazioniTotaleAmmortamentiSvalutazioni>
+  <itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci contextRef="c0_d" unitRef="EUR" decimals="0">42653</itcc-ci:CostiProduzioneVariazioniRimanenzeMateriePrimeSussidiarieConsumoMerci>
+  <itcc-ci:CostiProduzioneOneriDiversiGestione contextRef="c0_d" unitRef="EUR" decimals="0">13264</itcc-ci:CostiProduzioneOneriDiversiGestione>
+  <itcc-ci:TotaleCostiProduzione contextRef="c0_d" unitRef="EUR" decimals="0">363055</itcc-ci:TotaleCostiProduzione>
+  <itcc-ci:DifferenzaValoreCostiProduzione contextRef="c0_d" unitRef="EUR" decimals="0">90625</itcc-ci:DifferenzaValoreCostiProduzione>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri contextRef="c0_d" unitRef="EUR" decimals="0">25489</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariAltri>
+  <itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari contextRef="c0_d" unitRef="EUR" decimals="0">25489</itcc-ci:ProventiOneriFinanziariInteressiAltriOneriFinanziariTotaleInteressiAltriOneriFinanziari>
+  <itcc-ci:TotaleProventiOneriFinanziari contextRef="c0_d" unitRef="EUR" decimals="0">-25489</itcc-ci:TotaleProventiOneriFinanziari>
+  <itcc-ci:RisultatoPrimaImposte contextRef="c0_d" unitRef="EUR" decimals="0">65136</itcc-ci:RisultatoPrimaImposte>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti contextRef="c0_d" unitRef="EUR" decimals="0">5126</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateImposteCorrenti>
+  <itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate contextRef="c0_d" unitRef="EUR" decimals="0">5126</itcc-ci:ImposteRedditoEsercizioCorrentiDifferiteAnticipateTotaleImposteRedditoEsercizioCorrentiDifferiteAnticipate>
+  <itcc-ci:UtilePerditaEsercizio contextRef="c0_d" unitRef="EUR" decimals="0">60010</itcc-ci:UtilePerditaEsercizio>
+  <itcc-ci:CostoTotaleImmobilizzazioniImmateriali contextRef="c0_i" unitRef="EUR" decimals="0">35285</itcc-ci:CostoTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniImmateriali contextRef="c0_i" unitRef="EUR" decimals="0">24602</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioniImmateriali contextRef="c1_d" unitRef="EUR" decimals="0">1543</itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:VariazioniEsercizioAltreVariazioniTotaleImmobilizzazioniImmateriali contextRef="c1_d" unitRef="EUR" decimals="0">-1400</itcc-ci:VariazioniEsercizioAltreVariazioniTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioniImmateriali contextRef="c1_d" unitRef="EUR" decimals="0">-2943</itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:CostoTotaleImmobilizzazioniImmateriali contextRef="c1_i" unitRef="EUR" decimals="0">35285</itcc-ci:CostoTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniImmateriali contextRef="c1_i" unitRef="EUR" decimals="0">27545</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniImmateriali>
+  <itcc-ci:CostoTotaleImmobilizzazioniMateriali contextRef="c0_i" unitRef="EUR" decimals="0">806785</itcc-ci:CostoTotaleImmobilizzazioniMateriali>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniMateriali contextRef="c0_i" unitRef="EUR" decimals="0">343813</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniMateriali>
+  <itcc-ci:VariazioniEsercizioIncrementiAcquisizioniTotaleImmobilizzazioniMateriali contextRef="c1_d" unitRef="EUR" decimals="0">187413</itcc-ci:VariazioniEsercizioIncrementiAcquisizioniTotaleImmobilizzazioniMateriali>
+  <itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioniMateriali contextRef="c1_d" unitRef="EUR" decimals="0">47216</itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioniMateriali>
+  <itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioniMateriali contextRef="c1_d" unitRef="EUR" decimals="0">140197</itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioniMateriali>
+  <itcc-ci:CostoTotaleImmobilizzazioniMateriali contextRef="c1_i" unitRef="EUR" decimals="0">995707</itcc-ci:CostoTotaleImmobilizzazioniMateriali>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniMateriali contextRef="c1_i" unitRef="EUR" decimals="0">389830</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioniMateriali>
+  <itcc-ci:CostoTotaleImmobilizzazioni contextRef="c0_i" unitRef="EUR" decimals="0">842070</itcc-ci:CostoTotaleImmobilizzazioni>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioni contextRef="c0_i" unitRef="EUR" decimals="0">368415</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioni>
+  <itcc-ci:VariazioniEsercizioIncrementiAcquisizioniTotaleImmobilizzazioni contextRef="c1_d" unitRef="EUR" decimals="0">187413</itcc-ci:VariazioniEsercizioIncrementiAcquisizioniTotaleImmobilizzazioni>
+  <itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioni contextRef="c1_d" unitRef="EUR" decimals="0">48759</itcc-ci:VariazioniEsercizioAmmortamentoEsercizioTotaleImmobilizzazioni>
+  <itcc-ci:VariazioniEsercizioAltreVariazioniTotaleImmobilizzazioni contextRef="c1_d" unitRef="EUR" decimals="0">-1400</itcc-ci:VariazioniEsercizioAltreVariazioniTotaleImmobilizzazioni>
+  <itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioni contextRef="c1_d" unitRef="EUR" decimals="0">137254</itcc-ci:VariazioniEsercizioTotaleVariazioniTotaleImmobilizzazioni>
+  <itcc-ci:CostoTotaleImmobilizzazioni contextRef="c1_i" unitRef="EUR" decimals="0">1030992</itcc-ci:CostoTotaleImmobilizzazioni>
+  <itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioni contextRef="c1_i" unitRef="EUR" decimals="0">417375</itcc-ci:AmmortamentiFondoAmmortamentoTotaleImmobilizzazioni>
+  <itcc-ci:CreditiVersoClientiTotaleCreditiVersoClienti contextRef="c1_i" unitRef="EUR" decimals="0">187920</itcc-ci:CreditiVersoClientiTotaleCreditiVersoClienti>
+  <itcc-ci:CreditiCreditiTributariTotaleCreditiTributari contextRef="c1_i" unitRef="EUR" decimals="0">37633</itcc-ci:CreditiCreditiTributariTotaleCreditiTributari>
+  <itcc-ci:CreditiVersoAltriTotaleCreditiVersoAltri contextRef="c1_i" unitRef="EUR" decimals="0">155949</itcc-ci:CreditiVersoAltriTotaleCreditiVersoAltri>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVersamentiContoFuturoAumentoCapitale contextRef="c0_i" unitRef="EUR" decimals="0">110000</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVersamentiContoFuturoAumentoCapitale>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVersamentiContoFuturoAumentoCapitale contextRef="c1_i" unitRef="EUR" decimals="0">110000</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVersamentiContoFuturoAumentoCapitale>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVarieAltreRiserve contextRef="c0_i" unitRef="EUR" decimals="0">2</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVarieAltreRiserve>
+  <itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVarieAltreRiserve contextRef="c1_i" unitRef="EUR" decimals="0">2</itcc-ci:PatrimonioNettoAltreRiserveDistintamenteIndicateVarieAltreRiserve>
+  <itcc-ci:PatrimonioNettoIncrementiUtiliPerditePortatiNuovo contextRef="c1_d" unitRef="EUR" decimals="0">60010</itcc-ci:PatrimonioNettoIncrementiUtiliPerditePortatiNuovo>
+  <itcc-ci:PatrimonioNettoDecrementiUtilePerditaEsercizio contextRef="c1_d" unitRef="EUR" decimals="0">60010</itcc-ci:PatrimonioNettoDecrementiUtilePerditaEsercizio>
+  <itcc-ci:PatrimonioNettoIncrementiTotalePatrimonioNetto contextRef="c1_d" unitRef="EUR" decimals="0">60010</itcc-ci:PatrimonioNettoIncrementiTotalePatrimonioNetto>
+  <itcc-ci:PatrimonioNettoDecrementiTotalePatrimonioNetto contextRef="c1_d" unitRef="EUR" decimals="0">60010</itcc-ci:PatrimonioNettoDecrementiTotalePatrimonioNetto>
+  <itcc-ci:ImportoUtiliPortatiNuovo contextRef="c1_i" unitRef="EUR" decimals="0">-94224</itcc-ci:ImportoUtiliPortatiNuovo>
+  <itcc-ci:ImportoTotale contextRef="c1_i" unitRef="EUR" decimals="0">27778</itcc-ci:ImportoTotale>
+  <itcc-ci:OrigineNaturaCapitale contextRef="c1_i">CAPITALE</itcc-ci:OrigineNaturaCapitale>
+  <itcc-ci:OrigineNaturaRiservaLegale contextRef="c1_i">UTILI</itcc-ci:OrigineNaturaRiservaLegale>
+  <itcc-ci:OrigineNaturaVersamentiContoFuturoAumentoCapitale contextRef="c1_i">CAPITALE</itcc-ci:OrigineNaturaVersamentiContoFuturoAumentoCapitale>
+  <itcc-ci:OrigineNaturaVarieAltreRiserve contextRef="c1_i">UTILE</itcc-ci:OrigineNaturaVarieAltreRiserve>
+  <itcc-ci:PossibilitaUtilizzazioneRiservaLegale contextRef="c1_i">A</itcc-ci:PossibilitaUtilizzazioneRiservaLegale>
+  <itcc-ci:PossibilitaUtilizzazioneVersamentiContoFuturoAumentoCapitale contextRef="c1_i">A,B</itcc-ci:PossibilitaUtilizzazioneVersamentiContoFuturoAumentoCapitale>
+  <itcc-ci:PossibilitaUtilizzazioneVarieAltreRiserve contextRef="c1_i">A,B</itcc-ci:PossibilitaUtilizzazioneVarieAltreRiserve>
+  <itcc-ci:AccantonamentoEsercizioTrattamentoFineRapportoLavoroSubordinato contextRef="c1_d" unitRef="EUR" decimals="0">3277</itcc-ci:AccantonamentoEsercizioTrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:UtilizzoEsercizioTrattamentoFineRapportoLavoroSubordinato contextRef="c1_d" unitRef="EUR" decimals="0">1543</itcc-ci:UtilizzoEsercizioTrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:TotaleVariazioniTrattamentoFineRapportoLavoroSubordinato contextRef="c1_d" unitRef="EUR" decimals="0">1734</itcc-ci:TotaleVariazioniTrattamentoFineRapportoLavoroSubordinato>
+  <itcc-ci:DebitiDebitiVersoSociFinanziamentiTotaleDebitiVersoSociFinanziamenti contextRef="c1_i" unitRef="EUR" decimals="0">1716</itcc-ci:DebitiDebitiVersoSociFinanziamentiTotaleDebitiVersoSociFinanziamenti>
+  <itcc-ci:DebitiDebitiVersoBancheTotaleDebitiVersoBanche contextRef="c1_i" unitRef="EUR" decimals="0">127597</itcc-ci:DebitiDebitiVersoBancheTotaleDebitiVersoBanche>
+  <itcc-ci:DebitiAccontiTotaleAcconti contextRef="c1_i" unitRef="EUR" decimals="0">392320</itcc-ci:DebitiAccontiTotaleAcconti>
+  <itcc-ci:DebitiDebitiVersoFornitoriTotaleDebitiVersoFornitori contextRef="c1_i" unitRef="EUR" decimals="0">223792</itcc-ci:DebitiDebitiVersoFornitoriTotaleDebitiVersoFornitori>
+  <itcc-ci:DebitiDebitiTributariTotaleDebitiTributari contextRef="c1_i" unitRef="EUR" decimals="0">342339</itcc-ci:DebitiDebitiTributariTotaleDebitiTributari>
+  <itcc-ci:DebitiDebitiVersoIstitutiPrevidenzaSicurezzaSocialeTotaleDebitiVersoIstitutiPrevidenzaSicurezzaSociale contextRef="c1_i" unitRef="EUR" decimals="0">40924</itcc-ci:DebitiDebitiVersoIstitutiPrevidenzaSicurezzaSocialeTotaleDebitiVersoIstitutiPrevidenzaSicurezzaSociale>
+  <itcc-ci:DebitiAltriDebitiTotaleAltriDebiti contextRef="c1_i" unitRef="EUR" decimals="0">57825</itcc-ci:DebitiAltriDebitiTotaleAltriDebiti>
+  <itcc-ci:CreditiIscrittiAttivoCircolanteAreaGeografica>
+    <itcc-ci:AreaGeograficaCreditiIscrittiAttivoCircolanteAreaGeografica contextRef="c1_i">ITALIA</itcc-ci:AreaGeograficaCreditiIscrittiAttivoCircolanteAreaGeografica>
+    <itcc-ci:CreditiVersoClientiIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">187920</itcc-ci:CreditiVersoClientiIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica>
+    <itcc-ci:CreditiTributariIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">37633</itcc-ci:CreditiTributariIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica>
+    <itcc-ci:CreditiVersoAltriIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">155949</itcc-ci:CreditiVersoAltriIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica>
+    <itcc-ci:TotaleCreditiIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">381502</itcc-ci:TotaleCreditiIscrittiAttivoCircolanteCreditiIscrittiAttivoCircolanteAreaGeografica>
+  </itcc-ci:CreditiIscrittiAttivoCircolanteAreaGeografica>
+  <itcc-ci:DebitiAreaGeografica>
+    <itcc-ci:AreaGeograficaDebitiAreaGeografica contextRef="c1_i">ITALIA</itcc-ci:AreaGeograficaDebitiAreaGeografica>
+    <itcc-ci:DebitiVersoSociFinanziamentiDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">1716</itcc-ci:DebitiVersoSociFinanziamentiDebitiAreaGeografica>
+    <itcc-ci:DebitiVersoBancheDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">127597</itcc-ci:DebitiVersoBancheDebitiAreaGeografica>
+    <itcc-ci:AccontiDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">392320</itcc-ci:AccontiDebitiAreaGeografica>
+    <itcc-ci:DebitiVersoFornitoriDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">223792</itcc-ci:DebitiVersoFornitoriDebitiAreaGeografica>
+    <itcc-ci:DebitiTributariDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">342339</itcc-ci:DebitiTributariDebitiAreaGeografica>
+    <itcc-ci:DebitiVersoIstitutiPrevidenzaSicurezzaSocialeDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">40924</itcc-ci:DebitiVersoIstitutiPrevidenzaSicurezzaSocialeDebitiAreaGeografica>
+    <itcc-ci:AltriDebitiDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">57825</itcc-ci:AltriDebitiDebitiAreaGeografica>
+    <itcc-ci:DebitiDebitiAreaGeografica contextRef="c1_i" unitRef="EUR" decimals="0">1186513</itcc-ci:DebitiDebitiAreaGeografica>
+  </itcc-ci:DebitiAreaGeografica>
+  <itcc-ci:DebitiAreaGeografica>
+    <itcc-ci:AreaGeograficaDebitiAreaGeografica contextRef="c1_i">TUNISIA</itcc-ci:AreaGeograficaDebitiAreaGeografica>
+  </itcc-ci:DebitiAreaGeografica>
+</xbrl>
