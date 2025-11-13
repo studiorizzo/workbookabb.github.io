@@ -47,15 +47,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Carica workbookabb_complete.json unificato (con formule RAW e Named Ranges)
+// Carica workbookabb.json unificato (con formule RAW e Named Ranges - completo 44MB)
 async function loadWorkbookData() {
     try {
-        const response = await fetch('data/template/workbookabb_complete.json');
-        if (!response.ok) throw new Error('workbookabb_complete.json non trovato');
+        const response = await fetch('data/template/workbookabb.json');
+        if (!response.ok) throw new Error('workbookabb.json non trovato');
         workbookData = await response.json();
-        console.log('✓ workbookabb_complete.json loaded');
+        console.log('✓ workbookabb.json loaded');
     } catch (error) {
-        throw new Error('Impossibile caricare workbookabb_complete.json: ' + error.message);
+        throw new Error('Impossibile caricare workbookabb.json: ' + error.message);
     }
 }
 
@@ -212,9 +212,20 @@ function getFoglioLabel(code) {
 
     const sheetData = workbookData.sheets[code];
 
-    // POSIZIONE PRINCIPALE: Riga 5, colonna 2 (verificato su T0002, T0006)
-    if (sheetData[5] && sheetData[5][2]) {
-        const value = sheetData[5][2];
+    // Parse config per trovare first_row
+    const configMap = {};
+    if (sheetData.length >= 2 && sheetData[0] && sheetData[1]) {
+        for (let i = 0; i < sheetData[0].length && i < sheetData[1].length; i++) {
+            if (sheetData[0][i]) {
+                configMap[sheetData[0][i]] = sheetData[1][i];
+            }
+        }
+    }
+    const firstRow = configMap.first_row ? parseInt(configMap.first_row) : 9;
+
+    // POSIZIONE PRINCIPALE: Prima riga dati, colonna 2 (es. sheet[9][2])
+    if (sheetData[firstRow] && sheetData[firstRow][2]) {
+        const value = sheetData[firstRow][2];
         if (typeof value === 'string' && value.length > 3 && value.length < 100) {
             if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
                 return value;
@@ -224,10 +235,10 @@ function getFoglioLabel(code) {
 
     // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
     const possiblePositions = [
-        [3, 1],  // Titolo esteso
-        [5, 1],  // Alternativa colonna 1
-        [6, 2],  // Posizione alternativa
-        [4, 1],  // Altra posizione
+        [6, 1],  // Titolo esteso
+        [5, 2],  // Posizione JSON compresso (compatibilità)
+        [3, 1],  // Altra posizione
+        [firstRow, 1],  // Prima riga dati, colonna 1
         [7, 2]   // Altra posizione
     ];
 
