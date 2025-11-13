@@ -279,35 +279,61 @@ function getCellValue(sheet, row, col) {
 // Importa configurazione da foglio Configurazione
 function importConfigurazione(workbook, bilancio) {
     // Cerca foglio Configurazione
-    const configSheetName = workbook.SheetNames.find(name => 
+    const configSheetName = workbook.SheetNames.find(name =>
         name.toLowerCase().includes('config')
     );
-    
+
     if (!configSheetName) {
         console.warn('⚠ Foglio Configurazione non trovato, uso valori default');
+        console.log('📋 Fogli disponibili:', workbook.SheetNames);
         return;
     }
-    
+
+    console.log('✓ Trovato foglio configurazione:', configSheetName);
     const sheet = workbook.Sheets[configSheetName];
-    
+
+    // Debug: mostra tutte le celle rilevanti per capire la struttura
+    console.log('🔍 Struttura foglio Configurazione (righe 6-14, colonne A-H):');
+    for (let r = 6; r <= 14; r++) {
+        const row = {};
+        for (let c = 0; c <= 7; c++) {
+            const val = getCellValue(sheet, r, c);
+            if (val !== null && val !== undefined && val !== '') {
+                row[String.fromCharCode(65 + c)] = val;
+            }
+        }
+        if (Object.keys(row).length > 0) {
+            console.log(`  Riga ${r + 1}:`, row);
+        }
+    }
+
     try {
         // Riga 8: Date esercizio corrente
         // Col 1 = fine (seriale Excel), Col 2 = inizio, Col 7 = anno
         const fineCorrenteSerial = getCellValue(sheet, 8, 1);
         const inizioCorrenteSerial = getCellValue(sheet, 8, 2);
-        const annoCorrente = getCellValue(sheet, 8, 7);
-        
+        let annoCorrente = getCellValue(sheet, 8, 7);
+
         // Riga 9: Date esercizio precedente
         const finePrecedenteSerial = getCellValue(sheet, 9, 1);
         const inizioPrecedenteSerial = getCellValue(sheet, 9, 2);
-        const annoPrecedente = getCellValue(sheet, 9, 7);
-        
+        let annoPrecedente = getCellValue(sheet, 9, 7);
+
         // Riga 11: Valuta
         const valuta = getCellValue(sheet, 11, 1);
-        
+
         // Riga 13: Codice Fiscale
         const codiceFiscale = getCellValue(sheet, 13, 1);
-        
+
+        console.log('📥 Import config - Valori raw (indici 0-based):', {
+            'Riga 9 (8), Col B (1) - Fine corrente': fineCorrenteSerial,
+            'Riga 9 (8), Col C (2) - Inizio corrente': inizioCorrenteSerial,
+            'Riga 9 (8), Col H (7) - Anno corrente': annoCorrente,
+            'Riga 10 (9), Col B (1) - Fine precedente': finePrecedenteSerial,
+            'Riga 10 (9), Col C (2) - Inizio precedente': inizioPrecedenteSerial,
+            'Riga 10 (9), Col H (7) - Anno precedente': annoPrecedente
+        });
+
         // Converti date seriali Excel in ISO
         if (fineCorrenteSerial) {
             bilancio.metadata.fine_corrente = excelSerialToISO(fineCorrenteSerial);
@@ -321,7 +347,17 @@ function importConfigurazione(workbook, bilancio) {
         if (inizioPrecedenteSerial) {
             bilancio.metadata.inizio_precedente = excelSerialToISO(inizioPrecedenteSerial);
         }
-        
+
+        // Calcola anni dalle date se non sono specificati nella colonna H
+        if (!annoCorrente && bilancio.metadata.fine_corrente) {
+            annoCorrente = new Date(bilancio.metadata.fine_corrente).getFullYear();
+            console.log('📅 Anno corrente calcolato da data fine:', annoCorrente);
+        }
+        if (!annoPrecedente && bilancio.metadata.fine_precedente) {
+            annoPrecedente = new Date(bilancio.metadata.fine_precedente).getFullYear();
+            console.log('📅 Anno precedente calcolato da data fine:', annoPrecedente);
+        }
+
         // Imposta anni
         if (annoCorrente) {
             bilancio.metadata.anno_esercizio = Math.round(annoCorrente);
