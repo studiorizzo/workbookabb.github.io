@@ -1,0 +1,86 @@
+/* Fix per caselle input - rimuovi spinner e dimensione minima */
+
+/* Rimuovi spinner da input number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* Dimensione minima celle per visualizzare numeri */
+.cell-input {
+    min-width: 120px !important;
+    width: 120px;
+}
+
+/* Padding interno per vedere meglio i numeri */
+.cell-input,
+.cell-textarea {
+    padding: 8px !important;
+}
+
+/* Forza dimensioni celle e rimozione spinner - versione potenziata */
+input[type="number"].cell-input,
+input[type="text"].cell-input {
+    min-width: 150px !important;
+    width: 150px !important;
+    font-size: 14px !important;
+}
+
+/* Assicura che gli spinner siano rimossi anche su Firefox */
+input.cell-input[type="number"] {
+    -moz-appearance: textfield !important;
+}
+
+input.cell-input[type="number"]::-webkit-inner-spin-button,
+input.cell-input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
+    display: none !important;
+}
+
+/* NUOVO: Tabelle responsive con scroll */
+.form-container {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.bilancio-table {
+    width: 100%;
+    table-layout: auto;
+    min-width: 600px; /* Larghezza minima per evitare compressione eccessiva */
+}
+
+/* Prima colonna (Descrizione) con larghezza flessibile */
+.bilancio-table th:first-child,
+.bilancio-table td:first-child {
+    min-width: 250px;
+    max-width: 500px;
+    position: sticky;
+    left: 0;
+    background: white;
+    z-index: 2;
+}
+
+.bilancio-table thead th:first-child {
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    z-index: 3;
+}
+
+/* Colonne valori con larghezza adattiva */
+.bilancio-table th:not(:first-child),
+.bilancio-table td:not(:first-child) {
+    min-width: 120px;
+    white-space: nowrap;
+}
+
+/* Ombra per indicare scroll disponibile */
+.form-container:not(:hover) {
+    box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.1);
+}
+
+
