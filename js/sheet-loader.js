@@ -308,16 +308,16 @@ function importConfigurazione(workbook, bilancio) {
     }
 
     try {
-        // Riga 8: Date esercizio corrente
-        // Col 1 = fine (seriale Excel), Col 2 = inizio, Col 7 = anno
-        const fineCorrenteSerial = getCellValue(sheet, 8, 1);
-        const inizioCorrenteSerial = getCellValue(sheet, 8, 2);
-        let annoCorrente = getCellValue(sheet, 8, 7);
+        // Riga 8 (indice): Date esercizio corrente
+        // Col C (2) = fine (seriale Excel), Col D (3) = inizio, Col E (4) = anno corrente, Col F (5) = anno precedente
+        const fineCorrenteSerial = getCellValue(sheet, 8, 2);     // Col C
+        const inizioCorrenteSerial = getCellValue(sheet, 8, 3);   // Col D
+        let annoCorrente = getCellValue(sheet, 8, 4);             // Col E - "c2018"
 
-        // Riga 9: Date esercizio precedente
-        const finePrecedenteSerial = getCellValue(sheet, 9, 1);
-        const inizioPrecedenteSerial = getCellValue(sheet, 9, 2);
-        let annoPrecedente = getCellValue(sheet, 9, 7);
+        // Riga 9 (indice): Date esercizio precedente
+        const finePrecedenteSerial = getCellValue(sheet, 9, 2);   // Col C
+        const inizioPrecedenteSerial = getCellValue(sheet, 9, 3); // Col D
+        let annoPrecedente = getCellValue(sheet, 8, 5);           // Col F dalla riga 8 - "c2017"
 
         // Riga 11: Valuta
         const valuta = getCellValue(sheet, 11, 1);
@@ -326,13 +326,29 @@ function importConfigurazione(workbook, bilancio) {
         const codiceFiscale = getCellValue(sheet, 13, 1);
 
         console.log('📥 Import config - Valori raw (indici 0-based):', {
-            'Riga 9 (8), Col B (1) - Fine corrente': fineCorrenteSerial,
-            'Riga 9 (8), Col C (2) - Inizio corrente': inizioCorrenteSerial,
-            'Riga 9 (8), Col H (7) - Anno corrente': annoCorrente,
-            'Riga 10 (9), Col B (1) - Fine precedente': finePrecedenteSerial,
-            'Riga 10 (9), Col C (2) - Inizio precedente': inizioPrecedenteSerial,
-            'Riga 10 (9), Col H (7) - Anno precedente': annoPrecedente
+            'Riga 9 (8), Col C (2) - Fine corrente': fineCorrenteSerial,
+            'Riga 9 (8), Col D (3) - Inizio corrente': inizioCorrenteSerial,
+            'Riga 9 (8), Col E (4) - Anno corrente': annoCorrente,
+            'Riga 10 (9), Col C (2) - Fine precedente': finePrecedenteSerial,
+            'Riga 10 (9), Col D (3) - Inizio precedente': inizioPrecedenteSerial,
+            'Riga 9 (8), Col F (5) - Anno precedente': annoPrecedente
         });
+
+        // Estrai anno dai valori tipo "c2018" → 2018
+        if (annoCorrente && typeof annoCorrente === 'string') {
+            const match = annoCorrente.match(/(\d{4})/);
+            if (match) {
+                annoCorrente = parseInt(match[1]);
+                console.log('📅 Anno corrente estratto da "' + getCellValue(sheet, 8, 4) + '":', annoCorrente);
+            }
+        }
+        if (annoPrecedente && typeof annoPrecedente === 'string') {
+            const match = annoPrecedente.match(/(\d{4})/);
+            if (match) {
+                annoPrecedente = parseInt(match[1]);
+                console.log('📅 Anno precedente estratto da "' + getCellValue(sheet, 8, 5) + '":', annoPrecedente);
+            }
+        }
 
         // Converti date seriali Excel in ISO
         if (fineCorrenteSerial) {
