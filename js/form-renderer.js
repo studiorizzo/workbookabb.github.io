@@ -42,10 +42,10 @@ function parseFormulaValue(value, bilancio) {
         const rangeName = namedRangeMatch[1];
 
         // Mappa Named Ranges comuni a valori dal bilancio.metadata
-        if (rangeName === 'c_this' || rangeName === 'anno_corrente') {
+        if (rangeName === 'c_this' || rangeName === 'c_this_label' || rangeName === 'anno_corrente') {
             return bilancio.metadata?.anno_esercizio || new Date().getFullYear();
         }
-        if (rangeName === 'c_prev' || rangeName === 'anno_precedente') {
+        if (rangeName === 'c_prev' || rangeName === 'c_prev_label' || rangeName === 'anno_precedente') {
             return bilancio.metadata?.anno_precedente || (new Date().getFullYear() - 1);
         }
         if (rangeName === 'cf') {
@@ -391,8 +391,9 @@ function renderTipo1(templateData, dati, foglioCode) {
     // Altrimenti è una tabella semplice (es. T0000)
     let html = '<div class="form-container"><table class="bilancio-table">';
 
-    // Header colonne - usa colCodeRow per gli header o firstRow-1 come fallback
-    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    // Header colonne - per Tipo 1, gli header sono sempre nella riga PRIMA dei dati (firstRow - 1)
+    // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
+    const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
 
@@ -488,8 +489,9 @@ function renderTipo2(templateData, dati, foglioCode) {
     const numRows = parseInt(configMap.nr_row) || 0;
     const numCols = parseInt(configMap.nr_col) || 0;
 
-    // Header row - usa colCodeRow o firstRow-1 come fallback (NO hardcoded [9])
-    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
+    // colCodeRow contiene i CODICI delle colonne (per chiavi composite), non gli header visibili
+    const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
     const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
@@ -653,8 +655,8 @@ function renderTipo3(templateData, dati, foglioCode) {
 
     let html = '<div class="form-container"><table class="bilancio-table">';
 
-    // Header row - usa colCodeRow o firstRow-1 come fallback (NO hardcoded [9])
-    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
+    const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
     for (let i = firstCol; i < headerRow.length && (i - firstCol) < numCols; i++) {
