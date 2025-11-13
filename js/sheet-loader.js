@@ -355,118 +355,91 @@ function resolveNamedRange(workbook, rangeName) {
     return getCellValue(sheet, location.row, location.col);
 }
 
-// Importa configurazione da foglio Configurazione
+// Importa configurazione usando Named Ranges (come app Java originale)
 function importConfigurazione(workbook, bilancio) {
-    // Cerca foglio Configurazione
-    const configSheetName = workbook.SheetNames.find(name =>
-        name.toLowerCase().includes('config')
-    );
-
-    if (!configSheetName) {
-        console.warn('⚠ Foglio Configurazione non trovato, uso valori default');
-        console.log('📋 Fogli disponibili:', workbook.SheetNames);
-        return;
-    }
-
-    console.log('✓ Trovato foglio configurazione:', configSheetName);
-    const sheet = workbook.Sheets[configSheetName];
-
-    // Debug: mostra tutte le celle rilevanti per capire la struttura
-    console.log('🔍 Struttura foglio Configurazione (righe 6-20, colonne A-H):');
-    for (let r = 6; r <= 20; r++) {
-        const row = {};
-        for (let c = 0; c <= 7; c++) {
-            const val = getCellValue(sheet, r, c);
-            if (val !== null && val !== undefined && val !== '') {
-                row[String.fromCharCode(65 + c)] = val;
-            }
-        }
-        if (Object.keys(row).length > 0) {
-            console.log(`  Riga ${r + 1}:`, row);
-        }
-    }
-
-    // Cerca celle che contengono date recenti per identificare dove sono le date reali del bilancio
-    console.log('🔎 Ricerca date recenti nel foglio (2020-2025):');
-    const range = XLSX.utils.decode_range(sheet['!ref']);
-    for (let R = range.s.r; R <= range.e.r; R++) {
-        for (let C = range.s.c; C <= range.e.c; C++) {
-            const val = getCellValue(sheet, R, C);
-            if (val !== null && val !== undefined) {
-                const valStr = String(val);
-                // Cerca anni recenti come stringhe "2022", "c2022", ecc
-                if (valStr.match(/202[0-5]/) || valStr === 'c2020' || valStr === 'c2021' || valStr === 'c2022' || valStr === 'c2023' || valStr === 'c2024' || valStr === 'c2025') {
-                    console.log(`  → Trovato "${val}" in ${String.fromCharCode(65 + C)}${R + 1}`);
-                }
-                // Cerca date seriali Excel per anni recenti (43831 = 2020-01-01, 44927 = 2023-01-01, ecc)
-                if (typeof val === 'number' && val > 43800 && val < 47500) {
-                    const date = excelSerialToISO(val);
-                    if (date && date.match(/202[0-5]/)) {
-                        console.log(`  → Trovata data ${date} (seriale ${val}) in ${String.fromCharCode(65 + C)}${R + 1}`);
-                    }
-                }
-            }
-        }
-    }
+    console.log('📋 Import configurazione usando Named Ranges...');
 
     try {
-        // Riga 8 (indice): Date esercizio corrente
-        // Col C (2) = fine (seriale Excel), Col D (3) = inizio, Col E (4) = anno corrente, Col F (5) = anno precedente
-        const fineCorrenteSerial = getCellValue(sheet, 8, 2);     // Col C
-        const inizioCorrenteSerial = getCellValue(sheet, 8, 3);   // Col D
-        let annoCorrente = getCellValue(sheet, 8, 4);             // Col E - "c2018"
+        // STRATEGIA: Leggi date dai Named Ranges come fa l'app Java
+        // Priorità 1: Foglio Indice (INPUT utente)
+        // Priorità 2: Foglio Configurazione (valori calcolati) - fallback
 
-        // Riga 9 (indice): Date esercizio precedente
-        const finePrecedenteSerial = getCellValue(sheet, 9, 2);   // Col C
-        const inizioPrecedenteSerial = getCellValue(sheet, 9, 3); // Col D
-        let annoPrecedente = getCellValue(sheet, 8, 5);           // Col F dalla riga 8 - "c2017"
+        // Leggi date corrente
+        let fineCorrenteSerial = resolveNamedRange(workbook, 'c_this_end_input');
+        let inizioCorrenteSerial = resolveNamedRange(workbook, 'c_this_start_import');
+        let annoCorrenteStr = resolveNamedRange(workbook, 'c_this');
 
-        // Riga 11: Valuta
-        const valuta = getCellValue(sheet, 11, 1);
+        // Fallback a Configurazione se Indice non disponibile
+        if (!fineCorrenteSerial) {
+            fineCorrenteSerial = resolveNamedRange(workbook, 'c_this_end');
+        }
+        if (!inizioCorrenteSerial) {
+            inizioCorrenteSerial = resolveNamedRange(workbook, 'c_this_start');
+        }
 
-        // Riga 13: Codice Fiscale
-        const codiceFiscale = getCellValue(sheet, 13, 1);
+        // Leggi date precedente
+        let finePrecedenteSerial = resolveNamedRange(workbook, 'c_prev_end_import');
+        let inizioPrecedenteSerial = resolveNamedRange(workbook, 'c_prev_start_import');
+        let annoPrecedenteStr = resolveNamedRange(workbook, 'c_prev');
 
-        console.log('📥 Import config - Valori raw (indici 0-based):', {
-            'Riga 9 (8), Col C (2) - Fine corrente': fineCorrenteSerial,
-            'Riga 9 (8), Col D (3) - Inizio corrente': inizioCorrenteSerial,
-            'Riga 9 (8), Col E (4) - Anno corrente': annoCorrente,
-            'Riga 10 (9), Col C (2) - Fine precedente': finePrecedenteSerial,
-            'Riga 10 (9), Col D (3) - Inizio precedente': inizioPrecedenteSerial,
-            'Riga 9 (8), Col F (5) - Anno precedente': annoPrecedente
+        // Fallback a Configurazione
+        if (!finePrecedenteSerial) {
+            finePrecedenteSerial = resolveNamedRange(workbook, 'c_prev_end');
+        }
+        if (!inizioPrecedenteSerial) {
+            inizioPrecedenteSerial = resolveNamedRange(workbook, 'c_prev_start');
+        }
+
+        // Leggi altri metadati
+        const codiceFiscale = resolveNamedRange(workbook, 'cf');
+        const valuta = resolveNamedRange(workbook, 'unit');
+
+        console.log('📥 Valori letti da Named Ranges:', {
+            'c_this_end': fineCorrenteSerial,
+            'c_this_start': inizioCorrenteSerial,
+            'c_this': annoCorrenteStr,
+            'c_prev_end': finePrecedenteSerial,
+            'c_prev_start': inizioPrecedenteSerial,
+            'c_prev': annoPrecedenteStr,
+            'cf': codiceFiscale,
+            'unit': valuta
         });
 
-        // Estrai anno dai valori tipo "c2018" → 2018
-        if (annoCorrente && typeof annoCorrente === 'string') {
-            const match = annoCorrente.match(/(\d{4})/);
-            if (match) {
-                annoCorrente = parseInt(match[1]);
-                console.log('📅 Anno corrente estratto da "' + getCellValue(sheet, 8, 4) + '":', annoCorrente);
-            }
-        }
-        if (annoPrecedente && typeof annoPrecedente === 'string') {
-            const match = annoPrecedente.match(/(\d{4})/);
-            if (match) {
-                annoPrecedente = parseInt(match[1]);
-                console.log('📅 Anno precedente estratto da "' + getCellValue(sheet, 8, 5) + '":', annoPrecedente);
-            }
-        }
-
         // Converti date seriali Excel in ISO
-        if (fineCorrenteSerial) {
+        if (fineCorrenteSerial && typeof fineCorrenteSerial === 'number') {
             bilancio.metadata.fine_corrente = excelSerialToISO(fineCorrenteSerial);
         }
-        if (inizioCorrenteSerial) {
+        if (inizioCorrenteSerial && typeof inizioCorrenteSerial === 'number') {
             bilancio.metadata.inizio_corrente = excelSerialToISO(inizioCorrenteSerial);
         }
-        if (finePrecedenteSerial) {
+        if (finePrecedenteSerial && typeof finePrecedenteSerial === 'number') {
             bilancio.metadata.fine_precedente = excelSerialToISO(finePrecedenteSerial);
         }
-        if (inizioPrecedenteSerial) {
+        if (inizioPrecedenteSerial && typeof inizioPrecedenteSerial === 'number') {
             bilancio.metadata.inizio_precedente = excelSerialToISO(inizioPrecedenteSerial);
         }
 
-        // Calcola anni dalle date se non sono specificati nella colonna H
+        // Estrai anni da stringhe "c2022" → 2022
+        let annoCorrente = null;
+        let annoPrecedente = null;
+
+        if (annoCorrenteStr && typeof annoCorrenteStr === 'string') {
+            const match = annoCorrenteStr.match(/(\d{4})/);
+            if (match) {
+                annoCorrente = parseInt(match[1]);
+                console.log('📅 Anno corrente estratto da "' + annoCorrenteStr + '":', annoCorrente);
+            }
+        }
+
+        if (annoPrecedenteStr && typeof annoPrecedenteStr === 'string') {
+            const match = annoPrecedenteStr.match(/(\d{4})/);
+            if (match) {
+                annoPrecedente = parseInt(match[1]);
+                console.log('📅 Anno precedente estratto da "' + annoPrecedenteStr + '":', annoPrecedente);
+            }
+        }
+
+        // Fallback: calcola anni dalle date se non specificati
         if (!annoCorrente && bilancio.metadata.fine_corrente) {
             annoCorrente = new Date(bilancio.metadata.fine_corrente).getFullYear();
             console.log('📅 Anno corrente calcolato da data fine:', annoCorrente);
@@ -476,30 +449,31 @@ function importConfigurazione(workbook, bilancio) {
             console.log('📅 Anno precedente calcolato da data fine:', annoPrecedente);
         }
 
-        // Imposta anni
+        // Imposta metadati
         if (annoCorrente) {
             bilancio.metadata.anno_esercizio = Math.round(annoCorrente);
         }
         if (annoPrecedente) {
             bilancio.metadata.anno_precedente = Math.round(annoPrecedente);
         }
-        
-        // Valuta e CF
         if (valuta) {
             bilancio.metadata.valuta = valuta;
         }
         if (codiceFiscale) {
             bilancio.metadata.codice_fiscale = codiceFiscale;
         }
-        
+
         console.log('✓ Configurazione importata:', {
             anno_corrente: bilancio.metadata.anno_esercizio,
             anno_precedente: bilancio.metadata.anno_precedente,
-            cf: codiceFiscale
+            fine_corrente: bilancio.metadata.fine_corrente,
+            fine_precedente: bilancio.metadata.fine_precedente,
+            cf: bilancio.metadata.codice_fiscale,
+            valuta: bilancio.metadata.valuta
         });
-        
+
     } catch (error) {
-        console.error('Errore import configurazione:', error);
+        console.error('❌ Errore import configurazione:', error);
     }
 }
 
