@@ -203,21 +203,52 @@ function renderIndex() {
     indexTree.innerHTML = html;
 }
 
-// Get label foglio (helper)
+// Get label foglio (helper) - cerca in più posizioni con fallback
 function getFoglioLabel(code) {
-    // Leggi dinamicamente dal workbookData invece di usare dizionario hardcoded
+    // Leggi dinamicamente dal workbookData
     if (!workbookData || !workbookData.sheets || !workbookData.sheets[code]) {
         return '';
     }
-    
+
     const sheetData = workbookData.sheets[code];
-    
-    // Il titolo è in riga 6, colonna 1
-    if (sheetData.length > 6 && sheetData[6] && sheetData[6].length > 1) {
-        return sheetData[6][1] || '';
+
+    // Cerca titolo in diverse posizioni comuni del template
+    const possibleTitleRows = [6, 4, 5, 7, 3];
+
+    for (const rowIndex of possibleTitleRows) {
+        if (sheetData[rowIndex]) {
+            // Cerca nelle prime 3 colonne
+            for (let col = 1; col <= 3; col++) {
+                const value = sheetData[rowIndex][col];
+                if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
+                    // Escludi valori che sembrano codici XBRL o formule
+                    if (!value.startsWith('=') && !value.match(/^[A-Z0-9_]{3,20}$/)) {
+                        return value;
+                    }
+                }
+            }
+        }
     }
-    
-    return '';
+
+    // Fallback: usa mappings XBRL
+    if (xbrlMappings && xbrlMappings.fogli && xbrlMappings.fogli[code]) {
+        const foglioInfo = xbrlMappings.fogli[code];
+        if (foglioInfo.nome || foglioInfo.label) {
+            return foglioInfo.nome || foglioInfo.label;
+        }
+    }
+
+    // Nomi conosciuti hardcoded come ultimo fallback
+    const knownNames = {
+        'T0000': 'Dati anagrafici',
+        'T0002': 'Stato patrimoniale - Attivo',
+        'T0004': 'Stato patrimoniale - Passivo',
+        'T0006': 'Conto economico',
+        'T0008': 'Rendiconto finanziario',
+        'T0010': 'Movimentazione patrimonio netto'
+    };
+
+    return knownNames[code] || '';
 }
 
 // Navigazione a foglio

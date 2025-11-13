@@ -23,6 +23,43 @@ function parseSheetConfig(templateData) {
     return config;
 }
 
+// Parse formula value - estrae valori da formule RAW (es. "=c2022" → 2022)
+function parseFormulaValue(value, bilancio) {
+    // Se non è una stringa o non inizia con =, restituisci come è
+    if (typeof value !== 'string' || !value.startsWith('=')) {
+        return value;
+    }
+
+    // Estrai anno da formule come "=c2022", "=c_2022", ecc.
+    const yearMatch = value.match(/(\d{4})/);
+    if (yearMatch) {
+        return parseInt(yearMatch[1]);
+    }
+
+    // Se la formula è un Named Range, prova a risolverlo dal bilancio
+    const namedRangeMatch = value.match(/^=([a-zA-Z_][a-zA-Z0-9_]*)/);
+    if (namedRangeMatch && bilancio) {
+        const rangeName = namedRangeMatch[1];
+
+        // Mappa Named Ranges comuni a valori dal bilancio.metadata
+        if (rangeName === 'c_this' || rangeName === 'anno_corrente') {
+            return bilancio.metadata?.anno_esercizio || new Date().getFullYear();
+        }
+        if (rangeName === 'c_prev' || rangeName === 'anno_precedente') {
+            return bilancio.metadata?.anno_precedente || (new Date().getFullYear() - 1);
+        }
+        if (rangeName === 'cf') {
+            return bilancio.metadata?.codice_fiscale || '';
+        }
+        if (rangeName === 'unit') {
+            return bilancio.metadata?.valuta || 'EUR';
+        }
+    }
+
+    // Se non riesci a parsare, restituisci la formula originale senza il =
+    return value.substring(1);
+}
+
 // Renderizza Configurazione (date, codice fiscale, valuta)
 function renderConfigurazione(content) {
     const bilancio = getBilancio();
@@ -195,9 +232,9 @@ function renderFoglio(codice) {
     const tipoTab = parseInt(config[0]);
     
     let html = '';
-    
+
     // Header foglio
-    const titolo = getTitoloFoglio(templateData);
+    const titolo = getTitoloFoglio(templateData, codice);
     html += `
         <div class="sheet-header">
             <h2>${codice}</h2>
@@ -234,15 +271,51 @@ function renderFoglio(codice) {
     attachInputListeners();
 }
 
-// Estrai titolo foglio
-function getTitoloFoglio(templateData) {
-    // Cerca in riga 6 o 4
-    if (templateData[6] && templateData[6][1]) {
-        return templateData[6][1];
+// Estrai titolo foglio - cerca in più posizioni e usa fallback
+function getTitoloFoglio(templateData, foglioCode = null) {
+    // Cerca titolo in diverse posizioni comuni del template
+    const possibleTitleRows = [6, 4, 5, 7, 3];
+
+    for (const rowIndex of possibleTitleRows) {
+        if (templateData[rowIndex]) {
+            // Cerca nelle prime 3 colonne
+            for (let col = 1; col <= 3; col++) {
+                const value = templateData[rowIndex][col];
+                if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
+                    // Escludi valori che sembrano codici XBRL o formule
+                    if (!value.startsWith('=') && !value.match(/^[A-Z0-9_]{3,20}$/)) {
+                        return value;
+                    }
+                }
+            }
+        }
     }
-    if (templateData[4] && templateData[4][1]) {
-        return templateData[4][1];
+
+    // Fallback: cerca nel nome del foglio usando i mapping XBRL
+    if (foglioCode) {
+        const xbrlMappings = getXBRLMappings();
+        if (xbrlMappings && xbrlMappings.fogli && xbrlMappings.fogli[foglioCode]) {
+            const foglioInfo = xbrlMappings.fogli[foglioCode];
+            if (foglioInfo.nome || foglioInfo.label) {
+                return foglioInfo.nome || foglioInfo.label;
+            }
+        }
+
+        // Nomi conosciuti hardcoded come fallback
+        const knownNames = {
+            'T0000': 'Dati anagrafici',
+            'T0002': 'Stato patrimoniale - Attivo',
+            'T0004': 'Stato patrimoniale - Passivo',
+            'T0006': 'Conto economico',
+            'T0008': 'Rendiconto finanziario',
+            'T0010': 'Movimentazione patrimonio netto'
+        };
+
+        if (knownNames[foglioCode]) {
+            return knownNames[foglioCode];
+        }
     }
+
     return 'Sezione bilancio';
 }
 
@@ -271,7 +344,7 @@ function renderTipo1(templateData, dati, foglioCode) {
         }
 
         const valore = dati[codiceCell] || '';
-        const titolo = getTitoloFoglio(templateData);
+        const titolo = getTitoloFoglio(templateData, foglioCode);
 
         const mapping = findMappingByCode(codiceCell, foglioCode, xbrlMappings);
         const label = mapping?.ui?.label || titolo;
@@ -300,8 +373,9 @@ function renderTipo1(templateData, dati, foglioCode) {
     // Altrimenti è una tabella semplice (es. T0000)
     let html = '<div class="form-container"><table class="bilancio-table">';
 
-    // Header colonne (cerca nella riga 8 o firstRow-1)
-    const headerRow = templateData[Math.max(8, firstRow - 1)] || [];
+    // Header colonne - usa colCodeRow per gli header o firstRow-1 come fallback
+    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    const headerRow = templateData[headerRowIndex] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
 
     if (isT0000) {
@@ -311,6 +385,9 @@ function renderTipo1(templateData, dati, foglioCode) {
         // Altri fogli tipo 1: usa header standard
         for (let c = 0; c < numCols; c++) {
             let colHeader = headerRow[firstCol + c] || '';
+
+            // Parse formule RAW (es. =c2022 → 2022)
+            colHeader = parseFormulaValue(colHeader, bilancio);
 
             // Sostituisci anni hardcoded con valori dinamici
             if (typeof colHeader === 'number' && colHeader >= 1900 && colHeader <= 2100) {
@@ -392,7 +469,10 @@ function renderTipo2(templateData, dati, foglioCode) {
     const firstCol = parseInt(configMap.first_col) || 0;
     const numRows = parseInt(configMap.nr_row) || 0;
     const numCols = parseInt(configMap.nr_col) || 0;
-    const headerRow = templateData[9] || templateData[Math.max(8, firstRow - 1)] || [];
+
+    // Header row - usa colCodeRow o firstRow-1 come fallback (NO hardcoded [9])
+    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    const headerRow = templateData[headerRowIndex] || [];
     const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
     
     const xbrlMappings = getXBRLMappings();
@@ -419,28 +499,34 @@ function renderTipo2(templateData, dati, foglioCode) {
         html += `<th>${annoCorrente}</th>`;
     } else {
         // Altri fogli: usa codici colonna
-        for (let i = 3; i < headerRow.length && (i-3) < codiciColonne.length; i++) {
-            let headerText = escapeHtml(headerRow[i] || '');
-            
+        for (let i = firstCol; i < headerRow.length && (i - firstCol) < codiciColonne.length; i++) {
+            let headerValue = headerRow[i];
+
+            // Parse formule RAW (es. =c2022 → 2022)
+            headerValue = parseFormulaValue(headerValue, bilancio);
+
+            let headerText = escapeHtml(headerValue || '');
+
             // Sostituisci anni hardcoded con valori dinamici da metadata
-            const headerValue = headerRow[i];
             if (typeof headerValue === 'number' && headerValue >= 1900 && headerValue <= 2100) {
-                if (i === 3) {
+                const colIndex = i - firstCol;
+                if (colIndex === 0) {
                     headerText = annoCorrente;
-                } else if (i === 4) {
+                } else if (colIndex === 1) {
                     headerText = annoPrecedente;
                 }
             } else if (typeof headerValue === 'string') {
                 const parsed = parseInt(headerValue);
                 if (!isNaN(parsed) && parsed >= 1900 && parsed <= 2100) {
-                    if (i === 3) {
+                    const colIndex = i - firstCol;
+                    if (colIndex === 0) {
                         headerText = annoCorrente;
-                    } else if (i === 4) {
+                    } else if (colIndex === 1) {
                         headerText = annoPrecedente;
                     }
                 }
             }
-            
+
             html += `<th>${headerText}</th>`;
         }
     }
@@ -539,24 +625,35 @@ function renderTipo3(templateData, dati, foglioCode) {
     const numRows = parseInt(configMap.nr_row) || 0;
     const numCols = parseInt(configMap.nr_col) || 0;
     const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
-    
+
     const xbrlMappings = getXBRLMappings();
-    
+
     // Leggi anni da bilancio per header dinamici
     const bilancio = getBilancio();
     const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
     const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
-    
+
     let html = '<div class="form-container"><table class="bilancio-table">';
-    
-    // Header (cerca in riga 9 o firstRow-1)
-    const headerRow = templateData[9] || templateData[Math.max(8, firstRow - 1)] || [];
+
+    // Header row - usa colCodeRow o firstRow-1 come fallback (NO hardcoded [9])
+    const headerRowIndex = colCodeRow > 0 ? colCodeRow : Math.max(8, firstRow - 1);
+    const headerRow = templateData[headerRowIndex] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
-    for (let i = 3; i < headerRow.length && (i-3) < numCols; i++) {
-        let headerText = escapeHtml(headerRow[i] || '');
-        // Sostituisci anni hardcoded con valori reali
-        if (i === 3) headerText = annoCorrente;
-        if (i === 4) headerText = annoPrecedente;
+    for (let i = firstCol; i < headerRow.length && (i - firstCol) < numCols; i++) {
+        let headerValue = headerRow[i];
+
+        // Parse formule RAW (es. =c2022 → 2022)
+        headerValue = parseFormulaValue(headerValue, bilancio);
+
+        let headerText = escapeHtml(headerValue || '');
+
+        // Sostituisci anni hardcoded con valori dinamici
+        const colIndex = i - firstCol;
+        if (typeof headerValue === 'number' && headerValue >= 1900 && headerValue <= 2100) {
+            if (colIndex === 0) headerText = annoCorrente;
+            else if (colIndex === 1) headerText = annoPrecedente;
+        }
+
         html += `<th>${headerText}</th>`;
     }
     html += '</tr></thead><tbody>';
