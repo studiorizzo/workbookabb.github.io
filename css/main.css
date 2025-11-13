@@ -242,10 +242,6 @@ body {
     border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary);
-}
-
 /* Welcome Screen */
 .welcome-screen {
     max-width: 700px;
