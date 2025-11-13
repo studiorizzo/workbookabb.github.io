@@ -47,15 +47,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Carica workbookapp.json unificato
+// Carica workbookabb_complete.json unificato (con formule RAW e Named Ranges)
 async function loadWorkbookData() {
     try {
-        const response = await fetch('data/template/workbookapp.json');
-        if (!response.ok) throw new Error('workbookapp.json non trovato');
+        const response = await fetch('data/template/workbookabb_complete.json');
+        if (!response.ok) throw new Error('workbookabb_complete.json non trovato');
         workbookData = await response.json();
-        console.log('✓ workbookapp.json loaded');
+        console.log('✓ workbookabb_complete.json loaded');
     } catch (error) {
-        throw new Error('Impossibile caricare workbookapp.json: ' + error.message);
+        throw new Error('Impossibile caricare workbookabb_complete.json: ' + error.message);
     }
 }
 
