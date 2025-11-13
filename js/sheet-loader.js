@@ -203,44 +203,50 @@ function importTipo2(sheet, templateData, configMap, datiSheet) {
 }
 
 // Import TIPO 3: Tuple
-function importTipo3(sheet, templateData, config, datiSheet) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const codiciColonne = templateData[2]?.slice(3) || [];
-    
+function importTipo3(sheet, templateData, configMap, datiSheet) {
+    // Usa configMap invece di indici hardcoded
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
+    const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
+
+        // Leggi row_code dalla colonna specificata
+        const codiceRiga = rowData[rowCodeCol];
         if (!codiceRiga) continue;
-        
-        // Se una sola colonna o nessun codice colonna, usa codiceRiga diretto
-        if (numCols === 1 || codiciColonne.length === 0) {
+
+        // Se una sola colonna, usa codiceRiga diretto
+        if (numCols === 1) {
             const xlsRow = firstRow + r;
             const xlsCol = firstCol;
             const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
             const cell = sheet[cellAddress];
-            
+
             if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                 datiSheet[codiceRiga] = cell.v;
                 count++;
             }
         } else {
-            // Più colonne
-            for (let c = 0; c < numCols && c < codiciColonne.length; c++) {
-                const codiceColonna = codiciColonne[c];
+            // Più colonne: leggi col_code dalla riga specificata
+            for (let c = 0; c < numCols; c++) {
+                const colCodeData = templateData[colCodeRow];
+                if (!colCodeData) continue;
+
+                const codiceColonna = colCodeData[firstCol + c];
                 if (!codiceColonna) continue;
-                
+
                 const codiceCella = `${codiceRiga}_${codiceColonna}`;
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol + c;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 const cell = sheet[cellAddress];
                 if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
                     datiSheet[codiceCella] = cell.v;
@@ -249,7 +255,7 @@ function importTipo3(sheet, templateData, config, datiSheet) {
             }
         }
     }
-    
+
     return count;
 }
 
