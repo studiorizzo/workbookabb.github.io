@@ -64,7 +64,7 @@ async function importFromXLS(workbook) {
                 continue;
             }
 
-            const tipoTab = configMap.tipo_tab;
+            const tipoTab = parseInt(configMap.tipo_tab);
 
             bilancio.fogli[sheetName] = {};
             let celleSheet = 0;
