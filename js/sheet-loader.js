@@ -279,17 +279,34 @@ function getCellValue(sheet, row, col) {
 // Importa configurazione da foglio Configurazione
 function importConfigurazione(workbook, bilancio) {
     // Cerca foglio Configurazione
-    const configSheetName = workbook.SheetNames.find(name => 
+    const configSheetName = workbook.SheetNames.find(name =>
         name.toLowerCase().includes('config')
     );
-    
+
     if (!configSheetName) {
         console.warn('⚠ Foglio Configurazione non trovato, uso valori default');
+        console.log('📋 Fogli disponibili:', workbook.SheetNames);
         return;
     }
-    
+
+    console.log('✓ Trovato foglio configurazione:', configSheetName);
     const sheet = workbook.Sheets[configSheetName];
-    
+
+    // Debug: mostra tutte le celle rilevanti per capire la struttura
+    console.log('🔍 Struttura foglio Configurazione (righe 6-14, colonne A-H):');
+    for (let r = 6; r <= 14; r++) {
+        const row = {};
+        for (let c = 0; c <= 7; c++) {
+            const val = getCellValue(sheet, r, c);
+            if (val !== null && val !== undefined && val !== '') {
+                row[String.fromCharCode(65 + c)] = val;
+            }
+        }
+        if (Object.keys(row).length > 0) {
+            console.log(`  Riga ${r + 1}:`, row);
+        }
+    }
+
     try {
         // Riga 8: Date esercizio corrente
         // Col 1 = fine (seriale Excel), Col 2 = inizio, Col 7 = anno
@@ -308,13 +325,13 @@ function importConfigurazione(workbook, bilancio) {
         // Riga 13: Codice Fiscale
         const codiceFiscale = getCellValue(sheet, 13, 1);
 
-        console.log('📥 Import config - Valori raw:', {
-            fineCorrenteSerial,
-            inizioCorrenteSerial,
-            annoCorrente,
-            finePrecedenteSerial,
-            inizioPrecedenteSerial,
-            annoPrecedente
+        console.log('📥 Import config - Valori raw (indici 0-based):', {
+            'Riga 9 (8), Col B (1) - Fine corrente': fineCorrenteSerial,
+            'Riga 9 (8), Col C (2) - Inizio corrente': inizioCorrenteSerial,
+            'Riga 9 (8), Col H (7) - Anno corrente': annoCorrente,
+            'Riga 10 (9), Col B (1) - Fine precedente': finePrecedenteSerial,
+            'Riga 10 (9), Col C (2) - Inizio precedente': inizioPrecedenteSerial,
+            'Riga 10 (9), Col H (7) - Anno precedente': annoPrecedente
         });
 
         // Converti date seriali Excel in ISO
