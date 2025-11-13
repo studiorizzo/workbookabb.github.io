@@ -293,8 +293,8 @@ function importConfigurazione(workbook, bilancio) {
     const sheet = workbook.Sheets[configSheetName];
 
     // Debug: mostra tutte le celle rilevanti per capire la struttura
-    console.log('🔍 Struttura foglio Configurazione (righe 6-14, colonne A-H):');
-    for (let r = 6; r <= 14; r++) {
+    console.log('🔍 Struttura foglio Configurazione (righe 6-20, colonne A-H):');
+    for (let r = 6; r <= 20; r++) {
         const row = {};
         for (let c = 0; c <= 7; c++) {
             const val = getCellValue(sheet, r, c);
@@ -304,6 +304,29 @@ function importConfigurazione(workbook, bilancio) {
         }
         if (Object.keys(row).length > 0) {
             console.log(`  Riga ${r + 1}:`, row);
+        }
+    }
+
+    // Cerca celle che contengono date recenti per identificare dove sono le date reali del bilancio
+    console.log('🔎 Ricerca date recenti nel foglio (2020-2025):');
+    const range = XLSX.utils.decode_range(sheet['!ref']);
+    for (let R = range.s.r; R <= range.e.r; R++) {
+        for (let C = range.s.c; C <= range.e.c; C++) {
+            const val = getCellValue(sheet, R, C);
+            if (val !== null && val !== undefined) {
+                const valStr = String(val);
+                // Cerca anni recenti come stringhe "2022", "c2022", ecc
+                if (valStr.match(/202[0-5]/) || valStr === 'c2020' || valStr === 'c2021' || valStr === 'c2022' || valStr === 'c2023' || valStr === 'c2024' || valStr === 'c2025') {
+                    console.log(`  → Trovato "${val}" in ${String.fromCharCode(65 + C)}${R + 1}`);
+                }
+                // Cerca date seriali Excel per anni recenti (43831 = 2020-01-01, 44927 = 2023-01-01, ecc)
+                if (typeof val === 'number' && val > 43800 && val < 47500) {
+                    const date = excelSerialToISO(val);
+                    if (date && date.match(/202[0-5]/)) {
+                        console.log(`  → Trovata data ${date} (seriale ${val}) in ${String.fromCharCode(65 + C)}${R + 1}`);
+                    }
+                }
+            }
         }
     }
 
