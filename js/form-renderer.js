@@ -273,19 +273,32 @@ function renderFoglio(codice) {
 
 // Estrai titolo foglio - cerca in più posizioni e usa fallback
 function getTitoloFoglio(templateData, foglioCode = null) {
-    // Cerca titolo in diverse posizioni comuni del template
-    const possibleTitleRows = [6, 4, 5, 7, 3];
+    // POSIZIONE PRINCIPALE: Riga 5, colonna 2 (verificato su T0002, T0006)
+    if (templateData[5] && templateData[5][2]) {
+        const value = templateData[5][2];
+        if (typeof value === 'string' && value.length > 3 && value.length < 100) {
+            if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
+                return value;
+            }
+        }
+    }
 
-    for (const rowIndex of possibleTitleRows) {
-        if (templateData[rowIndex]) {
-            // Cerca nelle prime 3 colonne
-            for (let col = 1; col <= 3; col++) {
-                const value = templateData[rowIndex][col];
-                if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
-                    // Escludi valori che sembrano codici XBRL o formule
-                    if (!value.startsWith('=') && !value.match(/^[A-Z0-9_]{3,20}$/)) {
-                        return value;
-                    }
+    // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
+    const possiblePositions = [
+        [3, 1],  // Titolo esteso (es. "Conto economico abbreviato")
+        [5, 1],  // Alternativa colonna 1
+        [6, 2],  // Posizione alternativa
+        [4, 1],  // Altra posizione
+        [7, 2]   // Altra posizione
+    ];
+
+    for (const [rowIdx, colIdx] of possiblePositions) {
+        if (templateData[rowIdx] && templateData[rowIdx][colIdx]) {
+            const value = templateData[rowIdx][colIdx];
+            if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
+                // Escludi valori che sembrano codici XBRL o formule
+                if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
+                    return value;
                 }
             }
         }
