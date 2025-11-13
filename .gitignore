@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Temporary analysis files
+analyze_*.js
+check_*.js
+
+# NPM
+package-lock.json
