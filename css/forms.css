@@ -53,18 +53,21 @@
 .bilancio-table thead th {
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     font-weight: 600;
-    padding: 14px 12px;
+    padding: 16px 12px;
     border-bottom: 2px solid var(--border-dark);
     text-align: center;
     font-size: 12px;
     color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    /* Wrap long header text */
+    /* Wrap long header text and center it */
     white-space: normal;
     word-wrap: break-word;
-    max-width: 180px;
+    overflow-wrap: break-word;
+    min-width: 150px;
+    width: 160px;
     line-height: 1.4;
+    vertical-align: middle;
 }
 
 /* Description column header (empty, first column) */
@@ -84,13 +87,18 @@
     padding: 12px;
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
+    text-align: center;
 }
 
+/* Description column cells (first column) */
 .bilancio-table tbody td:first-child {
     position: sticky;
     left: 0;
     background: var(--bg-primary);
     z-index: 1;
+    text-align: left;
+    min-width: 280px;
+    max-width: 400px;
 }
 
 .bilancio-table tbody tr:hover td {
