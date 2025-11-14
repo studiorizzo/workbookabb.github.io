@@ -88,12 +88,12 @@ function discoverSheets() {
 // Carica mappature XBRL
 async function loadXBRLMappings() {
     try {
-        const response = await fetch('data/mapping/xbrl_mappings_complete.json');
-        if (!response.ok) throw new Error('xbrl_mappings non trovato');
+        const response = await fetch('data/mapping/mappings.json');
+        if (!response.ok) throw new Error('mappings.json non trovato');
         xbrlMappings = await response.json();
         console.log('✓ XBRL mappings loaded:', Object.keys(xbrlMappings.mappature || {}).length, 'fogli');
     } catch (error) {
-        console.warn('⚠ xbrl_mappings not available:', error.message);
+        console.warn('⚠ mappings.json not available:', error.message);
         xbrlMappings = { mappature: {} };
     }
 }
