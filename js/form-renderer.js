@@ -793,19 +793,19 @@ function handleCellChange(event) {
 // Trova mapping per codice
 function findMappingByCode(codiceExcel, foglioCode, xbrlMappings) {
     if (!xbrlMappings || !xbrlMappings.mappature) return null;
-    
+
     const foglioMappings = xbrlMappings.mappature[foglioCode];
     if (!foglioMappings) return null;
-    
-    // Cerca match esatto
-    let mapping = foglioMappings.find(m => m.codice_excel === codiceExcel);
-    
+
+    // Cerca match esatto (supporta sia 'code' che 'codice_excel' per compatibilità)
+    let mapping = foglioMappings.find(m => m.code === codiceExcel || m.codice_excel === codiceExcel);
+
     // Se non trovato, cerca per prefisso (per celle combinate riga_colonna)
     if (!mapping) {
         const codiceBase = codiceExcel.split('_')[0];
-        mapping = foglioMappings.find(m => m.codice_excel === codiceBase);
+        mapping = foglioMappings.find(m => m.code === codiceBase || m.codice_excel === codiceBase);
     }
-    
+
     return mapping;
 }
 
