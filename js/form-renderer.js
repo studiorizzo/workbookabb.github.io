@@ -395,7 +395,7 @@ function renderTipo1(templateData, dati, foglioCode) {
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
-    html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
+    html += '<thead><tr><th class="col-description"></th>';
 
     if (isT0000) {
         // T0000: una sola colonna con anno corrente
@@ -511,9 +511,9 @@ function renderTipo2(templateData, dati, foglioCode) {
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;
     
     let html = '<div class="form-container"><table class="bilancio-table">';
-    
+
     // Header colonne
-    html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
+    html += '<thead><tr><th class="col-description"></th>';
     
     if (isT0000 || !hasColumnCodes) {
         // T0000 o fogli senza codici colonna: una sola colonna (anno corrente)
@@ -661,7 +661,7 @@ function renderTipo3(templateData, dati, foglioCode) {
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
-    html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
+    html += '<thead><tr><th class="col-description"></th>';
     // Loop solo per il numero di colonne configurato
     for (let i = 0; i < numCols; i++) {
         const colIndex = firstCol + i;
