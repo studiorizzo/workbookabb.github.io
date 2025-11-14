@@ -47,15 +47,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Carica workbookabb.json unificato (con formule RAW e Named Ranges - completo 44MB)
+// Carica workbookabb.json unificato (supporta sia dense che sparse format)
 async function loadWorkbookData() {
     try {
-        const response = await fetch('data/template/workbookabb.json');
-        if (!response.ok) throw new Error('workbookabb.json non trovato');
-        workbookData = await response.json();
-        console.log('✓ workbookabb.json loaded');
+        // Try sparse format first (smaller, faster)
+        let response = await fetch('data/template/workbookabb-sparse.json');
+        if (!response.ok) {
+            // Fallback to dense format
+            console.log('Sparse format not found, loading dense format...');
+            response = await fetch('data/template/workbookabb.json');
+            if (!response.ok) throw new Error('workbookabb.json non trovato');
+        }
+
+        const rawData = await response.json();
+        console.log('✓ Template file loaded');
+
+        // Prepare workbook data (handles both sparse and dense formats)
+        workbookData = window.SparseLoader.prepareWorkbookData(rawData);
+        console.log(`✓ Using ${workbookData._format} format`);
     } catch (error) {
-        throw new Error('Impossibile caricare workbookabb.json: ' + error.message);
+        throw new Error('Impossibile caricare template: ' + error.message);
     }
 }
 
