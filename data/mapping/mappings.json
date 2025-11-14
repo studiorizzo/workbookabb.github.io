@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated": "2025-11-14T16:07:37.313330",
+    "generated": "2025-11-14T16:49:15.244139",
     "version": "2.0",
     "source_files": [
       "data/taxonomy/mapping.xml",
@@ -15,7 +15,7 @@
         "ui": {
           "label": "Informazioni generali sull'impresa",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -38,7 +38,7 @@
         "ui": {
           "label": "Dati anagrafici",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -333,7 +333,7 @@
         "ui": {
           "label": "Stato patrimoniale",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -356,7 +356,7 @@
         "ui": {
           "label": "Attivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -379,7 +379,7 @@
         "ui": {
           "label": "A) Crediti verso soci per versamenti ancora dovuti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -447,7 +447,7 @@
         "ui": {
           "label": "B) Immobilizzazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -470,7 +470,7 @@
         "ui": {
           "label": "I - Immobilizzazioni immateriali",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -613,7 +613,7 @@
         "ui": {
           "label": "II - Immobilizzazioni materiali",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -726,7 +726,7 @@
         "ui": {
           "label": "III - Immobilizzazioni finanziarie",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -749,7 +749,7 @@
         "ui": {
           "label": "1) partecipazioni in",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -862,7 +862,7 @@
         "ui": {
           "label": "2) crediti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -885,7 +885,7 @@
         "ui": {
           "label": "a) verso imprese controllate",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -953,7 +953,7 @@
         "ui": {
           "label": "b) verso imprese collegate",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1021,7 +1021,7 @@
         "ui": {
           "label": "c) verso controllanti",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1089,7 +1089,7 @@
         "ui": {
           "label": "d) verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1157,7 +1157,7 @@
         "ui": {
           "label": "d-bis) verso altri",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1300,7 +1300,7 @@
         "ui": {
           "label": "C) Attivo circolante",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1323,7 +1323,7 @@
         "ui": {
           "label": "I - Rimanenze",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1451,7 +1451,7 @@
         "ui": {
           "label": "II - Crediti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1474,7 +1474,7 @@
         "ui": {
           "label": "1) verso clienti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1542,7 +1542,7 @@
         "ui": {
           "label": "2) verso imprese controllate",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1610,7 +1610,7 @@
         "ui": {
           "label": "3) verso imprese collegate",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1678,7 +1678,7 @@
         "ui": {
           "label": "4) verso controllanti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1746,7 +1746,7 @@
         "ui": {
           "label": "5) verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1814,7 +1814,7 @@
         "ui": {
           "label": "5-bis) crediti tributari",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1897,7 +1897,7 @@
         "ui": {
           "label": "5-quater) verso altri",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -1980,7 +1980,7 @@
         "ui": {
           "label": "III - Attività finanziarie che non costituiscono immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2138,7 +2138,7 @@
         "ui": {
           "label": "IV - Disponibilità liquide",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2266,7 +2266,7 @@
         "ui": {
           "label": "Passivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2289,7 +2289,7 @@
         "ui": {
           "label": "A) Patrimonio netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2387,7 +2387,7 @@
         "ui": {
           "label": "VI - Altre riserve, distintamente indicate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2710,7 +2710,7 @@
         "ui": {
           "label": "B) Fondi per rischi e oneri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2823,7 +2823,7 @@
         "ui": {
           "label": "D) Debiti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2846,7 +2846,7 @@
         "ui": {
           "label": "1) obbligazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2914,7 +2914,7 @@
         "ui": {
           "label": "2) obbligazioni convertibili",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -2982,7 +2982,7 @@
         "ui": {
           "label": "3) debiti verso soci per finanziamenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3050,7 +3050,7 @@
         "ui": {
           "label": "4) debiti verso banche",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3118,7 +3118,7 @@
         "ui": {
           "label": "5) debiti verso altri finanziatori",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3186,7 +3186,7 @@
         "ui": {
           "label": "6) acconti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3254,7 +3254,7 @@
         "ui": {
           "label": "7) debiti verso fornitori",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3322,7 +3322,7 @@
         "ui": {
           "label": "8) debiti rappresentati da titoli di credito",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3390,7 +3390,7 @@
         "ui": {
           "label": "9) debiti verso imprese controllate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3458,7 +3458,7 @@
         "ui": {
           "label": "10) debiti verso imprese collegate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3526,7 +3526,7 @@
         "ui": {
           "label": "11) debiti verso controllanti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3594,7 +3594,7 @@
         "ui": {
           "label": "11-bis) debiti verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3662,7 +3662,7 @@
         "ui": {
           "label": "12) debiti tributari",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3730,7 +3730,7 @@
         "ui": {
           "label": "13) debiti verso istituti di previdenza e di sicurezza sociale",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3798,7 +3798,7 @@
         "ui": {
           "label": "14) altri debiti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3913,7 +3913,7 @@
         "ui": {
           "label": "Stato patrimoniale",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3936,7 +3936,7 @@
         "ui": {
           "label": "Attivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -3974,7 +3974,7 @@
         "ui": {
           "label": "B) Immobilizzazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4057,7 +4057,7 @@
         "ui": {
           "label": "C) Attivo circolante",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4110,7 +4110,7 @@
         "ui": {
           "label": "II - Crediti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4268,7 +4268,7 @@
         "ui": {
           "label": "Passivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4291,7 +4291,7 @@
         "ui": {
           "label": "A) Patrimonio netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4524,7 +4524,7 @@
         "ui": {
           "label": "D) Debiti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4624,7 +4624,7 @@
         "ui": {
           "label": "Stato patrimoniale",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4647,7 +4647,7 @@
         "ui": {
           "label": "Attivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4685,7 +4685,7 @@
         "ui": {
           "label": "B) Immobilizzazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4768,7 +4768,7 @@
         "ui": {
           "label": "C) Attivo circolante",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4821,7 +4821,7 @@
         "ui": {
           "label": "II - Crediti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -4979,7 +4979,7 @@
         "ui": {
           "label": "Passivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5002,7 +5002,7 @@
         "ui": {
           "label": "A) Patrimonio netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5220,7 +5220,7 @@
         "ui": {
           "label": "D) Debiti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5320,7 +5320,7 @@
         "ui": {
           "label": "Stato patrimoniale",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5343,7 +5343,7 @@
         "ui": {
           "label": "Attivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5366,7 +5366,7 @@
         "ui": {
           "label": "A) Crediti verso soci per versamenti ancora dovuti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5434,7 +5434,7 @@
         "ui": {
           "label": "B) Immobilizzazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5457,7 +5457,7 @@
         "ui": {
           "label": "I - Immobilizzazioni immateriali",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5600,7 +5600,7 @@
         "ui": {
           "label": "II - Immobilizzazioni materiali",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5713,7 +5713,7 @@
         "ui": {
           "label": "III - Immobilizzazioni finanziarie",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5736,7 +5736,7 @@
         "ui": {
           "label": "1) partecipazioni in",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5849,7 +5849,7 @@
         "ui": {
           "label": "2) crediti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5872,7 +5872,7 @@
         "ui": {
           "label": "a) verso imprese controllate",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -5940,7 +5940,7 @@
         "ui": {
           "label": "b) verso imprese collegate",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6008,7 +6008,7 @@
         "ui": {
           "label": "c) verso controllanti",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6076,7 +6076,7 @@
         "ui": {
           "label": "d) verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6144,7 +6144,7 @@
         "ui": {
           "label": "d-bis) verso altri",
           "indent_level": 5,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6287,7 +6287,7 @@
         "ui": {
           "label": "C) Attivo circolante",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6310,7 +6310,7 @@
         "ui": {
           "label": "I - Rimanenze",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6438,7 +6438,7 @@
         "ui": {
           "label": "II - Crediti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6461,7 +6461,7 @@
         "ui": {
           "label": "1) verso clienti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6529,7 +6529,7 @@
         "ui": {
           "label": "2) verso imprese controllate",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6597,7 +6597,7 @@
         "ui": {
           "label": "3) verso imprese collegate",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6665,7 +6665,7 @@
         "ui": {
           "label": "4) verso controllanti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6733,7 +6733,7 @@
         "ui": {
           "label": "5) verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6801,7 +6801,7 @@
         "ui": {
           "label": "5-bis) crediti tributari",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6884,7 +6884,7 @@
         "ui": {
           "label": "5-quater) verso altri",
           "indent_level": 4,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -6967,7 +6967,7 @@
         "ui": {
           "label": "III - Attività finanziarie che non costituiscono immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7125,7 +7125,7 @@
         "ui": {
           "label": "IV - Disponibilità liquide",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7253,7 +7253,7 @@
         "ui": {
           "label": "Passivo",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7276,7 +7276,7 @@
         "ui": {
           "label": "A) Patrimonio netto di gruppo",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7374,7 +7374,7 @@
         "ui": {
           "label": "VI - Altre riserve, distintamente indicate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7727,7 +7727,7 @@
         "ui": {
           "label": "Patrimonio netto di terzi",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7810,7 +7810,7 @@
         "ui": {
           "label": "B) Fondi per rischi e oneri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7938,7 +7938,7 @@
         "ui": {
           "label": "D) Debiti",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -7961,7 +7961,7 @@
         "ui": {
           "label": "1) obbligazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8029,7 +8029,7 @@
         "ui": {
           "label": "2) obbligazioni convertibili",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8097,7 +8097,7 @@
         "ui": {
           "label": "3) debiti verso soci per finanziamenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8165,7 +8165,7 @@
         "ui": {
           "label": "4) debiti verso banche",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8233,7 +8233,7 @@
         "ui": {
           "label": "5) debiti verso altri finanziatori",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8301,7 +8301,7 @@
         "ui": {
           "label": "6) acconti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8369,7 +8369,7 @@
         "ui": {
           "label": "7) debiti verso fornitori",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8437,7 +8437,7 @@
         "ui": {
           "label": "8) debiti rappresentati da titoli di credito",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8505,7 +8505,7 @@
         "ui": {
           "label": "9) debiti verso imprese controllate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8573,7 +8573,7 @@
         "ui": {
           "label": "10) debiti verso imprese collegate",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8641,7 +8641,7 @@
         "ui": {
           "label": "11) debiti verso controllanti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8709,7 +8709,7 @@
         "ui": {
           "label": "11-bis) debiti verso imprese sottoposte al controllo delle controllanti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8777,7 +8777,7 @@
         "ui": {
           "label": "12) debiti tributari",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8845,7 +8845,7 @@
         "ui": {
           "label": "13) debiti verso istituti di previdenza e di sicurezza sociale",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -8913,7 +8913,7 @@
         "ui": {
           "label": "14) altri debiti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9028,7 +9028,7 @@
         "ui": {
           "label": "Conto economico",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9051,7 +9051,7 @@
         "ui": {
           "label": "A) Valore della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9134,7 +9134,7 @@
         "ui": {
           "label": "5) altri ricavi e proventi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9217,7 +9217,7 @@
         "ui": {
           "label": "B) Costi della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9285,7 +9285,7 @@
         "ui": {
           "label": "9) per il personale",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9398,7 +9398,7 @@
         "ui": {
           "label": "10) ammortamenti e svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9586,7 +9586,7 @@
         "ui": {
           "label": "C) Proventi e oneri finanziari",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9609,7 +9609,7 @@
         "ui": {
           "label": "15) proventi da partecipazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9722,7 +9722,7 @@
         "ui": {
           "label": "16) altri proventi finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9745,7 +9745,7 @@
         "ui": {
           "label": "a) da crediti iscritti nelle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -9888,7 +9888,7 @@
         "ui": {
           "label": "d) proventi diversi dai precedenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10016,7 +10016,7 @@
         "ui": {
           "label": "17) interessi e altri oneri finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10159,7 +10159,7 @@
         "ui": {
           "label": "D) Rettifiche di valore di attività e passività finanziarie",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10182,7 +10182,7 @@
         "ui": {
           "label": "18) rivalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10295,7 +10295,7 @@
         "ui": {
           "label": "19) svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10438,7 +10438,7 @@
         "ui": {
           "label": "20) Imposte sul reddito dell'esercizio, correnti, differite e anticipate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10553,7 +10553,7 @@
         "ui": {
           "label": "Conto economico",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10576,7 +10576,7 @@
         "ui": {
           "label": "A) Valore della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10614,7 +10614,7 @@
         "ui": {
           "label": "2), 3) variazioni delle rimanenze di prodotti in corso di lavorazione, semilavorati e finiti e dei lavori in corso su ordinazione",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10682,7 +10682,7 @@
         "ui": {
           "label": "5) altri ricavi e proventi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10765,7 +10765,7 @@
         "ui": {
           "label": "B) Costi della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10833,7 +10833,7 @@
         "ui": {
           "label": "9) per il personale",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10886,7 +10886,7 @@
         "ui": {
           "label": "c), d), e) trattamento di fine rapporto, trattamento di quiescenza, altri costi del personale",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10969,7 +10969,7 @@
         "ui": {
           "label": "10) ammortamenti e svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -10992,7 +10992,7 @@
         "ui": {
           "label": "a), b), c) ammortamento delle immobilizzazioni immateriali e materiali, altre svalutazioni delle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11180,7 +11180,7 @@
         "ui": {
           "label": "C) Proventi e oneri finanziari",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11203,7 +11203,7 @@
         "ui": {
           "label": "15) proventi da partecipazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11316,7 +11316,7 @@
         "ui": {
           "label": "16) altri proventi finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11339,7 +11339,7 @@
         "ui": {
           "label": "a) da crediti iscritti nelle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11452,7 +11452,7 @@
         "ui": {
           "label": "b), c) da titoli iscritti nelle immobilizzazioni che non costituiscono partecipazioni e da titoli iscritti nell'attivo circolante che non costituiscono partecipazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11505,7 +11505,7 @@
         "ui": {
           "label": "d) proventi diversi dai precedenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11633,7 +11633,7 @@
         "ui": {
           "label": "17) interessi e altri oneri finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11776,7 +11776,7 @@
         "ui": {
           "label": "D) Rettifiche di valore di attività e passività finanziarie",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11799,7 +11799,7 @@
         "ui": {
           "label": "18) rivalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -11912,7 +11912,7 @@
         "ui": {
           "label": "19) svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12055,7 +12055,7 @@
         "ui": {
           "label": "20) Imposte sul reddito dell'esercizio, correnti, differite e anticipate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12170,7 +12170,7 @@
         "ui": {
           "label": "Conto economico",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12193,7 +12193,7 @@
         "ui": {
           "label": "A) Valore della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12231,7 +12231,7 @@
         "ui": {
           "label": "2), 3) variazioni delle rimanenze di prodotti in corso di lavorazione, semilavorati e finiti e dei lavori in corso su ordinazione",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12299,7 +12299,7 @@
         "ui": {
           "label": "5) altri ricavi e proventi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12382,7 +12382,7 @@
         "ui": {
           "label": "B) Costi della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12450,7 +12450,7 @@
         "ui": {
           "label": "9) per il personale",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12503,7 +12503,7 @@
         "ui": {
           "label": "c), d), e) trattamento di fine rapporto, trattamento di quiescenza, altri costi del personale",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12586,7 +12586,7 @@
         "ui": {
           "label": "10) ammortamenti e svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12609,7 +12609,7 @@
         "ui": {
           "label": "a), b), c) ammortamento delle immobilizzazioni immateriali e materiali, altre svalutazioni delle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12797,7 +12797,7 @@
         "ui": {
           "label": "C) Proventi e oneri finanziari",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12820,7 +12820,7 @@
         "ui": {
           "label": "15) proventi da partecipazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12933,7 +12933,7 @@
         "ui": {
           "label": "16) altri proventi finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -12956,7 +12956,7 @@
         "ui": {
           "label": "a) da crediti iscritti nelle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13069,7 +13069,7 @@
         "ui": {
           "label": "b), c) da titoli iscritti nelle immobilizzazioni che non costituiscono partecipazioni e da titoli iscritti nell'attivo circolante che non costituiscono partecipazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13122,7 +13122,7 @@
         "ui": {
           "label": "d) proventi diversi dai precedenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13250,7 +13250,7 @@
         "ui": {
           "label": "17) interessi e altri oneri finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13393,7 +13393,7 @@
         "ui": {
           "label": "D) Rettifiche di valore di attività e passività finanziarie",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13416,7 +13416,7 @@
         "ui": {
           "label": "18) rivalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13514,7 +13514,7 @@
         "ui": {
           "label": "19) svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13642,7 +13642,7 @@
         "ui": {
           "label": "20) Imposte sul reddito dell'esercizio, correnti, differite e anticipate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13757,7 +13757,7 @@
         "ui": {
           "label": "Conto economico",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13780,7 +13780,7 @@
         "ui": {
           "label": "A) Valore della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13863,7 +13863,7 @@
         "ui": {
           "label": "5) altri ricavi e proventi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -13946,7 +13946,7 @@
         "ui": {
           "label": "B) Costi della produzione",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14014,7 +14014,7 @@
         "ui": {
           "label": "9) per il personale",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14127,7 +14127,7 @@
         "ui": {
           "label": "10) ammortamenti e svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14315,7 +14315,7 @@
         "ui": {
           "label": "C) Proventi e oneri finanziari",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14338,7 +14338,7 @@
         "ui": {
           "label": "15) proventi da partecipazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14451,7 +14451,7 @@
         "ui": {
           "label": "16) altri proventi finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14474,7 +14474,7 @@
         "ui": {
           "label": "a) da crediti iscritti nelle immobilizzazioni",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14617,7 +14617,7 @@
         "ui": {
           "label": "d) proventi diversi dai precedenti",
           "indent_level": 3,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14745,7 +14745,7 @@
         "ui": {
           "label": "17) interessi e altri oneri finanziari",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14888,7 +14888,7 @@
         "ui": {
           "label": "D) Rettifiche di valore di attività e passività finanziarie",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -14911,7 +14911,7 @@
         "ui": {
           "label": "18) rivalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15024,7 +15024,7 @@
         "ui": {
           "label": "19) svalutazioni",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15167,7 +15167,7 @@
         "ui": {
           "label": "20) Imposte sul reddito dell'esercizio, correnti, differite e anticipate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15265,7 +15265,7 @@
         "ui": {
           "label": "21) Utile (perdita) consolidati dell'esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15318,7 +15318,7 @@
         "ui": {
           "label": "Item duplicati",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15326,7 +15326,7 @@
         "ui": {
           "label": "Conto economico consolidato_Altro",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15351,7 +15351,7 @@
         "ui": {
           "label": "Rendiconto finanziario, metodo indiretto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15374,7 +15374,7 @@
         "ui": {
           "label": "A) Flussi finanziari derivanti dall'attività operativa (metodo indiretto)",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15487,7 +15487,7 @@
         "ui": {
           "label": "Rettifiche per elementi non monetari che non hanno avuto contropartita nel capitale circolante netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15615,7 +15615,7 @@
         "ui": {
           "label": "Variazioni del capitale circolante netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15758,7 +15758,7 @@
         "ui": {
           "label": "Altre rettifiche",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15886,7 +15886,7 @@
         "ui": {
           "label": "B) Flussi finanziari derivanti dall'attività d'investimento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15909,7 +15909,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -15962,7 +15962,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16015,7 +16015,7 @@
         "ui": {
           "label": "Immobilizzazioni finanziarie",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16068,7 +16068,7 @@
         "ui": {
           "label": "Attività finanziarie non immobilizzate",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16166,7 +16166,7 @@
         "ui": {
           "label": "C) Flussi finanziari derivanti dall'attività di finanziamento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16189,7 +16189,7 @@
         "ui": {
           "label": "Mezzi di terzi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16257,7 +16257,7 @@
         "ui": {
           "label": "Mezzi propri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16385,7 +16385,7 @@
         "ui": {
           "label": "Disponibilità liquide a inizio esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16483,7 +16483,7 @@
         "ui": {
           "label": "Disponibilità liquide a fine esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16583,7 +16583,7 @@
         "ui": {
           "label": "Rendiconto finanziario, metodo indiretto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16606,7 +16606,7 @@
         "ui": {
           "label": "A) Flussi finanziari derivanti dall'attività operativa (metodo indiretto)",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16719,7 +16719,7 @@
         "ui": {
           "label": "Rettifiche per elementi non monetari che non hanno avuto contropartita nel capitale circolante netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16847,7 +16847,7 @@
         "ui": {
           "label": "Variazioni del capitale circolante netto",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -16990,7 +16990,7 @@
         "ui": {
           "label": "Altre rettifiche",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17118,7 +17118,7 @@
         "ui": {
           "label": "B) Flussi finanziari derivanti dall'attività d'investimento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17141,7 +17141,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17194,7 +17194,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17247,7 +17247,7 @@
         "ui": {
           "label": "Immobilizzazioni finanziarie",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17300,7 +17300,7 @@
         "ui": {
           "label": "Attività finanziarie non immobilizzate",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17398,7 +17398,7 @@
         "ui": {
           "label": "C) Flussi finanziari derivanti dall'attività di finanziamento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17421,7 +17421,7 @@
         "ui": {
           "label": "Mezzi di terzi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17489,7 +17489,7 @@
         "ui": {
           "label": "Mezzi propri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17617,7 +17617,7 @@
         "ui": {
           "label": "Disponibilità liquide a inizio esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17715,7 +17715,7 @@
         "ui": {
           "label": "Disponibilità liquide a fine esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17813,7 +17813,7 @@
         "ui": {
           "label": "Acquisizione o cessione di società controllate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17898,7 +17898,7 @@
         "ui": {
           "label": "Rendiconto finanziario, metodo diretto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -17921,7 +17921,7 @@
         "ui": {
           "label": "A) Flussi finanziari derivanti dall'atività operativa (metodo diretto)",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18094,7 +18094,7 @@
         "ui": {
           "label": "B) Flussi finanziari derivanti dall'attività d'investimento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18117,7 +18117,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18170,7 +18170,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18223,7 +18223,7 @@
         "ui": {
           "label": "Immobilizzazioni finanziarie",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18276,7 +18276,7 @@
         "ui": {
           "label": "Attività finanziarie non immobilizzate",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18374,7 +18374,7 @@
         "ui": {
           "label": "C) Flussi finanziari derivanti dall'attività di finanziamento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18397,7 +18397,7 @@
         "ui": {
           "label": "Mezzi di terzi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18465,7 +18465,7 @@
         "ui": {
           "label": "Mezzi propri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18593,7 +18593,7 @@
         "ui": {
           "label": "Disponibilità liquide a inizio esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18691,7 +18691,7 @@
         "ui": {
           "label": "Disponibilità liquide a fine esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18791,7 +18791,7 @@
         "ui": {
           "label": "Rendiconto finanziario, metodo diretto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18814,7 +18814,7 @@
         "ui": {
           "label": "A) Flussi finanziari derivanti dall'atività operativa (metodo diretto)",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -18987,7 +18987,7 @@
         "ui": {
           "label": "B) Flussi finanziari derivanti dall'attività d'investimento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19010,7 +19010,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19063,7 +19063,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19116,7 +19116,7 @@
         "ui": {
           "label": "Immobilizzazioni finanziarie",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19169,7 +19169,7 @@
         "ui": {
           "label": "Attività finanziarie non immobilizzate",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19267,7 +19267,7 @@
         "ui": {
           "label": "C) Flussi finanziari derivanti dall'attività di finanziamento",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19290,7 +19290,7 @@
         "ui": {
           "label": "Mezzi di terzi",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19358,7 +19358,7 @@
         "ui": {
           "label": "Mezzi propri",
           "indent_level": 2,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19486,7 +19486,7 @@
         "ui": {
           "label": "Disponibilità liquide a inizio esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19584,7 +19584,7 @@
         "ui": {
           "label": "Disponibilità liquide a fine esercizio",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -19682,7 +19682,7 @@
         "ui": {
           "label": "Acquisizione o cessione di società controllate",
           "indent_level": 1,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -20388,7 +20388,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -21164,7 +21164,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -22324,7 +22324,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -23332,7 +23332,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -23928,7 +23928,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -24818,7 +24818,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -25842,7 +25842,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -26490,7 +26490,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -27522,7 +27522,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -29276,7 +29276,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -29588,7 +29588,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -29929,7 +29929,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -30901,7 +30901,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31056,7 +31056,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31211,7 +31211,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31366,7 +31366,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31521,7 +31521,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31676,7 +31676,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31831,7 +31831,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -31986,7 +31986,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -32141,7 +32141,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -34340,7 +34340,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -35667,7 +35667,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -35979,7 +35979,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -36707,7 +36707,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -36876,7 +36876,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -37022,7 +37022,7 @@
         "ui": {
           "label": "Rimanenze",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -37603,7 +37603,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -38004,7 +38004,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -38609,7 +38609,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -39223,7 +39223,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -39999,7 +39999,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -41159,7 +41159,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -42167,7 +42167,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -42763,7 +42763,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -43653,7 +43653,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -44677,7 +44677,7 @@
         "ui": {
           "label": "Valore di inizio esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -45325,7 +45325,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -46357,7 +46357,7 @@
         "ui": {
           "label": "Valore di fine esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -48111,7 +48111,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -48423,7 +48423,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -48764,7 +48764,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -49736,7 +49736,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -49891,7 +49891,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50046,7 +50046,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50201,7 +50201,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50356,7 +50356,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50511,7 +50511,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50666,7 +50666,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50821,7 +50821,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -50976,7 +50976,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -53175,7 +53175,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -54502,7 +54502,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -54814,7 +54814,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -55644,7 +55644,7 @@
         "ui": {
           "label": "Immobilizzazioni immateriali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -55813,7 +55813,7 @@
         "ui": {
           "label": "Immobilizzazioni materiali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -55959,7 +55959,7 @@
         "ui": {
           "label": "Rimanenze",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -56981,7 +56981,7 @@
         "ui": {
           "label": "Destinazione del risultato dell'esercizio precedente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -58138,7 +58138,7 @@
         "ui": {
           "label": "Altre variazioni",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -60139,7 +60139,7 @@
         "ui": {
           "label": "Altre riserve",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -60392,7 +60392,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -61071,7 +61071,7 @@
         "ui": {
           "label": "Altre riserve",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -62997,7 +62997,7 @@
         "ui": {
           "label": "Riepilogo delle utilizzazioni effettuate nei tre precedenti esercizi",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -63229,7 +63229,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -63351,7 +63351,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -63747,7 +63747,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -64375,7 +64375,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -67127,7 +67127,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -67451,7 +67451,7 @@
         "ui": {
           "label": "Debiti assistiti da garanzie reali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -69866,7 +69866,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -71063,7 +71063,7 @@
         "ui": {
           "label": "Destinazione del risultato dell'esercizio precedente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -72220,7 +72220,7 @@
         "ui": {
           "label": "Altre variazioni",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -74221,7 +74221,7 @@
         "ui": {
           "label": "Altre riserve",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -74474,7 +74474,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -75153,7 +75153,7 @@
         "ui": {
           "label": "Altre riserve",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -77079,7 +77079,7 @@
         "ui": {
           "label": "Riepilogo delle utilizzazioni effettuate nei tre precedenti esercizi",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -77311,7 +77311,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -77433,7 +77433,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -77829,7 +77829,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -78457,7 +78457,7 @@
         "ui": {
           "label": "Variazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -81209,7 +81209,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -81331,7 +81331,7 @@
         "ui": {
           "label": "Debiti assistiti da garanzie reali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -81758,7 +81758,7 @@
         "ui": {
           "label": "Debiti assistiti da garanzie reali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -84173,7 +84173,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -84664,7 +84664,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -84815,7 +84815,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -85483,7 +85483,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -85657,7 +85657,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -85771,7 +85771,7 @@
         "ui": {
           "label": "A) Differenze temporanee",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -85931,7 +85931,7 @@
         "ui": {
           "label": "B) Effetti fiscali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -86307,7 +86307,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -86539,7 +86539,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -86771,7 +86771,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -86933,7 +86933,7 @@
         "ui": {
           "label": "Perdite fiscali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -87191,7 +87191,7 @@
         "ui": {
           "label": "Esercizio corrente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -87231,7 +87231,7 @@
         "ui": {
           "label": "Esercizio precedente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -87433,7 +87433,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -87584,7 +87584,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -88252,7 +88252,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -88426,7 +88426,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -88540,7 +88540,7 @@
         "ui": {
           "label": "A) Differenze temporanee",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -88700,7 +88700,7 @@
         "ui": {
           "label": "B) Effetti fiscali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -89076,7 +89076,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -89308,7 +89308,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -89540,7 +89540,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -89702,7 +89702,7 @@
         "ui": {
           "label": "Perdite fiscali",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -89960,7 +89960,7 @@
         "ui": {
           "label": "Esercizio corrente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -90000,7 +90000,7 @@
         "ui": {
           "label": "Esercizio precedente",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -91156,7 +91156,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -91709,7 +91709,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -91800,7 +91800,7 @@
         "ui": {
           "label": "Impegni",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -91946,7 +91946,7 @@
         "ui": {
           "label": "Garanzie",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -92660,7 +92660,7 @@
         "ui": {
           "label": "A) Patrimonio netto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -94604,7 +94604,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -95157,7 +95157,7 @@
         "ui": {
           "label": "line",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -95248,7 +95248,7 @@
         "ui": {
           "label": "Impegni",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -95394,7 +95394,7 @@
         "ui": {
           "label": "Garanzie",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -96267,7 +96267,7 @@
         "ui": {
           "label": "A) Patrimonio netto",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -97237,7 +97237,7 @@
         "ui": {
           "label": "Alienazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -97435,7 +97435,7 @@
         "ui": {
           "label": "Acquisizioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -98103,7 +98103,7 @@
         "ui": {
           "label": "Impegni",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -98249,7 +98249,7 @@
         "ui": {
           "label": "Garanzie",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -98544,7 +98544,7 @@
         "ui": {
           "label": "Alienazioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {
@@ -98742,7 +98742,7 @@
         "ui": {
           "label": "Acquisizioni nell'esercizio",
           "indent_level": 0,
-          "is_abstract": false
+          "is_abstract": true
         }
       },
       {

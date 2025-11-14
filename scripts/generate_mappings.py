@@ -167,10 +167,11 @@ def merge_mappings(xbrl_mappings, ui_dimensions):
             ui_data['label'] = ''
             ui_data['indent_level'] = 0
 
-        # Determine is_abstract from XBRL type
+        # Determine is_abstract from XBRL type or dimension type
+        # Both 'abstract' and 'group' types should be rendered as headers (no input fields)
         if xbrl and xbrl.get('type'):
             ui_data['is_abstract'] = (xbrl['type'] == 'abstract')
-        elif ui and ui.get('dim_type') == 'abstract':
+        elif ui and ui.get('dim_type') in ('abstract', 'group'):
             ui_data['is_abstract'] = True
         else:
             ui_data['is_abstract'] = False
