@@ -231,7 +231,7 @@ function exportXBRL() {
     
     // TODO: Implementare in fase 2
     // 1. Per ogni cella valorizzata
-    // 2. Cerca mapping in xbrl_mappings_complete.json
+    // 2. Cerca mapping in mappings.json
     // 3. Genera fact XBRL con elemento, contesto, unità
     // 4. Valida con XML tassonomia
     // 5. Download istanza XBRL
