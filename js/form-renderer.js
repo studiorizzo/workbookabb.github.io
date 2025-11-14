@@ -493,7 +493,8 @@ function renderTipo2(templateData, dati, foglioCode) {
     // colCodeRow contiene i CODICI delle colonne (per chiavi composite), non gli header visibili
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
-    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
+    // Limita codiciColonne al numero configurato (nr_col)
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
     
     const xbrlMappings = getXBRLMappings();
     
@@ -518,9 +519,10 @@ function renderTipo2(templateData, dati, foglioCode) {
         // T0000 o fogli senza codici colonna: una sola colonna (anno corrente)
         html += `<th>${annoCorrente}</th>`;
     } else {
-        // Altri fogli: usa codici colonna
-        for (let i = firstCol; i < headerRow.length && (i - firstCol) < codiciColonne.length; i++) {
-            let headerValue = headerRow[i];
+        // Altri fogli: usa codici colonna (limitato a numCols configurato)
+        for (let i = 0; i < effectiveNumCols; i++) {
+            const colIndex = firstCol + i;
+            let headerValue = headerRow[colIndex];
 
             // Parse formule RAW (es. =c2022 → 2022)
             headerValue = parseFormulaValue(headerValue, bilancio);
@@ -529,19 +531,19 @@ function renderTipo2(templateData, dati, foglioCode) {
 
             // Sostituisci anni hardcoded con valori dinamici da metadata
             if (typeof headerValue === 'number' && headerValue >= 1900 && headerValue <= 2100) {
-                const colIndex = i - firstCol;
-                if (colIndex === 0) {
+                // i è già l'indice relativo (0, 1, 2...)
+                if (i === 0) {
                     headerText = annoCorrente;
-                } else if (colIndex === 1) {
+                } else if (i === 1) {
                     headerText = annoPrecedente;
                 }
             } else if (typeof headerValue === 'string') {
                 const parsed = parseInt(headerValue);
                 if (!isNaN(parsed) && parsed >= 1900 && parsed <= 2100) {
-                    const colIndex = i - firstCol;
-                    if (colIndex === 0) {
+                    // i è già l'indice relativo (0, 1, 2...)
+                    if (i === 0) {
                         headerText = annoCorrente;
-                    } else if (colIndex === 1) {
+                    } else if (i === 1) {
                         headerText = annoPrecedente;
                     }
                 }
@@ -644,7 +646,8 @@ function renderTipo3(templateData, dati, foglioCode) {
     const firstCol = parseInt(configMap.first_col) || 0;
     const numRows = parseInt(configMap.nr_row) || 0;
     const numCols = parseInt(configMap.nr_col) || 0;
-    const codiciColonne = templateData[colCodeRow]?.slice(firstCol) || [];
+    // Limita codiciColonne al numero configurato (nr_col)
+    const codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
 
     const xbrlMappings = getXBRLMappings();
 
@@ -659,8 +662,10 @@ function renderTipo3(templateData, dati, foglioCode) {
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
     html += '<thead><tr><th style="min-width: 250px;">Descrizione</th>';
-    for (let i = firstCol; i < headerRow.length && (i - firstCol) < numCols; i++) {
-        let headerValue = headerRow[i];
+    // Loop solo per il numero di colonne configurato
+    for (let i = 0; i < numCols; i++) {
+        const colIndex = firstCol + i;
+        let headerValue = headerRow[colIndex];
 
         // Parse formule RAW (es. =c2022 → 2022)
         headerValue = parseFormulaValue(headerValue, bilancio);
@@ -668,10 +673,9 @@ function renderTipo3(templateData, dati, foglioCode) {
         let headerText = escapeHtml(headerValue || '');
 
         // Sostituisci anni hardcoded con valori dinamici
-        const colIndex = i - firstCol;
         if (typeof headerValue === 'number' && headerValue >= 1900 && headerValue <= 2100) {
-            if (colIndex === 0) headerText = annoCorrente;
-            else if (colIndex === 1) headerText = annoPrecedente;
+            if (i === 0) headerText = annoCorrente;
+            else if (i === 1) headerText = annoPrecedente;
         }
 
         html += `<th>${headerText}</th>`;
