@@ -54,24 +54,22 @@
 .bilancio-table thead th {
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     font-weight: 600;
-    padding: 16px 8px;
+    padding: 12px 6px;
     border-bottom: 2px solid var(--border-dark);
     text-align: center;
-    font-size: 11px;
+    font-size: 10px;
     color: var(--text-primary);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    /* Headers wrap to fit within columns, forcing line breaks */
+    /* Force text wrapping without uppercase or letter-spacing */
     white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
-    hyphens: auto;
-    line-height: 1.3;
+    line-height: 1.4;
     vertical-align: middle;
 }
 
 /* Description column header (empty, first column) */
+/* Default: 1-2 columns = 50% description */
 .bilancio-table thead th.col-description,
 .bilancio-table thead th:first-child {
     text-align: left;
@@ -79,24 +77,36 @@
     left: 0;
     z-index: 11;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-    width: 40%;
+    width: 50%;
+}
+
+/* 3+ columns = 25% description */
+.bilancio-table.table-3cols thead th.col-description,
+.bilancio-table.table-3cols thead th:first-child {
+    width: 25%;
 }
 
 .bilancio-table tbody td {
-    padding: 12px;
+    padding: 12px 6px;
     border-bottom: 1px solid var(--border);
     vertical-align: middle;
     text-align: center;
 }
 
 /* Description column cells (first column) */
+/* Default: 1-2 columns = 50% description */
 .bilancio-table tbody td:first-child {
     position: sticky;
     left: 0;
     background: var(--bg-primary);
     z-index: 1;
     text-align: left;
-    width: 40%;
+    width: 50%;
+}
+
+/* 3+ columns = 25% description */
+.bilancio-table.table-3cols tbody td:first-child {
+    width: 25%;
 }
 
 .bilancio-table tbody tr:hover td {

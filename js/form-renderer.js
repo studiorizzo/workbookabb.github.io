@@ -389,7 +389,9 @@ function renderTipo1(templateData, dati, foglioCode) {
     const effectiveNumCols = isT0000 ? 1 : numCols;
 
     // Altrimenti è una tabella semplice (es. T0000)
-    let html = '<div class="form-container"><table class="bilancio-table">';
+    // Aggiungi classe per gestire layout 3+ colonne
+    const tableClass = effectiveNumCols >= 3 ? 'bilancio-table table-3cols' : 'bilancio-table';
+    let html = `<div class="form-container"><table class="${tableClass}">`;
 
     // Header colonne - per Tipo 1, gli header sono sempre nella riga PRIMA dei dati (firstRow - 1)
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
@@ -509,8 +511,10 @@ function renderTipo2(templateData, dati, foglioCode) {
     
     // Per T0000 o fogli senza codici: usa una sola colonna (corrente)
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;
-    
-    let html = '<div class="form-container"><table class="bilancio-table">';
+
+    // Aggiungi classe per gestire layout 3+ colonne
+    const tableClass = effectiveNumCols >= 3 ? 'bilancio-table table-3cols' : 'bilancio-table';
+    let html = `<div class="form-container"><table class="${tableClass}">`;
 
     // Header colonne
     html += '<thead><tr><th class="col-description"></th>';
@@ -656,7 +660,9 @@ function renderTipo3(templateData, dati, foglioCode) {
     const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
     const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
 
-    let html = '<div class="form-container"><table class="bilancio-table">';
+    // Aggiungi classe per gestire layout 3+ colonne
+    const tableClass = numCols >= 3 ? 'bilancio-table table-3cols' : 'bilancio-table';
+    let html = `<div class="form-container"><table class="${tableClass}">`;
 
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
