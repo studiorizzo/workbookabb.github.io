@@ -60,14 +60,24 @@
     color: var(--text-primary);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    /* Wrap long header text */
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 180px;
+    line-height: 1.4;
 }
 
+/* Description column header (empty, first column) */
+.bilancio-table thead th.col-description,
 .bilancio-table thead th:first-child {
     text-align: left;
     position: sticky;
     left: 0;
     z-index: 11;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+    min-width: 280px;
+    max-width: 400px;
+    width: auto;
 }
 
 .bilancio-table tbody td {
@@ -95,8 +105,12 @@
 .bilancio-table .label {
     font-weight: 500;
     color: var(--text-primary);
-    white-space: nowrap;
+    /* Allow text wrapping for long labels */
+    white-space: normal;
+    word-wrap: break-word;
     line-height: 1.5;
+    max-width: 380px;
+    overflow-wrap: break-word;
 }
 
 /* Label abstract (header senza input) */
@@ -108,6 +122,12 @@
     letter-spacing: 0.3px;
     text-transform: uppercase;
     padding: 4px 0;
+    /* Allow text wrapping for long abstract labels */
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.4;
+    max-width: 380px;
+    overflow-wrap: break-word;
 }
 
 /* Celle abstract (senza input) */
