@@ -88,25 +88,27 @@
 
 /* 4+ columns = 25% description, show only first 3 data columns without scroll */
 .bilancio-table.table-manycols {
-    table-layout: auto;
+    table-layout: fixed;
+    min-width: 1600px;
+}
+
+.form-container:has(.table-manycols) {
     overflow-x: auto;
 }
 
 .bilancio-table.table-manycols thead th.col-description,
 .bilancio-table.table-manycols thead th:first-child {
     width: 25%;
-    min-width: 25%;
 }
 
 .bilancio-table.table-manycols thead th:nth-child(2),
 .bilancio-table.table-manycols thead th:nth-child(3),
 .bilancio-table.table-manycols thead th:nth-child(4) {
     width: 25%;
-    min-width: 150px;
 }
 
+/* Colonne 5+ prendono lo spazio rimanente equamente */
 .bilancio-table.table-manycols thead th:nth-child(n+5) {
-    min-width: 150px;
     width: auto;
 }
 
@@ -136,18 +138,15 @@
 /* 4+ columns = 25% description */
 .bilancio-table.table-manycols tbody td:first-child {
     width: 25%;
-    min-width: 25%;
 }
 
 .bilancio-table.table-manycols tbody td:nth-child(2),
 .bilancio-table.table-manycols tbody td:nth-child(3),
 .bilancio-table.table-manycols tbody td:nth-child(4) {
     width: 25%;
-    min-width: 150px;
 }
 
 .bilancio-table.table-manycols tbody td:nth-child(n+5) {
-    min-width: 150px;
     width: auto;
 }
 
