@@ -3,6 +3,7 @@
 /* Form Container */
 .form-container {
     background: var(--bg-primary);
+    margin-top: 0;
 }
 
 /* Sheet Header */
