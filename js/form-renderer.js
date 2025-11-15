@@ -100,11 +100,10 @@ function renderConfigurazione(content) {
     };
     
     const html = `
-        <div class="sheet-header">
-            <h2>Configurazione - Imposta i parametri del bilancio</h2>
-        </div>
-        
         <div class="form-container">
+            <div class="sheet-header">
+                <h2>Configurazione - Imposta i parametri del bilancio</h2>
+            </div>
             <div style="max-width: 700px; margin: 0 auto;">
                 <div style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                     
@@ -231,14 +230,6 @@ function renderFoglio(codice) {
     const tipoTab = parseInt(config[0]);
     
     let html = '';
-
-    // Header foglio
-    const titolo = getTitoloFoglio(templateData, codice);
-    html += `
-        <div class="sheet-header">
-            <h2>${codice} - ${titolo}</h2>
-        </div>
-    `;
     
     // Renderizza in base al tipo
     if (tipoTab === 1) {
@@ -344,7 +335,10 @@ function renderTipo1(templateData, dati, foglioCode) {
     // Per table-manycols, aggiungi wrapper per scroll orizzontale
     const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
     const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+
+    // Sheet header
+    const titolo = getTitoloFoglio(templateData, foglioCode);
+    let html = `<div class="form-container"><div class="sheet-header"><h2>${foglioCode} - ${titolo}</h2></div>${wrapperStart}<table class="${tableClass}">`;
 
     // Header colonne - per Tipo 1, gli header sono sempre nella riga PRIMA dei dati (firstRow - 1)
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
@@ -461,7 +455,7 @@ function renderTipo2(templateData, dati, foglioCode) {
     // Determina se è T0000 (dati anagrafici) o foglio senza codici colonna
     const isT0000 = foglioCode === 'T0000';
     const hasColumnCodes = codiciColonne.length > 0 && codiciColonne.some(c => c && c !== '-');
-    
+
     // Per T0000 o fogli senza codici: usa una sola colonna (corrente)
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;
 
@@ -472,7 +466,10 @@ function renderTipo2(templateData, dati, foglioCode) {
     // Per table-manycols, aggiungi wrapper per scroll orizzontale
     const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
     const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+
+    // Sheet header
+    const titolo = getTitoloFoglio(templateData, foglioCode);
+    let html = `<div class="form-container"><div class="sheet-header"><h2>${foglioCode} - ${titolo}</h2></div>${wrapperStart}<table class="${tableClass}">`;
 
     // Header colonne
     html += '<thead><tr><th class="col-description"></th>';
@@ -625,7 +622,10 @@ function renderTipo3(templateData, dati, foglioCode) {
     // Per table-manycols, aggiungi wrapper per scroll orizzontale
     const wrapperStart = numCols > 3 ? '<div class="table-scroll-wrapper">' : '';
     const wrapperEnd = numCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+
+    // Sheet header
+    const titolo = getTitoloFoglio(templateData, foglioCode);
+    let html = `<div class="form-container"><div class="sheet-header"><h2>${foglioCode} - ${titolo}</h2></div>${wrapperStart}<table class="${tableClass}">`;
 
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
