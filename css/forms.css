@@ -48,7 +48,8 @@
 .bilancio-table thead {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    background: var(--bg-primary);
 }
 
 .bilancio-table thead th {
@@ -76,7 +77,7 @@
     text-align: left;
     position: sticky;
     left: 0;
-    z-index: 11;
+    z-index: 101;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     width: 50%;
 }
