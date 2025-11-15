@@ -10,29 +10,19 @@
 /* Sheet Header */
 .sheet-header {
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-primary) 100%);
-    padding: 24px 28px;
+    padding: 12px 20px;
     border-bottom: 1px solid var(--border);
     margin-bottom: 0;
+    position: sticky;
+    top: 0;
+    z-index: 200;
 }
 
 .sheet-header h2 {
-    font-size: 24px;
+    font-size: 16px;
     color: var(--text-primary);
-    margin-bottom: 6px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.sheet-header h2:before {
-    content: '📊';
-    font-size: 28px;
-}
-
-.sheet-header p {
-    font-size: 14px;
-    color: var(--text-secondary);
+    margin: 0;
+    font-weight: 600;
 }
 
 /* Tabelle Bilancio */
@@ -50,7 +40,7 @@
 
 .bilancio-table thead th {
     position: sticky;
-    top: 0;
+    top: 48px;
     z-index: 100;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     font-weight: 600;

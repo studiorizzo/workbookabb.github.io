@@ -201,23 +201,6 @@ body {
     margin: 0 4px;
 }
 
-/* Breadcrumb */
-#breadcrumb {
-    background: var(--bg-primary);
-    padding: 12px 20px;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-#breadcrumb:before {
-    content: '📍';
-    font-size: 16px;
-}
-
 /* Content */
 #content {
     flex: 1;
