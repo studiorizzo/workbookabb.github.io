@@ -229,8 +229,14 @@ function renderFoglio(codice) {
 
     const tipoTab = parseInt(config[0]);
 
+    // DEBUG: Log rendering info
+    console.log(`\n========== RENDERING ${codice} ==========`);
+    console.log('Tipo tabella:', tipoTab);
+    console.log('Config completa:', config);
+
     // Sheet header
     const titolo = getTitoloFoglio(templateData, codice);
+    console.log('Sheet header:', { codice, titolo });
     let html = `
         <div class="sheet-header">
             <h2>${codice} - ${titolo}</h2>
@@ -333,6 +339,19 @@ function renderTipo1(templateData, dati, foglioCode) {
     const isT0000 = foglioCode === 'T0000';
     const effectiveNumCols = isT0000 ? 1 : numCols;
 
+    // DEBUG: Log parametri Tipo 1
+    console.log('[TIPO 1] Parametri:', {
+        foglioCode,
+        firstRow,
+        firstCol,
+        numRows,
+        numCols,
+        effectiveNumCols,
+        isT0000,
+        rowCodeCol,
+        colCodeRow
+    });
+
     // Struttura semplice: stessa per tutte le tabelle
     let html = `<div class="form-container"><table class="bilancio-table">`;
 
@@ -340,10 +359,12 @@ function renderTipo1(templateData, dati, foglioCode) {
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
+    const columnHeaders = [];
     html += '<thead><tr><th class="col-description"></th>';
 
     if (isT0000) {
         // T0000: una sola colonna con anno corrente
+        columnHeaders.push(annoCorrente);
         html += `<th>${annoCorrente}</th>`;
     } else {
         // Altri fogli tipo 1: usa header standard
@@ -359,10 +380,14 @@ function renderTipo1(templateData, dati, foglioCode) {
                 else if (c === 1) colHeader = annoPrecedente;
             }
 
+            columnHeaders.push(colHeader);
             html += `<th>${escapeHtml(colHeader)}</th>`;
         }
     }
     html += '</tr></thead><tbody>';
+
+    console.log('[TIPO 1] Headers colonne:', columnHeaders);
+    console.log('[TIPO 1] HTML struttura:', '<div class="form-container"><table class="bilancio-table">');
     
     // Righe dati
     for (let r = 0; r < numRows; r++) {
@@ -455,14 +480,31 @@ function renderTipo2(templateData, dati, foglioCode) {
     // Per T0000 o fogli senza codici: usa una sola colonna (corrente)
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;
 
+    // DEBUG: Log parametri Tipo 2
+    console.log('[TIPO 2] Parametri:', {
+        foglioCode,
+        firstRow,
+        firstCol,
+        numRows,
+        numCols,
+        effectiveNumCols,
+        isT0000,
+        hasColumnCodes,
+        rowCodeCol,
+        colCodeRow,
+        codiciColonne: codiciColonne.slice(0, 5) // prime 5
+    });
+
     // Struttura semplice: stessa per tutte le tabelle
     let html = `<div class="form-container"><table class="bilancio-table">`;
 
     // Header colonne
+    const columnHeaders = [];
     html += '<thead><tr><th class="col-description"></th>';
-    
+
     if (isT0000 || !hasColumnCodes) {
         // T0000 o fogli senza codici colonna: una sola colonna (anno corrente)
+        columnHeaders.push(annoCorrente);
         html += `<th>${annoCorrente}</th>`;
     } else {
         // Altri fogli: usa codici colonna (limitato a numCols configurato)
@@ -495,10 +537,14 @@ function renderTipo2(templateData, dati, foglioCode) {
                 }
             }
 
+            columnHeaders.push(headerText);
             html += `<th>${headerText}</th>`;
         }
     }
     html += '</tr></thead><tbody>';
+
+    console.log('[TIPO 2] Headers colonne:', columnHeaders);
+    console.log('[TIPO 2] HTML struttura:', '<div class="form-container"><table class="bilancio-table">');
     
     // Righe dati
     for (let r = 0; r < numRows; r++) {
@@ -602,12 +648,25 @@ function renderTipo3(templateData, dati, foglioCode) {
     const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
     const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
 
+    // DEBUG: Log parametri Tipo 3
+    console.log('[TIPO 3] Parametri:', {
+        foglioCode,
+        firstRow,
+        firstCol,
+        numRows,
+        numCols,
+        rowCodeCol,
+        colCodeRow,
+        codiciColonne: codiciColonne.slice(0, 5) // prime 5
+    });
+
     // Struttura semplice: stessa per tutte le tabelle
     let html = `<div class="form-container"><table class="bilancio-table">`;
 
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
+    const columnHeaders = [];
     html += '<thead><tr><th class="col-description"></th>';
     // Loop solo per il numero di colonne configurato
     for (let i = 0; i < numCols; i++) {
@@ -625,9 +684,13 @@ function renderTipo3(templateData, dati, foglioCode) {
             else if (i === 1) headerText = annoPrecedente;
         }
 
+        columnHeaders.push(headerText);
         html += `<th>${headerText}</th>`;
     }
     html += '</tr></thead><tbody>';
+
+    console.log('[TIPO 3] Headers colonne:', columnHeaders);
+    console.log('[TIPO 3] HTML struttura:', '<div class="form-container"><table class="bilancio-table">');
     
     // Righe dati - tipo 3 è simile a tipo 1 ma con possibilità di più valori per riga
     for (let r = 0; r < numRows; r++) {
