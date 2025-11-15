@@ -104,8 +104,10 @@
     width: max-content;
 }
 
-.form-container:has(.table-manycols) {
+/* Wrapper per scroll orizzontale - non interferisce con sticky verticale */
+.table-scroll-wrapper {
     overflow-x: auto;
+    overflow-y: visible;
 }
 
 .bilancio-table.table-manycols thead th.col-description,

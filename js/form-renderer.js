@@ -393,7 +393,10 @@ function renderTipo1(templateData, dati, foglioCode) {
     const tableClass = effectiveNumCols > 3 ? 'bilancio-table table-manycols' :
                        effectiveNumCols === 3 ? 'bilancio-table table-3cols' :
                        'bilancio-table';
-    let html = `<div class="form-container"><table class="${tableClass}">`;
+    // Per table-manycols, aggiungi wrapper per scroll orizzontale
+    const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
+    const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
+    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
 
     // Header colonne - per Tipo 1, gli header sono sempre nella riga PRIMA dei dati (firstRow - 1)
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
@@ -477,8 +480,8 @@ function renderTipo1(templateData, dati, foglioCode) {
         
         html += '</tr>';
     }
-    
-    html += '</tbody></table></div>';
+
+    html += `</tbody></table>${wrapperEnd}</div>`;
     return html;
 }
 
@@ -518,7 +521,10 @@ function renderTipo2(templateData, dati, foglioCode) {
     const tableClass = effectiveNumCols > 3 ? 'bilancio-table table-manycols' :
                        effectiveNumCols === 3 ? 'bilancio-table table-3cols' :
                        'bilancio-table';
-    let html = `<div class="form-container"><table class="${tableClass}">`;
+    // Per table-manycols, aggiungi wrapper per scroll orizzontale
+    const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
+    const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
+    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
 
     // Header colonne
     html += '<thead><tr><th class="col-description"></th>';
@@ -639,8 +645,8 @@ function renderTipo2(templateData, dati, foglioCode) {
         
         html += '</tr>';
     }
-    
-    html += '</tbody></table></div>';
+
+    html += `</tbody></table>${wrapperEnd}</div>`;
     return html;
 }
 
@@ -668,7 +674,10 @@ function renderTipo3(templateData, dati, foglioCode) {
     const tableClass = numCols > 3 ? 'bilancio-table table-manycols' :
                        numCols === 3 ? 'bilancio-table table-3cols' :
                        'bilancio-table';
-    let html = `<div class="form-container"><table class="${tableClass}">`;
+    // Per table-manycols, aggiungi wrapper per scroll orizzontale
+    const wrapperStart = numCols > 3 ? '<div class="table-scroll-wrapper">' : '';
+    const wrapperEnd = numCols > 3 ? '</div>' : '';
+    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
 
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
@@ -760,8 +769,8 @@ function renderTipo3(templateData, dati, foglioCode) {
         
         html += '</tr>';
     }
-    
-    html += '</tbody></table></div>';
+
+    html += `</tbody></table>${wrapperEnd}</div>`;
     return html;
 }
 
