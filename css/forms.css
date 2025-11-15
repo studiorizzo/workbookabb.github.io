@@ -101,7 +101,7 @@
 /* 4+ columns = fixed width layout for precise control */
 .bilancio-table.table-manycols {
     table-layout: fixed;
-    width: auto;
+    width: max-content;
 }
 
 .form-container:has(.table-manycols) {
@@ -113,15 +113,9 @@
     width: 300px;
 }
 
-.bilancio-table.table-manycols thead th:nth-child(2),
-.bilancio-table.table-manycols thead th:nth-child(3),
-.bilancio-table.table-manycols thead th:nth-child(4) {
+/* Tutte le colonne valore hanno larghezza uniforme 300px */
+.bilancio-table.table-manycols thead th:nth-child(n+2) {
     width: 300px;
-}
-
-/* Colonne 5+ hanno larghezza fissa ridotta */
-.bilancio-table.table-manycols thead th:nth-child(n+5) {
-    width: 200px;
 }
 
 .bilancio-table tbody td {
@@ -158,14 +152,9 @@
     width: 300px;
 }
 
-.bilancio-table.table-manycols tbody td:nth-child(2),
-.bilancio-table.table-manycols tbody td:nth-child(3),
-.bilancio-table.table-manycols tbody td:nth-child(4) {
+/* Tutte le colonne valore hanno larghezza uniforme 300px */
+.bilancio-table.table-manycols tbody td:nth-child(n+2) {
     width: 300px;
-}
-
-.bilancio-table.table-manycols tbody td:nth-child(n+5) {
-    width: 200px;
 }
 
 .bilancio-table tbody tr:hover td {
