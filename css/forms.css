@@ -81,10 +81,21 @@
     width: 50%;
 }
 
-/* 3 columns = 25% description */
+/* 3 columns = fixed width for uniformity */
+.bilancio-table.table-3cols {
+    table-layout: fixed;
+    width: 1200px;
+}
+
 .bilancio-table.table-3cols thead th.col-description,
 .bilancio-table.table-3cols thead th:first-child {
-    width: 25%;
+    width: 300px;
+}
+
+.bilancio-table.table-3cols thead th:nth-child(2),
+.bilancio-table.table-3cols thead th:nth-child(3),
+.bilancio-table.table-3cols thead th:nth-child(4) {
+    width: 300px;
 }
 
 /* 4+ columns = fixed width layout for precise control */
@@ -131,9 +142,15 @@
     width: 50%;
 }
 
-/* 3 columns = 25% description */
+/* 3 columns = fixed width */
 .bilancio-table.table-3cols tbody td:first-child {
-    width: 25%;
+    width: 300px;
+}
+
+.bilancio-table.table-3cols tbody td:nth-child(2),
+.bilancio-table.table-3cols tbody td:nth-child(3),
+.bilancio-table.table-3cols tbody td:nth-child(4) {
+    width: 300px;
 }
 
 /* 4+ columns = fixed width */
