@@ -214,7 +214,7 @@ function renderIndex() {
     indexTree.innerHTML = html;
 }
 
-// Get label foglio (helper) - cerca in più posizioni con fallback
+// Get label foglio (helper) - usa stessa fonte del breadcrumb
 function getFoglioLabel(code) {
     // Leggi dinamicamente dal workbookData
     if (!workbookData || !workbookData.sheets || !workbookData.sheets[code]) {
@@ -223,67 +223,18 @@ function getFoglioLabel(code) {
 
     const sheetData = workbookData.sheets[code];
 
-    // Parse config per trovare first_row
-    const configMap = {};
-    if (sheetData.length >= 2 && sheetData[0] && sheetData[1]) {
-        for (let i = 0; i < sheetData[0].length && i < sheetData[1].length; i++) {
-            if (sheetData[0][i]) {
-                configMap[sheetData[0][i]] = sheetData[1][i];
-            }
-        }
-    }
-    const firstRow = configMap.first_row ? parseInt(configMap.first_row) : 9;
-
-    // POSIZIONE PRINCIPALE: Prima riga dati, colonna 2 (es. sheet[9][2])
-    if (sheetData[firstRow] && sheetData[firstRow][2]) {
-        const value = sheetData[firstRow][2];
-        if (typeof value === 'string' && value.length > 3 && value.length < 100) {
-            if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
-                return value;
-            }
-        }
+    // POSIZIONE PRINCIPALE: riga 6, colonna 1 (es. "Conto economico abbreviato")
+    if (sheetData[6] && sheetData[6][1]) {
+        return sheetData[6][1];
     }
 
-    // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
-    const possiblePositions = [
-        [6, 1],  // Titolo esteso
-        [5, 2],  // Posizione JSON compresso (compatibilità)
-        [3, 1],  // Altra posizione
-        [firstRow, 1],  // Prima riga dati, colonna 1
-        [7, 2]   // Altra posizione
-    ];
-
-    for (const [rowIdx, colIdx] of possiblePositions) {
-        if (sheetData[rowIdx] && sheetData[rowIdx][colIdx]) {
-            const value = sheetData[rowIdx][colIdx];
-            if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
-                // Escludi valori che sembrano codici XBRL o formule
-                if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
-                    return value;
-                }
-            }
-        }
+    // FALLBACK: riga 4, colonna 1
+    if (sheetData[4] && sheetData[4][1]) {
+        return sheetData[4][1];
     }
 
-    // Fallback: usa mappings XBRL
-    if (xbrlMappings && xbrlMappings.fogli && xbrlMappings.fogli[code]) {
-        const foglioInfo = xbrlMappings.fogli[code];
-        if (foglioInfo.nome || foglioInfo.label) {
-            return foglioInfo.nome || foglioInfo.label;
-        }
-    }
-
-    // Nomi conosciuti hardcoded come ultimo fallback
-    const knownNames = {
-        'T0000': 'Dati anagrafici',
-        'T0002': 'Stato patrimoniale - Attivo',
-        'T0004': 'Stato patrimoniale - Passivo',
-        'T0006': 'Conto economico',
-        'T0008': 'Rendiconto finanziario',
-        'T0010': 'Movimentazione patrimonio netto'
-    };
-
-    return knownNames[code] || '';
+    // Ultimo fallback: stringa vuota
+    return '';
 }
 
 // Navigazione a foglio
@@ -294,8 +245,7 @@ async function navigateToFoglio(codice) {
         // Gestione speciale per Configurazione
         if (codice === 'Configurazione') {
             currentFoglio = codice;
-            updateBreadcrumb(codice);
-            
+
             // Evidenzia nell'indice
             document.querySelectorAll('.tree-item').forEach(item => {
                 item.classList.remove('active');
@@ -318,8 +268,7 @@ async function navigateToFoglio(codice) {
         
         // Aggiorna stato UI
         currentFoglio = codice;
-        updateBreadcrumb(codice);
-        
+
         // Evidenzia nell'indice
         document.querySelectorAll('.tree-item').forEach(item => {
             item.classList.remove('active');
@@ -337,20 +286,6 @@ async function navigateToFoglio(codice) {
         hideLoading();
         showToast('Errore caricamento foglio: ' + error.message, 'error');
     }
-}
-
-// Update breadcrumb
-function updateBreadcrumb(codice) {
-    const breadcrumb = document.getElementById('breadcrumb');
-    const template = templates[codice];
-    
-    // Estrai titolo dal template
-    let titolo = getFoglioLabel(codice) || codice;
-    if (template && template.data && template.data.length > 6) {
-        titolo = template.data[6]?.[1] || template.data[4]?.[1] || titolo;
-    }
-    
-    breadcrumb.textContent = `${codice} - ${titolo}`;
 }
 
 // Setup event listeners

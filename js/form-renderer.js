@@ -101,8 +101,7 @@ function renderConfigurazione(content) {
     
     const html = `
         <div class="sheet-header">
-            <h2>⚙️ Configurazione</h2>
-            <p>Imposta i parametri del bilancio</p>
+            <h2>Configurazione - Imposta i parametri del bilancio</h2>
         </div>
         
         <div class="form-container">
@@ -237,8 +236,7 @@ function renderFoglio(codice) {
     const titolo = getTitoloFoglio(templateData, codice);
     html += `
         <div class="sheet-header">
-            <h2>${codice}</h2>
-            <p>${titolo}</p>
+            <h2>${codice} - ${titolo}</h2>
         </div>
     `;
     
@@ -271,70 +269,20 @@ function renderFoglio(codice) {
     attachInputListeners();
 }
 
-// Estrai titolo foglio - cerca in più posizioni e usa fallback
+// Estrai titolo foglio - usa stessa fonte del breadcrumb
 function getTitoloFoglio(templateData, foglioCode = null) {
-    // Parse config per trovare first_row
-    const configMap = parseSheetConfig(templateData);
-    const firstRow = configMap ? parseInt(configMap.first_row) : 9;
-
-    // POSIZIONE PRINCIPALE: Prima riga dati, colonna 2 (es. sheet[9][2] per T0006)
-    // Il titolo si trova nella prima riga dei dati (first_row), colonna 2
-    if (templateData[firstRow] && templateData[firstRow][2]) {
-        const value = templateData[firstRow][2];
-        if (typeof value === 'string' && value.length > 3 && value.length < 100) {
-            if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
-                return value;
-            }
-        }
+    // POSIZIONE PRINCIPALE: riga 6, colonna 1 (es. "Conto economico abbreviato")
+    if (templateData[6] && templateData[6][1]) {
+        return templateData[6][1];
     }
 
-    // FALLBACK: Cerca titolo in altre posizioni specifiche [riga, colonna]
-    const possiblePositions = [
-        [6, 1],  // Titolo esteso (es. "Conto economico abbreviato")
-        [5, 2],  // Posizione JSON compresso (compatibilità)
-        [3, 1],  // Altra posizione
-        [firstRow, 1],  // Prima riga dati, colonna 1
-        [7, 2]   // Altra posizione
-    ];
-
-    for (const [rowIdx, colIdx] of possiblePositions) {
-        if (templateData[rowIdx] && templateData[rowIdx][colIdx]) {
-            const value = templateData[rowIdx][colIdx];
-            if (value && typeof value === 'string' && value.length > 3 && value.length < 100) {
-                // Escludi valori che sembrano codici XBRL o formule
-                if (!value.startsWith('=') && !value.match(/^[A-Z0-9_\.]{10,}$/)) {
-                    return value;
-                }
-            }
-        }
+    // FALLBACK: riga 4, colonna 1
+    if (templateData[4] && templateData[4][1]) {
+        return templateData[4][1];
     }
 
-    // Fallback: cerca nel nome del foglio usando i mapping XBRL
-    if (foglioCode) {
-        const xbrlMappings = getXBRLMappings();
-        if (xbrlMappings && xbrlMappings.fogli && xbrlMappings.fogli[foglioCode]) {
-            const foglioInfo = xbrlMappings.fogli[foglioCode];
-            if (foglioInfo.nome || foglioInfo.label) {
-                return foglioInfo.nome || foglioInfo.label;
-            }
-        }
-
-        // Nomi conosciuti hardcoded come fallback
-        const knownNames = {
-            'T0000': 'Dati anagrafici',
-            'T0002': 'Stato patrimoniale - Attivo',
-            'T0004': 'Stato patrimoniale - Passivo',
-            'T0006': 'Conto economico',
-            'T0008': 'Rendiconto finanziario',
-            'T0010': 'Movimentazione patrimonio netto'
-        };
-
-        if (knownNames[foglioCode]) {
-            return knownNames[foglioCode];
-        }
-    }
-
-    return 'Sezione bilancio';
+    // Ultimo fallback: codice foglio o testo generico
+    return foglioCode || 'Sezione bilancio';
 }
 
 // TIPO 1: Foglio semplice con 1-2 colonne di valori
