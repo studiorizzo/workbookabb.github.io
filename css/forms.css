@@ -5,7 +5,6 @@
     background: var(--bg-primary);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    overflow: hidden;
 }
 
 /* Sheet Header */

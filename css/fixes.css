@@ -43,44 +43,6 @@ input.cell-input[type="number"]::-webkit-outer-spin-button {
     display: none !important;
 }
 
-/* NUOVO: Tabelle responsive con scroll */
-.form-container {
-    overflow-x: auto;
-    max-width: 100%;
-}
-
-.bilancio-table {
-    width: 100%;
-    table-layout: auto;
-    min-width: 600px; /* Larghezza minima per evitare compressione eccessiva */
-}
-
-/* Prima colonna (Descrizione) con larghezza flessibile */
-.bilancio-table th:first-child,
-.bilancio-table td:first-child {
-    min-width: 250px;
-    max-width: 500px;
-    position: sticky;
-    left: 0;
-    background: white;
-    z-index: 2;
-}
-
-.bilancio-table thead th:first-child {
-    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-    z-index: 3;
-}
-
-/* Colonne valori con larghezza adattiva */
-.bilancio-table th:not(:first-child),
-.bilancio-table td:not(:first-child) {
-    min-width: 120px;
-    white-space: nowrap;
-}
-
-/* Ombra per indicare scroll disponibile */
-.form-container:not(:hover) {
-    box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.1);
-}
+/* Table layout rules moved to forms.css - these old rules are commented out to avoid conflicts */
 
 
