@@ -4,6 +4,8 @@
 .form-container {
     background: var(--bg-primary);
     margin-top: 0;
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
 /* Sheet Header */
@@ -59,7 +61,6 @@
 }
 
 /* Description column header (empty, first column) */
-/* Default: 1-2 columns = 50% description */
 .bilancio-table thead th.col-description,
 .bilancio-table thead th:first-child {
     text-align: left;
@@ -67,46 +68,6 @@
     left: 0;
     z-index: 101;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-    width: 50%;
-}
-
-/* 3 columns = fixed width for uniformity */
-.bilancio-table.table-3cols {
-    table-layout: fixed;
-    width: 1200px;
-}
-
-.bilancio-table.table-3cols thead th.col-description,
-.bilancio-table.table-3cols thead th:first-child {
-    width: 300px;
-}
-
-.bilancio-table.table-3cols thead th:nth-child(2),
-.bilancio-table.table-3cols thead th:nth-child(3),
-.bilancio-table.table-3cols thead th:nth-child(4) {
-    width: 300px;
-}
-
-/* 4+ columns = fixed width layout for precise control */
-.bilancio-table.table-manycols {
-    table-layout: fixed;
-    width: max-content;
-}
-
-/* Wrapper per scroll orizzontale - non interferisce con sticky verticale */
-.table-scroll-wrapper {
-    overflow-x: auto;
-    overflow-y: visible;
-}
-
-.bilancio-table.table-manycols thead th.col-description,
-.bilancio-table.table-manycols thead th:first-child {
-    width: 300px;
-}
-
-/* Tutte le colonne valore hanno larghezza uniforme 300px */
-.bilancio-table.table-manycols thead th:nth-child(n+2) {
-    width: 300px;
 }
 
 .bilancio-table tbody td {
@@ -117,35 +78,12 @@
 }
 
 /* Description column cells (first column) */
-/* Default: 1-2 columns = 50% description */
 .bilancio-table tbody td:first-child {
     position: sticky;
     left: 0;
     background: var(--bg-primary);
     z-index: 1;
     text-align: left;
-    width: 50%;
-}
-
-/* 3 columns = fixed width */
-.bilancio-table.table-3cols tbody td:first-child {
-    width: 300px;
-}
-
-.bilancio-table.table-3cols tbody td:nth-child(2),
-.bilancio-table.table-3cols tbody td:nth-child(3),
-.bilancio-table.table-3cols tbody td:nth-child(4) {
-    width: 300px;
-}
-
-/* 4+ columns = fixed width */
-.bilancio-table.table-manycols tbody td:first-child {
-    width: 300px;
-}
-
-/* Tutte le colonne valore hanno larghezza uniforme 300px */
-.bilancio-table.table-manycols tbody td:nth-child(n+2) {
-    width: 300px;
 }
 
 .bilancio-table tbody tr:hover td {
