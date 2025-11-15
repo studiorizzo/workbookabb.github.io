@@ -3,7 +3,8 @@
 /* Form Container */
 .form-container {
     background: var(--bg-primary);
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /* Sheet Header */
@@ -22,6 +23,7 @@
     color: var(--text-primary);
     margin: 0;
     font-weight: 600;
+    line-height: 1.5;
 }
 
 /* Tabelle Bilancio */
@@ -31,6 +33,7 @@
     background: var(--bg-primary);
     font-size: 13px;
     table-layout: fixed;
+    margin: 0;
 }
 
 .bilancio-table thead {
