@@ -329,19 +329,12 @@ function renderTipo1(templateData, dati, foglioCode) {
     const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
     const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
 
-    // Determina se è T0000 o foglio senza codici colonna (stesso check di Tipo 2)
+    // Determina se è T0000 (caso speciale con 1 sola colonna)
     const isT0000 = foglioCode === 'T0000';
     const effectiveNumCols = isT0000 ? 1 : numCols;
 
-    // Altrimenti è una tabella semplice (es. T0000)
-    // Aggiungi classe per gestire layout basato su numero colonne
-    const tableClass = effectiveNumCols > 3 ? 'bilancio-table table-manycols' :
-                       effectiveNumCols === 3 ? 'bilancio-table table-3cols' :
-                       'bilancio-table';
-    // Per table-manycols, aggiungi wrapper per scroll orizzontale
-    const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
-    const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+    // Struttura semplice: stessa per tutte le tabelle
+    let html = `<div class="form-container"><table class="bilancio-table">`;
 
     // Header colonne - per Tipo 1, gli header sono sempre nella riga PRIMA dei dati (firstRow - 1)
     // NON usare colCodeRow che è per le tabelle 2D (Tipo 2)
@@ -426,7 +419,7 @@ function renderTipo1(templateData, dati, foglioCode) {
         html += '</tr>';
     }
 
-    html += `</tbody></table>${wrapperEnd}</div>`;
+    html += `</tbody></table></div>`;
     return html;
 }
 
@@ -462,14 +455,8 @@ function renderTipo2(templateData, dati, foglioCode) {
     // Per T0000 o fogli senza codici: usa una sola colonna (corrente)
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;
 
-    // Aggiungi classe per gestire layout basato su numero colonne
-    const tableClass = effectiveNumCols > 3 ? 'bilancio-table table-manycols' :
-                       effectiveNumCols === 3 ? 'bilancio-table table-3cols' :
-                       'bilancio-table';
-    // Per table-manycols, aggiungi wrapper per scroll orizzontale
-    const wrapperStart = effectiveNumCols > 3 ? '<div class="table-scroll-wrapper">' : '';
-    const wrapperEnd = effectiveNumCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+    // Struttura semplice: stessa per tutte le tabelle
+    let html = `<div class="form-container"><table class="bilancio-table">`;
 
     // Header colonne
     html += '<thead><tr><th class="col-description"></th>';
@@ -591,7 +578,7 @@ function renderTipo2(templateData, dati, foglioCode) {
         html += '</tr>';
     }
 
-    html += `</tbody></table>${wrapperEnd}</div>`;
+    html += `</tbody></table></div>`;
     return html;
 }
 
@@ -615,14 +602,8 @@ function renderTipo3(templateData, dati, foglioCode) {
     const annoCorrente = bilancio?.metadata?.anno_esercizio || new Date().getFullYear();
     const annoPrecedente = bilancio?.metadata?.anno_precedente || (annoCorrente - 1);
 
-    // Aggiungi classe per gestire layout basato su numero colonne
-    const tableClass = numCols > 3 ? 'bilancio-table table-manycols' :
-                       numCols === 3 ? 'bilancio-table table-3cols' :
-                       'bilancio-table';
-    // Per table-manycols, aggiungi wrapper per scroll orizzontale
-    const wrapperStart = numCols > 3 ? '<div class="table-scroll-wrapper">' : '';
-    const wrapperEnd = numCols > 3 ? '</div>' : '';
-    let html = `<div class="form-container">${wrapperStart}<table class="${tableClass}">`;
+    // Struttura semplice: stessa per tutte le tabelle
+    let html = `<div class="form-container"><table class="bilancio-table">`;
 
     // Header row visibili: sempre la riga PRIMA dei dati (firstRow - 1)
     const headerRowIndex = firstRow - 1;
@@ -715,7 +696,7 @@ function renderTipo3(templateData, dati, foglioCode) {
         html += '</tr>';
     }
 
-    html += `</tbody></table>${wrapperEnd}</div>`;
+    html += `</tbody></table></div>`;
     return html;
 }
 
