@@ -3,6 +3,7 @@
 /* Form Container */
 .form-container {
     background: var(--bg-primary);
+    margin-top: 0;
 }
 
 /* Sheet Header */
@@ -38,7 +39,7 @@
 
 .bilancio-table thead th {
     position: sticky;
-    top: 49px;
+    top: 45px;
     z-index: 100;
     background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     font-weight: 600;
