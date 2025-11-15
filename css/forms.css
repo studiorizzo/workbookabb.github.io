@@ -80,10 +80,34 @@
     width: 50%;
 }
 
-/* 3+ columns = 25% description */
+/* 3 columns = 25% description */
 .bilancio-table.table-3cols thead th.col-description,
 .bilancio-table.table-3cols thead th:first-child {
     width: 25%;
+}
+
+/* 4+ columns = 25% description, show only first 3 data columns without scroll */
+.bilancio-table.table-manycols {
+    table-layout: auto;
+    overflow-x: auto;
+}
+
+.bilancio-table.table-manycols thead th.col-description,
+.bilancio-table.table-manycols thead th:first-child {
+    width: 25%;
+    min-width: 25%;
+}
+
+.bilancio-table.table-manycols thead th:nth-child(2),
+.bilancio-table.table-manycols thead th:nth-child(3),
+.bilancio-table.table-manycols thead th:nth-child(4) {
+    width: 25%;
+    min-width: 150px;
+}
+
+.bilancio-table.table-manycols thead th:nth-child(n+5) {
+    min-width: 150px;
+    width: auto;
 }
 
 .bilancio-table tbody td {
@@ -104,9 +128,27 @@
     width: 50%;
 }
 
-/* 3+ columns = 25% description */
+/* 3 columns = 25% description */
 .bilancio-table.table-3cols tbody td:first-child {
     width: 25%;
+}
+
+/* 4+ columns = 25% description */
+.bilancio-table.table-manycols tbody td:first-child {
+    width: 25%;
+    min-width: 25%;
+}
+
+.bilancio-table.table-manycols tbody td:nth-child(2),
+.bilancio-table.table-manycols tbody td:nth-child(3),
+.bilancio-table.table-manycols tbody td:nth-child(4) {
+    width: 25%;
+    min-width: 150px;
+}
+
+.bilancio-table.table-manycols tbody td:nth-child(n+5) {
+    min-width: 150px;
+    width: auto;
 }
 
 .bilancio-table tbody tr:hover td {
