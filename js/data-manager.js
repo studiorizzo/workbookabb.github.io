@@ -14,11 +14,19 @@ function updateCellValue(foglioCode, codiceCella, valore) {
     }
     
     bilancio.fogli[foglioCode][codiceCella] = valore;
-    
+
     // Auto-save in localStorage
     autoSave();
-    
-    console.log(`Updated ${foglioCode}.${codiceCella} = ${valore}`);
+
+    // 🔍 DEBUG: Log dettagliato per capire schema dati
+    const hasSuffix = codiceCella.includes('_c') || codiceCella.includes('_');
+    const parts = codiceCella.split('_');
+    console.log(`📝 SAVE: ${foglioCode}.${codiceCella} = ${JSON.stringify(valore)}`);
+    if (hasSuffix && parts.length > 1) {
+        console.log(`   ↳ Codice base: ${parts[0]}, Suffisso: ${parts.slice(1).join('_')}`);
+    } else {
+        console.log(`   ↳ Nessun suffisso context rilevato`);
+    }
 }
 
 // Auto-save
