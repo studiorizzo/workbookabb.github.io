@@ -102,36 +102,46 @@ function exportTipo1(worksheet, dati, templateData, config) {
     const firstCol = config[4];
     const numRows = config[1];
     const numCols = config[2];
-    
+
     let count = 0;
-    
+
+    // DEBUG: mostra primi codici disponibili
+    const codiciDisponibili = Object.keys(dati).slice(0, 5);
+    console.log(`  Tipo1: dati disponibili (prime 5 chiavi):`, codiciDisponibili);
+
     // Se 1×1 = textBlock
     if (numRows === 1 && numCols === 1) {
         // Il codice è in riga 2, colonna 3
         const codiceCell = templateData[2]?.[3];
+        console.log(`  Tipo1 textBlock: cercando codice="${codiceCell}", valore="${dati[codiceCell]}"`);
         if (codiceCell && dati[codiceCell]) {
             const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: firstCol });
-            worksheet[cellAddress] = { 
-                t: 's', 
-                v: dati[codiceCell] 
+            worksheet[cellAddress] = {
+                t: 's',
+                v: dati[codiceCell]
             };
             count++;
         }
     } else {
         // Tabella semplice
+        console.log(`  Tipo1 table: numRows=${numRows}, firstRow=${firstRow}`);
         for (let r = 0; r < numRows; r++) {
             const rowData = templateData[firstRow + r];
             if (!rowData) continue;
-            
+
             const codiceRiga = rowData[0];
             if (!codiceRiga) continue;
-            
+
             const valore = dati[codiceRiga];
+            // DEBUG: mostra solo prime 3 righe per non intasare console
+            if (r < 3) {
+                console.log(`    Riga ${r}: codice="${codiceRiga}", valore="${valore}"`);
+            }
             if (valore !== null && valore !== undefined && valore !== '') {
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 worksheet[cellAddress] = {
                     t: typeof valore === 'number' ? 'n' : 's',
                     v: valore
