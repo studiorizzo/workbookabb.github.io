@@ -102,12 +102,14 @@ function exportTipo1(worksheet, dati, templateData, config) {
     const firstCol = config[4];
     const numRows = config[1];
     const numCols = config[2];
+    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
 
     let count = 0;
 
     // DEBUG: mostra primi codici disponibili
     const codiciDisponibili = Object.keys(dati).slice(0, 5);
     console.log(`  Tipo1: dati disponibili (prime 5 chiavi):`, codiciDisponibili);
+    console.log(`  Tipo1: rowCodeCol=${rowCodeCol}`);
 
     // Se 1×1 = textBlock
     if (numRows === 1 && numCols === 1) {
@@ -132,9 +134,9 @@ function exportTipo1(worksheet, dati, templateData, config) {
                 continue;
             }
 
-            const codiceRiga = rowData[0];
-            if (!codiceRiga) {
-                if (r < 3) console.log(`    Riga ${r}: codiceRiga vuoto, rowData[0]="${rowData[0]}"`);
+            const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol invece di 0!
+            if (!codiceRiga || codiceRiga === 'null') {  // ← Skip anche se è la stringa "null"
+                if (r < 3) console.log(`    Riga ${r}: codiceRiga vuoto, rowData[${rowCodeCol}]="${rowData[rowCodeCol]}"`);
                 continue;
             }
 
@@ -165,16 +167,17 @@ function exportTipo2(worksheet, dati, templateData, config) {
     const firstRow = config[3];
     const firstCol = config[4];
     const numRows = config[1];
+    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
     const codiciColonne = templateData[2]?.slice(3) || [];
-    
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
-        if (!codiceRiga) continue;
+
+        const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol!
+        if (!codiceRiga || codiceRiga === 'null') continue;  // ← Skip anche "null"
         
         for (let c = 0; c < codiciColonne.length; c++) {
             const codiceColonna = codiciColonne[c];
@@ -206,16 +209,17 @@ function exportTipo3(worksheet, dati, templateData, config) {
     const firstCol = config[4];
     const numRows = config[1];
     const numCols = config[2];
+    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
     const codiciColonne = templateData[2]?.slice(3) || [];
-    
+
     let count = 0;
-    
+
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
-        
-        const codiceRiga = rowData[0];
-        if (!codiceRiga) continue;
+
+        const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol!
+        if (!codiceRiga || codiceRiga === 'null') continue;  // ← Skip anche "null"
         
         // Se una sola colonna, usa codiceRiga diretto
         if (numCols === 1 || codiciColonne.length === 0) {
