@@ -407,10 +407,16 @@ function loadSavedBilancio() {
 // Salva bilancio
 function salvaBilancio() {
     if (!bilancio) return;
-    
+
+    // Cancella auto-save pendente per evitare doppi messaggi
+    if (typeof autoSaveTimeout !== 'undefined' && autoSaveTimeout !== null) {
+        clearTimeout(autoSaveTimeout);
+        autoSaveTimeout = null;
+    }
+
     bilancio.metadata.data_modifica = new Date().toISOString();
     localStorage.setItem('workbookabb_bilancio', JSON.stringify(bilancio));
-    
+
     showToast('Bilancio salvato', 'success');
 }
 
