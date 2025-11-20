@@ -7,22 +7,39 @@ async function exportXLS() {
         showToast('Nessun bilancio da esportare', 'error');
         return;
     }
-    
+
     try {
         showLoading('Generazione file Excel...');
-        
+
         const workbook = XLSX.utils.book_new();
         let fogliEsportati = 0;
-        
+
+        // DEBUG: Conta celle totali
+        let totCelleCompilate = 0;
+        for (const codice in bilancio.fogli) {
+            const dati = bilancio.fogli[codice];
+            totCelleCompilate += Object.keys(dati).filter(k => dati[k] !== null && dati[k] !== undefined && dati[k] !== '').length;
+        }
+        console.log(`📊 Export XLS: ${Object.keys(bilancio.fogli).length} fogli, ${totCelleCompilate} celle compilate totali`);
+
         // Per ogni foglio nel bilancio
         for (const codice in bilancio.fogli) {
-            const template = getTemplate(codice);
-            if (!template || !template.loaded) {
-                console.warn(`Template ${codice} non disponibile, skip export`);
+            const dati = bilancio.fogli[codice];
+            const numCelleInFoglio = Object.keys(dati).filter(k => dati[k] !== null && dati[k] !== undefined && dati[k] !== '').length;
+
+            if (numCelleInFoglio === 0) {
+                console.log(`⊘ ${codice}: nessuna cella compilata, skip`);
                 continue;
             }
-            
-            const dati = bilancio.fogli[codice];
+
+            console.log(`📄 ${codice}: ${numCelleInFoglio} celle compilate, tentativo export...`);
+
+            const template = getTemplate(codice);
+            if (!template || !template.loaded) {
+                console.warn(`❌ Template ${codice} non disponibile, skip export`);
+                continue;
+            }
+
             const templateData = template.data;
             
             if (!templateData || templateData.length < 2) continue;
