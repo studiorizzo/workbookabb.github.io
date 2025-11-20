@@ -23,60 +23,6 @@ function parseSheetConfig(templateData) {
     return config;
 }
 
-// Crea foglio Indice con metadati (date esercizio)
-function createIndiceSheet(metadata) {
-    if (!metadata) return null;
-
-    const worksheet = {};
-
-    // Helper: Converti data ISO string in numero seriale Excel
-    function isoToExcelSerial(isoDate) {
-        if (!isoDate) return null;
-        const date = new Date(isoDate);
-        if (isNaN(date)) return null;
-
-        // Excel serial: giorni da 1900-01-01 (con bug 1900 leap year)
-        const excelEpoch = new Date(1899, 11, 30); // 30 dicembre 1899
-        const daysDiff = (date - excelEpoch) / (24 * 60 * 60 * 1000);
-        return Math.floor(daysDiff);
-    }
-
-    // Coordinate celle nel foglio Indice (da sheet-loader.js)
-    // Riga 3 Excel = row 2 (zero-based)
-    // Riga 4 Excel = row 3 (zero-based)
-
-    // C3 (row:2, col:2): Fine esercizio corrente
-    const fineCorrente = isoToExcelSerial(metadata.fine_corrente);
-    if (fineCorrente) {
-        worksheet['C3'] = { t: 'n', v: fineCorrente, z: 'mm/dd/yy' };
-    }
-
-    // G3 (row:2, col:6): Inizio esercizio corrente
-    const inizioCorrente = isoToExcelSerial(metadata.inizio_corrente);
-    if (inizioCorrente) {
-        worksheet['G3'] = { t: 'n', v: inizioCorrente, z: 'mm/dd/yy' };
-    }
-
-    // G4 (row:3, col:6): Inizio esercizio precedente
-    const inizioPrecedente = isoToExcelSerial(metadata.inizio_precedente);
-    if (inizioPrecedente) {
-        worksheet['G4'] = { t: 'n', v: inizioPrecedente, z: 'mm/dd/yy' };
-    }
-
-    // I4 (row:3, col:8): Fine esercizio precedente
-    const finePrecedente = isoToExcelSerial(metadata.fine_precedente);
-    if (finePrecedente) {
-        worksheet['I4'] = { t: 'n', v: finePrecedente, z: 'mm/dd/yy' };
-    }
-
-    // Imposta range foglio
-    worksheet['!ref'] = 'A1:J10';
-
-    console.log(`  Indice date: ${metadata.inizio_corrente} → ${metadata.fine_corrente}, ${metadata.inizio_precedente} → ${metadata.fine_precedente}`);
-
-    return worksheet;
-}
-
 // Export XLS
 async function exportXLS() {
     const bilancio = getBilancio();
@@ -99,15 +45,7 @@ async function exportXLS() {
         }
         console.log(`📊 Export XLS: ${Object.keys(bilancio.fogli).length} fogli, ${totCelleCompilate} celle compilate totali`);
 
-        // PASSO 1: Esporta foglio Indice con metadati (date)
-        const fogIndice = createIndiceSheet(bilancio.metadata);
-        if (fogIndice) {
-            XLSX.utils.book_append_sheet(workbook, fogIndice, 'Indice');
-            fogliEsportati++;
-            console.log('✓ Foglio Indice esportato');
-        }
-
-        // PASSO 2: Per ogni foglio nel bilancio
+        // Per ogni foglio nel bilancio
         for (const codice in bilancio.fogli) {
             const dati = bilancio.fogli[codice];
             const numCelleInFoglio = Object.keys(dati).filter(k => dati[k] !== null && dati[k] !== undefined && dati[k] !== '').length;
