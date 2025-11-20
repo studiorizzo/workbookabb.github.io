@@ -127,15 +127,21 @@ function exportTipo1(worksheet, dati, templateData, config) {
         console.log(`  Tipo1 table: numRows=${numRows}, firstRow=${firstRow}`);
         for (let r = 0; r < numRows; r++) {
             const rowData = templateData[firstRow + r];
-            if (!rowData) continue;
+            if (!rowData) {
+                if (r < 3) console.log(`    Riga ${r}: rowData mancante`);
+                continue;
+            }
 
             const codiceRiga = rowData[0];
-            if (!codiceRiga) continue;
+            if (!codiceRiga) {
+                if (r < 3) console.log(`    Riga ${r}: codiceRiga vuoto, rowData[0]="${rowData[0]}"`);
+                continue;
+            }
 
             const valore = dati[codiceRiga];
             // DEBUG: mostra solo prime 3 righe per non intasare console
             if (r < 3) {
-                console.log(`    Riga ${r}: codice="${codiceRiga}", valore="${valore}"`);
+                console.log(`    Riga ${r}: codice="${codiceRiga}", valore="${valore}", trovato=${valore !== undefined}`);
             }
             if (valore !== null && valore !== undefined && valore !== '') {
                 const xlsRow = firstRow + r;
