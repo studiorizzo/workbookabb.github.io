@@ -46,8 +46,8 @@ async function exportXLS() {
             
             const config = templateData[1];
             if (!Array.isArray(config) || config.length === 0) continue;
-            
-            const tipoTab = config[0];
+
+            const tipoTab = parseInt(config[0]);
             
             // Crea worksheet vuoto
             const worksheet = {};
