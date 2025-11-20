@@ -441,12 +441,21 @@ function renderTipo2(templateData, dati, foglioCode) {
     // colCodeRow contiene i CODICI delle colonne (per chiavi composite), non gli header visibili
     const headerRowIndex = firstRow - 1;
     const headerRow = templateData[headerRowIndex] || [];
-    // Limita codiciColonne al numero configurato (nr_col)
-    const codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
 
-    // 🔍 DEBUG: Log codici colonna per capire struttura
-    console.log(`🔍 TIPO2 ${foglioCode}: colCodeRow=${colCodeRow}, firstCol=${firstCol}, numCols=${numCols}`);
-    console.log(`   ↳ Codici colonna (da riga ${colCodeRow}):`, codiciColonne);
+    // Determina codici colonna in base al tipo di foglio
+    let codiciColonne;
+    if (numCols === 2) {
+        // Fogli temporali (2 colonne): usa c1_code/c2_code dalla config
+        // es. c1_code="=c_this" → "c_this", c2_code="=c_prev" → "c_prev"
+        const c1 = configMap.c1_code ? String(configMap.c1_code).replace(/^=/, '') : 'c_this';
+        const c2 = configMap.c2_code ? String(configMap.c2_code).replace(/^=/, '') : 'c_prev';
+        codiciColonne = [c1, c2];
+        console.log(`🔍 TIPO2 ${foglioCode}: foglio temporale, usando context [${c1}, ${c2}]`);
+    } else {
+        // Fogli dimensionali (>2 colonne): usa codici dalla riga 2 (col_code_nrrow)
+        codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
+        console.log(`🔍 TIPO2 ${foglioCode}: foglio dimensionale, ${numCols} colonne da riga ${colCodeRow}`);
+    }
 
     const xbrlMappings = getXBRLMappings();
     

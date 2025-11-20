@@ -167,6 +167,18 @@ function importTipo2(sheet, templateData, configMap, datiSheet) {
     const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
     const colCodeRow = parseInt(configMap.col_code_nrrow) || 2;
 
+    // Determina codici colonna in base al tipo di foglio (come in form-renderer.js)
+    let codiciColonne;
+    if (numCols === 2) {
+        // Fogli temporali (2 colonne): usa c1_code/c2_code dalla config
+        const c1 = configMap.c1_code ? String(configMap.c1_code).replace(/^=/, '') : 'c_this';
+        const c2 = configMap.c2_code ? String(configMap.c2_code).replace(/^=/, '') : 'c_prev';
+        codiciColonne = [c1, c2];
+    } else {
+        // Fogli dimensionali (>2 colonne): usa codici dalla riga 2 (col_code_nrrow)
+        codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
+    }
+
     let count = 0;
 
     for (let r = 0; r < numRows; r++) {
@@ -178,11 +190,8 @@ function importTipo2(sheet, templateData, configMap, datiSheet) {
         if (!codiceRiga) continue;
 
         for (let c = 0; c < numCols; c++) {
-            // Leggi col_code dalla riga specificata
-            const colCodeData = templateData[colCodeRow];
-            if (!colCodeData) continue;
-
-            const codiceColonna = colCodeData[firstCol + c];
+            // Usa codici colonna pre-calcolati
+            const codiceColonna = codiciColonne[c];
             if (!codiceColonna) continue;
 
             const codiceCella = `${codiceRiga}_${codiceColonna}`;
