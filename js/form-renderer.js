@@ -443,7 +443,11 @@ function renderTipo2(templateData, dati, foglioCode) {
     const headerRow = templateData[headerRowIndex] || [];
     // Limita codiciColonne al numero configurato (nr_col)
     const codiciColonne = templateData[colCodeRow]?.slice(firstCol, firstCol + numCols) || [];
-    
+
+    // 🔍 DEBUG: Log codici colonna per capire struttura
+    console.log(`🔍 TIPO2 ${foglioCode}: colCodeRow=${colCodeRow}, firstCol=${firstCol}, numCols=${numCols}`);
+    console.log(`   ↳ Codici colonna (da riga ${colCodeRow}):`, codiciColonne);
+
     const xbrlMappings = getXBRLMappings();
     
     // Leggi anni da bilancio per header dinamici
@@ -563,10 +567,16 @@ function renderTipo2(templateData, dati, foglioCode) {
                     html += '<td></td>';
                     continue;
                 }
-                
+
                 const codiceCella = `${codiceRiga}_${codiceColonna}`;
-                const valore = dati[codiceCella] !== null && dati[codiceCella] !== undefined 
-                    ? dati[codiceCella] 
+
+                // 🔍 DEBUG: Log solo per la prima riga per evitare spam
+                if (r === 0 && c < 2) {
+                    console.log(`   ↳ Cella: ${codiceCella} (riga="${codiceRiga}", col="${codiceColonna}")`);
+                }
+
+                const valore = dati[codiceCella] !== null && dati[codiceCella] !== undefined
+                    ? dati[codiceCella]
                     : '';
                 
                 html += `<td>

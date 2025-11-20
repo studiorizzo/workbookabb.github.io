@@ -500,6 +500,51 @@ function getWorkbookData() {
     return workbookData;
 }
 
+// 🔍 DEBUG: Funzione helper per analizzare struttura bilancio
+window.debugBilancio = function() {
+    const bilancio = getBilancio();
+    if (!bilancio) {
+        console.log('❌ Nessun bilancio caricato');
+        return;
+    }
+
+    console.log('=== 📊 STRUTTURA BILANCIO ===\n');
+    console.log('Metadata:', bilancio.metadata);
+
+    console.log('\n=== 📋 FOGLI COMPILATI ===');
+    for (const [codice, dati] of Object.entries(bilancio.fogli)) {
+        const celle = Object.keys(dati).filter(k => dati[k] !== null && dati[k] !== '' && dati[k] !== undefined);
+        if (celle.length > 0) {
+            console.log(`\n${codice} (${celle.length} celle):`);
+            celle.slice(0, 5).forEach(cella => {
+                const hasSuffix = cella.includes('_');
+                const marker = hasSuffix ? '✓' : '✗';
+                console.log(`  ${marker} ${cella} = ${JSON.stringify(dati[cella])}`);
+            });
+            if (celle.length > 5) {
+                console.log(`  ... altre ${celle.length - 5} celle`);
+            }
+        }
+    }
+
+    console.log('\n=== 📈 STATISTICHE ===');
+    const totalSheets = Object.keys(bilancio.fogli).length;
+    const compiledSheets = Object.entries(bilancio.fogli).filter(([_, dati]) =>
+        Object.values(dati).some(v => v !== null && v !== '' && v !== undefined)
+    ).length;
+    const totalCells = Object.values(bilancio.fogli).reduce((sum, dati) =>
+        sum + Object.values(dati).filter(v => v !== null && v !== '' && v !== undefined).length, 0
+    );
+
+    console.log(`Fogli totali: ${totalSheets}`);
+    console.log(`Fogli compilati: ${compiledSheets}`);
+    console.log(`Celle compilate: ${totalCells}`);
+
+    console.log('\n💡 Usa JSON.stringify(getBilancio(), null, 2) per vedere la struttura completa');
+
+    return bilancio;
+};
+
 // Salva configurazione bilancio
 function salvaConfigurazione() {
     if (!bilancio) return;
