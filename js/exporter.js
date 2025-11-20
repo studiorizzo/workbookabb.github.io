@@ -1,5 +1,28 @@
 // workbookabb - Exporter Module (VERSIONE MIGLIORATA)
 
+// Parse sheet config (righe 0-1) in HashMap
+function parseSheetConfig(templateData) {
+    if (!templateData || templateData.length < 2) {
+        return null;
+    }
+
+    const keys = templateData[0];   // Riga 0: nomi parametri
+    const values = templateData[1]; // Riga 1: valori
+
+    if (!Array.isArray(keys) || !Array.isArray(values)) {
+        return null;
+    }
+
+    const config = {};
+    for (let i = 0; i < keys.length && i < values.length; i++) {
+        if (keys[i]) {
+            config[keys[i]] = values[i];
+        }
+    }
+
+    return config;
+}
+
 // Export XLS
 async function exportXLS() {
     const bilancio = getBilancio();
@@ -98,11 +121,18 @@ async function exportXLS() {
 
 // Export TIPO 1: Foglio semplice
 function exportTipo1(worksheet, dati, templateData, config) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
+    // Parse config usando la stessa logica del form-renderer
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) {
+        console.warn('  Tipo1: impossibile parsare config');
+        return 0;
+    }
+
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
 
     let count = 0;
 
@@ -164,33 +194,42 @@ function exportTipo1(worksheet, dati, templateData, config) {
 
 // Export TIPO 2: Tabella 2D
 function exportTipo2(worksheet, dati, templateData, config) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
+    // Parse config usando la stessa logica del form-renderer
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) {
+        console.warn('  Tipo2: impossibile parsare config');
+        return 0;
+    }
+
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
     const codiciColonne = templateData[2]?.slice(3) || [];
 
     let count = 0;
+
+    console.log(`  Tipo2: numRows=${numRows}, firstRow=${firstRow}, rowCodeCol=${rowCodeCol}`);
 
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
 
-        const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol!
-        if (!codiceRiga || codiceRiga === 'null') continue;  // ← Skip anche "null"
-        
+        const codiceRiga = rowData[rowCodeCol];
+        if (!codiceRiga || codiceRiga === 'null') continue;
+
         for (let c = 0; c < codiciColonne.length; c++) {
             const codiceColonna = codiciColonne[c];
             if (!codiceColonna) continue;
-            
+
             const codiceCella = `${codiceRiga}_${codiceColonna}`;
             const valore = dati[codiceCella];
-            
+
             if (valore !== null && valore !== undefined && valore !== '') {
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol + c;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 worksheet[cellAddress] = {
                     t: typeof valore === 'number' ? 'n' : 's',
                     v: valore
@@ -199,28 +238,37 @@ function exportTipo2(worksheet, dati, templateData, config) {
             }
         }
     }
-    
+
     return count;
 }
 
 // Export TIPO 3: Tuple
 function exportTipo3(worksheet, dati, templateData, config) {
-    const firstRow = config[3];
-    const firstCol = config[4];
-    const numRows = config[1];
-    const numCols = config[2];
-    const rowCodeCol = config[5] || 0;  // ← FIX: usa row_code_nrcol dalla config!
+    // Parse config usando la stessa logica del form-renderer
+    const configMap = parseSheetConfig(templateData);
+    if (!configMap) {
+        console.warn('  Tipo3: impossibile parsare config');
+        return 0;
+    }
+
+    const firstRow = parseInt(configMap.first_row) || 0;
+    const firstCol = parseInt(configMap.first_col) || 0;
+    const numRows = parseInt(configMap.nr_row) || 0;
+    const numCols = parseInt(configMap.nr_col) || 0;
+    const rowCodeCol = parseInt(configMap.row_code_nrcol) || 0;
     const codiciColonne = templateData[2]?.slice(3) || [];
 
     let count = 0;
+
+    console.log(`  Tipo3: numRows=${numRows}, firstRow=${firstRow}, rowCodeCol=${rowCodeCol}`);
 
     for (let r = 0; r < numRows; r++) {
         const rowData = templateData[firstRow + r];
         if (!rowData) continue;
 
-        const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol!
-        if (!codiceRiga || codiceRiga === 'null') continue;  // ← Skip anche "null"
-        
+        const codiceRiga = rowData[rowCodeCol];
+        if (!codiceRiga || codiceRiga === 'null') continue;
+
         // Se una sola colonna, usa codiceRiga diretto
         if (numCols === 1 || codiciColonne.length === 0) {
             const valore = dati[codiceRiga];
@@ -228,7 +276,7 @@ function exportTipo3(worksheet, dati, templateData, config) {
                 const xlsRow = firstRow + r;
                 const xlsCol = firstCol;
                 const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                
+
                 worksheet[cellAddress] = {
                     t: typeof valore === 'number' ? 'n' : 's',
                     v: valore
@@ -240,15 +288,15 @@ function exportTipo3(worksheet, dati, templateData, config) {
             for (let c = 0; c < numCols && c < codiciColonne.length; c++) {
                 const codiceColonna = codiciColonne[c];
                 if (!codiceColonna) continue;
-                
+
                 const codiceCella = `${codiceRiga}_${codiceColonna}`;
                 const valore = dati[codiceCella];
-                
+
                 if (valore !== null && valore !== undefined && valore !== '') {
                     const xlsRow = firstRow + r;
                     const xlsCol = firstCol + c;
                     const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
-                    
+
                     worksheet[cellAddress] = {
                         t: typeof valore === 'number' ? 'n' : 's',
                         v: valore
@@ -258,7 +306,7 @@ function exportTipo3(worksheet, dati, templateData, config) {
             }
         }
     }
-    
+
     return count;
 }
 
