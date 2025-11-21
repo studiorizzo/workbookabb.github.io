@@ -333,6 +333,16 @@ function renderTipo1(templateData, dati, foglioCode) {
     const isT0000 = foglioCode === 'T0000';
     const effectiveNumCols = isT0000 ? 1 : numCols;
 
+    // 🔍 Per fogli temporali (nr_col=2): usa c1_code/c2_code dalla config
+    let codiciColonne = [];
+    if (numCols === 2 && !isT0000) {
+        // Fogli temporali (2 colonne): usa c1_code/c2_code dalla config
+        const c1 = configMap.c1_code ? String(configMap.c1_code).replace(/^=/, '') : 'c_this';
+        const c2 = configMap.c2_code ? String(configMap.c2_code).replace(/^=/, '') : 'c_prev';
+        codiciColonne = [c1, c2];
+        console.log(`🔍 TIPO1 ${foglioCode}: foglio temporale, usando context [${c1}, ${c2}]`);
+    }
+
     // Struttura semplice: stessa per tutte le tabelle
     let html = `<div class="form-container"><table class="bilancio-table">`;
 
@@ -398,7 +408,8 @@ function renderTipo1(templateData, dati, foglioCode) {
             }
         } else {
             // Per T0000: UNA sola cella, per altri: tutte le colonne
-            for (let c = 0; c < effectiveNumCols; c++) {
+            if (isT0000 || codiciColonne.length === 0) {
+                // T0000 o foglio semplice: usa solo codiceRiga
                 const valore = dati[codiceRiga] !== null && dati[codiceRiga] !== undefined
                     ? dati[codiceRiga]
                     : '';
@@ -416,6 +427,26 @@ function renderTipo1(templateData, dati, foglioCode) {
                            value="${escapeHtml(valore)}"
                            ${inputType === 'number' ? 'step="0.01" placeholder="0"' : 'placeholder=""'} />
                 </td>`;
+            } else {
+                // Fogli temporali: usa codiceRiga_codiceColonna (es. T0002.D01.xxx_c_this)
+                for (let c = 0; c < codiciColonne.length; c++) {
+                    const codiceColonna = codiciColonne[c];
+                    const codiceCella = `${codiceRiga}_${codiceColonna}`;
+
+                    const valore = dati[codiceCella] !== null && dati[codiceCella] !== undefined
+                        ? dati[codiceCella]
+                        : '';
+
+                    html += `<td>
+                        <input type="number"
+                               class="cell-input"
+                               data-cell="${codiceCella}"
+                               data-foglio="${foglioCode}"
+                               value="${valore}"
+                               step="0.01"
+                               placeholder="0" />
+                    </td>`;
+                }
             }
         }
         
@@ -467,6 +498,10 @@ function renderTipo2(templateData, dati, foglioCode) {
     // Determina se è T0000 (dati anagrafici) o foglio senza codici colonna
     const isT0000 = foglioCode === 'T0000';
     const hasColumnCodes = codiciColonne.length > 0 && codiciColonne.some(c => c && c !== '-');
+
+    // 🔍 DEBUG: Verifica branch selection per temporali
+    console.log(`🔍 BRANCH ${foglioCode}: isT0000=${isT0000}, hasColumnCodes=${hasColumnCodes}, codiciColonne=`, codiciColonne);
+    console.log(`   ↳ Branch will be: ${(isT0000 || !hasColumnCodes) ? 'T0000 (NO SUFFIX)' : 'NORMAL (WITH SUFFIX)'}`);
 
     // Per T0000 o fogli senza codici: usa una sola colonna (corrente)
     const effectiveNumCols = (isT0000 || !hasColumnCodes) ? 1 : codiciColonne.length;

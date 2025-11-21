@@ -155,8 +155,18 @@ function exportTipo1(worksheet, dati, templateData, config) {
             count++;
         }
     } else {
+        // 🔍 Per fogli temporali (nr_col=2): usa c1_code/c2_code dalla config
+        let codiciColonne = [];
+        if (numCols === 2) {
+            // Fogli temporali (2 colonne): usa c1_code/c2_code dalla config
+            const c1 = configMap.c1_code ? String(configMap.c1_code).replace(/^=/, '') : 'c_this';
+            const c2 = configMap.c2_code ? String(configMap.c2_code).replace(/^=/, '') : 'c_prev';
+            codiciColonne = [c1, c2];
+            console.log(`  🔍 EXPORT TIPO1: foglio temporale, usando context [${c1}, ${c2}]`);
+        }
+
         // Tabella semplice
-        console.log(`  Tipo1 table: numRows=${numRows}, firstRow=${firstRow}`);
+        console.log(`  Tipo1 table: numRows=${numRows}, firstRow=${firstRow}, numCols=${numCols}`);
         for (let r = 0; r < numRows; r++) {
             const rowData = templateData[firstRow + r];
             if (!rowData) {
@@ -164,27 +174,52 @@ function exportTipo1(worksheet, dati, templateData, config) {
                 continue;
             }
 
-            const codiceRiga = rowData[rowCodeCol];  // ← FIX: usa rowCodeCol invece di 0!
-            if (!codiceRiga || codiceRiga === 'null') {  // ← Skip anche se è la stringa "null"
+            const codiceRiga = rowData[rowCodeCol];
+            if (!codiceRiga || codiceRiga === 'null') {
                 if (r < 3) console.log(`    Riga ${r}: codiceRiga vuoto, rowData[${rowCodeCol}]="${rowData[rowCodeCol]}"`);
                 continue;
             }
 
-            const valore = dati[codiceRiga];
-            // DEBUG: mostra solo prime 3 righe per non intasare console
-            if (r < 3) {
-                console.log(`    Riga ${r}: codice="${codiceRiga}", valore="${valore}", trovato=${valore !== undefined}`);
-            }
-            if (valore !== null && valore !== undefined && valore !== '') {
-                const xlsRow = firstRow + r;
-                const xlsCol = firstCol;
-                const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+            if (codiciColonne.length === 0) {
+                // Foglio semplice: usa solo codiceRiga
+                const valore = dati[codiceRiga];
+                if (r < 3) {
+                    console.log(`    Riga ${r}: codice="${codiceRiga}", valore="${valore}", trovato=${valore !== undefined}`);
+                }
+                if (valore !== null && valore !== undefined && valore !== '') {
+                    const xlsRow = firstRow + r;
+                    const xlsCol = firstCol;
+                    const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
 
-                worksheet[cellAddress] = {
-                    t: typeof valore === 'number' ? 'n' : 's',
-                    v: valore
-                };
-                count++;
+                    worksheet[cellAddress] = {
+                        t: typeof valore === 'number' ? 'n' : 's',
+                        v: valore
+                    };
+                    count++;
+                }
+            } else {
+                // Fogli temporali: usa codiceRiga_codiceColonna
+                for (let c = 0; c < codiciColonne.length; c++) {
+                    const codiceColonna = codiciColonne[c];
+                    const codiceCella = `${codiceRiga}_${codiceColonna}`;
+                    const valore = dati[codiceCella];
+
+                    if (r < 3) {
+                        console.log(`    Riga ${r} Col ${c}: codice="${codiceCella}", valore="${valore}", trovato=${valore !== undefined}`);
+                    }
+
+                    if (valore !== null && valore !== undefined && valore !== '') {
+                        const xlsRow = firstRow + r;
+                        const xlsCol = firstCol + c;
+                        const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+
+                        worksheet[cellAddress] = {
+                            t: typeof valore === 'number' ? 'n' : 's',
+                            v: valore
+                        };
+                        count++;
+                    }
+                }
             }
         }
     }
