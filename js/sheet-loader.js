@@ -128,6 +128,16 @@ function importTipo1(sheet, templateData, configMap, datiSheet, sheetName) {
         const isT0000 = sheetName === 'T0000';
         const colsToImport = isT0000 ? 1 : numCols;
 
+        // 🔍 Per fogli temporali (nr_col=2): usa c1_code/c2_code dalla config
+        let codiciColonne = [];
+        if (numCols === 2 && !isT0000) {
+            // Fogli temporali (2 colonne): usa c1_code/c2_code dalla config
+            const c1 = configMap.c1_code ? String(configMap.c1_code).replace(/^=/, '') : 'c_this';
+            const c2 = configMap.c2_code ? String(configMap.c2_code).replace(/^=/, '') : 'c_prev';
+            codiciColonne = [c1, c2];
+            console.log(`🔍 IMPORT TIPO1 ${sheetName}: foglio temporale, usando context [${c1}, ${c2}]`);
+        }
+
         // Tabella semplice con codici riga
         for (let r = 0; r < numRows; r++) {
             const rowData = templateData[firstRow + r];
@@ -137,18 +147,34 @@ function importTipo1(sheet, templateData, configMap, datiSheet, sheetName) {
             const codiceRiga = rowData[rowCodeCol];
             if (!codiceRiga) continue;
 
-            // Per T0000: importa solo la prima colonna (corrente)
-            // Per altri fogli tipo 1: importa tutte le colonne (sovrascrivendo)
-            for (let c = 0; c < colsToImport; c++) {
-                const xlsRow = firstRow + r;
-                const xlsCol = firstCol + c;
-                const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+            if (isT0000 || codiciColonne.length === 0) {
+                // T0000 o foglio semplice: usa solo codiceRiga
+                for (let c = 0; c < colsToImport; c++) {
+                    const xlsRow = firstRow + r;
+                    const xlsCol = firstCol + c;
+                    const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
 
-                const cell = sheet[cellAddress];
-                if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
-                    // Usa codice_riga direttamente (no suffisso colonna)
-                    datiSheet[codiceRiga] = cell.v;
-                    count++;
+                    const cell = sheet[cellAddress];
+                    if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
+                        datiSheet[codiceRiga] = cell.v;
+                        count++;
+                    }
+                }
+            } else {
+                // Fogli temporali: usa codiceRiga_codiceColonna
+                for (let c = 0; c < codiciColonne.length; c++) {
+                    const codiceColonna = codiciColonne[c];
+                    const codiceCella = `${codiceRiga}_${codiceColonna}`;
+
+                    const xlsRow = firstRow + r;
+                    const xlsCol = firstCol + c;
+                    const cellAddress = XLSX.utils.encode_cell({ r: xlsRow, c: xlsCol });
+
+                    const cell = sheet[cellAddress];
+                    if (cell && cell.v !== null && cell.v !== undefined && cell.v !== '') {
+                        datiSheet[codiceCella] = cell.v;
+                        count++;
+                    }
                 }
             }
         }
