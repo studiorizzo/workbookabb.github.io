@@ -302,10 +302,7 @@ function setupEventListeners() {
     
     // Salva
     document.getElementById('btn-salva').addEventListener('click', salvaBilancio);
-    
-    // Export XLS
-    document.getElementById('btn-export-xls').addEventListener('click', exportXLS);
-    
+
     // Export JSON
     document.getElementById('btn-export-json').addEventListener('click', exportJSON);
 }
@@ -423,7 +420,6 @@ function salvaBilancio() {
 // Enable buttons
 function enableButtons() {
     document.getElementById('btn-salva').disabled = false;
-    document.getElementById('btn-export-xls').disabled = false;
     document.getElementById('btn-export-json').disabled = false;
 }
 
