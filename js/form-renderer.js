@@ -775,13 +775,12 @@ function renderTipo4(templateData, dati, foglioCode) {
 
 // Attach event listeners agli input
 function attachInputListeners() {
-    // Input numerici e testuali
+    // Input numerici e testuali - solo 'change' per evitare salvataggi duplicati
     document.querySelectorAll('.cell-input').forEach(input => {
         input.addEventListener('change', handleCellChange);
-        input.addEventListener('blur', handleCellChange);
     });
-    
-    // Textarea
+
+    // Textarea - usa 'blur' perché non ha un evento change affidabile
     document.querySelectorAll('.cell-textarea').forEach(textarea => {
         textarea.addEventListener('blur', handleCellChange);
     });
