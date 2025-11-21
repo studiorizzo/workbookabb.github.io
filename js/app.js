@@ -30,15 +30,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // 5. Genera indice sidebar
         renderIndex();
-        
+
         // 6. Setup event listeners
         setupEventListeners();
-        
-        // 7. Verifica bilancio salvato
-        loadSavedBilancio();
-        
+
+        // 7. Pulisci localStorage e mostra welcome screen
+        clearStorageAndShowWelcome();
+
         hideLoading();
-        
+
         console.log('=== App initialized successfully ===');
     } catch (error) {
         console.error('=== Initialization error ===', error);
@@ -297,9 +297,16 @@ function setupEventListeners() {
     document.getElementById('btn-carica').addEventListener('click', () => {
         document.getElementById('file-input').click();
     });
-    
+
     document.getElementById('file-input').addEventListener('change', handleFileUpload);
-    
+
+    // Carica JSON
+    document.getElementById('btn-carica-json').addEventListener('click', () => {
+        document.getElementById('json-input').click();
+    });
+
+    document.getElementById('json-input').addEventListener('change', handleJSONUpload);
+
     // Salva
     document.getElementById('btn-salva').addEventListener('click', salvaBilancio);
 
@@ -345,12 +352,15 @@ function nuovoBilancio() {
     
     // Abilita pulsanti
     enableButtons();
-    
+
+    // Mostra interfaccia completa (sidebar + toolbar)
+    showWorkspace();
+
     // Vai al primo foglio
     if (templatesList.length > 0) {
         navigateToFoglio(templatesList[0]);
     }
-    
+
     showToast('Nuovo bilancio creato', 'success');
 }
 
@@ -366,20 +376,27 @@ async function handleFileUpload(event) {
         
         // Crea bilancio da XLS
         bilancio = await importFromXLS(xlsData);
-        
+
         enableButtons();
-        
+
+        // Mostra interfaccia completa (sidebar + toolbar)
+        showWorkspace();
+
         // Vai al primo foglio disponibile nel bilancio
-        const firstFoglio = Object.keys(bilancio.fogli).find(f => 
+        const firstFoglio = Object.keys(bilancio.fogli).find(f =>
             Object.keys(bilancio.fogli[f]).length > 0
         );
-        
+
         if (firstFoglio) {
             navigateToFoglio(firstFoglio);
         }
-        
+
         hideLoading();
         showToast('File caricato con successo', 'success');
+
+        // Reset input per permettere di ricaricare lo stesso file
+        event.target.value = '';
+
     } catch (error) {
         console.error('File upload error:', error);
         hideLoading();
@@ -387,7 +404,85 @@ async function handleFileUpload(event) {
     }
 }
 
-// Carica bilancio salvato
+// Upload file JSON
+async function handleJSONUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    try {
+        showLoading('Caricamento file JSON...');
+
+        // Leggi file come testo
+        const text = await file.text();
+        const jsonData = JSON.parse(text);
+
+        // Valida struttura JSON
+        if (!jsonData.metadata || !jsonData.fogli) {
+            throw new Error('File JSON non valido: manca struttura bilancio');
+        }
+
+        // Carica bilancio
+        bilancio = jsonData;
+
+        enableButtons();
+
+        // Mostra interfaccia completa (sidebar + toolbar)
+        showWorkspace();
+
+        // Vai al primo foglio con dati
+        const firstFoglio = Object.keys(bilancio.fogli).find(f =>
+            Object.keys(bilancio.fogli[f]).length > 0
+        );
+
+        if (firstFoglio) {
+            navigateToFoglio(firstFoglio);
+        } else {
+            // Se non ci sono dati, vai al primo foglio disponibile
+            if (templatesList.length > 0) {
+                navigateToFoglio(templatesList[0]);
+            }
+        }
+
+        hideLoading();
+        showToast('JSON caricato con successo', 'success');
+
+        // Reset input per permettere di ricaricare lo stesso file
+        event.target.value = '';
+
+    } catch (error) {
+        console.error('JSON upload error:', error);
+        hideLoading();
+        showToast('Errore caricamento JSON: ' + error.message, 'error');
+    }
+}
+
+// Pulisci localStorage e mostra welcome screen
+function clearStorageAndShowWelcome() {
+    // Pulisci localStorage per partire sempre vuoti
+    localStorage.removeItem('workbookabb_bilancio');
+    bilancio = null;
+
+    // Nascondi sidebar e toolbar
+    document.getElementById('sidebar').style.display = 'none';
+    document.getElementById('toolbar').style.display = 'none';
+
+    // Mostra welcome screen
+    document.querySelector('.welcome-screen').style.display = 'flex';
+
+    console.log('✓ App pronta - localStorage pulito');
+}
+
+// Mostra interfaccia completa (dopo creazione/caricamento bilancio)
+function showWorkspace() {
+    // Nascondi welcome screen
+    document.querySelector('.welcome-screen').style.display = 'none';
+
+    // Mostra sidebar e toolbar
+    document.getElementById('sidebar').style.display = 'block';
+    document.getElementById('toolbar').style.display = 'flex';
+}
+
+// Carica bilancio salvato (NON USATA PIÙ all'avvio, solo per riferimento)
 function loadSavedBilancio() {
     const saved = localStorage.getItem('workbookabb_bilancio');
     if (saved) {

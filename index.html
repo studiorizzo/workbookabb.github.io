@@ -53,14 +53,18 @@
                 <button id="btn-carica" class="btn btn-secondary">
                     📁 Carica Excel
                 </button>
+                <button id="btn-carica-json" class="btn btn-info">
+                    📂 Carica JSON
+                </button>
                 <input type="file" id="file-input" accept=".xls,.xlsx" style="display: none;">
-                
+                <input type="file" id="json-input" accept=".json,application/json" style="display: none;">
+
                 <div class="toolbar-spacer"></div>
-                
+
                 <button id="btn-salva" class="btn btn-success" disabled>
                     💾 Salva
                 </button>
-                
+
                 <div class="toolbar-divider"></div>
 
                 <button id="btn-export-json" class="btn btn-info" disabled>
@@ -83,19 +87,26 @@
                         <button class="btn btn-secondary btn-lg" onclick="document.getElementById('btn-carica').click()">
                             📁 Carica Excel
                         </button>
+                        <button class="btn btn-info btn-lg" onclick="document.getElementById('btn-carica-json').click()">
+                            📂 Carica JSON
+                        </button>
                     </div>
                     
                     <div class="info-box">
                         <p>
-                            <strong>Nuovo Bilancio:</strong> 
+                            <strong>Nuovo Bilancio:</strong>
                             Inizia la compilazione da template vuoto con form guidati
                         </p>
                         <p>
-                            <strong>Carica Excel:</strong> 
+                            <strong>Carica Excel:</strong>
                             Importa un file .xls già compilato per visualizzarlo o modificarlo
                         </p>
                         <p>
-                            <strong>Salvataggio Automatico:</strong> 
+                            <strong>Carica JSON:</strong>
+                            Riprendi una sessione precedente caricando un file JSON esportato
+                        </p>
+                        <p>
+                            <strong>Salvataggio Automatico:</strong>
                             I tuoi dati vengono salvati automaticamente nel browser
                         </p>
                     </div>
