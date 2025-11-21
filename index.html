@@ -76,39 +76,41 @@
             <div id="content">
                 <!-- Welcome Screen -->
                 <div class="welcome-screen">
-                    <div class="welcome-icon">📋</div>
-                    <h2>Benvenuto in workbookabb</h2>
-                    <p>Gestisci il tuo Bilancio Abbreviato in formato XBRL</p>
-                    
-                    <div class="welcome-actions">
-                        <button class="btn btn-primary btn-lg" onclick="document.getElementById('btn-nuovo').click()">
-                            ➕ Nuovo Bilancio
-                        </button>
-                        <button class="btn btn-secondary btn-lg" onclick="document.getElementById('btn-carica').click()">
-                            📁 Carica Excel
-                        </button>
-                        <button class="btn btn-info btn-lg" onclick="document.getElementById('btn-carica-json').click()">
-                            📂 Carica JSON
-                        </button>
+                    <div class="welcome-left">
+                        <h2>Benvenuto in workbookabb</h2>
+
+                        <div class="welcome-actions">
+                            <button class="btn btn-primary" onclick="document.getElementById('btn-nuovo').click()">
+                                ➕ Nuovo Bilancio
+                            </button>
+                            <button class="btn btn-secondary" onclick="document.getElementById('btn-carica').click()">
+                                📁 Carica Excel
+                            </button>
+                            <button class="btn btn-info" onclick="document.getElementById('btn-carica-json').click()">
+                                📂 Carica JSON
+                            </button>
+                        </div>
                     </div>
-                    
-                    <div class="info-box">
-                        <p>
-                            <strong>Nuovo Bilancio:</strong>
-                            Inizia la compilazione da template vuoto con form guidati
-                        </p>
-                        <p>
-                            <strong>Carica Excel:</strong>
-                            Importa un file .xls già compilato per visualizzarlo o modificarlo
-                        </p>
-                        <p>
-                            <strong>Carica JSON:</strong>
-                            Riprendi una sessione precedente caricando un file JSON esportato
-                        </p>
-                        <p>
-                            <strong>Salvataggio Automatico:</strong>
-                            I tuoi dati vengono salvati automaticamente nel browser
-                        </p>
+
+                    <div class="welcome-right">
+                        <div class="info-box">
+                            <p>
+                                <strong>Nuovo Bilancio:</strong>
+                                Inizia la compilazione da template vuoto con form guidati
+                            </p>
+                            <p>
+                                <strong>Carica Excel:</strong>
+                                Importa un file .xls già compilato per visualizzarlo o modificarlo
+                            </p>
+                            <p>
+                                <strong>Carica JSON:</strong>
+                                Riprendi una sessione precedente caricando un file JSON esportato
+                            </p>
+                            <p>
+                                <strong>Salvataggio Automatico:</strong>
+                                I tuoi dati vengono salvati automaticamente nel browser
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
